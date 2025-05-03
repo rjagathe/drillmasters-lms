@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="DrillMasters LMS: Free online learning for TNPSC GrIV Exam and School Tuitions.">
+    <title>DrillMasters LMS | Free Online Learning</title>
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(180deg, #e6f0fa, #d1e0f0); /* Gradient background */
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(90deg, #007bff, #0056b3);
+            color: white;
+            text-align: center;
+            padding: 1.5rem;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Logo Styling */
+        .header-logo {
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%; /* Occupies full height of the header */
+            width: auto; /* Maintains aspect ratio */
+            max-width: 200px; /* Adjust based on logo size */
+            border: 2px solid #007bff; /* Thin outline in header color */
+            /* 3D effect using box-shadow */
+            box-shadow: 
+                2px 2px 4px rgba(0, 86, 179, 0.5), /* Dark shadow for depth (bottom-right) */
+                -2px -2px 4px rgba(255, 255, 255, 0.3); /* Light highlight (top-left) */
+        }
+
+        /* Header Content */
+        .header-content {
+            max-width: 70%; /* Prevents text from overlapping with logo */
+        }
+
+        header h1 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-size: 1rem;
+        }
+
+        /* Hamburger Menu */
+        .hamburger {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            cursor: pointer;
+            z-index: 1000;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background: white;
+            margin: 5px 0;
+            transition: all 0.3s ease;
+        }
+
+        .nav-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 250px;
+            height: 100%;
+            background: #0056b3;
+            padding: 2rem;
+            transition: right 0.3s ease;
+            z-index: 999;
+        }
+
+        .nav-menu.active {
+            right: 0;
+        }
+
+        .nav-menu ul {
+            list-style: none;
+        }
+
+        .nav-menu li {
+            margin: 1.5rem 0;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: #ffd700;
+        }
+
+        /* Main Content */
+        main {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .menu-tiles {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            padding: 1rem;
+        }
+
+        .tile {
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            padding: 2rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        /* Alternating background colors for tiles */
+        .tile:nth-child(odd) {
+            background: #76CD26; /* Apple green for odd tiles (e.g., TNPSC GrIV Exam) */
+        }
+
+        .tile:nth-child(even) {
+            background: #f0f7ff; /* Light blue for even tiles (e.g., School Tuitions) */
+        }
+
+        .tile:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .tile h2 {
+            font-size: 1.5rem;
+            color: #007bff;
+            margin-bottom: 0.5rem;
+        }
+
+        .tile p {
+            font-size: 1rem;
+            color: #666;
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        footer a {
+            color: #ffd700;
+            text-decoration: none;
+            margin: 0 0.5rem;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.5rem;
+            }
+
+            header p {
+                font-size: 0.9rem;
+            }
+
+            .header-logo {
+                max-width: 150px; /* Adjust logo size for tablets */
+                box-shadow: 
+                    1.5px 1.5px 3px rgba(0, 86, 179, 0.5), /* Smaller shadow for tablets */
+                    -1.5px -1.5px 3px rgba(255, 255, 255, 0.3);
+            }
+
+            .tile {
+                padding: 1.5rem;
+            }
+
+            .tile h2 {
+                font-size: 1.3rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.2rem;
+            }
+
+            header p {
+                font-size: 0.8rem;
+            }
+
+            .header-logo {
+                max-width: 100px; /* Adjust logo size for mobile */
+                box-shadow: 
+                    1px 1px 2px rgba(0, 86, 179, 0.5), /* Even smaller shadow for mobile */
+                    -1px -1px 2px rgba(255, 255, 255, 0.3);
+            }
+
+            .header-content {
+                max-width: 60%; /* More space for text on smaller screens */
+            }
+
+            .menu-tiles {
+                grid-template-columns: 1fr;
+            }
+
+            .tile {
+                padding: 1rem;
+            }
+
+            .tile h2 {
+                font-size: 1.2rem;
+            }
+
+            .tile p {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <img src="logo.png" alt="DrillMasters Logo" class="header-logo">
+        <div class="header-content">
+            <h1>DrillMasters LMS</h1>
+            <p>Free Online Learning for TNPSC GrIV Exam & School Tuitions</p>
+        </div>
+        <!-- Hamburger Menu -->
+        <div class="hamburger" onclick="toggleMenu(event)">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <!-- Navigation Menu -->
+        <nav class="nav-menu" id="nav-menu">
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#support">Support</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <section class="menu-tiles">
+            <div class="tile" onclick="window.location.href='tnpsc-griv.html'">
+                <h2>TNPSC GrI Exam</h2>
+                <p>Prepare for TNPSC Group I with comprehensive lessons and quizzes.</p>
+            </div>
+            <div class="tile" onclick="window.location.href='school-tuitions.html'">
+                <h2>TNPSC GrII Exam</h2>
+                <p>Prepare for TNPSC Group II with comprehensive lessons and quizzes.</p>
+            </div>
+	    <div class="tile" onclick="window.location.href='tnpsc-griv.html'">
+                <h2>TNPSC GrIV Exam</h2>
+                <p>Prepare for TNPSC Group IV with comprehensive lessons and quizzes.</p>
+            </div>
+            <div class="tile" onclick="window.location.href='school-tuitions.html'">
+                <h2>SSC Exam</h2>
+                <p>Prepare for SSC- with comprehensive lessons and quizzes.</p>
+            </div>
+	    <div class="tile" onclick="window.location.href='tnpsc-griv.html'">
+                <h2>RRB Exam</h2>
+                <p>Prepare for RRB with comprehensive lessons and quizzes.</p>
+            </div>
+            <div class="tile" onclick="window.location.href='school-tuitions.html'">
+                <h2>IBPS Exam</h2>
+                <p>Prepare for IBPS with comprehensive lessons and quizzes.</p>
+            </div>
+	    <div class="tile" onclick="window.location.href='tnpsc-griv.html'">
+                <h2>TNUSRB Exam</h2>
+                <p>Prepare for TNUSRB with comprehensive lessons and quizzes.</p>
+            </div>
+            <div class="tile" onclick="window.location.href='school-tuitions.html'">
+                <h2>School Tuitions</h2>
+                <p>Access quality tuition content for school students across subjects.</p>
+            </div>
+
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 DrillMasters LMS. All rights reserved.</p>
+        <p>
+            <a href="#about">About</a> |
+            <a href="#contact">Contact</a> |
+            <a href="#privacy">Privacy Policy</a> |
+            <a href="#terms">Terms of Use</a>
+        </p>
+        <p>Follow us: <a href="#">Facebook</a> | <a href="#">Twitter</a> | <a href="#">YouTube</a></p>
+    </footer>
+
+    <!-- JavaScript for Menu Toggle -->
+    <script>
+        function toggleMenu(event) {
+            event.stopPropagation(); // Prevent the click from bubbling to the document listener
+            const navMenu = document.getElementById('nav-menu');
+            navMenu.classList.toggle('active');
+        }
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            const navMenu = document.getElementById('nav-menu');
+            const hamburger = document.querySelector('.hamburger');
+            if (!navMenu.contains(e.target) && !hamburger.contains(e.target)) {
+                navMenu.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>
