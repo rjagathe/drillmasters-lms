@@ -139,7 +139,7 @@
 
         /* Alternating background colors for tiles */
         .tile:nth-child(odd) {
-            background: #76CD26; /* Apple green for odd tiles (e.g., TNPSC GrIV Exam) */
+            background: #ffffff; /* White for odd tiles (e.g., TNPSC GrIV Exam) */
         }
 
         .tile:nth-child(even) {
@@ -160,6 +160,46 @@
         .tile p {
             font-size: 1rem;
             color: #666;
+        }
+
+        /* Content Sections for About, Contact, FAQ, Support */
+        .content-section {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .content-section h2 {
+            font-size: 1.8rem;
+            color: #007bff;
+            margin-bottom: 1rem;
+        }
+
+        .content-section p,
+        .content-section ul {
+            font-size: 1rem;
+            color: #666;
+        }
+
+        .content-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .content-section li {
+            margin: 0.5rem 0;
+        }
+
+        .content-section li strong {
+            color: #333;
+        }
+
+        /* Smooth scrolling for anchor links */
+        html {
+            scroll-behavior: smooth;
         }
 
         /* Footer */
@@ -205,6 +245,10 @@
             .tile h2 {
                 font-size: 1.3rem;
             }
+
+            .content-section h2 {
+                font-size: 1.5rem;
+            }
         }
 
         @media (max-width: 480px) {
@@ -242,13 +286,22 @@
             .tile p {
                 font-size: 0.9rem;
             }
+
+            .content-section h2 {
+                font-size: 1.3rem;
+            }
+
+            .content-section p,
+            .content-section ul {
+                font-size: 0.9rem;
+            }
         }
     </style>
 </head>
 <body>
     <!-- Header -->
     <header>
-        <img src="Logo.png" alt="DrillMasters Logo" class="header-logo">
+        <img src="logo.png" alt="DrillMasters Logo" class="header-logo">
         <div class="header-content">
             <h1>DrillMasters LMS</h1>
             <p>Free Online Learning for TNPSC GrIV Exam & School Tuitions</p>
@@ -274,73 +327,48 @@
     <main>
         <section class="menu-tiles">
             <div class="tile" onclick="window.location.href='tnpsc-griv.html'">
-                <h2>TNPSC GrI Exam</h2>
-                <p>Prepare for TNPSC Group I with comprehensive lessons and quizzes.</p>
-            </div>
-            <div class="tile" onclick="window.location.href='school-tuitions.html'">
-                <h2>TNPSC GrII Exam</h2>
-                <p>Prepare for TNPSC Group II with comprehensive lessons and quizzes.</p>
-            </div>
-	    <div class="tile" onclick="window.location.href='tnpsc-griv.html'">
                 <h2>TNPSC GrIV Exam</h2>
                 <p>Prepare for TNPSC Group IV with comprehensive lessons and quizzes.</p>
-            </div>
-            <div class="tile" onclick="window.location.href='school-tuitions.html'">
-                <h2>SSC Exam</h2>
-                <p>Prepare for SSC- with comprehensive lessons and quizzes.</p>
-            </div>
-	    <div class="tile" onclick="window.location.href='tnpsc-griv.html'">
-                <h2>RRB Exam</h2>
-                <p>Prepare for RRB with comprehensive lessons and quizzes.</p>
-            </div>
-            <div class="tile" onclick="window.location.href='school-tuitions.html'">
-                <h2>IBPS Exam</h2>
-                <p>Prepare for IBPS with comprehensive lessons and quizzes.</p>
-            </div>
-	    <div class="tile" onclick="window.location.href='tnpsc-griv.html'">
-                <h2>TNUSRB Exam</h2>
-                <p>Prepare for TNUSRB with comprehensive lessons and quizzes.</p>
             </div>
             <div class="tile" onclick="window.location.href='school-tuitions.html'">
                 <h2>School Tuitions</h2>
                 <p>Access quality tuition content for school students across subjects.</p>
             </div>
-
         </section>
 
-	    <!-- About Section -->
-<section id="about" class="content-section">
-    <h2>About DrillMasters LMS</h2>
-    <p>Welcome to DrillMasters LMS, your go-to platform for free online learning. We provide resources for TNPSC GrIV Exam preparation and school tuitions. [Add your mission, history, or team details here.]</p>
-</section>
+        <!-- About Section -->
+        <section id="about" class="content-section">
+            <h2>About DrillMasters LMS</h2>
+            <p>Welcome to DrillMasters LMS, your go-to platform for free online learning. We provide resources for TNPSC GrIV Exam preparation and school tuitions. [Add your mission, history, or team details here.]</p>
+        </section>
 
-<!-- Contact Section -->
-<section id="contact" class="content-section">
-    <h2>Contact Us</h2>
-    <p>Email: [Your email address]</p>
-    <p>Phone: [Your phone number]</p>
-    <p>Address: [Your address]</p>
-    <p>[Add a contact form or additional contact details here.]</p>
-</section>
+        <!-- Contact Section -->
+        <section id="contact" class="content-section">
+            <h2>Contact Us</h2>
+            <p>Email: [Your email address]</p>
+            <p>Phone: [Your phone number]</p>
+            <p>Address: [Your address]</p>
+            <p>[Add a contact form or additional contact details here.]</p>
+        </section>
 
-<!-- FAQ Section -->
-<section id="faq" class="content-section">
-    <h2>Frequently Asked Questions</h2>
-    <ul>
-        <li><strong>What is DrillMasters LMS?</strong> [Add your answer here.]</li>
-        <li><strong>How can I prepare for the TNPSC GrIV Exam?</strong> [Add your answer here.]</li>
-        <li><strong>Is the platform free?</strong> [Add your answer here.]</li>
-    </ul>
-    <p>[Add more FAQs as needed.]</p>
-</section>
+        <!-- FAQ Section -->
+        <section id="faq" class="content-section">
+            <h2>Frequently Asked Questions</h2>
+            <ul>
+                <li><strong>What is DrillMasters LMS?</strong> [Add your answer here.]</li>
+                <li><strong>How can I prepare for the TNPSC GrIV Exam?</strong> [Add your answer here.]</li>
+                <li><strong>Is the platform free?</strong> [Add your answer here.]</li>
+            </ul>
+            <p>[Add more FAQs as needed.]</p>
+        </section>
 
-<!-- Support Section -->
-<section id="support" class="content-section">
-    <h2>Support</h2>
-    <p>Need help? Contact our support team at [support email].</p>
-    <p>Check our [support resources or documentation link] for more information.</p>
-    <p>[Add support options, such as live chat or a ticketing system, here.]</p>
-</section>
+        <!-- Support Section -->
+        <section id="support" class="content-section">
+            <h2>Support</h2>
+            <p>Need help? Contact our support team at [support email].</p>
+            <p>Check our [support resources or documentation link] for more information.</p>
+            <p>[Add support options, such as live chat or a ticketing system, here.]</p>
+        </section>
     </main>
 
     <!-- Footer -->
