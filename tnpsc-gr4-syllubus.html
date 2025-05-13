@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="DrillMasters LMS: TNPSC Group IV Syllabus - Official Syllabus PDF.">
+    <title>DrillMasters LMS | TNPSC Group IV Syllabus</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(180deg, #e6f0fa, #d1e0f0);
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(90deg, #007bff, #0056b3);
+            color: white;
+            text-align: center;
+            padding: 1.5rem;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .header-logo {
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: auto;
+            max-width: 200px;
+            border: 2px solid #007bff;
+            box-shadow: 
+                2px 2px 4px rgba(0, 86, 179, 0.5),
+                -2px -2px 4px rgba(255, 255, 255, 0.3);
+        }
+
+        .header-content {
+            max-width: 70%;
+        }
+
+        header h1 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-size: 1rem;
+        }
+
+        .hamburger {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            cursor: pointer;
+            z-index: 1000;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background: white;
+            margin: 5px 0;
+            transition: all 0.3s ease;
+        }
+
+        .nav-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 250px;
+            height: 100%;
+            background: #0056b3;
+            padding: 2rem;
+            transition: right 0.3s ease;
+            z-index: 999;
+        }
+
+        .nav-menu.active {
+            right: 0;
+        }
+
+        .nav-menu ul {
+            list-style: none;
+        }
+
+        .nav-menu li {
+            margin: 1.5rem 0;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: #ffd700;
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .motivational-header {
+            text-align: center;
+            padding: 1.5rem;
+            background: linear-gradient(90deg, #4fc3f7, #0288d1);
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .motivational-header h2 {
+            font-size: 1.8rem;
+            color: #fff;
+            margin-bottom: 0.5rem;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .motivational-header p {
+            font-size: 1.1rem;
+            color: #e0f7fa;
+        }
+
+        .syllabus-section {
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .syllabus-section h2 {
+            font-size: 1.4rem;
+            color: #0288d1;
+            margin-bottom: 1rem;
+        }
+
+        .pdf-container {
+            position: relative;
+            width: 100%;
+            height: 600px; /* Fixed height for desktop */
+            margin: 1rem auto;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .pdf-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .fallback-link {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.8rem 1.5rem;
+            background: #0288d1;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background 0.3s ease;
+        }
+
+        .fallback-link:hover {
+            background: #01579b;
+        }
+
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        footer a {
+            color: #ffd700;
+            text-decoration: none;
+            margin: 0 0.5rem;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.5rem;
+            }
+
+            header p {
+                font-size: 0.9rem;
+            }
+
+            .header-logo {
+                max-width: 150px;
+                box-shadow: 
+                    1.5px 1.5px 3px rgba(0, 86, 179, 0.5),
+                    -1.5px -1.5px 3px rgba(255, 255, 255, 0.3);
+            }
+
+            .motivational-header h2 {
+                font-size: 1.5rem;
+            }
+
+            .motivational-header p {
+                font-size: 1rem;
+            }
+
+            .syllabus-section {
+                padding: 1.5rem;
+            }
+
+            .pdf-container {
+                height: 400px; /* Reduced height for tablets */
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.2rem;
+            }
+
+            header p {
+                font-size: 0.8rem;
+            }
+
+            .header-logo {
+                max-width: 100px;
+                box-shadow: 
+                    1px 1px 2px rgba(0, 86, 179, 0.5),
+                    -1px -1px 2px rgba(255, 255, 255, 0.3);
+            }
+
+            .header-content {
+                max-width: 60%;
+            }
+
+            .motivational-header h2 {
+                font-size: 1.3rem;
+            }
+
+            .motivational-header p {
+                font-size: 0.9rem;
+            }
+
+            .syllabus-section {
+                padding: 1rem;
+            }
+
+            .pdf-container {
+                height: 300px; /* Further reduced for mobile */
+            }
+
+            .fallback-link {
+                padding: 0.6rem 1rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="header-placeholder"></div>
+
+    <main>
+        <section class="motivational-header">
+            <h2>Master the TNPSC Group IV Syllabus</h2>
+            <p>Start Your Preparation with the Official Syllabus</p>
+        </section>
+
+        <section class="syllabus-section">
+            <h2>TNPSC Group IV Syllabus</h2>
+            <div class="pdf-container">
+                <iframe src="https://tnpsc.gov.in/static_pdf/syllabus/496_Group%20IV%20Syllabus.pdf" title="TNPSC Group IV Syllabus"></iframe>
+            </div>
+            <a href="https://tnpsc.gov.in/static_pdf/syllabus/496_Group%20IV%20Syllabus.pdf" class="fallback-link" target="_blank">Open/Download Syllabus PDF</a>
+        </section>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script>
+        // Load header and footer
+        fetch('header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header-placeholder').innerHTML = data;
+            });
+
+        fetch('footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+            });
+
+        // Menu toggle function
+        function toggleMenu(event) {
+            event.stopPropagation();
+            const navMenu = document.getElementById('nav-menu');
+            navMenu.classList.toggle('active');
+        }
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            const navMenu = document.getElementById('nav-menu');
+            const hamburger = document.querySelector('.hamburger');
+            if (!navMenu.contains(e.target) && !hamburger.contains(e.target)) {
+                navMenu.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>
