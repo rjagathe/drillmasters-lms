@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="DrillMasters LMS: Free online learning for TNPSC GrIV Exam and School Tuitions.">
+    <meta name="description" content="DrillMasters LMS: Free online learning for all Recruitment,Entrance,Professional course exams as well as School Tuitions.">
     <title>DrillMasters LMS | Free Online Learning</title>
     <style>
         /* Reset and Base Styles */
@@ -272,41 +272,120 @@
 
     <!-- Main Content -->
     <main>
-        <section class="menu-tiles">
-            <div class="tile" onclick="window.location.href='tnpsc-griv.html'">
-                <h2>TNPSC GrI Exam</h2>
-                <p>Prepare for TNPSC Group I with comprehensive lessons and quizzes.</p>
-            </div>
-            <div class="tile" onclick="window.location.href='school-tuitions.html'">
-                <h2>TNPSC GrII Exam</h2>
-                <p>Prepare for TNPSC Group II with comprehensive lessons and quizzes.</p>
-            </div>
-	    <div class="tile" onclick="window.location.href='tnpsc-griv.html'">
-                <h2>TNPSC GrIV Exam</h2>
-                <p>Prepare for TNPSC Group IV with comprehensive lessons and quizzes.</p>
-            </div>
-            <div class="tile" onclick="window.location.href='school-tuitions.html'">
-                <h2>SSC Exam</h2>
-                <p>Prepare for SSC- with comprehensive lessons and quizzes.</p>
-            </div>
-	    <div class="tile" onclick="window.location.href='tnpsc-griv.html'">
-                <h2>RRB Exam</h2>
-                <p>Prepare for RRB with comprehensive lessons and quizzes.</p>
-            </div>
-            <div class="tile" onclick="window.location.href='school-tuitions.html'">
-                <h2>IBPS Exam</h2>
-                <p>Prepare for IBPS with comprehensive lessons and quizzes.</p>
-            </div>
-	    <div class="tile" onclick="window.location.href='tnpsc-griv.html'">
-                <h2>TNUSRB Exam</h2>
-                <p>Prepare for TNUSRB with comprehensive lessons and quizzes.</p>
-            </div>
-            <div class="tile" onclick="window.location.href='school-tuitions.html'">
-                <h2>School Tuitions</h2>
-                <p>Access quality tuition content for school students across subjects.</p>
-            </div>
+        <main>
+    <section class="band recruitment">
+        <h2>Recruitment Exams</h2>
+        <div class="tiles-container">
+            <div class="tile">TNPSC</div>
+            <div class="tile">TRB</div>
+            <div class="tile">TNUSRB</div>
+            <div class="tile">RRB</div>
+            <div class="tile">UPSC</div>
+            <div class="tile">IBPS</div>
+            <div class="tile">SSC</div>
+            <div class="tile">Bank Exams</div>
+        </div>
+    </section>
+    <section class="band entrance">
+        <h2>Entrance Exams</h2>
+        <div class="tiles-container">
+            <div class="tile">JEE</div>
+            <div class="tile">NEET</div>
+            <div class="tile">CAT</div>
+            <div class="tile">GATE</div>
+            <div class="tile">CLAT</div>
+            <div class="tile">MAT</div>
+            <div class="tile">TANCET</div>
+            <div class="tile">CUET</div>
+        </div>
+    </section>
+    <section class="band school">
+        <h2>School Tuitions</h2>
+        <div class="tiles-container">
+            <div class="tile">Class 6</div>
+            <div class="tile">Class 7</div>
+            <div class="tile">Class 8</div>
+            <div class="tile">Class 9</div>
+            <div class="tile">Class 10</div>
+            <div class="tile">Class 11</div>
+            <div class="tile">Class 12</div>
+            <div class="tile">Olympiads</div>
+        </div>
+    </section>
+    <section class="band professional">
+        <h2>Professional Courses</h2>
+        <div class="tiles-container">
+            <div class="tile">CA</div>
+            <div class="tile">CMA</div>
+            <div class="tile">CS</div>
+            <div class="tile">Data Science</div>
+            <div class="tile">Digital Marketing</div>
+            <div class="tile">Programming</div>
+            <div class="tile">Design</div>
+            <div class="tile">Soft Skills</div>
+        </div>
+    </section>
+</main>
 
-        </section>
+<style>
+
+.band {
+    border-radius: 18px;
+    margin-bottom: 2rem;
+    padding: 1.5rem 1rem 1.5rem 1rem;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.06);
+}
+
+.band h2 {
+    margin-bottom: 1.2rem;
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #fff;
+    letter-spacing: 1px;
+    text-shadow: 1px 1px 5px rgba(0,0,0,0.16);
+}
+
+.band.recruitment {
+    background: linear-gradient(90deg, #007bff 80%, #0056b3 100%);
+}
+.band.entrance {
+    background: linear-gradient(90deg, #ff9800 80%, #ff5722 100%);
+}
+.band.school {
+    background: linear-gradient(90deg, #43a047 80%, #76cd26 100%);
+}
+.band.professional {
+    background: linear-gradient(90deg, #7b1fa2 80%, #512da8 100%);
+}
+
+.tiles-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 1rem;
+}
+
+.tile {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    color: #333;
+    text-align: center;
+    padding: 1.2rem 0.5rem;
+    font-size: 1.1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    user-select: none;
+}
+
+.tile:hover {
+    transform: translateY(-4px) scale(1.04);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.13);
+    background: #e3f2fd;
+    color: #007bff;
+}
+</style>
+
     </main>
 
     <!-- Footer -->
