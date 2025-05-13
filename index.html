@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="DrillMasters LMS: Free online learning for all Recruitment,Entrance,Professional course exams as well as School Tuitions.">
+    <meta name="description" content="DrillMasters LMS: Free online learning for all Recruitment, Entrance, Professional course exams as well as School Tuitions.">
     <title>DrillMasters LMS | Free Online Learning</title>
     <style>
         /* Reset and Base Styles */
@@ -15,7 +15,7 @@
         }
 
         body {
-            background: linear-gradient(180deg, #e6f0fa, #d1e0f0); /* Gradient background */
+            background: linear-gradient(180deg, #e6f0fa, #d1e0f0);
             color: #333;
             line-height: 1.6;
         }
@@ -32,24 +32,21 @@
             justify-content: center;
         }
 
-        /* Logo Styling */
         .header-logo {
             position: absolute;
             left: 0;
             top: 0;
-            height: 100%; /* Occupies full height of the header */
-            width: auto; /* Maintains aspect ratio */
-            max-width: 200px; /* Adjust based on logo size */
-            border: 2px solid #007bff; /* Thin outline in header color */
-            /* 3D effect using box-shadow */
+            height: 100%;
+            width: auto;
+            max-width: 200px;
+            border: 2px solid #007bff;
             box-shadow: 
-                2px 2px 4px rgba(0, 86, 179, 0.5), /* Dark shadow for depth (bottom-right) */
-                -2px -2px 4px rgba(255, 255, 255, 0.3); /* Light highlight (top-left) */
+                2px 2px 4px rgba(0, 86, 179, 0.5),
+                -2px -2px 4px rgba(255, 255, 255, 0.3);
         }
 
-        /* Header Content */
         .header-content {
-            max-width: 70%; /* Prevents text from overlapping with logo */
+            max-width: 70%;
         }
 
         header h1 {
@@ -61,7 +58,6 @@
             font-size: 1rem;
         }
 
-        /* Hamburger Menu */
         .hamburger {
             position: absolute;
             top: 1.5rem;
@@ -114,55 +110,71 @@
             color: #ffd700;
         }
 
-        /* Main Content */
         main {
             max-width: 1200px;
             margin: 2rem auto;
             padding: 0 1rem;
         }
 
-        .menu-tiles {
+        .band {
+            border-radius: 18px;
+            margin-bottom: 2rem;
+            padding: 1.5rem 1rem 1.5rem 1rem;
+            box-shadow: 0 4px 18px rgba(0,0,0,0.06);
+        }
+
+        .band h2 {
+            margin-bottom: 1.2rem;
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #fff;
+            letter-spacing: 1px;
+            text-shadow: 1px 1px 5px rgba(0,0,0,0.16);
+        }
+
+        .band.recruitment {
+            background: linear-gradient(90deg, #007bff 80%, #0056b3 100%);
+        }
+
+        .band.entrance {
+            background: linear-gradient(90deg, #ff9800 80%, #ff5722 100%);
+        }
+
+        .band.school {
+            background: linear-gradient(90deg, #43a047 80%, #76cd26 100%);
+        }
+
+        .band.professional {
+            background: linear-gradient(90deg, #7b1fa2 80%, #512da8 100%);
+        }
+
+        .tiles-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            padding: 1rem;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1rem;
         }
 
         .tile {
+            background: #fff;
             border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            color: #333;
             text-align: center;
-            padding: 2rem;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            padding: 1.2rem 0.5rem;
+            font-size: 1.1rem;
+            font-weight: 500;
             cursor: pointer;
-        }
-
-        /* Alternating background colors for tiles */
-        .tile:nth-child(odd) {
-            background: #76CD26; /* Apple green for odd tiles (e.g., TNPSC GrIV Exam) */
-        }
-
-        .tile:nth-child(even) {
-            background: #f0f7ff; /* Light blue for even tiles (e.g., School Tuitions) */
+            transition: transform 0.2s, box-shadow 0.2s;
+            user-select: none;
         }
 
         .tile:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-        }
-
-        .tile h2 {
-            font-size: 1.5rem;
+            transform: translateY(-4px) scale(1.04);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.13);
+            background: #e3f2fd;
             color: #007bff;
-            margin-bottom: 0.5rem;
         }
 
-        .tile p {
-            font-size: 1rem;
-            color: #666;
-        }
-
-        /* Footer */
         footer {
             background: #333;
             color: white;
@@ -181,7 +193,6 @@
             text-decoration: underline;
         }
 
-        /* Responsive Design */
         @media (max-width: 768px) {
             header h1 {
                 font-size: 1.5rem;
@@ -192,18 +203,14 @@
             }
 
             .header-logo {
-                max-width: 150px; /* Adjust logo size for tablets */
+                max-width: 150px;
                 box-shadow: 
-                    1.5px 1.5px 3px rgba(0, 86, 179, 0.5), /* Smaller shadow for tablets */
+                    1.5px 1.5px 3px rgba(0, 86, 179, 0.5),
                     -1.5px -1.5px 3px rgba(255, 255, 255, 0.3);
             }
 
             .tile {
-                padding: 1.5rem;
-            }
-
-            .tile h2 {
-                font-size: 1.3rem;
+                padding: 1rem;
             }
         }
 
@@ -217,194 +224,103 @@
             }
 
             .header-logo {
-                max-width: 100px; /* Adjust logo size for mobile */
+                max-width: 100px;
                 box-shadow: 
-                    1px 1px 2px rgba(0, 86, 179, 0.5), /* Even smaller shadow for mobile */
+                    1px 1px 2px rgba(0, 86, 179, 0.5),
                     -1px -1px 2px rgba(255, 255, 255, 0.3);
             }
 
             .header-content {
-                max-width: 60%; /* More space for text on smaller screens */
+                max-width: 60%;
             }
 
-            .menu-tiles {
+            .tiles-container {
                 grid-template-columns: 1fr;
             }
 
             .tile {
-                padding: 1rem;
-            }
-
-            .tile h2 {
-                font-size: 1.2rem;
-            }
-
-            .tile p {
-                font-size: 0.9rem;
+                padding: 0.8rem;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <img src="logo.png" alt="DrillMasters Logo" class="header-logo">
-        <div class="header-content">
-            <h1>DrillMasters LMS</h1>
-            <p>Free Online Learning for TNPSC GrIV Exam & School Tuitions</p>
-        </div>
-        <!-- Hamburger Menu -->
-        <div class="hamburger" onclick="toggleMenu(event)">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-        <!-- Navigation Menu -->
-        <nav class="nav-menu" id="nav-menu">
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li><a href="#faq">FAQ</a></li>
-                <li><a href="#support">Support</a></li>
-            </ul>
-        </nav>
-    </header>
+    <div id="header-placeholder"></div>
 
-    <!-- Main Content -->
     <main>
-        <main>
-    <section class="band recruitment">
-        <h2>Recruitment Exams</h2>
-        <div class="tiles-container">
-            <div class="tile">TNPSC</div>
-            <div class="tile">TRB</div>
-            <div class="tile">TNUSRB</div>
-            <div class="tile">RRB</div>
-            <div class="tile">UPSC</div>
-            <div class="tile">IBPS</div>
-            <div class="tile">SSC</div>
-            <div class="tile">Bank Exams</div>
-        </div>
-    </section>
-    <section class="band entrance">
-        <h2>Entrance Exams</h2>
-        <div class="tiles-container">
-            <div class="tile">JEE</div>
-            <div class="tile">NEET</div>
-            <div class="tile">CAT</div>
-            <div class="tile">GATE</div>
-            <div class="tile">CLAT</div>
-            <div class="tile">MAT</div>
-            <div class="tile">TANCET</div>
-            <div class="tile">CUET</div>
-        </div>
-    </section>
-    <section class="band school">
-        <h2>School Tuitions</h2>
-        <div class="tiles-container">
-            <div class="tile">Class 6</div>
-            <div class="tile">Class 7</div>
-            <div class="tile">Class 8</div>
-            <div class="tile">Class 9</div>
-            <div class="tile">Class 10</div>
-            <div class="tile">Class 11</div>
-            <div class="tile">Class 12</div>
-            <div class="tile">Olympiads</div>
-        </div>
-    </section>
-    <section class="band professional">
-        <h2>Professional Courses</h2>
-        <div class="tiles-container">
-            <div class="tile">CA</div>
-            <div class="tile">CMA</div>
-            <div class="tile">CS</div>
-            <div class="tile">Data Science</div>
-            <div class="tile">Digital Marketing</div>
-            <div class="tile">Programming</div>
-            <div class="tile">Design</div>
-            <div class="tile">Soft Skills</div>
-        </div>
-    </section>
-</main>
-
-<style>
-
-.band {
-    border-radius: 18px;
-    margin-bottom: 2rem;
-    padding: 1.5rem 1rem 1.5rem 1rem;
-    box-shadow: 0 4px 18px rgba(0,0,0,0.06);
-}
-
-.band h2 {
-    margin-bottom: 1.2rem;
-    font-size: 1.4rem;
-    font-weight: bold;
-    color: #fff;
-    letter-spacing: 1px;
-    text-shadow: 1px 1px 5px rgba(0,0,0,0.16);
-}
-
-.band.recruitment {
-    background: linear-gradient(90deg, #007bff 80%, #0056b3 100%);
-}
-.band.entrance {
-    background: linear-gradient(90deg, #ff9800 80%, #ff5722 100%);
-}
-.band.school {
-    background: linear-gradient(90deg, #43a047 80%, #76cd26 100%);
-}
-.band.professional {
-    background: linear-gradient(90deg, #7b1fa2 80%, #512da8 100%);
-}
-
-.tiles-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-    gap: 1rem;
-}
-
-.tile {
-    background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-    color: #333;
-    text-align: center;
-    padding: 1.2rem 0.5rem;
-    font-size: 1.1rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: transform 0.2s, box-shadow 0.2s;
-    user-select: none;
-}
-
-.tile:hover {
-    transform: translateY(-4px) scale(1.04);
-    box-shadow: 0 6px 16px rgba(0,0,0,0.13);
-    background: #e3f2fd;
-    color: #007bff;
-}
-</style>
-
+        <section class="band recruitment">
+            <h2>Recruitment Exams</h2>
+            <div class="tiles-container">
+                <a href="tnpsc.html" class="tile">TNPSC</a>
+                <div class="tile">TRB</div>
+                <div class="tile">TNUSRB</div>
+                <div class="tile">RRB</div>
+                <div class="tile">UPSC</div>
+                <div class="tile">IBPS</div>
+                <div class="tile">SSC</div>
+                <div class="tile">Bank Exams</div>
+            </div>
+        </section>
+        <section class="band entrance">
+            <h2>Entrance Exams</h2>
+            <div class="tiles-container">
+                <div class="tile">JEE</div>
+                <div class="tile">NEET</div>
+                <div class="tile">CAT</div>
+                <div class="tile">GATE</div>
+                <div class="tile">CLAT</div>
+                <div class="tile">MAT</div>
+                <div class="tile">TANCET</div>
+                <div class="tile">CUET</div>
+            </div>
+        </section>
+        <section class="band school">
+            <h2>School Tuitions</h2>
+            <div class="tiles-container">
+                <div class="tile">Class 6</div>
+                <div class="tile">Class 7</div>
+                <div class="tile">Class 8</div>
+                <div class="tile">Class 9</div>
+                <div class="tile">Class 10</div>
+                <div class="tile">Class 11</div>
+                <div class="tile">Class 12</div>
+                <div class="tile">Olympiads</div>
+            </div>
+        </section>
+        <section class="band professional">
+            <h2>Professional Courses</h2>
+            <div class="tiles-container">
+                <div class="tile">CA</div>
+                <div class="tile">CMA</div>
+                <div class="tile">CS</div>
+                <div class="tile">Data Science</div>
+                <div class="tile">Digital Marketing</div>
+                <div class="tile">Programming</div>
+                <div class="tile">Design</div>
+                <div class="tile">Soft Skills</div>
+            </div>
+        </section>
     </main>
 
-    <!-- Footer -->
-    <footer>
-        <p>© 2025 DrillMasters LMS. All rights reserved.</p>
-        <p>
-            <a href="about.html">About</a> |
-            <a href="#contact">Contact</a> |
-            <a href="#privacy">Privacy Policy</a> |
-            <a href="#terms">Terms of Use</a>
-        </p>
-        <p>Follow us: <a href="#">Facebook</a> | <a href="#">Twitter</a> | <a href="#">YouTube</a></p>
-    </footer>
+    <div id="footer-placeholder"></div>
 
-    <!-- JavaScript for Menu Toggle -->
     <script>
+        // Load header and footer
+        fetch('header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header-placeholder').innerHTML = data;
+            });
+
+        fetch('footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+            });
+
+        // Menu toggle function
         function toggleMenu(event) {
-            event.stopPropagation(); // Prevent the click from bubbling to the document listener
+            event.stopPropagation();
             const navMenu = document.getElementById('nav-menu');
             navMenu.classList.toggle('active');
         }
