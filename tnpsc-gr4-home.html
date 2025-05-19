@@ -161,7 +161,7 @@
         .tile {
             background: #ffffff;
             border-radius: 12px;
-            box-shadow: 0 3px 0px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
             color: #333;
             text-align: center;
             padding: 1.5rem;
@@ -182,6 +182,7 @@
             box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
             background: #e1f5fe;
             color: #01579b;
+            border-bottom: 2px solid #01579b;
         }
 
         .tile a {
@@ -203,6 +204,55 @@
             -webkit-box-orient: vertical;
             word-break: break-word;
         }
+
+        .lessons-band {
+            margin-bottom: 2rem;
+            padding: 1.5rem 1rem;
+        }
+
+        .level-band {
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .level-band h3 {
+            font-size: 1.3rem;
+            color: #fff;
+            margin-bottom: 1rem;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .level-band ul {
+            list-style-type: disc;
+            padding-left: 2rem;
+            color: #e0f7fa;
+        }
+
+        .level-band li {
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            word-break: break-word;
+        }
+
+        .level-band a {
+            color: #ffd700;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .level-band a:hover {
+            color: #e1f5fe;
+        }
+
+        .beginner { background: linear-gradient(90deg, #4caf50, #388e3c); }
+        .elementary { background: linear-gradient(90deg, #2196f3, #1976d2); }
+        .intermediate { background: linear-gradient(90deg, #9c27b0, #7b1fa2); }
+        .advanced { background: linear-gradient(90deg, #ff9800, #f57c00); }
+        .expert { background: linear-gradient(90deg, #f44336, #d32f2f); }
 
         footer {
             background: #333;
@@ -255,6 +305,18 @@
             .tile p {
                 font-size: 0.8rem;
             }
+
+            .level-band {
+                padding: 1.2rem;
+            }
+
+            .level-band h3 {
+                font-size: 1.2rem;
+            }
+
+            .level-band li {
+                font-size: 0.9rem;
+            }
         }
 
         @media (max-width: 480px) {
@@ -298,11 +360,44 @@
             .tile p {
                 font-size: 0.75rem;
             }
+
+            .level-band {
+                padding: 1rem;
+            }
+
+            .level-band h3 {
+                font-size: 1.1rem;
+            }
+
+            .level-band li {
+                font-size: 0.85rem;
+            }
         }
     </style>
 </head>
 <body>
-    <div id="header-placeholder"></div>
+    <header>
+        <img src="logo.png" alt="DrillMasters LMS Logo" class="header-logo">
+        <div class="header-content">
+            <h1>DrillMasters LMS</h1>
+            <p>TNPSC Group IV Exam Preparation</p>
+        </div>
+        <div class="hamburger" onclick="toggleMenu(event)">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <nav class="nav-menu" id="nav-menu">
+            <ul>
+                <li><a href="tnpsc-gr4-home.html">Home</a></li>
+                <li><a href="tnpsc-gr4-syllabus.html">Syllabus</a></li>
+                <li><a href="#study-plan">Study Plan</a></li>
+                <li><a href="#subject-wise-lessons">Subject-wise Lessons</a></li>
+                <li><a href="#quizzes">Practice Quizzes</a></li>
+                <li><a href="#progress">Progress Tracker</a></li>
+            </ul>
+        </nav>
+    </header>
 
     <main>
         <section class="motivational-header">
@@ -318,41 +413,104 @@
                     <p>Explore the complete TNPSC Group IV syllabus.</p>
                 </div>
                 <div class="tile">
-                    <a href="tnpsc-gr4-study-plan.html">Study Plan</a>
+                    <a href="#study-plan">Study Plan</a>
                     <p>Follow a structured plan to stay on track.</p>
                 </div>
                 <div class="tile">
-                    <a href="tnpsc-gr4-lessons">Subject-wise Lessons</a>
+                    <a href="#subject-wise-lessons">Subject-wise Lessons</a>
                     <p>Learn Tamil, General Studies, and more.</p>
                 </div>
                 <div class="tile">
-                    <a href="tnpsc-gr4-quizzes">Practice Quizzes</a>
+                    <a href="#quizzes">Practice Quizzes</a>
                     <p>Test your knowledge with interactive quizzes.</p>
                 </div>
                 <div class="tile">
-                    <a href="tnpsc-gr4-progress">Progress Tracker</a>
+                    <a href="#progress">Progress Tracker</a>
                     <p>Monitor your learning journey and stay motivated.</p>
                 </div>
             </div>
         </section>
+
+        <section class="lessons-band" id="subject-wise-lessons">
+            <h2>Subject-wise Lessons</h2>
+            <div class="level-band beginner">
+                <h3>Beginner Level</h3>
+                <ul>
+                    <li><a href="tnpsc-gr4-Sci-beg.html">Science</a></li>
+                    <li><a href="tnpsc-gr4-HisInd-beg.html">History of India</a></li>
+                    <li><a href="tnpsc-gr4-HisTN-beg.html">History of Tamil Nadu</a></li>
+                    <li><a href="tnpsc-gr4-Geo-beg.html">Geography</a></li>
+                    <li><a href="tnpsc-gr4-IndPol-beg.html">Indian Polity</a></li>
+                    <li><a href="tnpsc-gr4-IndEco-beg.html">Indian Economics</a></li>
+                    <li><a href="tnpsc-gr4-AptMA-beg.html">Aptitude and Mental Ability</a></li>
+                    <li><a href="tnpsc-gr4-Tam-beg.html">General Tamil</a></li>
+                </ul>
+            </div>
+            <div class="level-band elementary">
+                <h3>Elementary Level</h3>
+                <ul>
+                    <li><a href="tnpsc-gr4-Sci-ele.html">Science</a></li>
+                    <li><a href="tnpsc-gr4-HisInd-ele.html">History of India</a></li>
+                    <li><a href="tnpsc-gr4-HisTN-ele.html">History of Tamil Nadu</a></li>
+                    <li><a href="tnpsc-gr4-Geo-ele.html">Geography</a></li>
+                    <li><a href="tnpsc-gr4-IndPol-ele.html">Indian Polity</a></li>
+                    <li><a href="tnpsc-gr4-IndEco-ele.html">Indian Economics</a></li>
+                    <li><a href="tnpsc-gr4-AptMA-ele.html">Aptitude and Mental Ability</a></li>
+                    <li><a href="tnpsc-gr4-Tam-ele.html">General Tamil</a></li>
+                </ul>
+            </div>
+            <div class="level-band intermediate">
+                <h3>Intermediate Level</h3>
+                <ul>
+                    <li><a href="tnpsc-gr4-Sci-int.html">Science</a></li>
+                    <li><a href="tnpsc-gr4-HisInd-int.html">History of India</a></li>
+                    <li><a href="tnpsc-gr4-HisTN-int.html">History of Tamil Nadu</a></li>
+                    <li><a href="tnpsc-gr4-Geo-int.html">Geography</a></li>
+                    <li><a href="tnpsc-gr4-IndPol-int.html">Indian Polity</a></li>
+                    <li><a href="tnpsc-gr4-IndEco-int.html">Indian Economics</a></li>
+                    <li><a href="tnpsc-gr4-AptMA-int.html">Aptitude and Mental Ability</a></li>
+                    <li><a href="tnpsc-gr4-Tam-int.html">General Tamil</a></li>
+                </ul>
+            </div>
+            <div class="level-band advanced">
+                <h3>Advanced Level</h3>
+                <ul>
+                    <li><a href="tnpsc-gr4-Sci-adv.html">Science</a></li>
+                    <li><a href="tnpsc-gr4-HisInd-adv.html">History of India</a></li>
+                    <li><a href="tnpsc-gr4-HisTN-adv.html">History of Tamil Nadu</a></li>
+                    <li><a href="tnpsc-gr4-Geo-adv.html">Geography</a></li>
+                    <li><a href="tnpsc-gr4-IndPol-adv.html">Indian Polity</a></li>
+                    <li><a href="tnpsc-gr4-IndEco-adv.html">Indian Economics</a></li>
+                    <li><a href="tnpsc-gr4-AptMA-adv.html">Aptitude and Mental Ability</a></li>
+                    <li><a href="tnpsc-gr4-Tam-adv.html">General Tamil</a></li>
+                </ul>
+            </div>
+            <div class="level-band expert">
+                <h3>Expert Level</h3>
+                <ul>
+                    <li><a href="tnpsc-gr4-Sci-exp.html">Science</a></li>
+                    <li><a href="tnpsc-gr4-HisInd-exp.html">History of India</a></li>
+                    <li><a href="tnpsc-gr4-HisTN-exp.html">History of Tamil Nadu</a></li>
+                    <li><a href="tnpsc-gr4-Geo-exp.html">Geography</a></li>
+                    <li><a href="tnpsc-gr4-IndPol-exp.html">Indian Polity</a></li>
+                    <li><a href="tnpsc-gr4-IndEco-exp.html">Indian Economics</a></li>
+                    <li><a href="tnpsc-gr4-AptMA-exp.html">Aptitude and Mental Ability</a></li>
+                    <li><a href="tnpsc-gr4-Tam-exp.html">General Tamil</a></li>
+                </ul>
+            </div>
+        </section>
     </main>
 
-    <div id="footer-placeholder"></div>
+    <footer>
+        <p>&copy; 2025 DrillMasters LMS. All rights reserved.</p>
+        <p>
+            <a href="#contact">Contact</a> |
+            <a href="#privacy">Privacy Policy</a> |
+            <a href="#terms">Terms of Service</a>
+        </p>
+    </footer>
 
     <script>
-        // Load header and footer
-        fetch('header.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('header-placeholder').innerHTML = data;
-            });
-
-        fetch('footer.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('footer-placeholder').innerHTML = data;
-            });
-
         // Menu toggle function
         function toggleMenu(event) {
             event.stopPropagation();
