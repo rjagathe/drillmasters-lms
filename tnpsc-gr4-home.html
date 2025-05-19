@@ -511,21 +511,33 @@
     </footer>
 
     <script>
-        // Menu toggle function
-        function toggleMenu(event) {
-            event.stopPropagation();
-            const navMenu = document.getElementById('nav-menu');
-            navMenu.classList.toggle('active');
-        }
+    // Menu toggle function
+    function toggleMenu(event) {
+        event.stopPropagation();
+        const navMenu = document.getElementById('nav-menu');
+        navMenu.classList.toggle('active');
+    }
 
-        // Close menu when clicking outside
-        document.addEventListener('click', (e) => {
-            const navMenu = document.getElementById('nav-menu');
-            const hamburger = document.querySelector('.hamburger');
-            if (!navMenu.contains(e.target) && !hamburger.contains(e.target)) {
-                navMenu.classList.remove('active');
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+        const navMenu = document.getElementById('nav-menu');
+        const hamburger = document.querySelector('.hamburger');
+        if (!navMenu.contains(e.target) && !hamburger.contains(e.target) && !e.target.closest('a[href^="#"]')) {
+            navMenu.classList.remove('active');
+        }
+    });
+
+    // Handle anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href').substring(1);
+            const targetElement = document.getElementById(targetId);
+            if (targetElement) {
+                targetElement.scrollIntoView({ behavior: 'smooth' });
             }
         });
-    </script>
+    });
+</script>
 </body>
 </html>
