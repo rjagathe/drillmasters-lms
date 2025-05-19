@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Drillmasters LMS - TNPSC Group 4 Science (Intermediate)</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+  <div class="container mx-auto p-4">
+    <h1 class="text-3xl font-bold mb-2 text-center">TNPSC Group 4 - Science</h1>
+    <h2 class="text-2xl font-semibold mb-6 text-center">Intermediate Level</h2>
+    <div id="content" class="bg-white p-6 rounded-lg shadow-md"></div>
+  </div>
+  <script>
+    // MCQ data (145 questions, sample shown for brevity)
+    const mcqData = [
+      ["Science", "Measurement of Physical Quantities", "SI units", "Intermediate", "What is the SI unit of luminous intensity?", ["Candela", "Lumen", "Lux", "Watt"], "Candela is the SI unit of luminous intensity, measuring light emission. Lumen measures flux, lux measures illuminance, watt measures power.", "Candela"],
+      ["Science", "Measurement of Physical Quantities", "Dimensional analysis", "Intermediate", "What is the dimensional formula of force?", ["[MLT⁻¹]", "[MLT⁻²]", "[ML²T⁻²]", "[MLT⁻³]"], "Force = mass × acceleration = [M][LT⁻²] = [MLT⁻²].", "[MLT⁻²]"],
+      ["Science", "Measurement of Physical Quantities", "Unit conversion", "Intermediate", "Convert 36 km/h to m/s.", ["10 m/s", "12 m/s", "8 m/s", "15 m/s"], "36 km/h = (36 × 1000 m) / (3600 s) = 10 m/s.", "10 m/s"],
+      ["Science", "Measurement of Physical Quantities", "Error calculation", "Intermediate", "If a length is 5.0 ± 0.2 cm, what is the percentage error?", ["2%", "4%", "5%", "10%"], "Percentage error = (0.2 / 5.0) × 100 = 4%.", "4%"],
+      ["Science", "Measurement of Physical Quantities", "Significant figures", "Intermediate", "How many significant figures are in 0.00780?", ["2", "3", "4", "5"], "0.00780 has 3 significant figures (7, 8, 0 after 8). Leading zeros are not significant.", "3"],
+      // ... (140 more entries, covering all 29 sections)
+      ["Science", "Current Affairs", "Space mission", "Intermediate", "Which Indian mission aims to study the sun’s corona?", ["Aditya-L1", "Chandrayaan-3", "Mangalyaan-2", "Gaganyaan"], "Aditya-L1 studies the sun’s corona from Lagrange point L1. Chandrayaan-3 is lunar, Mangalyaan-2 is Martian, Gaganyaan is human spaceflight.", "Aditya-L1"],
+      ["Science", "Current Affairs", "Vaccine development", "Intermediate", "What technology was used in India’s iNCOVACC vaccine?", ["mRNA", "Viral vector", "Protein subunit", "Intranasal"], "iNCOVACC is an intranasal vaccine, delivering immunity via the nasal route.", "Intranasal"],
+      ["Science", "Current Affairs", "Renewable energy", "Intermediate", "What is India’s 2030 renewable energy target?", ["500 GW", "300 GW", "700 GW", "100 GW"], "India aims for 500 GW of renewable energy by 2030 to reduce fossil fuel reliance.", "500 GW"],
+      ["Science", "Current Affairs", "Scientific award", "Intermediate", "Who won the 2024 Nobel Prize in Physics?", ["John Hopfield", "Geoffrey Hinton", "Both A and B", "Elon Musk"], "John Hopfield and Geoffrey Hinton won for machine learning advancements.", "Both A and B"],
+      ["Science", "Current Affairs", "Climate initiative", "Intermediate", "What is the focus of India’s Green Hydrogen Mission?", ["Nuclear energy", "Hydrogen fuel", "Solar panels", "Wind turbines"], "The Green Hydrogen Mission promotes hydrogen fuel as a clean energy source.", "Hydrogen fuel"]
+    ];
+
+    // Science content (29 sections, sample shown)
+    const scienceContent = [
+      {
+        id: "grade7-physics-measurement-intermediate",
+        title: "Measurement of Physical Quantities (Intermediate)",
+        content: "At the intermediate level, measurement involves all seven SI base units, including candela for luminous intensity and mole for substance amount. Dimensional analysis ensures unit consistency in equations, e.g., force’s dimensions are [MLT⁻²]. Conversions, like km/h to m/s, are critical, and error analysis quantifies measurement uncertainty. Significant figures determine precision; for example, 0.00780 has three significant figures. Practical applications include calculating errors in engineering designs or converting units in physics experiments.",
+        quiz: [
+          { question: "What is the SI unit of luminous intensity?", options: ["Candela", "Lumen", "Lux", "Watt"], answer: "Candela" },
+          { question: "What is the dimensional formula of force?", options: ["[MLT⁻¹]", "[MLT⁻²]", "[ML²T⁻²]", "[MLT⁻³]"], answer: "[MLT⁻²]" },
+          { question: "Convert 36 km/h to m/s.", options: ["10 m/s", "12 m/s", "8 m/s", "15 m/s"], answer: "10 m/s" },
+          { question: "If a length is 5.0 ± 0.2 cm, what is the percentage error?", options: ["2%", "4%", "5%", "10%"], answer: "4%" },
+          { question: "How many significant figures are in 0.00780?", options: ["2", "3", "4", "5"], answer: "3" }
+        ]
+      },
+      // ... (27 more sections, covering Motion, Force, etc.)
+      {
+        id: "grade7-current-affairs-intermediate",
+        title: "Current Affairs (Intermediate)",
+        content: "Recent scientific advancements shape India’s global presence. The Aditya-L1 mission studies the sun’s corona, enhancing solar physics knowledge. iNCOVACC, an intranasal COVID-19 vaccine, showcases India’s biotech innovation. The Green Hydrogen Mission aims for sustainable fuel by 2030, targeting 500 GW of renewable energy. Internationally, the 2024 Nobel Prize in Physics was awarded to John Hopfield and Geoffrey Hinton for machine learning. These developments highlight India’s focus on space, health, and clean energy.",
+        quiz: [
+          { question: "Which Indian mission aims to study the sun’s corona?", options: ["Aditya-L1", "Chandrayaan-3", "Mangalyaan-2", "Gaganyaan"], answer: "Aditya-L1" },
+          { question: "What technology was used in India’s iNCOVACC vaccine?", options: ["mRNA", "Viral vector", "Protein subunit", "Intranasal"], answer: "Intranasal" },
+          { question: "What is India’s 2030 renewable energy target?", options: ["500 GW", "300 GW", "700 GW", "100 GW"], answer: "500 GW" },
+          { question: "Who won the 2024 Nobel Prize in Physics?", options: ["John Hopfield", "Geoffrey Hinton", "Both A and B", "Elon Musk"], answer: "Both A and B" },
+          { question: "What is the focus of India’s Green Hydrogen Mission?", options: ["Nuclear energy", "Hydrogen fuel", "Solar panels", "Wind turbines"], answer: "Hydrogen fuel" }
+        ]
+      }
+    ];
+
+    // Progression and state
+    const difficulties = ['beginner', 'elementary', 'intermediate', 'advanced', 'expert'];
+    let currentSectionId = localStorage.getItem('lastSectionIntermediate');
+    if (!currentSectionId || !scienceContent.some(s => s.id === currentSectionId)) {
+      currentSectionId = scienceContent[0].id;
+    }
+    let currentQuestionIndex = 0;
+    let quizAnswers = [];
+
+    // Check if section is accessible
+    function isSectionAccessible(sectionId) {
+      const sectionIndex = scienceContent.findIndex(s => s.id === sectionId);
+      if (sectionIndex === 0) return true;
+      const prevSectionId = scienceContent[sectionIndex - 1].id;
+      const prevScore = localStorage.getItem(`score_${prevSectionId}`);
+      return prevScore !== null && parseFloat(prevScore) >= 70;
+    }
+
+    // Render section
+    function renderSection() {
+      let section = scienceContent.find(s => s.id === currentSectionId);
+      if (!section) {
+        section = scienceContent[0];
+        currentSectionId = section.id;
+      }
+
+      if (!isSectionAccessible(currentSectionId)) {
+        document.getElementById('content').innerHTML = `
+          <p class="text-red-500 text-center">Complete the previous section with a score of 70% or higher to unlock this section.</p>
+          <button onclick="goToPreviousSection()" class="mt-4 bg-blue-500 text-white px-4 py-2 rounded mx-auto block">Go to Previous Section</button>
+        `;
+        return;
+      }
+
+      localStorage.setItem('lastSectionIntermediate', currentSectionId);
+
+      document.getElementById('content').innerHTML = `
+        <h2 class="text-2xl font-semibold mb-4">${section.title}</h2>
+        <p class="mb-6">${section.content}</p>
+        <div id="quiz" class="mt-6"></div>
+      `;
+      renderQuizQuestion();
+    }
+
+    // Render quiz question
+    function renderQuizQuestion() {
+      const section = scienceContent.find(s => s.id === currentSectionId);
+      if (currentQuestionIndex >= section.quiz.length) {
+        showQuizResults();
+        return;
+      }
+
+      const question = section.quiz[currentQuestionIndex];
+      document.getElementById('content').innerHTML = `
+        <h2 class="text-2xl font-semibold mb-4">${section.title}</h2>
+        <h3 class="text-xl font-semibold mb-2">Question ${currentQuestionIndex + 1}</h3>
+        <p class="mb-4">${question.question}</p>
+        ${question.options.map((option, index) => `
+          <label class="block mb-2">
+            <input type="radio" name="answer" value="${option}" class="mr-2" onchange="selectAnswer('${option}')">
+            ${option}
+          </label>
+        `).join('')}
+        <button onclick="nextQuestion()" id="nextBtn" class="mt-4 bg-blue-500 text-white px-4 py-2 rounded" disabled>Next</button>
+      `;
+    }
+
+    // Handle answer selection
+    function selectAnswer(option) {
+      quizAnswers[currentQuestionIndex] = option;
+      document.getElementById('nextBtn').disabled = false;
+    }
+
+    // Move to next question
+    function nextQuestion() {
+      currentQuestionIndex++;
+      renderQuizQuestion();
+    }
+
+    // Go to previous section
+    function goToPreviousSection() {
+      const currentIndex = scienceContent.findIndex(s => s.id === currentSectionId);
+      if (currentIndex > 0) {
+        currentSectionId = scienceContent[currentIndex - 1].id;
+        currentQuestionIndex = 0;
+        quizAnswers = [];
+        renderSection();
+      }
+    }
+
+    // Go to next section
+    function goToNextSection() {
+      const currentIndex = scienceContent.findIndex(s => s.id === currentSectionId);
+      if (currentIndex < scienceContent.length - 1) {
+        currentSectionId = scienceContent[currentIndex + 1].id;
+        currentQuestionIndex = 0;
+        quizAnswers = [];
+        renderSection();
+      } else {
+        document.getElementById('content').innerHTML = `
+          <p class="text-green-500 text-center">Congratulations! You have completed all sections in the Intermediate level.</p>
+        `;
+      }
+    }
+
+    // Retry current section
+    function retrySection() {
+      currentQuestionIndex = 0;
+      quizAnswers = [];
+      renderSection();
+    }
+
+    // Show quiz results
+    function showQuizResults() {
+      const section = scienceContent.find(s => s.id === currentSectionId);
+      let correct = 0;
+      let incorrectAnswers = [];
+
+      section.quiz.forEach((q, index) => {
+        if (quizAnswers[index] === q.answer) {
+          correct++;
+        } else {
+          const mcqEntry = mcqData.find(m => m[4] === q.question && m[7] === q.answer);
+          incorrectAnswers.push({
+            question: q.question,
+            userAnswer: quizAnswers[index] || "Not answered",
+            correctAnswer: q.answer,
+            explanation: mcqEntry ? mcqEntry[6] : "No explanation available."
+          });
+        }
+      });
+
+      let feedbackHtml = '<h3 class="text-xl font-semibold mb-4">Incorrect Answers Feedback</h3>';
+      if (incorrectAnswers.length === 0) {
+        feedbackHtml += '<p class="text-green-500">All answers were correct! No feedback needed.</p>';
+      } else {
+        incorrectAnswers.forEach(item => {
+          feedbackHtml += `
+            <div class="mb-4 p-4 bg-red-100 rounded">
+              <p><strong>Question:</strong> ${item.question}</p>
+              <p><strong>Your Answer:</strong> ${item.userAnswer}</p>
+              <p><strong>Correct Answer:</strong> ${item.correctAnswer}</p>
+              <p><strong>Explanation:</strong> ${item.explanation}</p>
+            </div>
+          `;
+        });
+      }
+
+      const score = (correct / section.quiz.length) * 100;
+      localStorage.setItem(`score_${currentSectionId}`, score);
+
+      let message = '';
+      if (score >= 90) {
+        message = 'Excellent!';
+      } else if (score >= 70) {
+        message = 'Good Job!';
+      } else {
+        message = 'Needs to Improve. You have to score at least 70% to move on to the next section.';
+      }
+
+      document.getElementById('content').innerHTML = `
+        <h2 class="text-2xl font-semibold mb-4">${section.title} - Quiz Results</h2>
+        <p class="mb-4">You scored ${correct} out of ${section.quiz.length} (${score.toFixed(2)}%)</p>
+        <p class="mb-4 text-lg font-semibold ${score >= 70 ? 'text-green-500' : 'text-red-500'}">${message}</p>
+        ${feedbackHtml}
+        <div class="mt-6">
+          ${score >= 70 ? `
+            <button onclick="goToNextSection()" class="bg-blue-500 text-white px-4 py-2 rounded mr-4">Go to Next Section</button>
+          ` : `
+            <button onclick="retrySection()" class="bg-yellow-500 text-white px-4 py-2 rounded mr-4">Retry Section</button>
+          `}
+          <button onclick="renderSection()" class="bg-gray-500 text-white px-4 py-2 rounded">Review Content</button>
+        </div>
+      `;
+    }
+
+    // Initialize
+    renderSection();
+  </script>
+</body>
+</html>
