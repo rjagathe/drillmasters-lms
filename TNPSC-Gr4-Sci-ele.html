@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Drillmasters LMS - TNPSC Group 4 Science (Elementary)</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+  <div class="container mx-auto p-4">
+    <h1 class="text-3xl font-bold mb-2 text-center">TNPSC Group 4 - Science</h1>
+    <h2 class="text-2xl font-semibold mb-6 text-center">Elementary Level</h2>
+    <div id="content" class="bg-white p-6 rounded-lg shadow-md"></div>
+  </div>
+  <script>
+    // MCQ data (145 questions, unchanged from previous response, abbreviated here)
+    const mcqData = [
+      ["Science", "Measurement of Physical Quantities", "Derived unit", "Elementary", "What is a derived unit?", ["A single unit like meter", "A combination of base units", "A prefix like kilo", "A tool like a ruler"], "Derived units combine base units, like speed (m/s), not single units, prefixes, or tools.", "A combination of base units"],
+      ["Science", "Measurement of Physical Quantities", "Prefix centi-", "Elementary", "What does the prefix 'centi-' mean?", ["1000", "1/100", "100", "1/1000"], "Centi- means 1/100, e.g., 1 centimeter = 1/100 meter.", "1/100"],
+      // ... (143 more entries)
+      ["Science", "Current Affairs", "Science achievement", "Elementary", "What is a recent science achievement?", ["Building dams", "Gaganyaan mission", "Making roads", "Growing crops"], "Gaganyaan is a recent science achievement.", "Gaganyaan mission"]
+    ];
+
+    // Science content (29 sections, unchanged, abbreviated here)
+    const scienceContent = [
+      {
+        id: "grade6-physics-measurement-elementary",
+        title: "Measurement of Physical Quantities (Elementary)",
+        content: "Physical quantities are measured using base and derived units. Base units include meter (length), kilogram (mass), and second (time). Derived units, like speed (m/s), combine base units. Prefixes such as centi- (1/100) and kilo- (1000) modify units. For example, 1 kilometer = 1000 meters, and a car’s speed might be 60 km/h.",
+        quiz: [
+          { question: "What is a derived unit?", options: ["A single unit like meter", "A combination of base units", "A prefix like kilo", "A tool like a ruler"], answer: "A combination of base units" },
+          { question: "What does the prefix 'centi-' mean?", options: ["1000", "1/100", "100", "1/1000"], answer: "1/100" },
+          { question: "How many meters are in 2 kilometers?", options: ["200 meters", "20 meters", "2000 meters", "2 meters"], answer: "2000 meters" },
+          { question: "What unit measures speed?", options: ["Meter", "Kilogram", "Meter per second", "Second"], answer: "Meter per second" },
+          { question: "Which tool measures small lengths accurately?", options: ["Meter stick", "Vernier caliper", "Weighing scale", "Stopwatch"], answer: "Vernier caliper" }
+        ]
+      },
+      // ... (28 more sections)
+      {
+        id: "grade6-current-affairs-elementary",
+        title: "Current Affairs (Elementary)",
+        content: "Recent science achievements include India’s Gaganyaan mission, aiming for human spaceflight, and advancements in green energy. For example, India’s solar power capacity grew to reduce fossil fuel use.",
+        quiz: [
+          { question: "What is the goal of Gaganyaan?", options: ["Moon landing", "Human spaceflight", "Mars mission", "Satellite launch"], answer: "Human spaceflight" },
+          { question: "What does green energy reduce?", options: ["Water use", "Fossil fuel use", "Crop growth", "Population"], answer: "Fossil fuel use" },
+          { question: "What has India expanded?", options: ["Coal power", "Solar power", "Oil production", "Gas mining"], answer: "Solar power" },
+          { question: "What is a recent science achievement?", options: ["Building dams", "Gaganyaan mission", "Making roads", "Growing crops"], answer: "Gaganyaan mission" }
+        ]
+      }
+    ];
+
+    // Progression and state
+    const difficulties = ['beginner', 'elementary', 'intermediate', 'advanced', 'expert'];
+    let currentSectionId = localStorage.getItem('lastSection');
+    if (!currentSectionId || !scienceContent.some(s => s.id === currentSectionId)) {
+      currentSectionId = scienceContent[0].id;
+    }
+    let currentQuestionIndex = 0;
+    let quizAnswers = [];
+
+    // Check if section is accessible
+    function isSectionAccessible(sectionId) {
+      const sectionIndex = scienceContent.findIndex(s => s.id === sectionId);
+      if (sectionIndex === 0) return true;
+      const prevSectionId = scienceContent[sectionIndex - 1].id;
+      const prevScore = localStorage.getItem(`score_${prevSectionId}`);
+      return prevScore !== null && parseFloat(prevScore) >= 70;
+    }
+
+    // Render section
+    function renderSection() {
+      let section = scienceContent.find(s => s.id === currentSectionId);
+      if (!section) {
+        section = scienceContent[0];
+        currentSectionId = section.id;
+      }
+
+      if (!isSectionAccessible(currentSectionId)) {
+        document.getElementById('content').innerHTML = `
+          <p class="text-red-500 text-center">Complete the previous section with a score of 70% or higher to unlock this section.</p>
+          <button onclick="goToPreviousSection()" class="mt-4 bg-blue-500 text-white px-4 py-2 rounded mx-auto block">Go to Previous Section</button>
+        `;
+        return;
+      }
+
+      localStorage.setItem('lastSection', currentSectionId);
+
+      document.getElementById('content').innerHTML = `
+        <h2 class="text-2xl font-semibold mb-4">${section.title}</h2>
+        <p class="mb-6">${section.content}</p>
+        <div id="quiz" class="mt-6"></div>
+      `;
+      renderQuizQuestion();
+    }
+
+    // Render quiz question
+    function renderQuizQuestion() {
+      const section = scienceContent.find(s => s.id === currentSectionId);
+      if (currentQuestionIndex >= section.quiz.length) {
+        showQuizResults();
+        return;
+      }
+
+      const question = section.quiz[currentQuestionIndex];
+      document.getElementById('quiz').innerHTML = `
+        <h3 class="text-xl font-semibold mb-2">Question ${currentQuestionIndex + 1}</h3>
+        <p class="mb-4">${question.question}</p>
+        ${question.options.map((option, index) => `
+          <label class="block mb-2">
+            <input type="radio" name="answer" value="${option}" class="mr-2" onchange="selectAnswer('${option}')">
+            ${option}
+          </label>
+        `).join('')}
+        <button onclick="nextQuestion()" id="nextBtn" class="mt-4 bg-blue-500 text-white px-4 py-2 rounded" disabled>Next</button>
+      `;
+    }
+
+    // Handle answer selection
+    function selectAnswer(option) {
+      quizAnswers[currentQuestionIndex] = option;
+      document.getElementById('nextBtn').disabled = false;
+    }
+
+    // Move to next question
+    function nextQuestion() {
+      currentQuestionIndex++;
+      renderQuizQuestion();
+    }
+
+    // Go to previous section
+    function goToPreviousSection() {
+      const currentIndex = scienceContent.findIndex(s => s.id === currentSectionId);
+      if (currentIndex > 0) {
+        currentSectionId = scienceContent[currentIndex - 1].id;
+        currentQuestionIndex = 0;
+        quizAnswers = [];
+        renderSection();
+      }
+    }
+
+    // Go to next section
+    function goToNextSection() {
+      const currentIndex = scienceContent.findIndex(s => s.id === currentSectionId);
+      if (currentIndex < scienceContent.length - 1) {
+        currentSectionId = scienceContent[currentIndex + 1].id;
+        currentQuestionIndex = 0;
+        quizAnswers = [];
+        renderSection();
+      } else {
+        document.getElementById('content').innerHTML = `
+          <p class="text-green-500 text-center">Congratulations! You have completed all sections in the Elementary level.</p>
+        `;
+      }
+    }
+
+    // Retry current section
+    function retrySection() {
+      currentQuestionIndex = 0;
+      quizAnswers = [];
+      renderSection();
+    }
+
+    // Show quiz results
+    function showQuizResults() {
+      const section = scienceContent.find(s => s.id === currentSectionId);
+      let correct = 0;
+      let incorrectAnswers = [];
+
+      // Collect incorrect answers
+      section.quiz.forEach((q, index) => {
+        if (quizAnswers[index] === q.answer) {
+          correct++;
+        } else {
+          const mcqEntry = mcqData.find(m => m[4] === q.question && m[7] === q.answer);
+          incorrectAnswers.push({
+            question: q.question,
+            userAnswer: quizAnswers[index] || "Not answered",
+            correctAnswer: q.answer,
+            explanation: mcqEntry ? mcqEntry[6] : "No explanation available."
+          });
+        }
+      });
+
+      // Generate feedback HTML
+      let feedbackHtml = '<h3 class="text-xl font-semibold mb-4">Incorrect Answers Feedback</h3>';
+      if (incorrectAnswers.length === 0) {
+        feedbackHtml += '<p class="text-green-500">All answers were correct! No feedback needed.</p>';
+      } else {
+        incorrectAnswers.forEach(item => {
+          feedbackHtml += `
+            <div class="mb-4 p-4 bg-red-100 rounded">
+              <p><strong>Question:</strong> ${item.question}</p>
+              <p><strong>Your Answer:</strong> ${item.userAnswer}</p>
+              <p><strong>Correct Answer:</strong> ${item.correctAnswer}</p>
+              <p><strong>Explanation:</strong> ${item.explanation}</p>
+            </div>
+          `;
+        });
+      }
+
+      const score = (correct / section.quiz.length) * 100;
+      localStorage.setItem(`score_${currentSectionId}`, score);
+
+      let message = '';
+      if (score >= 90) {
+        message = 'Excellent!';
+      } else if (score >= 70) {
+        message = 'Good Job!';
+      } else {
+        message = 'Needs to Improve. You have to score at least 70% to move on to the next section.';
+      }
+
+      document.getElementById('content').innerHTML = `
+        <h2 class="text-2xl font-semibold mb-4">${section.title} - Quiz Results</h2>
+        <p class="mb-4">You scored ${correct} out of ${section.quiz.length} (${score.toFixed(2)}%)</p>
+        <p class="mb-4 text-lg font-semibold ${score >= 70 ? 'text-green-500' : 'text-red-500'}">${message}</p>
+        ${feedbackHtml}
+        <div class="mt-6">
+          ${score >= 70 ? `
+            <button onclick="goToNextSection()" class="bg-blue-500 text-white px-4 py-2 rounded mr-4">Go to Next Section</button>
+          ` : `
+            <button onclick="retrySection()" class="bg-yellow-500 text-white px-4 py-2 rounded mr-4">Retry Section</button>
+          `}
+          <button onclick="renderSection()" class="bg-gray-500 text-white px-4 py-2 rounded">Review Content</button>
+        </div>
+      `;
+    }
+
+    // Initialize
+    renderSection();
+  </script>
+</body>
+</html>
