@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Drillmasters LMS - Science</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+  <div class="container mx-auto p-4">
+    <h1 class="text-3xl font-bold mb-6 text-center">Drillmasters Science Course</h1>
+    <h2 class="text-3xl font-bold mb-6 text-center">Beginner level</h2>
+    <div id="content" class="bg-white p-6 rounded-lg shadow-md"></div>
+  </div>
+  <script>
+    // Embedded science content
+    const scienceContent = [
+      {
+        id: "grade6-physics-measurement-beginner",
+        title: "Measurement of Physical Quantities (Beginner)",
+        content: "Physical quantities describe the world around us, like length, mass, and time. We measure length in meters (m), mass in kilograms (kg), and time in seconds (s). Tools include rulers for length, weighing scales for mass, and clocks for time. For example, a pencil is about 15 cm long, and a school bag might weigh 5 kg.",
+        quiz: [
+          { question: "What unit is used to measure length?", options: ["Kilogram", "Meter", "Second", "Liter"], answer: "Meter" },
+          { question: "Which tool measures mass?", options: ["Ruler", "Clock", "Weighing scale", "Thermometer"], answer: "Weighing scale" },
+          { question: "What is the unit for time?", options: ["Meter", "Kilogram", "Second", "Celsius"], answer: "Second" },
+          { question: "How long is a typical pencil?", options: ["15 meters", "15 centimeters", "15 kilometers", "15 millimeters"], answer: "15 centimeters" },
+          { question: "What does a clock measure?", options: ["Length", "Mass", "Time", "Volume"], answer: "Time" }
+        ]
+      },
+      {
+        id: "grade6-physics-motion-beginner",
+        title: "Motion (Beginner)",
+        content: "Motion is the change in an object’s position. Newton’s First Law (Law of Inertia) says an object stays at rest or moves in a straight line unless a force acts on it. For example, a ball stops rolling due to friction.",
+        quiz: [
+          { question: "What is motion?", options: ["Change in shape", "Change in position", "Change in color", "Change in temperature"], answer: "Change in position" },
+          { question: "What does Newton’s First Law describe?", options: ["Inertia", "Gravity", "Magnetism", "Energy"], answer: "Inertia" },
+          { question: "Why does a ball stop rolling?", options: ["It gets tired", "Friction acts on it", "It loses energy", "It changes shape"], answer: "Friction acts on it" },
+          { question: "An object at rest stays at rest unless?", options: ["It is heated", "A force acts", "It is cooled", "It is painted"], answer: "A force acts" }
+        ]
+      },
+      {
+        id: "grade6-physics-force-beginner",
+        title: "Force (Beginner)",
+        content: "Force is a push or pull that changes an object’s motion. Newton’s Second Law says force equals mass times acceleration (F = ma). For example, pushing a heavy cart requires more force than a light one.",
+        quiz: [
+          { question: "What is a force?", options: ["A sound", "A push or pull", "A color", "A taste"], answer: "A push or pull" },
+          { question: "What is the formula for Newton’s Second Law?", options: ["F = ma", "E = mc²", "P = mv", "V = IR"], answer: "F = ma" },
+          { question: "Why does a heavy cart need more force?", options: ["It is bigger", "It has more mass", "It is faster", "It is slower"], answer: "It has more mass" },
+          { question: "What happens if you increase acceleration?", options: ["Force decreases", "Force increases", "Mass decreases", "Mass increases"], answer: "Force increases" }
+        ]
+      },
+      {
+        id: "grade6-physics-pressure-beginner",
+        title: "Pressure (Beginner)",
+        content: "Pressure is force per unit area (Pressure = Force/Area). For example, a sharp knife cuts better because it applies more pressure over a small area.",
+        quiz: [
+          { question: "What is pressure?", options: ["Force times area", "Force divided by area", "Mass times area", "Mass divided by area"], answer: "Force divided by area" },
+          { question: "Why does a sharp knife cut better?", options: ["It has more force", "It has less area", "It is heavier", "It is longer"], answer: "It has less area" },
+          { question: "If you increase the area, pressure:", options: ["Increases", "Decreases", "Stays the same", "Doubles"], answer: "Decreases" }
+        ]
+      },
+      {
+        id: "grade6-physics-energy-beginner",
+        title: "Energy (Beginner)",
+        content: "Energy is the ability to do work. It exists as kinetic energy (motion) or potential energy (stored). For example, a moving car has kinetic energy, and a stretched rubber band has potential energy.",
+        quiz: [
+          { question: "What is energy?", options: ["Ability to do work", "A type of force", "A color", "A sound"], answer: "Ability to do work" },
+          { question: "What is kinetic energy?", options: ["Stored energy", "Energy of motion", "Heat energy", "Light energy"], answer: "Energy of motion" },
+          { question: "A stretched rubber band has:", options: ["Kinetic energy", "Potential energy", "Sound energy", "Electrical energy"], answer: "Potential energy" },
+          { question: "A moving car has:", options: ["Potential energy", "Kinetic energy", "Chemical energy", "Nuclear energy"], answer: "Kinetic energy" }
+        ]
+      },
+      {
+        id: "grade6-physics-mechanics-beginner",
+        title: "Mechanics: Everyday Applications (Beginner)",
+        content: "Mechanics explains how things move. For example, a bicycle uses wheels to reduce friction, and a seesaw balances when equal weights are on both sides.",
+        quiz: [
+          { question: "Why do bicycles use wheels?", options: ["To increase friction", "To reduce friction", "To add weight", "To make noise"], answer: "To reduce friction" },
+          { question: "A seesaw balances when:", options: ["Weights are equal", "One side is heavier", "It is moving", "It is painted"], answer: "Weights are equal" },
+          { question: "What helps a car stop?", options: ["Brakes", "Engine", "Wheels", "Horn"], answer: "Brakes" }
+        ]
+      },
+      {
+        id: "grade6-physics-electricity-beginner",
+        title: "Electricity (Beginner)",
+        content: "Electricity is the flow of electric charge. A simple circuit needs a battery, wires, and a bulb. For example, a torch lights up when the circuit is complete.",
+        quiz: [
+          { question: "What is electricity?", options: ["Flow of water", "Flow of electric charge", "Flow of air", "Flow of light"], answer: "Flow of electric charge" },
+          { question: "What does a circuit need to light a bulb?", options: ["Battery", "Paper", "Cloth", "Wood"], answer: "Battery" },
+          { question: "When does a torch light up?", options: ["Circuit is broken", "Circuit is complete", "Battery is removed", "Wires are cut"], answer: "Circuit is complete" },
+          { question: "What carries electricity in a circuit?", options: ["Wires", "Glass", "Plastic", "Rubber"], answer: "Wires" }
+        ]
+      },
+      {
+        id: "grade6-physics-magnetism-beginner",
+        title: "Magnetism (Beginner)",
+        content: "Magnetism attracts certain metals like iron. Magnets have north and south poles; like poles repel, unlike poles attract. For example, a compass needle points north due to Earth’s magnetic field.",
+        quiz: [
+          { question: "What does magnetism attract?", options: ["Plastic", "Iron", "Wood", "Paper"], answer: "Iron" },
+          { question: "What happens when like poles of magnets meet?", options: ["They attract", "They repel", "They stick", "They break"], answer: "They repel" },
+          { question: "Why does a compass point north?", options: ["Earth’s gravity", "Earth’s magnetic field", "Earth’s rotation", "Earth’s heat"], answer: "Earth’s magnetic field" },
+          { question: "Unlike poles of a magnet:", options: ["Repel", "Attract", "Spin", "Stop"], answer: "Attract" }
+        ]
+      },
+      {
+        id: "grade6-physics-light-beginner",
+        title: "Light (Beginner)",
+        content: "Light travels in straight lines and helps us see. Reflection occurs when light bounces off a mirror. For example, we see our face in a mirror due to reflection.",
+        quiz: [
+          { question: "How does light travel?", options: ["In circles", "In straight lines", "In waves", "In spirals"], answer: "In straight lines" },
+          { question: "What is reflection?", options: ["Light bending", "Light bouncing", "Light stopping", "Light heating"], answer: "Light bouncing" },
+          { question: "Why do we see our face in a mirror?", options: ["Absorption", "Reflection", "Refraction", "Diffusion"], answer: "Reflection" }
+        ]
+      },
+      {
+        id: "grade6-physics-sound-beginner",
+        title: "Sound (Beginner)",
+        content: "Sound is a vibration that travels through air. It needs a medium (like air or water) to travel. For example, we hear a bell because it vibrates the air.",
+        quiz: [
+          { question: "What is sound?", options: ["A light wave", "A vibration", "A color", "A smell"], answer: "A vibration" },
+          { question: "What does sound need to travel?", options: ["Vacuum", "Medium", "Darkness", "Heat"], answer: "Medium" },
+          { question: "Why do we hear a bell?", options: ["It glows", "It vibrates", "It moves", "It heats"], answer: "It vibrates" }
+        ]
+      },
+      {
+        id: "grade6-physics-heat-beginner",
+        title: "Heat (Beginner)",
+        content: "Heat is a form of energy that makes things warmer. It transfers from hot to cold objects. For example, a hot cup of tea cools down as heat moves to the air.",
+        quiz: [
+          { question: "What is heat?", options: ["A form of energy", "A type of light", "A sound", "A smell"], answer: "A form of energy" },
+          { question: "Heat transfers from:", options: ["Cold to hot", "Hot to cold", "Big to small", "Small to big"], answer: "Hot to cold" },
+          { question: "Why does a hot cup of tea cool down?", options: ["Heat moves to air", "Tea evaporates", "Cup breaks", "Tea freezes"], answer: "Heat moves to air" }
+        ]
+      },
+      {
+        id: "grade6-physics-nuclear-beginner",
+        title: "Nuclear Physics (Beginner)",
+        content: "Nuclear physics studies the nucleus of atoms. Nuclear energy comes from splitting atoms (fission). For example, nuclear power plants use fission to generate electricity.",
+        quiz: [
+          { question: "What does nuclear physics study?", options: ["Stars", "Atoms’ nucleus", "Oceans", "Plants"], answer: "Atoms’ nucleus" },
+          { question: "What is nuclear fission?", options: ["Joining atoms", "Splitting atoms", "Heating atoms", "Cooling atoms"], answer: "Splitting atoms" },
+          { question: "What do nuclear power plants produce?", options: ["Water", "Electricity", "Food", "Clothes"], answer: "Electricity" }
+        ]
+      },
+      {
+        id: "grade6-chemistry-elements-beginner",
+        title: "Elements and Compounds (Beginner)",
+        content: "Elements are pure substances like oxygen or iron. Compounds are two or more elements chemically combined, like water (H₂O). For example, water is made of hydrogen and oxygen.",
+        quiz: [
+          { question: "What is an element?", options: ["A mixture", "A pure substance", "A compound", "A solution"], answer: "A pure substance" },
+          { question: "What is a compound?", options: ["One element", "Two or more elements combined", "A gas", "A liquid"], answer: "Two or more elements combined" },
+          { question: "What elements make water?", options: ["Carbon and oxygen", "Hydrogen and oxygen", "Nitrogen and hydrogen", "Iron and oxygen"], answer: "Hydrogen and oxygen" },
+          { question: "Oxygen is an example of:", options: ["Compound", "Element", "Mixture", "Solution"], answer: "Element" }
+        ]
+      },
+      {
+        id: "grade6-chemistry-acids-beginner",
+        title: "Acids, Bases, Salts (Beginner)",
+        content: "Acids have a sour taste and pH <7 (e.g., lemon juice). Bases feel slippery and have pH >7 (e.g., soap). Salts form when acids and bases react, like table salt (NaCl).",
+        quiz: [
+          { question: "What is the pH of an acid?", options: ["Less than 7", "Equal to 7", "More than 7", "Zero"], answer: "Less than 7" },
+          { question: "How does a base feel?", options: ["Sour", "Slippery", "Sticky", "Dry"], answer: "Slippery" },
+          { question: "What is table salt?", options: ["An acid", "A base", "A salt", "An element"], answer: "A salt" },
+          { question: "Lemon juice is an example of:", options: ["Base", "Acid", "Salt", "Compound"], answer: "Acid" }
+        ]
+      },
+      {
+        id: "grade6-chemistry-petroleum-beginner",
+        title: "Petroleum Products (Beginner)",
+        content: "Petroleum products come from crude oil, like petrol, diesel, and kerosene. They are used as fuels. For example, petrol powers cars.",
+        quiz: [
+          { question: "What are petroleum products made from?", options: ["Water", "Crude oil", "Sand", "Wood"], answer: "Crude oil" },
+          { question: "What is petrol used for?", options: ["Cooking", "Powering cars", "Cleaning", "Drinking"], answer: "Powering cars" },
+          { question: "Which is a petroleum product?", options: ["Sugar", "Kerosene", "Salt", "Milk"], answer: "Kerosene" }
+        ]
+      },
+      {
+        id: "grade6-chemistry-fertilizers-beginner",
+        title: "Fertilizers (Beginner)",
+        content: "Fertilizers provide nutrients like nitrogen to plants, helping them grow. For example, urea is a common fertilizer used by farmers.",
+        quiz: [
+          { question: "What do fertilizers provide to plants?", options: ["Water", "Nutrients", "Light", "Air"], answer: "Nutrients" },
+          { question: "What is urea?", options: ["A pesticide", "A fertilizer", "A fuel", "A food"], answer: "A fertilizer" },
+          { question: "Why do farmers use fertilizers?", options: ["To kill pests", "To help plants grow", "To clean soil", "To water plants"], answer: "To help plants grow" }
+        ]
+      },
+      {
+        id: "grade6-chemistry-pesticides-beginner",
+        title: "Pesticides (Beginner)",
+        content: "Pesticides kill pests like insects that harm crops. For example, farmers spray pesticides to protect rice plants.",
+        quiz: [
+          { question: "What do pesticides do?", options: ["Kill pests", "Grow plants", "Clean water", "Make food"], answer: "Kill pests" },
+          { question: "Why do farmers use pesticides?", options: ["To water crops", "To protect crops", "To harvest crops", "To fertilize crops"], answer: "To protect crops" },
+          { question: "What is a pest?", options: ["A helpful insect", "A harmful insect", "A type of plant", "A type of soil"], answer: "A harmful insect" }
+        ]
+      },
+      {
+        id: "grade6-chemistry-metallurgy-beginner",
+        title: "Metallurgy (Beginner)",
+        content: "Metallurgy is the science of extracting metals from ores. For example, iron is extracted from iron ore to make steel.",
+        quiz: [
+          { question: "What is metallurgy?", options: ["Study of plants", "Extracting metals", "Making food", "Building houses"], answer: "Extracting metals" },
+          { question: "What is iron extracted from?", options: ["Iron ore", "Water", "Air", "Wood"], answer: "Iron ore" },
+          { question: "What is made from iron?", options: ["Plastic", "Steel", "Glass", "Paper"], answer: "Steel" }
+        ]
+      },
+      {
+        id: "grade6-chemistry-adulterants-beginner",
+        title: "Food Adulterants (Beginner)",
+        content: "Food adulterants are harmful substances added to food, like chalk powder in flour. They can make you sick. For example, pure milk should not have water added.",
+        quiz: [
+          { question: "What is a food adulterant?", options: ["A nutrient", "A harmful substance", "A flavor", "A vitamin"], answer: "A harmful substance" },
+          { question: "What might be added to flour?", options: ["Sugar", "Chalk powder", "Salt", "Oil"], answer: "Chalk powder" },
+          { question: "Why is water added to milk harmful?", options: ["It improves taste", "It reduces nutrition", "It makes it sweeter", "It makes it thicker"], answer: "It reduces nutrition" }
+        ]
+      },
+      {
+        id: "grade6-biology-classification-beginner",
+        title: "Classification of Living Organisms (Beginner)",
+        content: "Living organisms are classified into groups like plants and animals. Plants make their own food, while animals eat others. For example, a mango tree is a plant, and a cow is an animal.",
+        quiz: [
+          { question: "How are living organisms classified?", options: ["By size", "By groups like plants and animals", "By color", "By weight"], answer: "By groups like plants and animals" },
+          { question: "What do plants do?", options: ["Eat animals", "Make their own food", "Move fast", "Sleep"], answer: "Make their own food" },
+          { question: "A cow is an example of:", options: ["Plant", "Animal", "Mineral", "Machine"], answer: "Animal" },
+          { question: "A mango tree is:", options: ["An animal", "A plant", "A rock", "A cloud"], answer: "A plant" }
+        ]
+      },
+      {
+        id: "grade6-biology-evolution-beginner",
+        title: "Evolution (Beginner)",
+        content: "Evolution is how living things change over time to survive. For example, giraffes developed long necks to reach high leaves.",
+        quiz: [
+          { question: "What is evolution?", options: ["Change over time", "Staying the same", "Growing bigger", "Moving faster"], answer: "Change over time" },
+          { question: "Why do giraffes have long necks?", options: ["To swim better", "To reach high leaves", "To run faster", "To hide"], answer: "To reach high leaves" },
+          { question: "What helps animals survive in evolution?", options: ["Bright colors", "Useful traits", "Loud sounds", "Heavy weight"], answer: "Useful traits" }
+        ]
+      },
+      {
+        id: "grade6-biology-genetics-beginner",
+        title: "Genetics (Beginner)",
+        content: "Genetics studies how traits pass from parents to children. Traits like eye color are carried by genes. For example, a child may have brown eyes like their mother.",
+        quiz: [
+          { question: "What does genetics study?", options: ["Weather", "Traits from parents", "Rocks", "Stars"], answer: "Traits from parents" },
+          { question: "What carries traits like eye color?", options: ["Bones", "Genes", "Skin", "Blood"], answer: "Genes" },
+          { question: "A child’s brown eyes come from:", options: ["Their food", "Their parents", "Their clothes", "Their toys"], answer: "Their parents" }
+        ]
+      },
+      {
+        id: "grade6-biology-physiology-beginner",
+        title: "Physiology (Beginner)",
+        content: "Physiology studies how body parts work. For example, the heart pumps blood to supply oxygen to the body.",
+        quiz: [
+          { question: "What does physiology study?", options: ["How body parts work", "How plants grow", "How rocks form", "How stars shine"], answer: "How body parts work" },
+          { question: "What does the heart do?", options: ["Digests food", "Pumps blood", "Sees light", "Hears sound"], answer: "Pumps blood" },
+          { question: "Why does the body need blood?", options: ["To stay cool", "To supply oxygen", "To change color", "To make noise"], answer: "To supply oxygen" }
+        ]
+      },
+      {
+        id: "grade6-biology-nutrition-beginner",
+        title: "Nutrition (Beginner)",
+        content: "Nutrition is about food providing energy and growth. Carbohydrates give energy, and proteins build muscles. For example, rice is rich in carbohydrates.",
+        quiz: [
+          { question: "What does nutrition provide?", options: ["Energy and growth", "Color and smell", "Sound and light", "Weight and size"], answer: "Energy and growth" },
+          { question: "What do carbohydrates give?", options: ["Strength", "Energy", "Vision", "Hearing"], answer: "Energy" },
+          { question: "What do proteins build?", options: ["Muscles", "Bones", "Skin", "Hair"], answer: "Muscles" },
+          { question: "What is rice rich in?", options: ["Proteins", "Carbohydrates", "Vitamins", "Fats"], answer: "Carbohydrates" }
+        ]
+      },
+      {
+        id: "grade6-biology-health-beginner",
+        title: "Health and Hygiene (Beginner)",
+        content: "Health means being free from disease, and hygiene keeps us healthy. Washing hands prevents germs. For example, brush your teeth to avoid cavities.",
+        quiz: [
+          { question: "What is health?", options: ["Being sick", "Being free from disease", "Being tired", "Being heavy"], answer: "Being free from disease" },
+          { question: "What does hygiene do?", options: ["Makes you sick", "Keeps you healthy", "Changes your color", "Makes you run"], answer: "Keeps you healthy" },
+          { question: "Why wash your hands?", options: ["To get wet", "To prevent germs", "To eat food", "To sleep"], answer: "To prevent germs" },
+          { question: "Why brush your teeth?", options: ["To avoid cavities", "To grow hair", "To run faster", "To see better"], answer: "To avoid cavities" }
+        ]
+      },
+      {
+        id: "grade6-biology-diseases-beginner",
+        title: "Human Diseases (Beginner)",
+        content: "Diseases make us sick. Germs like bacteria cause diseases like colds. For example, drinking clean water prevents stomach infections.",
+        quiz: [
+          { question: "What causes diseases?", options: ["Germs", "Toys", "Clothes", "Books"], answer: "Germs" },
+          { question: "What is a cold caused by?", options: ["Sugar", "Bacteria or viruses", "Sand", "Paint"], answer: "Bacteria or viruses" },
+          { question: "How can you prevent stomach infections?", options: ["Drink dirty water", "Drink clean water", "Eat sand", "Wear shoes"], answer: "Drink clean water" }
+        ]
+      },
+      {
+        id: "grade6-environmental-science-beginner",
+        title: "Environmental Science (Beginner)",
+        content: "Environmental science studies our surroundings. Pollution harms air and water. For example, planting trees reduces air pollution.",
+        quiz: [
+          { question: "What does environmental science study?", options: ["Stars", "Our surroundings", "Machines", "Books"], answer: "Our surroundings" },
+          { question: "What does pollution harm?", options: ["Air and water", "Toys", "Clothes", "Food"], answer: "Air and water" },
+          { question: "How can we reduce air pollution?", options: ["Cut trees", "Plant trees", "Burn trash", "Use more cars"], answer: "Plant trees" },
+          { question: "What is bad for the environment?", options: ["Recycling", "Pollution", "Cleaning", "Walking"], answer: "Pollution" }
+        ]
+      },
+      {
+        id: "grade6-technology-inventions-beginner",
+        title: "Latest Inventions (Beginner)",
+        content: "Inventions improve our lives. For example, solar panels use sunlight to make electricity, saving energy.",
+        quiz: [
+          { question: "What do inventions do?", options: ["Harm us", "Improve our lives", "Make noise", "Break things"], answer: "Improve our lives" },
+          { question: "What do solar panels use?", options: ["Water", "Sunlight", "Sand", "Oil"], answer: "Sunlight" },
+          { question: "What do solar panels produce?", options: ["Food", "Electricity", "Clothes", "Toys"], answer: "Electricity" }
+        ]
+      },
+      {
+        id: "grade6-current-affairs-beginner",
+        title: "Current Affairs (Beginner)",
+        content: "Current affairs are recent science events. For example, India’s Chandrayaan missions explore the moon, advancing space research.",
+        quiz: [
+          { question: "What are current affairs?", options: ["Old stories", "Recent events", "Fairy tales", "Songs"], answer: "Recent events" },
+          { question: "What does Chandrayaan explore?", options: ["Mars", "Moon", "Sun", "Jupiter"], answer: "Moon" },
+          { question: "What do India’s space missions advance?", options: ["Cooking", "Space research", "Painting", "Dancing"], answer: "Space research" }
+        ]
+      }
+    ];
+
+    // Progression and state
+    const difficulties = ['beginner', 'elementary', 'intermediate', 'advanced', 'expert'];
+    let currentSectionId = localStorage.getItem('lastSection');
+    // Validate currentSectionId; default to first section if invalid
+    if (!currentSectionId || !scienceContent.some(s => s.id === currentSectionId)) {
+      currentSectionId = scienceContent[0].id;
+    }
+    let currentQuestionIndex = 0;
+    let quizAnswers = [];
+
+    // Check if section is accessible
+    function isSectionAccessible(sectionId) {
+      const sectionIndex = scienceContent.findIndex(s => s.id === sectionId);
+      if (sectionIndex === 0) return true; // First section is always accessible
+      const prevSectionId = scienceContent[sectionIndex - 1].id;
+      const prevScore = localStorage.getItem(`score_${prevSectionId}`);
+      return prevScore !== null && parseFloat(prevScore) >= 70;
+    }
+
+    // Render content and quiz
+    function renderSection() {
+      let section = scienceContent.find(s => s.id === currentSectionId);
+      if (!section) {
+        // Fallback to first section if section not found
+        section = scienceContent[0];
+        currentSectionId = section.id;
+      }
+
+      if (!isSectionAccessible(currentSectionId)) {
+        document.getElementById('content').innerHTML = `
+          <p class="text-red-500 text-center">Complete the previous section with a score of 70% or higher to unlock this section.</p>
+          <button onclick="goToPreviousSection()" class="mt-4 bg-blue-500 text-white px-4 py-2 rounded mx-auto block">Go to Previous Section</button>
+        `;
+        return;
+      }
+
+      // Save last section
+      localStorage.setItem('lastSection', currentSectionId);
+
+      // Render content
+      document.getElementById('content').innerHTML = `
+        <h2 class="text-2xl font-semibold mb-4">${section.title}</h2>
+        <p class="mb-6">${section.content}</p>
+        <div id="quiz" class="mt-6"></div>
+      `;
+      renderQuizQuestion();
+    }
+
+    // Render quiz question (one by one)
+    function renderQuizQuestion() {
+      const section = scienceContent.find(s => s.id === currentSectionId);
+      if (currentQuestionIndex >= section.quiz.length) {
+        showQuizResults();
+        return;
+      }
+
+      const question = section.quiz[currentQuestionIndex];
+      document.getElementById('quiz').innerHTML = `
+        <h3 class="text-xl font-semibold mb-2">Question ${currentQuestionIndex + 1}</h3>
+        <p class="mb-4">${question.question}</p>
+        ${question.options.map((option, index) => `
+          <label class="block mb-2">
+            <input type="radio" name="answer" value="${option}" class="mr-2" onchange="selectAnswer('${option}')">
+            ${option}
+          </label>
+        `).join('')}
+        <button onclick="nextQuestion()" id="nextBtn" class="mt-4 bg-blue-500 text-white px-4 py-2 rounded" disabled>Next</button>
+      `;
+    }
+
+    // Handle answer selection
+    function selectAnswer(option) {
+      quizAnswers[currentQuestionIndex] = option;
+      document.getElementById('nextBtn').disabled = false;
+    }
+
+    // Move to next question
+    function nextQuestion() {
+      currentQuestionIndex++;
+      renderQuizQuestion();
+    }
+
+    // Show quiz results
+    function showQuizResults() {
+      const section = scienceContent.find(s => s.id === currentSectionId);
+      let correct = 0;
+      section.quiz.forEach((q, index) => {
+        if (quizAnswers[index] === q.answer) correct++;
+      });
+      const score = (correct / section.quiz.length) * 100;
+      localStorage.setItem(`score_${currentSectionId}`, score);
+
+      // Motivational message
+      let message = '';
+      if (score >= 90) message = 'Excellent!';
+      else if (score >= 70) message = 'Good Job!';
+      else message = 'Needs to Improve.You have to score atleast 70% to move on to next section';
+
+      // Check if next section is unlocked
+      const sectionIndex = scienceContent.findIndex(s => s.id === currentSectionId);
+      const hasNextSection = sectionIndex < scienceContent.length - 1;
+
+      document.getElementById('quiz').innerHTML = `
+        <h3 class="text-xl font-semibold mb-2">Quiz Results</h3>
+        <p class="mb-4">Your Score: ${score}%</p>
+        <p class="mb-4 font-bold">${message}</p>
+        ${score >= 70 && hasNextSection ? `
+          <button onclick="goToNextSection()" class="bg-green-500 text-white px-4 py-2 rounded">Go to Next Section</button>
+        ` : ''}
+        <button onclick="retakeQuiz()" class="mt-4 bg-gray-500 text-white px-4 py-2 rounded">Retake Quiz</button>
+      `;
+    }
+
+    // Go to next section
+    function goToNextSection() {
+      const sectionIndex = scienceContent.findIndex(s => s.id === currentSectionId);
+      if (sectionIndex < scienceContent.length - 1) {
+        currentSectionId = scienceContent[sectionIndex + 1].id;
+        currentQuestionIndex = 0;
+        quizAnswers = [];
+        renderSection();
+      }
+    }
+
+    // Go to previous section
+    function goToPreviousSection() {
+      const sectionIndex = scienceContent.findIndex(s => s.id === currentSectionId);
+      if (sectionIndex > 0) {
+        currentSectionId = scienceContent[sectionIndex - 1].id;
+        currentQuestionIndex = 0;
+        quizAnswers = [];
+        renderSection();
+      }
+    }
+
+    // Retake quiz
+    function retakeQuiz() {
+      currentQuestionIndex = 0;
+      quizAnswers = [];
+      renderQuizQuestion();
+    }
+
+    // Initialize
+    renderSection();
+  </script>
+</body>
+</html>
