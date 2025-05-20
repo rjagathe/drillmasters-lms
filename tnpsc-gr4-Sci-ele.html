@@ -4,230 +4,858 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Drillmasters LMS - TNPSC Group 4 Science (Elementary)</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; background-color: #f3f4f6; display: flex; flex-direction: column; min-height: 100vh; }
+    .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 15px; }
+    header { background-color: #2563eb; color: white; padding: 1rem 0; }
+    header h1 { font-size: 1.5rem; font-weight: bold; }
+    header h2 { font-size: 1.125rem; }
+    header .flex { display: flex; justify-content: space-between; align-items: center; }
+    nav { background-color: #1d4ed8; padding: 1rem 0; }
+    nav ul { list-style: none; display: flex; gap: 1rem; }
+    nav a { color: white; text-decoration: none; }
+    nav a:hover { text-decoration: underline; }
+    main { flex-grow: 1; padding: 1rem 0; }
+    #content { background-color: white; padding: 1.5rem; border-radius: 0.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+    footer { background-color: #1f2937; color: white; padding: 1rem 0; margin-top: auto; text-align: center; }
+    footer a { color: white; text-decoration: underline; }
+    button { padding: 0.5rem 1rem; border-radius: 0.25rem; cursor: pointer; }
+    .btn-blue { background-color: #3b82f6; color: white; border: none; }
+    .btn-blue:hover { background-color: #2563eb; }
+    .btn-gray { background-color: #6b7280; color: white; border: none; }
+    .btn-gray:hover { background-color: #4b5563; }
+    .btn-green { background-color: #22c55e; color: white; border: none; }
+    .btn-green:hover { background-color: #16a34a; }
+    .btn-yellow { background-color: #f59e0b; color: white; border: none; }
+    .btn-yellow:hover { background-color: #d97706; }
+    .text-red { color: #ef4444; }
+    .text-green { color: #22c55e; }
+    .hidden { display: none; }
+    #quiz-form { margin-top: 1rem; }
+    #quiz-form div { margin-bottom: 1rem; }
+    #quiz-form p { font-weight: bold; margin-bottom: 0.5rem; }
+    #quiz-form label { display: block; margin: 0.25rem 0; }
+    #quiz-form input[type="radio"] { margin-right: 0.5rem; }
+    #feedback { margin-top: 1rem; }
+    #navigation { margin-top: 1rem; }
+    @media (max-width: 768px) {
+      nav ul { flex-direction: column; gap: 0.5rem; }
+      #menu-btn { display: block; }
+      #menu { display: none; }
+    }
+  </style>
 </head>
-<body class="bg-gray-100">
-  <div class="container mx-auto p-4">
-    <h1 class="text-3xl font-bold mb-2 text-center">TNPSC Group 4 - Science</h1>
-    <h2 class="text-2xl font-semibold mb-6 text-center">Elementary Level</h2>
-    <div id="content" class="bg-white p-6 rounded-lg shadow-md"></div>
-  </div>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container flex">
+      <div>
+        <h1>TNPSC Group 4 - Science</h1>
+        <h2>Elementaryr Level</h2>
+      </div>
+      <button id="menu-btn" class="hidden">☰</button>
+    </div>
+    <nav id="menu">
+      <div class="container">
+        <ul>
+          <li><a href="tnpsc-gr4-home.html">TNPSC Group 4 Home</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <div class="container">
+      <div id="content">
+        <p>Loading content...</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>© 2025 Drillmasters LMS. All rights reserved.</p>
+      <p>Contact: <a href="mailto:support@drillmasters.in">support@drillmasters.in</a> | <a href="https://www.drillmasters.in">www.drillmasters.in</a></p>
+    </div>
+  </footer>
+
+  <!-- Embedded JavaScript -->
   <script>
-    // MCQ data (145 questions, unchanged from previous response, abbreviated here)
+    // Data for 29 sections (real data for 1-10, placeholders for 11-29)
+
+
+
+  const quizData = [
+  {
+    sectionId: "grade7-physics-motion-types-elementary",
+    quiz: [
+      { question: "What is uniform motion?", options: ["Constant speed", "Changing speed", "Circular path", "No motion"], answer: "Constant speed" },
+      { question: "Which is non-uniform motion?", options: ["Train on tracks", "Car accelerating", "Pendulum swing", "Earth’s rotation"], answer: "Car accelerating" },
+      { question: "What is velocity?", options: ["Speed only", "Speed and direction", "Distance only", "Time only"], answer: "Speed and direction" },
+      { question: "What measures change in position?", options: ["Speed", "Displacement", "Time", "Acceleration"], answer: "Displacement" }
+    ]
+  },
+  {
+    sectionId: "grade7-physics-simple-machines-elementary",
+    quiz: [
+      { question: "Which is a lever?", options: ["Seesaw", "Wheel", "Ramp", "Screw"], answer: "Seesaw" },
+      { question: "What does a pulley do?", options: ["Cut objects", "Lift loads", "Join parts", "Reduce speed"], answer: "Lift loads" },
+      { question: "Which reduces effort?", options: ["Lever", "Inclined plane", "Pulley", "All of these"], answer: "All of these" },
+      { question: "What is a wedge used for?", options: ["Lifting", "Cutting", "Rolling", "Pulling"], answer: "Cutting" }
+    ]
+  },
+  {
+    sectionId: "grade7-physics-light-refraction-elementary",
+    quiz: [
+      { question: "What is refraction?", options: ["Bending of light", "Reflection of light", "Absorption", "Emission"], answer: "Bending of light" },
+      { question: "Why does a straw in water look bent?", options: ["Reflection", "Refraction", "Shadow", "Diffraction"], answer: "Refraction" },
+      { question: "Which medium slows light most?", options: ["Air", "Water", "Glass", "Vacuum"], answer: "Glass" },
+      { question: "What uses refraction?", options: ["Mirror", "Lens", "Prism", "Both lens and prism"], answer: "Both lens and prism" }
+    ]
+  },
+  {
+    sectionId: "grade7-physics-circuits-elementary",
+    quiz: [
+      { question: "What is a series circuit?", options: ["Single path", "Multiple paths", "No current", "Battery only"], answer: "Single path" },
+      { question: "If one bulb fails in a series circuit?", options: ["Others stay on", "All stop", "Circuit reverses", "Voltage increases"], answer: "All stop" },
+      { question: "What measures voltage?", options: ["Ampere", "Ohm", "Volt", "Watt"], answer: "Volt" },
+      { question: "What is a conductor in a circuit?", options: ["Blocks current", "Allows current", "Stores current", "Emits current"], answer: "Allows current" }
+    ]
+  },
+  {
+    sectionId: "grade7-physics-energy-forms-elementary",
+    quiz: [
+      { question: "What is kinetic energy?", options: ["Stored energy", "Motion energy", "Heat energy", "Light energy"], answer: "Motion energy" },
+      { question: "What is potential energy?", options: ["Energy of motion", "Stored energy", "Sound energy", "Chemical energy"], answer: "Stored energy" },
+      { question: "Which is an energy source?", options: ["Coal", "Glass", "Plastic", "Sand"], answer: "Coal" }
+    ]
+  },
+  {
+    sectionId: "grade7-physics-sound-elementary",
+    quiz: [
+      { question: "What is sound?", options: ["Light wave", "Vibration", "Heat wave", "Electric current"], answer: "Vibration" },
+      { question: "What medium carries sound fastest?", options: ["Air", "Water", "Solid", "Vacuum"], answer: "Solid" },
+      { question: "What is pitch related to?", options: ["Loudness", "Frequency", "Amplitude", "Speed"], answer: "Frequency" }
+    ]
+  },
+  {
+    sectionId: "grade7-physics-gravity-elementary",
+    quiz: [
+      { question: "What is gravity?", options: ["Push force", "Pull force", "Friction", "Magnetism"], answer: "Pull force" },
+      { question: "What affects gravitational force?", options: ["Mass and distance", "Speed and time", "Light and sound", "Heat and pressure"], answer: "Mass and distance" },
+      { question: "Why do objects fall to Earth?", options: ["Magnetism", "Gravity", "Friction", "Electricity"], answer: "Gravity" }
+    ]
+  },
+  {
+    sectionId: "grade7-physics-pressure-elementary",
+    quiz: [
+      { question: "What is pressure?", options: ["Force per area", "Mass per volume", "Speed per time", "Energy per distance"], answer: "Force per area" },
+      { question: "Which has high pressure?", options: ["Sharp knife", "Blunt knife", "Flat surface", "Soft cushion"], answer: "Sharp knife" },
+      { question: "What unit measures pressure?", options: ["Newton", "Pascal", "Joule", "Watt"], answer: "Pascal" }
+    ]
+  },
+  {
+    sectionId: "grade7-physics-friction-elementary",
+    quiz: [
+      { question: "What does friction do?", options: ["Increases speed", "Opposes motion", "Generates light", "Stores energy"], answer: "Opposes motion" },
+      { question: "Which surface has more friction?", options: ["Smooth glass", "Rough sandpaper", "Wet floor", "Polished wood"], answer: "Rough sandpaper" },
+      { question: "How can friction be reduced?", options: ["Add weight", "Use oil", "Increase speed", "Heat surface"], answer: "Use oil" }
+    ]
+  },
+  {
+    sectionId: "grade7-physics-magnets-elementary",
+    quiz: [
+      { question: "What do unlike poles do?", options: ["Repel", "Attract", "Align", "Neutralize"], answer: "Attract" },
+      { question: "What is a magnetic field?", options: ["Light area", "Force area", "Heat area", "Sound area"], answer: "Force area" },
+      { question: "Which material is magnetic?", options: ["Wood", "Iron", "Plastic", "Glass"], answer: "Iron" }
+    ]
+  },
+  {
+    sectionId: "grade7-chemistry-elements-elementary",
+    quiz: [
+      { question: "What is an element?", options: ["Mixture", "Pure substance", "Compound", "Solution"], answer: "Pure substance" },
+      { question: "Which is an element?", options: ["Water", "Oxygen", "Salt", "Sugar"], answer: "Oxygen" },
+      { question: "What is the symbol for carbon?", options: ["C", "Ca", "Co", "Cr"], answer: "C" },
+      { question: "How many elements in periodic table?", options: ["50", "100", "118", "150"], answer: "118" }
+    ]
+  },
+  {
+    sectionId: "grade7-chemistry-compounds-elementary",
+    quiz: [
+      { question: "What is a compound?", options: ["Single atom", "Two or more elements", "Mixture", "Pure element"], answer: "Two or more elements" },
+      { question: "Which is a compound?", options: ["Oxygen", "Water", "Iron", "Gold"], answer: "Water" },
+      { question: "What is water’s formula?", options: ["H2O", "CO2", "O2", "H2"], answer: "H2O" }
+    ]
+  },
+  {
+    sectionId: "grade7-chemistry-changes-elementary",
+    quiz: [
+      { question: "What is a chemical change?", options: ["Shape change", "New substance", "Size change", "State change"], answer: "New substance" },
+      { question: "Which is a physical change?", options: ["Burning wood", "Melting ice", "Rusting", "Digesting food"], answer: "Melting ice" },
+      { question: "What indicates a chemical change?", options: ["Color change", "Shape change", "Size change", "Weight change"], answer: "Color change" }
+    ]
+  },
+  {
+    sectionId: "grade7-chemistry-acids-bases-elementary",
+    quiz: [
+      { question: "What is an acid’s taste?", options: ["Sweet", "Sour", "Bitter", "Salty"], answer: "Sour" },
+      { question: "What turns blue litmus red?", options: ["Acid", "Base", "Neutral", "Salt"], answer: "Acid" },
+      { question: "What is a base’s feel?", options: ["Slippery", "Sticky", "Rough", "Dry"], answer: "Slippery" },
+      { question: "What is pH of neutral?", options: ["0", "7", "14", "10"], answer: "7" }
+    ]
+  },
+  {
+    sectionId: "grade7-chemistry-solutions-elementary",
+    quiz: [
+      { question: "What is a solution?", options: ["Pure substance", "Uniform mixture", "Compound", "Element"], answer: "Uniform mixture" },
+      { question: "What is the solvent in saltwater?", options: ["Salt", "Water", "Sugar", "Sand"], answer: "Water" },
+      { question: "What is a solute?", options: ["Dissolving substance", "Dissolved substance", "Container", "Mixture"], answer: "Dissolved substance" }
+    ]
+  },
+  {
+    sectionId: "grade7-chemistry-metals-elementary",
+    quiz: [
+      { question: "Which is a property of metals?", options: ["Brittle", "Shiny", "Non-conductive", "Soft"], answer: "Shiny" },
+      { question: "Which is a metal?", options: ["Sulfur", "Copper", "Carbon", "Oxygen"], answer: "Copper" },
+      { question: "What do metals conduct?", options: ["Light", "Heat and electricity", "Sound", "Pressure"], answer: "Heat and electricity" }
+    ]
+  },
+  {
+    sectionId: "grade7-chemistry-nonmetals-elementary",
+    quiz: [
+      { question: "Which is a non-metal?", options: ["Iron", "Nitrogen", "Aluminum", "Silver"], answer: "Nitrogen" },
+      { question: "What is a non-metal property?", options: ["Shiny", "Brittle", "Conductive", "Malleable"], answer: "Brittle" },
+      { question: "Which non-metal is essential for life?", options: ["Carbon", "Helium", "Neon", "Argon"], answer: "Carbon" }
+    ]
+  },
+  {
+    sectionId: "grade7-chemistry-air-composition-elementary",
+    quiz: [
+      { question: "What gas is most abundant in air?", options: ["Oxygen", "Nitrogen", "Carbon dioxide", "Argon"], answer: "Nitrogen" },
+      { question: "What gas supports combustion?", options: ["Nitrogen", "Oxygen", "Carbon dioxide", "Helium"], answer: "Oxygen" },
+      { question: "What is air’s approximate oxygen percentage?", options: ["21%", "78%", "1%", "10%"], answer: "21%" }
+    ]
+  },
+  {
+    sectionId: "grade7-biology-photosynthesis-elementary",
+    quiz: [
+      { question: "What is photosynthesis?", options: ["Breathing", "Food making", "Digestion", "Movement"], answer: "Food making" },
+      { question: "What gas is used in photosynthesis?", options: ["Oxygen", "Carbon dioxide", "Nitrogen", "Hydrogen"], answer: "Carbon dioxide" },
+      { question: "Where does photosynthesis occur?", options: ["Roots", "Leaves", "Stem", "Flowers"], answer: "Leaves" },
+      { question: "What does photosynthesis produce?", options: ["Glucose", "Water", "Carbon dioxide", "Nitrogen"], answer: "Glucose" }
+    ]
+  },
+  {
+    sectionId: "grade7-biology-respiration-elementary",
+    quiz: [
+      { question: "What is respiration?", options: ["Food making", "Energy release", "Water cycle", "Movement"], answer: "Energy release" },
+      { question: "What gas is used in respiration?", options: ["Carbon dioxide", "Oxygen", "Nitrogen", "Helium"], answer: "Oxygen" },
+      { question: "What does respiration produce?", options: ["Glucose", "Carbon dioxide", "Oxygen", "Water"], answer: "Carbon dioxide" }
+    ]
+  },
+  {
+    sectionId: "grade7-biology-digestion-elementary",
+    quiz: [
+      { question: "What is digestion?", options: ["Breathing", "Breaking down food", "Circulation", "Movement"], answer: "Breaking down food" },
+      { question: "Where does digestion begin?", options: ["Stomach", "Mouth", "Intestine", "Liver"], answer: "Mouth" },
+      { question: "What enzyme in saliva helps digestion?", options: ["Amylase", "Pepsin", "Lipase", "Trypsin"], answer: "Amylase" }
+    ]
+  },
+  {
+    sectionId: "grade7-biology-circulation-elementary",
+    quiz: [
+      { question: "What does the heart pump?", options: ["Water", "Blood", "Air", "Food"], answer: "Blood" },
+      { question: "What carries oxygen in blood?", options: ["Plasma", "Red blood cells", "White blood cells", "Platelets"], answer: "Red blood cells" },
+      { question: "What is the main artery?", options: ["Vein", "Aorta", "Capillary", "Vena cava"], answer: "Aorta" }
+    ]
+  },
+  {
+    sectionId: "grade7-biology-excretion-elementary",
+    quiz: [
+      { question: "What is excretion?", options: ["Food intake", "Waste removal", "Breathing", "Movement"], answer: "Waste removal" },
+      { question: "Which organ filters blood?", options: ["Liver", "Kidney", "Lungs", "Heart"], answer: "Kidney" },
+      { question: "What is excreted as urine?", options: ["Sugar", "Urea", "Oxygen", "Carbon dioxide"], answer: "Urea" }
+    ]
+  },
+  {
+    sectionId: "grade7-biology-ecosystems-elementary",
+    quiz: [
+      { question: "What is an ecosystem?", options: ["Single organism", "Community and environment", "Plants only", "Animals only"], answer: "Community and environment" },
+      { question: "What is a producer?", options: ["Eats others", "Makes food", "Decomposes", "Hunts"], answer: "Makes food" },
+      { question: "What is a decomposer?", options: ["Makes food", "Eats others", "Breaks down waste", "Stores energy"], answer: "Breaks down waste" },
+      { question: "What shows energy flow?", options: ["Food chain", "Water cycle", "Air cycle", "Rock cycle"], answer: "Food chain" }
+    ]
+  },
+  {
+    sectionId: "grade7-biology-microorganisms-elementary",
+    quiz: [
+      { question: "What are microorganisms?", options: ["Large animals", "Tiny organisms", "Plants", "Rocks"], answer: "Tiny organisms" },
+      { question: "Which is a microorganism?", options: ["Ant", "Bacteria", "Tree", "Fish"], answer: "Bacteria" },
+      { question: "What do some microorganisms cause?", options: ["Rain", "Diseases", "Light", "Heat"], answer: "Diseases" }
+    ]
+  },
+  {
+    sectionId: "grade7-envsci-water-cycle-elementary",
+    quiz: [
+      { question: "What is the water cycle?", options: ["Water movement", "Water freezing", "Water boiling", "Water dissolving"], answer: "Water movement" },
+      { question: "What forms clouds?", options: ["Evaporation", "Condensation", "Precipitation", "Transpiration"], answer: "Condensation" },
+      { question: "What is precipitation?", options: ["Rain or snow", "Cloud formation", "Evaporation", "Groundwater"], answer: "Rain or snow" },
+      { question: "What is transpiration?", options: ["Rainfall", "Plant water release", "Cloud formation", "Groundwater flow"], answer: "Plant water release" }
+    ]
+  },
+  {
+    sectionId: "grade7-envsci-pollution-elementary",
+    quiz: [
+      { question: "What is pollution?", options: ["Clean air", "Harmful substances", "Pure water", "Healthy soil"], answer: "Harmful substances" },
+      { question: "What causes air pollution?", options: ["Trees", "Factories", "Rain", "Wind"], answer: "Factories" },
+      { question: "What reduces water pollution?", options: ["Dumping waste", "Sewage treatment", "Oil spills", "Plastic use"], answer: "Sewage treatment" }
+    ]
+  },
+  {
+    sectionId: "grade7-envsci-conservation-elementary",
+    quiz: [
+      { question: "What is conservation?", options: ["Resource waste", "Resource protection", "Pollution", "Mining"], answer: "Resource protection" },
+      { question: "What conserves water?", options: ["Long showers", "Rainwater harvesting", "Leaky taps", "Washing cars"], answer: "Rainwater harvesting" },
+      { question: "What is renewable energy?", options: ["Coal", "Solar", "Oil", "Gas"], answer: "Solar" }
+    ]
+  },
+  {
+    sectionId: "grade7-biology-reproduction-elementary",
+    quiz: [
+      { question: "What is reproduction?", options: ["Food making", "Producing offspring", "Breathing", "Movement"], answer: "Producing offspring" },
+      { question: "What is seed dispersal?", options: ["Plant growth", "Seed spreading", "Root formation", "Leaf production"], answer: "Seed spreading" },
+      { question: "Which plant reproduces by seeds?", options: ["Moss", "Fern", "Mango", "Algae"], answer: "Mango" }
+    ]
+  }
+];
+///============================================================================================================
+
+
+
+ const scienceContent = [
+  {
+    id: "grade7-physics-motion-types-elementary",
+    title: "Types of Motion (Elementary)",
+    content: "Motion describes how objects change position over time. Uniform motion occurs when an object moves at a constant speed in a straight line, like a train cruising steadily. Non-uniform motion involves changing speed or direction, such as a car accelerating or turning. Velocity combines speed and direction, so a car moving north at 60 km/h has a specific velocity. Displacement measures the shortest path from start to end, unlike distance, which may include detours. For example, walking 5 meters east from a tree is displacement. Understanding motion types helps predict object behavior in real-world scenarios like traffic or sports."
+  },
+  {
+    id: "grade7-physics-simple-machines-elementary",
+    title: "Simple Machines (Elementary)",
+    content: "Simple machines make work easier by reducing effort or changing force direction. A lever, like a seesaw, uses a fulcrum to lift heavy objects with less force. Pulleys, found in flagpoles, redirect force to lift loads. Inclined planes, such as ramps, allow heavy items to be moved with less effort. Wedges, like knives, split or cut materials. Screws hold objects tightly, and wheels reduce friction for movement. Each machine multiplies human effort, making tasks like lifting, cutting, or moving efficient. Simple machines are foundational in tools and complex machinery used daily."
+  },
+  {
+    id: "grade7-physics-light-refraction-elementary",
+    title: "Light and Refraction (Elementary)",
+    content: "Refraction is the bending of light as it passes between mediums, like air to water, due to changes in light’s speed. This makes a straw in water appear bent. Glass slows light more than water, causing greater bending. Lenses and prisms use refraction to focus or split light, as in glasses or rainbows. Unlike reflection, where light bounces off surfaces, refraction alters light’s path. Understanding refraction explains optical phenomena, like why pools appear shallower. It’s crucial in designing optical devices, such as microscopes, telescopes, and cameras, which rely on precise light manipulation."
+  },
+  {
+    id: "grade7-physics-circuits-elementary",
+    title: "Electric Circuits (Elementary)",
+    content: "Electric circuits allow current to flow through a path of conductors, powered by a source like a battery. In a series circuit, current follows a single path, so if one component, like a bulb, fails, the entire circuit stops. Voltage, measured in volts, drives the current, while conductors like copper wires allow flow. Insulators, like rubber, prevent unwanted flow. Circuits power devices like lamps and fans. Understanding circuits helps design safe electrical systems and troubleshoot issues, such as fixing a broken light string, by ensuring proper connections and component functionality."
+  },
+  {
+    id: "grade7-physics-energy-forms-elementary",
+    title: "Forms of Energy (Elementary)",
+    content: "Energy is the ability to do work and exists in various forms. Kinetic energy is the energy of motion, like a moving car. Potential energy is stored energy, such as water behind a dam. Chemical energy in fuels like coal releases heat when burned. Heat, light, and sound are other forms. Energy transforms, like when a battery’s chemical energy becomes light in a bulb. Renewable sources, like solar, are sustainable, unlike coal. Understanding energy forms helps in conserving resources and designing efficient systems, such as solar panels or wind turbines, for everyday use."
+  },
+  {
+    id: "grade7-physics-sound-elementary",
+    title: "Sound (Elementary)",
+    content: "Sound is produced by vibrations traveling as waves through mediums like air, water, or solids. Solids transmit sound fastest because their particles are closely packed. Pitch depends on vibration frequency—higher frequency means higher pitch, like a whistle. Amplitude affects loudness; larger vibrations create louder sounds. Sound cannot travel in a vacuum, unlike light. In daily life, sound is crucial for communication, music, and warnings, like sirens. Understanding sound helps design better acoustics in auditoriums or noise-canceling headphones, and explains phenomena like echoes in caves or why voices sound different underwater."
+  },
+  {
+    id: "grade7-physics-gravity-elementary",
+    title: "Gravity (Elementary)",
+    content: "Gravity is a pull force that attracts objects toward each other, like Earth pulling objects downward. It depends on mass and distance—larger masses or closer objects have stronger gravity. For example, Earth’s gravity keeps us grounded, while the Moon’s weaker gravity allows higher jumps. Gravity causes objects to fall and planets to orbit the Sun. It’s different from friction or magnetism. Understanding gravity helps explain natural phenomena, like tides caused by the Moon, and is essential in fields like astronomy and engineering, such as designing satellites or predicting planetary motion."
+  },
+  {
+    id: "grade7-physics-pressure-elementary",
+    title: "Pressure (Elementary)",
+    content: "Pressure is the force applied per unit area, measured in pascals. A sharp knife exerts high pressure because force is concentrated on a small area, making cutting easier. In liquids, pressure increases with depth, which is why divers feel more pressure underwater. In gases, pressure rises when compressed, like in a tire. Atmospheric pressure affects weather; low pressure often brings rain. Understanding pressure is vital in designing tools, vehicles, and structures, like dams that withstand water pressure or airplanes that balance air pressure. It also explains daily phenomena, like drinking through a straw."
+  },
+  {
+    id: "grade7-physics-friction-elementary",
+    title: "Friction (Elementary)",
+    content: "Friction is a force that opposes motion between surfaces, like shoes gripping the ground. Rough surfaces, like sandpaper, create more friction than smooth ones, like glass. Friction slows objects, generates heat, and wears out materials, like tires. It can be reduced with lubricants, like oil in engines, or increased for grip, like rubber soles. While friction is essential for walking or braking, excessive friction wastes energy. Understanding friction helps design efficient machines, improve safety in vehicles, and create sports equipment, like grippy gloves, ensuring better performance and durability in various applications."
+  },
+  {
+    id: "grade7-physics-magnets-elementary",
+    title: "Magnets and Magnetism (Elementary)",
+    content: "Magnetism is a force that attracts or repels objects, strongest at a magnet’s poles. Unlike poles (north and south) attract, while like poles repel. Magnetic fields are invisible areas where this force acts, strongest near the magnet. Iron and steel are magnetic, unlike wood or plastic. Magnets are used in compasses, motors, and MRI machines. Earth itself is a giant magnet, guiding compass needles. Understanding magnetism helps explain natural phenomena, like Earth’s magnetic field protecting us from solar radiation, and enables technologies like magnetic locks and high-speed maglev trains."
+  },
+  {
+    id: "grade7-chemistry-elements-elementary",
+    title: "Elements and Periodic Table (Elementary)",
+    content: "Elements are pure substances with one type of atom, like oxygen or carbon. The periodic table organizes 118 known elements by properties, with symbols like C for carbon or Fe for iron. Each element has unique characteristics; metals like copper conduct electricity, while non-metals like sulfur do not. Elements combine to form compounds, like water (H2O). They are the building blocks of all matter, from air to living organisms. Understanding elements helps in chemistry, explaining reactions, and in industries, like using aluminum for lightweight aircraft or gold in electronics due to its conductivity."
+  },
+  {
+    id: "grade7-chemistry-compounds-elementary",
+    title: "Compounds (Elementary)",
+    content: "Compounds are substances formed when two or more elements chemically combine, like water (H2O) from hydrogen and oxygen. Unlike mixtures, compounds have fixed ratios and unique properties; water is a liquid, unlike its gaseous elements. Compounds are represented by formulas, like CO2 for carbon dioxide. They form through chemical reactions and are found in everyday substances, like salt (NaCl) or sugar (C12H22O11). Understanding compounds helps explain chemical behavior, like why baking soda fizzes with vinegar, and supports applications in medicine, food production, and materials science, such as creating durable plastics or fertilizers."
+  },
+  {
+    id: "grade7-chemistry-changes-elementary",
+    title: "Physical and Chemical Changes (Elementary)",
+    content: "Physical changes alter a substance’s form without creating new substances, like melting ice into water or cutting paper. Chemical changes produce new substances, like burning wood into ash and gases or rusting iron. Signs of chemical change include color change, gas production, or heat. For example, cooking an egg creates new substances, unlike freezing water. Understanding these changes helps in daily life, like preserving food (physical) or cooking (chemical), and in industries, like recycling (physical separation) or manufacturing chemicals for medicines, ensuring safe and efficient processes."
+  },
+  {
+    id: "grade7-chemistry-acids-bases-elementary",
+    title: "Acids and Bases (Elementary)",
+    content: "Acids and bases are chemical opposites with distinct properties. Acids, like lemon juice, taste sour and turn blue litmus paper red, with a pH below 7. Bases, like soap, feel slippery, taste bitter, and turn red litmus blue, with a pH above 7. Neutral substances, like water, have a pH of 7. Acids and bases react to form salts and water, like vinegar and baking soda producing carbon dioxide. Understanding acids and bases is crucial for chemistry, agriculture (soil pH), and daily life, like using antacids to neutralize stomach acid."
+  },
+  {
+    id: "grade7-chemistry-solutions-elementary",
+    title: "Solutions (Elementary)",
+    content: "A solution is a uniform mixture where a solute dissolves in a solvent. In saltwater, salt is the solute, and water is the solvent. Solutions can be liquids, like sugar water, or gases, like air. Solutes dissolve better in warm solvents or when stirred. Unlike suspensions, solutions don’t settle. They are vital in daily life, like beverages, medicines, and cleaning products. Understanding solutions helps in chemistry, explaining how substances mix, and in industries, like creating syrups or alloys. It also aids environmental science, such as studying ocean salinity or pollution dispersion."
+  },
+  {
+    id: "grade7-chemistry-metals-elementary",
+    title: "Metals (Elementary)",
+    content: "Metals are shiny, malleable, and conductive elements, like copper, iron, and gold. They conduct heat and electricity, making them ideal for wires and cookware. Metals are strong yet bendable, used in bridges and vehicles. Unlike non-metals, they form positive ions by losing electrons. Found on the periodic table’s left, metals like aluminum are lightweight for aircraft, while gold resists corrosion in jewelry. Understanding metals helps in engineering, like designing durable structures, and in chemistry, explaining reactions like rusting. Their properties make them essential in technology, construction, and renewable energy systems like solar panels."
+  },
+  {
+    id: "grade7-chemistry-nonmetals-elementary",
+    title: "Non-Metals (Elementary)",
+    content: "Non-metals, like carbon, nitrogen, and oxygen, lack metallic luster and are poor conductors of heat and electricity. They are brittle when solid, like sulfur, and found on the periodic table’s right. Non-metals are essential for life; carbon forms organic compounds, and oxygen supports respiration. Unlike metals, they gain electrons to form negative ions. Used in fertilizers (nitrogen) and fuels (carbon), non-metals are vital in chemistry and biology. Understanding non-metals helps explain chemical reactions, like combustion, and their role in ecosystems, medicines, and industries, such as producing plastics or semiconductors."
+  },
+  {
+    id: "grade7-chemistry-air-composition-elementary",
+    title: "Composition of Air (Elementary)",
+    content: "Air is a mixture of gases, primarily nitrogen (78%) and oxygen (21%), with trace gases like carbon dioxide (0.04%) and argon. Oxygen supports combustion and respiration, while nitrogen dilutes air and is used in fertilizers. Carbon dioxide is vital for photosynthesis. Air’s composition affects climate and health; pollution increases harmful gases. Understanding air composition helps in environmental science, like monitoring pollution or studying greenhouse effects. It’s crucial in industries, like producing oxygen for medical use or nitrogen for food preservation, and in daily life, ensuring clean air for breathing."
+  },
+  {
+    id: "grade7-biology-photosynthesis-elementary",
+    title: "Photosynthesis (Elementary)",
+    content: "Photosynthesis is the process by which plants make food using sunlight, carbon dioxide, and water. Occurring in leaves’ chloroplasts, chlorophyll absorbs light to produce glucose for energy and oxygen as a byproduct. This process sustains plants and supplies oxygen for life. Factors like light intensity and water availability affect its rate. Photosynthesis supports food chains, as plants are primary producers. Understanding it helps in agriculture, improving crop yields, and environmental science, addressing carbon dioxide levels. It’s a cornerstone of biology, explaining how energy flows from the Sun to living organisms."
+  },
+  {
+    id: "grade7-biology-respiration-elementary",
+    title: "Respiration (Elementary)",
+    content: "Respiration is the process by which organisms release energy from food, using oxygen to break down glucose. It occurs in cells’ mitochondria, producing carbon dioxide, water, and energy. In humans, lungs take in oxygen, and blood transports it to cells. Plants also respire, using oxygen at night. Respiration is vital for growth, movement, and survival. Unlike photosynthesis, it occurs continuously. Understanding respiration helps in biology, explaining energy needs, and in medicine, addressing breathing disorders. It also connects to environmental science, as respiration releases carbon dioxide, impacting the carbon cycle."
+  },
+  {
+    id: "grade7-biology-digestion-elementary",
+    title: "Digestion (Elementary)",
+    content: "Digestion breaks down food into nutrients for energy, growth, and repair. It begins in the mouth, where saliva’s enzyme, amylase, digests starch. The stomach uses acids and enzymes like pepsin to break down proteins. The small intestine absorbs nutrients, aided by the liver and pancreas. Undigested waste exits via the large intestine. A balanced diet supports digestion. Understanding digestion helps in nutrition, promoting healthy eating, and in medicine, treating digestive disorders. It’s key in biology, explaining how organisms convert food into usable forms, ensuring survival and proper functioning."
+  },
+  {
+    id: "grade7-biology-circulation-elementary",
+    title: "Circulation (Elementary)",
+    content: "Circulation transports blood, carrying oxygen, nutrients, and wastes, via the heart and blood vessels. The heart pumps blood through arteries, like the aorta, to organs, and veins return it. Red blood cells carry oxygen, while white cells fight infections. Capillaries exchange materials between blood and tissues. A healthy heart ensures efficient circulation. Understanding circulation helps in biology, explaining nutrient delivery, and in medicine, addressing heart diseases. It’s vital for fitness, as exercise strengthens the heart, and connects to respiration, as lungs oxygenate blood, supporting all body functions."
+  },
+  {
+    id: "grade7-biology-excretion-elementary",
+    title: "Excretion (Elementary)",
+    content: "Excretion removes waste products from the body to maintain health. Kidneys filter blood, producing urine containing urea, excess water, and salts. The liver converts toxins into excretable forms. Lungs expel carbon dioxide during breathing, and skin releases sweat. Proper excretion prevents toxin buildup, ensuring body balance. A balanced diet and hydration support kidney function. Understanding excretion helps in biology, explaining waste management, and in medicine, treating kidney issues. It connects to environmental science, as human waste impacts water quality, emphasizing the need for sanitation and clean water systems."
+  },
+  {
+    id: "grade7-biology-ecosystems-elementary",
+    title: "Ecosystems (Elementary)",
+    content: "An ecosystem includes living organisms, like plants and animals, interacting with non-living components, like air and water. Producers, like plants, make food via photosynthesis. Consumers, like animals, eat producers or other consumers. Decomposers, like fungi, break down waste, recycling nutrients. Food chains show energy flow from producers to consumers. Ecosystems, like forests or ponds, maintain balance unless disrupted by pollution. Understanding ecosystems helps in biology, explaining species interactions, and in environmental science, promoting conservation. It’s key for sustainable practices, like protecting habitats to preserve biodiversity and ecosystem services."
+  },
+  {
+    id: "grade7-biology-microorganisms-elementary",
+    title: "Microorganisms (Elementary)",
+    content: "Microorganisms are tiny organisms, like bacteria, fungi, and viruses, visible only under a microscope. Some, like bacteria in yogurt, are beneficial, aiding digestion or decomposing waste. Others, like disease-causing bacteria, harm health. Viruses cause illnesses like the flu. Microorganisms live in soil, water, and bodies. Antibiotics fight bacterial infections but not viruses. Understanding microorganisms helps in biology, explaining their role in ecosystems, and in medicine, developing vaccines. It’s crucial in food production, like fermentation, and environmental science, as microbes clean pollutants, supporting sustainable practices and health."
+  },
+  {
+    id: "grade7-envsci-water-cycle-elementary",
+    title: "Water Cycle (Elementary)",
+    content: "The water cycle describes water’s continuous movement through Earth’s systems. Evaporation turns liquid water into vapor, rising into the air. Condensation forms clouds as vapor cools. Precipitation, like rain or snow, returns water to Earth. Transpiration, water release by plants, adds to the cycle. Water collects in rivers, lakes, and oceans, restarting the process. The cycle maintains water supply for life. Understanding it helps in environmental science, addressing water scarcity, and in agriculture, optimizing irrigation. It’s vital for predicting weather and managing resources, ensuring clean water availability."
+  },
+  {
+    id: "grade7-envsci-pollution-elementary",
+    title: "Pollution (Elementary)",
+    content: "Pollution introduces harmful substances into the environment, affecting air, water, and soil. Air pollution from factories or vehicles harms lungs and climate. Water pollution, like oil spills or sewage, endangers aquatic life. Soil pollution from chemicals reduces fertility. Reducing waste, recycling, and using sewage treatment help control pollution. Planting trees improves air quality. Understanding pollution helps in environmental science, promoting clean practices, and in health, preventing diseases. It’s crucial for policy, like enforcing emission standards, and daily life, encouraging habits like reducing plastic use to protect ecosystems and ensure sustainability."
+  },
+  {
+    id: "grade7-envsci-conservation-elementary",
+    title: "Conservation (Elementary)",
+    content: "Conservation protects natural resources, like water, forests, and energy, for future use. Rainwater harvesting saves water, while afforestation restores forests. Renewable energy, like solar or wind, reduces reliance on coal, cutting pollution. Recycling conserves materials, reducing waste. Overusing resources depletes them, harming ecosystems. Conservation ensures biodiversity and clean air. Understanding it helps in environmental science, promoting sustainable practices, and in daily life, encouraging habits like turning off lights. It’s vital for policy, like protecting wildlife, and technology, developing green solutions, ensuring a balanced environment for all living organisms."
+  },
+  {
+    id: "grade7-biology-reproduction-elementary",
+    title: "Reproduction in Plants (Elementary)",
+    content: "Reproduction produces new organisms, ensuring species survival. In plants, reproduction occurs through seeds, spores, or cuttings. Seed dispersal, by wind, animals, or water, spreads seeds to new locations, like mango seeds carried by birds. Pollination transfers pollen to flowers, enabling seed formation. Plants like mangoes reproduce via seeds, unlike ferns using spores. Environmental factors, like water and sunlight, affect reproduction. Understanding reproduction helps in biology, explaining plant diversity, and in agriculture, improving crop production. It’s key for conservation, preserving plant species, and gardening, ensuring healthy plant growth."
+  }
+];
+
+
+
+//============================================================================================
+
+
+
+
     const mcqData = [
-      ["Science", "Measurement of Physical Quantities", "Derived unit", "Elementary", "What is a derived unit?", ["A single unit like meter", "A combination of base units", "A prefix like kilo", "A tool like a ruler"], "Derived units combine base units, like speed (m/s), not single units, prefixes, or tools.", "A combination of base units"],
-      ["Science", "Measurement of Physical Quantities", "Prefix centi-", "Elementary", "What does the prefix 'centi-' mean?", ["1000", "1/100", "100", "1/1000"], "Centi- means 1/100, e.g., 1 centimeter = 1/100 meter.", "1/100"],
-      // ... (143 more entries)
-      ["Science", "Current Affairs", "Science achievement", "Elementary", "What is a recent science achievement?", ["Building dams", "Gaganyaan mission", "Making roads", "Growing crops"], "Gaganyaan is a recent science achievement.", "Gaganyaan mission"]
-    ];
+  ["Science", "Motion Types", "Definition", "Elementary", "What is uniform motion?", ["Constant speed", "Changing speed", "Circular path", "No motion"], "Uniform motion is constant speed in a straight line, like a train.", "Constant speed"],
+  ["Science", "Motion Types", "Examples", "Elementary", "Which is non-uniform motion?", ["Train on tracks", "Car accelerating", "Pendulum swing", "Earth’s rotation"], "Non-uniform motion changes speed or direction, like a car accelerating.", "Car accelerating"],
+  ["Science", "Motion Types", "Velocity", "Elementary", "What is velocity?", ["Speed only", "Speed and direction", "Distance only", "Time only"], "Velocity includes speed and direction, unlike speed alone.", "Speed and direction"],
+  ["Science", "Motion Types", "Measurement", "Elementary", "What measures change in position?", ["Speed", "Displacement", "Time", "Acceleration"], "Displacement measures position change from a reference point.", "Displacement"],
+  ["Science", "Simple Machines", "Types", "Elementary", "Which is a lever?", ["Seesaw", "Wheel", "Ramp", "Screw"], "A seesaw is a lever, using a fulcrum to lift.", "Seesaw"],
+  ["Science", "Simple Machines", "Function", "Elementary", "What does a pulley do?", ["Cut objects", "Lift loads", "Join parts", "Reduce speed"], "Pulleys lift loads by redirecting force.", "Lift loads"],
+  ["Science", "Simple Machines", "Effort", "Elementary", "Which reduces effort?", ["Lever", "Inclined plane", "Pulley", "All of these"], "All simple machines reduce effort for tasks.", "All of these"],
+  ["Science", "Simple Machines", "Types", "Elementary", "What is a wedge used for?", ["Lifting", "Cutting", "Rolling", "Pulling"], "Wedges, like knives, are used for cutting.", "Cutting"],
+  ["Science", "Light Refraction", "Definition", "Elementary", "What is refraction?", ["Bending of light", "Reflection of light", "Absorption", "Emission"], "Refraction bends light between mediums.", "Bending of light"],
+  ["Science", "Light Refraction", "Examples", "Elementary", "Why does a straw in water look bent?", ["Reflection", "Refraction", "Shadow", "Diffraction"], "Refraction bends light, distorting appearance.", "Refraction"],
+  ["Science", "Light Refraction", "Mediums", "Elementary", "Which medium slows light most?", ["Air", "Water", "Glass", "Vacuum"], "Glass slows light more due to density.", "Glass"],
+  ["Science", "Light Refraction", "Applications", "Elementary", "What uses refraction?", ["Mirror", "Lens", "Prism", "Both lens and prism"], "Lenses and prisms refract light for focus or dispersion.", "Both lens and prism"],
+  ["Science", "Circuits", "Types", "Elementary", "What is a series circuit?", ["Single path", "Multiple paths", "No current", "Battery only"], "Series circuits have one current path.", "Single path"],
+  ["Science", "Circuits", "Failure", "Elementary", "If one bulb fails in a series circuit?", ["Others stay on", "All stop", "Circuit reverses", "Voltage increases"], "One failure stops the entire series circuit.", "All stop"],
+  ["Science", "Circuits", "Measurement", "Elementary", "What measures voltage?", ["Ampere", "Ohm", "Volt", "Watt"], "Volt measures electric potential.", "Volt"],
+  ["Science", "Circuits", "Components", "Elementary", "What is a conductor in a circuit?", ["Blocks current", "Allows current", "Stores current", "Emits current"], "Conductors allow current to flow.", "Allows current"],
+  ["Science", "Energy Forms", "Types", "Elementary", "What is kinetic energy?", ["Stored energy", "Motion energy", "Heat energy", "Light energy"], "Kinetic energy is energy of motion.", "Motion energy"],
+  ["Science", "Energy Forms", "Types", "Elementary", "What is potential energy?", ["Energy of motion", "Stored energy", "Sound energy", "Chemical energy"], "Potential energy is stored, like in a raised object.", "Stored energy"],
+  ["Science", "Energy Forms", "Sources", "Elementary", "Which is an energy source?", ["Coal", "Glass", "Plastic", "Sand"], "Coal is a chemical energy source.", "Coal"],
+  ["Science", "Sound", "Definition", "Elementary", "What is sound?", ["Light wave", "Vibration", "Heat wave", "Electric current"], "Sound is vibrations traveling through a medium.", "Vibration"],
+  ["Science", "Sound", "Mediums", "Elementary", "What medium carries sound fastest?", ["Air", "Water", "Solid", "Vacuum"], "Solids transmit sound fastest due to close particles.", "Solid"],
+  ["Science", "Sound", "Properties", "Elementary", "What is pitch related to?", ["Loudness", "Frequency", "Amplitude", "Speed"], "Pitch depends on vibration frequency.", "Frequency"],
+  ["Science", "Gravity", "Definition", "Elementary", "What is gravity?", ["Push force", "Pull force", "Friction", "Magnetism"], "Gravity pulls objects toward each other.", "Pull force"],
+  ["Science", "Gravity", "Factors", "Elementary", "What affects gravitational force?", ["Mass and distance", "Speed and time", "Light and sound", "Heat and pressure"], "Gravity depends on mass and distance.", "Mass and distance"],
+  ["Science", "Gravity", "Effects", "Elementary", "Why do objects fall to Earth?", ["Magnetism", "Gravity", "Friction", "Electricity"], "Gravity pulls objects toward Earth.", "Gravity"],
+  ["Science", "Pressure", "Definition", "Elementary", "What is pressure?", ["Force per area", "Mass per volume", "Speed per time", "Energy per distance"], "Pressure is force divided by area.", "Force per area"],
+  ["Science", "Pressure", "Examples", "Elementary", "Which has high pressure?", ["Sharp knife", "Blunt knife", "Flat surface", "Soft cushion"], "Sharp knives exert high pressure due to small area.", "Sharp knife"],
+  ["Science", "Pressure", "Units", "Elementary", "What unit measures pressure?", ["Newton", "Pascal", "Joule", "Watt"], "Pascal measures pressure.", "Pascal"],
+  ["Science", "Friction", "Effects", "Elementary", "What does friction do?", ["Increases speed", "Opposes motion", "Generates light", "Stores energy"], "Friction opposes motion between surfaces.", "Opposes motion"],
+  ["Science", "Friction", "Surfaces", "Elementary", "Which surface has more friction?", ["Smooth glass", "Rough sandpaper", "Wet floor", "Polished wood"], "Rough sandpaper creates more friction.", "Rough sandpaper"],
+  ["Science", "Friction", "Reduction", "Elementary", "How can friction be reduced?", ["Add weight", "Use oil", "Increase speed", "Heat surface"], "Oil reduces friction by lubricating surfaces.", "Use oil"],
+  ["Science", "Magnets", "Poles", "Elementary", "What do unlike poles do?", ["Repel", "Attract", "Align", "Neutralize"], "Unlike poles attract each other.", "Attract"],
+  ["Science", "Magnets", "Fields", "Elementary", "What is a magnetic field?", ["Light area", "Force area", "Heat area", "Sound area"], "Magnetic fields are areas of magnetic force.", "Force area"],
+  ["Science", "Magnets", "Materials", "Elementary", "Which material is magnetic?", ["Wood", "Iron", "Plastic", "Glass"], "Iron is attracted to magnets.", "Iron"],
+  ["Science", "Elements", "Definition", "Elementary", "What is an element?", ["Mixture", "Pure substance", "Compound", "Solution"], "Elements are pure substances with one atom type.", "Pure substance"],
+  ["Science", "Elements", "Examples", "Elementary", "Which is an element?", ["Water", "Oxygen", "Salt", "Sugar"], "Oxygen is an element; others are compounds.", "Oxygen"],
+  ["Science", "Elements", "Symbols", "Elementary", "What is the symbol for carbon?", ["C", "Ca", "Co", "Cr"], "Carbon’s symbol is C.", "C"],
+  ["Science", "Elements", "Periodic Table", "Elementary", "How many elements in periodic table?", ["50", "100", "118", "150"], "The periodic table has 118 known elements.", "118"],
+  ["Science", "Compounds", "Definition", "Elementary", "What is a compound?", ["Single atom", "Two or more elements", "Mixture", "Pure element"], "Compounds combine two or more elements chemically.", "Two or more elements"],
+  ["Science", "Compounds", "Examples", "Elementary", "Which is a compound?", ["Oxygen", "Water", "Iron", "Gold"], "Water (H2O) is a compound.", "Water"],
+  ["Science", "Compounds", "Formulas", "Elementary", "What is water’s formula?", ["H2O", "CO2", "O2", "H2"], "Water’s chemical formula is H2O.", "H2O"],
+  ["Science", "Changes", "Types", "Elementary", "What is a chemical change?", ["Shape change", "New substance", "Size change", "State change"], "Chemical changes produce new substances.", "New substance"],
+  ["Science", "Changes", "Examples", "Elementary", "Which is a physical change?", ["Burning wood", "Melting ice", "Rusting", "Digesting food"], "Melting ice is a physical change.", "Melting ice"],
+  ["Science", "Changes", "Indicators", "Elementary", "What indicates a chemical change?", ["Color change", "Shape change", "Size change", "Weight change"], "Color change often signals a chemical change.", "Color change"],
+  ["Science", "Acids and Bases", "Properties", "Elementary", "What is an acid’s taste?", ["Sweet", "Sour", "Bitter", "Salty"], "Acids taste sour, like lemon juice.", "Sour"],
+  ["Science", "Acids and Bases", "Indicators", "Elementary", "What turns blue litmus red?", ["Acid", "Base", "Neutral", "Salt"], "Acids turn blue litmus red.", "Acid"],
+  ["Science", "Acids and Bases", "Properties", "Elementary", "What is a base’s feel?", ["Slippery", "Sticky", "Rough", "Dry"], "Bases feel slippery, like soap.", "Slippery"],
+  ["Science", "Acids and Bases", "pH", "Elementary", "What is pH of neutral?", ["0", "7", "14", "10"], "Neutral substances have a pH of 7.", "7"],
+  ["Science", "Solutions", "Definition", "Elementary", "What is a solution?", ["Pure substance", "Uniform mixture", "Compound", "Element"], "Solutions are uniform mixtures.", "Uniform mixture"],
+  ["Science", "Solutions", "Components", "Elementary", "What is the solvent in saltwater?", ["Salt", "Water", "Sugar", "Sand"], "Water is the solvent in saltwater.", "Water"],
+  ["Science", "Solutions", "Components", "Elementary", "What is a solute?", ["Dissolving substance", "Dissolved substance", "Container", "Mixture"], "Solute is the dissolved substance.", "Dissolved substance"],
+  ["Science", "Metals", "Properties", "Elementary", "Which is a property of metals?", ["Brittle", "Shiny", "Non-conductive", "Soft"], "Metals are shiny and lustrous.", "Shiny"],
+  ["Science", "Metals", "Examples", "Elementary", "Which is a metal?", ["Sulfur", "Copper", "Carbon", "Oxygen"], "Copper is a metal.", "Copper"],
+  ["Science", "Metals", "Conductivity", "Elementary", "What do metals conduct?", ["Light", "Heat and electricity", "Sound", "Pressure"], "Metals conduct heat and electricity.", "Heat and electricity"],
+  ["Science", "Non-Metals", "Examples", "Elementary", "Which is a non-metal?", ["Iron", "Nitrogen", "Aluminum", "Silver"], "Nitrogen is a non-metal.", "Nitrogen"],
+  ["Science", "Non-Metals", "Properties", "Elementary", "What is a non-metal property?", ["Shiny", "Brittle", "Conductive", "Malleable"], "Non-metals are brittle when solid.", "Brittle"],
+  ["Science", "Non-Metals", "Importance", "Elementary", "Which non-metal is essential for life?", ["Carbon", "Helium", "Neon", "Argon"], "Carbon forms organic compounds.", "Carbon"],
+  ["Science", "Air Composition", "Gases", "Elementary", "What gas is most abundant in air?", ["Oxygen", "Nitrogen", "Carbon dioxide", "Argon"], "Nitrogen makes up 78% of air.", "Nitrogen"],
+  ["Science", "Air Composition", "Functions", "Elementary", "What gas supports combustion?", ["Nitrogen", "Oxygen", "Carbon dioxide", "Helium"], "Oxygen supports burning and respiration.", "Oxygen"],
+  ["Science", "Air Composition", "Percentage", "Elementary", "What is air’s approximate oxygen percentage?", ["21%", "78%", "1%", "10%"], "Oxygen is about 21% of air.", "21%"],
+  ["Science", "Photosynthesis", "Definition", "Elementary", "What is photosynthesis?", ["Breathing", "Food making", "Digestion", "Movement"], "Photosynthesis is plants making food.", "Food making"],
+  ["Science", "Photosynthesis", "Inputs", "Elementary", "What gas is used in photosynthesis?", ["Oxygen", "Carbon dioxide", "Nitrogen", "Hydrogen"], "Plants use carbon dioxide.", "Carbon dioxide"],
+  ["Science", "Photosynthesis", "Location", "Elementary", "Where does photosynthesis occur?", ["Roots", "Leaves", "Stem", "Flowers"], "Leaves contain chlorophyll for photosynthesis.", "Leaves"],
+  ["Science", "Photosynthesis", "Outputs", "Elementary", "What does photosynthesis produce?", ["Glucose", "Water", "Carbon dioxide", "Nitrogen"], "Photosynthesis produces glucose for energy.", "Glucose"],
+  ["Science", "Respiration", "Definition", "Elementary", "What is respiration?", ["Food making", "Energy release", "Water cycle", "Movement"], "Respiration releases energy from food.", "Energy release"],
+  ["Science", "Respiration", "Inputs", "Elementary", "What gas is used in respiration?", ["Carbon dioxide", "Oxygen", "Nitrogen", "Helium"], "Oxygen is used in respiration.", "Oxygen"],
+  ["Science", "Respiration", "Outputs", "Elementary", "What does respiration produce?", ["Glucose", "Carbon dioxide", "Oxygen", "Water"], "Respiration produces carbon dioxide.", "Carbon dioxide"],
+  ["Science", "Digestion", "Definition", "Elementary", "What is digestion?", ["Breathing", "Breaking down food", "Circulation", "Movement"], "Digestion breaks down food into nutrients.", "Breaking down food"],
+  ["Science", "Digestion", "Location", "Elementary", "Where does digestion begin?", ["Stomach", "Mouth", "Intestine", "Liver"], "Digestion starts in the mouth with saliva.", "Mouth"],
+  ["Science", "Digestion", "Enzymes", "Elementary", "What enzyme in saliva helps digestion?", ["Amylase", "Pepsin", "Lipase", "Trypsin"], "Amylase digests starch in the mouth.", "Amylase"],
+  ["Science", "Circulation", "Function", "Elementary", "What does the heart pump?", ["Water", "Blood", "Air", "Food"], "The heart pumps blood to organs.", "Blood"],
+  ["Science", "Circulation", "Components", "Elementary", "What carries oxygen in blood?", ["Plasma", "Red blood cells", "White blood cells", "Platelets"], "Red blood cells carry oxygen.", "Red blood cells"],
+  ["Science", "Circulation", "Vessels", "Elementary", "What is the main artery?", ["Vein", "Aorta", "Capillary", "Vena cava"], "The aorta is the main artery.", "Aorta"],
+  ["Science", "Excretion", "Definition", "Elementary", "What is excretion?", ["Food intake", "Waste removal", "Breathing", "Movement"], "Excretion removes body waste.", "Waste removal"],
+  ["Science", "Excretion", "Organs", "Elementary", "Which organ filters blood?", ["Liver", "Kidney", "Lungs", "Heart"], "Kidneys filter blood to form urine.", "Kidney"],
+  ["Science", "Excretion", "Waste", "Elementary", "What is excreted as urine?", ["Sugar", "Urea", "Oxygen", "Carbon dioxide"], "Urea is a waste product in urine.", "Urea"],
+  ["Science", "Ecosystems", "Definition", "Elementary", "What is an ecosystem?", ["Single organism", "Community and environment", "Plants only", "Animals only"], "Ecosystems include living and non-living interactions.", "Community and environment"],
+  ["Science", "Ecosystems", "Roles", "Elementary", "What is a producer?", ["Eats others", "Makes food", "Decomposes", "Hunts"], "Producers make food via photosynthesis.", "Makes food"],
+  ["Science", "Ecosystems", "Roles", "Elementary", "What is a decomposer?", ["Makes food", "Eats others", "Breaks down waste", "Stores energy"], "Decomposers break down waste.", "Breaks down waste"],
+  ["Science", "Ecosystems", "Energy", "Elementary", "What shows energy flow?", ["Food chain", "Water cycle", "Air cycle", "Rock cycle"], "Food chains show energy flow.", "Food chain"],
+  ["Science", "Microorganisms", "Definition", "Elementary", "What are microorganisms?", ["Large animals", "Tiny organisms", "Plants", "Rocks"], "Microorganisms are tiny, like bacteria.", "Tiny organisms"],
+  ["Science", "Microorganisms", "Examples", "Elementary", "Which is a microorganism?", ["Ant", "Bacteria", "Tree", "Fish"], "Bacteria are microorganisms.", "Bacteria"],
+  ["Science", "Microorganisms", "Effects", "Elementary", "What do some microorganisms cause?", ["Rain", "Diseases", "Light", "Heat"], "Some microorganisms cause diseases.", "Diseases"],
+  ["Science", "Water Cycle", "Definition", "Elementary", "What is the water cycle?", ["Water movement", "Water freezing", "Water boiling", "Water dissolving"], "The water cycle moves water on Earth.", "Water movement"],
+  ["Science", "Water Cycle", "Processes", "Elementary", "What forms clouds?", ["Evaporation", "Condensation", "Precipitation", "Transpiration"], "Condensation forms clouds from vapor.", "Condensation"],
+  ["Science", "Water Cycle", "Examples", "Elementary", "What is precipitation?", ["Rain or snow", "Cloud formation", "Evaporation", "Groundwater"], "Precipitation is rain or snow.", "Rain or snow"],
+  ["Science", "Water Cycle", "Processes", "Elementary", "What is transpiration?", ["Rainfall", "Plant water release", "Cloud formation", "Groundwater flow"], "Transpiration is water release by plants.", "Plant water release"],
+  ["Science", "Pollution", "Definition", "Elementary", "What is pollution?", ["Clean air", "Harmful substances", "Pure water", "Healthy soil"], "Pollution introduces harmful substances.", "Harmful substances"],
+  ["Science", "Pollution", "Causes", "Elementary", "What causes air pollution?", ["Trees", "Factories", "Rain", "Wind"], "Factories release pollutants into air.", "Factories"],
+  ["Science", "Pollution", "Solutions", "Elementary", "What reduces water pollution?", ["Dumping waste", "Sewage treatment", "Oil spills", "Plastic use"], "Sewage treatment cleans water.", "Sewage treatment"],
+  ["Science", "Conservation", "Definition", "Elementary", "What is conservation?", ["Resource waste", "Resource protection", "Pollution", "Mining"], "Conservation protects resources.", "Resource protection"],
+  ["Science", "Conservation", "Methods", "Elementary", "What conserves water?", ["Long showers", "Rainwater harvesting", "Leaky taps", "Washing cars"], "Rainwater harvesting saves water.", "Rainwater harvesting"],
+  ["Science", "Conservation", "Energy", "Elementary", "What is renewable energy?", ["Coal", "Solar", "Oil", "Gas"], "Solar energy is renewable.", "Solar"],
+  ["Science", "Reproduction", "Definition", "Elementary", "What is reproduction?", ["Food making", "Producing offspring", "Breathing", "Movement"], "Reproduction produces new organisms.", "Producing offspring"],
+  ["Science", "Reproduction", "Plants", "Elementary", "What is seed dispersal?", ["Plant growth", "Seed spreading", "Root formation", "Leaf production"], "Seed dispersal spreads seeds to new areas.", "Seed spreading"],
+  ["Science", "Reproduction", "Examples", "Elementary", "Which plant reproduces by seeds?", ["Moss", "Fern", "Mango", "Algae"], "Mango plants reproduce via seeds.", "Mango"]
+];
 
-    // Science content (29 sections, unchanged, abbreviated here)
-    const scienceContent = [
-      {
-        id: "grade6-physics-measurement-elementary",
-        title: "Measurement of Physical Quantities (Elementary)",
-        content: "Physical quantities are measured using base and derived units. Base units include meter (length), kilogram (mass), and second (time). Derived units, like speed (m/s), combine base units. Prefixes such as centi- (1/100) and kilo- (1000) modify units. For example, 1 kilometer = 1000 meters, and a car’s speed might be 60 km/h.",
-        quiz: [
-          { question: "What is a derived unit?", options: ["A single unit like meter", "A combination of base units", "A prefix like kilo", "A tool like a ruler"], answer: "A combination of base units" },
-          { question: "What does the prefix 'centi-' mean?", options: ["1000", "1/100", "100", "1/1000"], answer: "1/100" },
-          { question: "How many meters are in 2 kilometers?", options: ["200 meters", "20 meters", "2000 meters", "2 meters"], answer: "2000 meters" },
-          { question: "What unit measures speed?", options: ["Meter", "Kilogram", "Meter per second", "Second"], answer: "Meter per second" },
-          { question: "Which tool measures small lengths accurately?", options: ["Meter stick", "Vernier caliper", "Weighing scale", "Stopwatch"], answer: "Vernier caliper" }
-        ]
-      },
-      // ... (28 more sections)
-      {
-        id: "grade6-current-affairs-elementary",
-        title: "Current Affairs (Elementary)",
-        content: "Recent science achievements include India’s Gaganyaan mission, aiming for human spaceflight, and advancements in green energy. For example, India’s solar power capacity grew to reduce fossil fuel use.",
-        quiz: [
-          { question: "What is the goal of Gaganyaan?", options: ["Moon landing", "Human spaceflight", "Mars mission", "Satellite launch"], answer: "Human spaceflight" },
-          { question: "What does green energy reduce?", options: ["Water use", "Fossil fuel use", "Crop growth", "Population"], answer: "Fossil fuel use" },
-          { question: "What has India expanded?", options: ["Coal power", "Solar power", "Oil production", "Gas mining"], answer: "Solar power" },
-          { question: "What is a recent science achievement?", options: ["Building dams", "Gaganyaan mission", "Making roads", "Growing crops"], answer: "Gaganyaan mission" }
-        ]
-      }
-    ];
+    // Initialize the application
+    document.addEventListener('DOMContentLoaded', () => {
+      try {
+        // Load external data (optional)
+        async function loadExternalData() {
+          try {
+            const response = await fetch('files.json');
+            if (!response.ok) throw new Error('Failed to load files.json');
+            const manifest = await response.json();
+            for (const file of manifest) {
+              const res = await fetch(file.name);
+              if (!res.ok) throw new Error(`Failed to load ${file.name}`);
+              const script = document.createElement('script');
+              script.text = await res.text();
+              document.head.appendChild(script);
+              if (window[file.variable]) {
+                console.log(`Loaded ${file.variable} from ${file.name}`);
+              }
+            }
+          } catch (error) {
+            console.error('Error loading external data:', error);
+          }
+        }
+        // Uncomment to enable external loading
+        // loadExternalData();
 
-    // Progression and state
-    const difficulties = ['beginner', 'elementary', 'intermediate', 'advanced', 'expert'];
-    let currentSectionId = localStorage.getItem('lastSection');
-    if (!currentSectionId || !scienceContent.some(s => s.id === currentSectionId)) {
-      currentSectionId = scienceContent[0].id;
-    }
-    let currentQuestionIndex = 0;
-    let quizAnswers = [];
+        // Validate data
+        if (!Array.isArray(scienceContent) || scienceContent.length !== 29) {
+          throw new Error('scienceContent must have 29 sections');
+        }
+        if (!Array.isArray(quizData) || quizData.length !== 29 || !Array.isArray(mcqData)) {
+          throw new Error('quizData or mcqData invalid or incomplete');
+        }
 
-    // Check if section is accessible
-    function isSectionAccessible(sectionId) {
-      const sectionIndex = scienceContent.findIndex(s => s.id === sectionId);
-      if (sectionIndex === 0) return true;
-      const prevSectionId = scienceContent[sectionIndex - 1].id;
-      const prevScore = localStorage.getItem(`score_${prevSectionId}`);
-      return prevScore !== null && parseFloat(prevScore) >= 70;
-    }
+        // Combine science content and quiz data
+        const sections = scienceContent.map(content => {
+          const quizEntry = quizData.find(q => q.sectionId === content.id);
+          return {
+            id: content.id,
+            title: content.title,
+            content: content.content,
+            quiz: quizEntry ? quizEntry.quiz : []
+          };
+        });
 
-    // Render section
-    function renderSection() {
-      let section = scienceContent.find(s => s.id === currentSectionId);
-      if (!section) {
-        section = scienceContent[0];
-        currentSectionId = section.id;
-      }
+        let currentSection = 0;
+        let scores = JSON.parse(localStorage.getItem('scores')) || Array(sections.length).fill(null);
 
-      if (!isSectionAccessible(currentSectionId)) {
-        document.getElementById('content').innerHTML = `
-          <p class="text-red-500 text-center">Complete the previous section with a score of 70% or higher to unlock this section.</p>
-          <button onclick="goToPreviousSection()" class="mt-4 bg-blue-500 text-white px-4 py-2 rounded mx-auto block">Go to Previous Section</button>
-        `;
-        return;
-      }
+        // Motivational messages
+        const motivationalMessages = [
+          "Great job! Keep learning!",
+          "You're doing amazing! Stay focused!",
+          "Well done! You're getting smarter every day!",
+          "Fantastic effort! Keep it up!",
+          "You're on the right track! Stay curious!"
+        ];
 
-      localStorage.setItem('lastSection', currentSectionId);
+        // Update navigation buttons
+        function updateNavigation(sectionIndex, hasSubmitted = false) {
+          const navDiv = document.getElementById('navigation');
+          if (!navDiv) return;
+          let html = '';
+          if (hasSubmitted) {
+            html += `<button id="retake-btn" class="btn-yellow">Retake Quiz</button>`;
+          }
+          if (sectionIndex > 0) {
+            html += `<button id="prev-btn" class="btn-gray">Previous</button>`;
+          }
+          // Only show "Next" if submitted and score >= 70
+          if (hasSubmitted && sectionIndex < 28 && scores[sectionIndex] >= 70) {
+            html += `<button id="next-btn" class="btn-blue">Next</button>`;
+          }
+          if (sectionIndex === 28) {
+            html += `<button id="complete-btn" class="btn-green">Complete Course</button>`;
+          }
+          navDiv.innerHTML = html;
 
-      document.getElementById('content').innerHTML = `
-        <h2 class="text-2xl font-semibold mb-4">${section.title}</h2>
-        <p class="mb-6">${section.content}</p>
-        <div id="quiz" class="mt-6"></div>
-      `;
-      renderQuizQuestion();
-    }
+          const retakeBtn = document.getElementById('retake-btn');
+          if (retakeBtn) {
+            retakeBtn.addEventListener('click', () => {
+              const form = document.getElementById('quiz-form');
+              if (form) form.reset();
+              document.getElementById('feedback').innerHTML = '';
+              updateNavigation(sectionIndex, false);
+            });
+          }
 
-    // Render quiz question
-    function renderQuizQuestion() {
-      const section = scienceContent.find(s => s.id === currentSectionId);
-      if (currentQuestionIndex >= section.quiz.length) {
-        showQuizResults();
-        return;
-      }
+          const prevBtn = document.getElementById('prev-btn');
+          if (prevBtn) {
+            prevBtn.addEventListener('click', () => {
+              currentSection--;
+              renderSection(currentSection);
+            });
+          }
 
-      const question = section.quiz[currentQuestionIndex];
-      document.getElementById('quiz').innerHTML = `
-        <h3 class="text-xl font-semibold mb-2">Question ${currentQuestionIndex + 1}</h3>
-        <p class="mb-4">${question.question}</p>
-        ${question.options.map((option, index) => `
-          <label class="block mb-2">
-            <input type="radio" name="answer" value="${option}" class="mr-2" onchange="selectAnswer('${option}')">
-            ${option}
-          </label>
-        `).join('')}
-        <button onclick="nextQuestion()" id="nextBtn" class="mt-4 bg-blue-500 text-white px-4 py-2 rounded" disabled>Next</button>
-      `;
-    }
+          const nextBtn = document.getElementById('next-btn');
+          if (nextBtn) {
+            nextBtn.addEventListener('click', () => {
+              // Double-check score before navigating
+              if (scores[sectionIndex] >= 70) {
+                currentSection++;
+                renderSection(currentSection);
+              } else {
+                console.warn('Attempted to navigate without sufficient score');
+              }
+            });
+          }
 
-    // Handle answer selection
-    function selectAnswer(option) {
-      quizAnswers[currentQuestionIndex] = option;
-      document.getElementById('nextBtn').disabled = false;
-    }
+          const completeBtn = document.getElementById('complete-btn');
+          if (completeBtn) {
+            completeBtn.addEventListener('click', () => {
+              document.getElementById('content').innerHTML = `
+                <h2>Congratulations!</h2>
+                <p>You've completed the TNPSC Group 4 Science (Beginner) course!</p>
+                <a href="tnpsc-gr4-home.html" class="btn-blue">Return to Home</a>
+              `;
+            });
+          }
+        }
 
-    // Move to next question
-    function nextQuestion() {
-      currentQuestionIndex++;
-      renderQuizQuestion();
-    }
+        // Render section
+        function renderSection(sectionIndex) {
+          try {
+            if (sectionIndex < 0 || sectionIndex >= sections.length) {
+              console.error('Invalid section index:', sectionIndex);
+              return;
+            }
+            const section = sections[sectionIndex];
+            let html = `
+              <h2>${section.title}</h2>
+              <p class="mt-2">${section.content}</p>
+            `;
+            
+            if (section.quiz.length > 0) {
+              html += `
+                <h3 class="mt-4">Quiz</h3>
+                <form id="quiz-form">
+                  ${section.quiz.map((q, i) => `
+                    <div>
+                      <p>${i + 1}. ${q.question}</p>
+                      ${q.options.map(opt => `
+                        <label>
+                          <input type="radio" name="q${i}" value="${opt}" required>
+                          ${opt}
+                        </label>
+                      `).join('')}
+                    </div>
+                  `).join('')}
+                  <button type="submit" id="submit-btn" class="btn-blue">Submit</button>
+                </form>
+                <div id="feedback"></div>
+              `;
+            } else {
+              html += '<p class="text-red">No quiz available for this section.</p>';
+            }
+            
+            html += `<div id="navigation" class="mt-4"></div>`;
+            
+            console.log('Rendering section', sectionIndex, 'Quiz length:', section.quiz.length);
+            document.getElementById('content').innerHTML = html;
 
-    // Go to previous section
-    function goToPreviousSection() {
-      const currentIndex = scienceContent.findIndex(s => s.id === currentSectionId);
-      if (currentIndex > 0) {
-        currentSectionId = scienceContent[currentIndex - 1].id;
-        currentQuestionIndex = 0;
-        quizAnswers = [];
-        renderSection();
-      }
-    }
+            // Attach listeners
+            const quizForm = document.getElementById('quiz-form');
+            const submitBtn = document.getElementById('submit-btn');
+            console.log('Form found:', !!quizForm, 'Submit button found:', !!submitBtn);
+            
+            if (quizForm) {
+              quizForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const selected = Array.from(quizForm.querySelectorAll('input:checked'));
+                console.log('Submit event triggered, selected answers:', selected.map(input => input.value));
+                if (selected.length === section.quiz.length) {
+                  checkAnswers(sectionIndex);
+                } else {
+                  document.getElementById('feedback').innerHTML = '<p class="text-red">Please answer all questions.</p>';
+                }
+              });
+            } else {
+              console.error('quiz-form not found');
+            }
+            
+            if (submitBtn) {
+              submitBtn.addEventListener('click', () => {
+                console.log('Submit button clicked directly');
+                if (quizForm) quizForm.dispatchEvent(new Event('submit'));
+              });
+            } else {
+              console.error('submit-btn not found');
+            }
 
-    // Go to next section
-    function goToNextSection() {
-      const currentIndex = scienceContent.findIndex(s => s.id === currentSectionId);
-      if (currentIndex < scienceContent.length - 1) {
-        currentSectionId = scienceContent[currentIndex + 1].id;
-        currentQuestionIndex = 0;
-        quizAnswers = [];
-        renderSection();
-      } else {
-        document.getElementById('content').innerHTML = `
-          <p class="text-green-500 text-center">Congratulations! You have completed all sections in the Elementary level.</p>
-        `;
-      }
-    }
+            updateNavigation(sectionIndex, scores[sectionIndex] !== null);
+          } catch (error) {
+            console.error('Error in renderSection:', error);
+            document.getElementById('content').innerHTML = `<p class="text-red">Error rendering section: ${error.message}</p>`;
+          }
+        }
 
-    // Retry current section
-    function retrySection() {
-      currentQuestionIndex = 0;
-      quizAnswers = [];
-      renderSection();
-    }
+        // Check answers
+        function checkAnswers(sectionIndex) {
+          try {
+            console.log('checkAnswers called for section', sectionIndex);
+            const form = document.getElementById('quiz-form');
+            const feedbackDiv = document.getElementById('feedback');
+            if (!form || !feedbackDiv) {
+              console.error('Form or feedback div not found in checkAnswers');
+              return;
+            }
 
-    // Show quiz results
-    function showQuizResults() {
-      const section = scienceContent.find(s => s.id === currentSectionId);
-      let correct = 0;
-      let incorrectAnswers = [];
+            let score = 0;
+            let incorrectFeedback = '';
 
-      // Collect incorrect answers
-      section.quiz.forEach((q, index) => {
-        if (quizAnswers[index] === q.answer) {
-          correct++;
-        } else {
-          const mcqEntry = mcqData.find(m => m[4] === q.question && m[7] === q.answer);
-          incorrectAnswers.push({
-            question: q.question,
-            userAnswer: quizAnswers[index] || "Not answered",
-            correctAnswer: q.answer,
-            explanation: mcqEntry ? mcqEntry[6] : "No explanation available."
+            sections[sectionIndex].quiz.forEach((q, i) => {
+              const selected = form.querySelector(`input[name="q${i}"]:checked`);
+              const isCorrect = selected && selected.value === q.answer;
+              if (isCorrect) score++;
+
+              const mcq = mcqData.find(m => m[4] === q.question && m[7] === q.answer);
+              if (mcq && selected && !isCorrect) {
+                incorrectFeedback += `
+                  <p><strong>${q.question}</strong><br>
+                  Your answer: ${selected.value}<br>
+                  Correct answer: ${q.answer}<br>
+                  Explanation: ${mcq[6]}</p>
+                `;
+              }
+            });
+
+            const percentage = (score / sections[sectionIndex].quiz.length) * 100;
+            scores[sectionIndex] = percentage;
+            localStorage.setItem('scores', JSON.stringify(scores));
+
+            let feedback = `
+              <p>Your score: ${score}/${sections[sectionIndex].quiz.length} (${percentage.toFixed(2)}%)</p>
+              ${percentage >= 70 ? `<p class="text-green">${motivationalMessages[Math.floor(Math.random() * motivationalMessages.length)]}</p>` : '<p class="text-red">You need 70% to proceed. Try again!</p>'}
+            `;
+            if (incorrectFeedback) {
+              feedback += `<h4>Feedback on incorrect answers:</h4>${incorrectFeedback}`;
+            } else if (score === sections[sectionIndex].quiz.length) {
+              feedback += `<p class="text-green">All answers correct! Well done!</p>`;
+            }
+
+            feedbackDiv.innerHTML = feedback;
+            updateNavigation(sectionIndex, true);
+          } catch (error) {
+            console.error('Error in checkAnswers:', error);
+            document.getElementById('content').innerHTML = `<p class="text-red">Error processing answers: ${error.message}</p>`;
+          }
+        }
+
+        // Hamburger menu toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const menu = document.getElementById('menu');
+        if (window.innerWidth <= 768) {
+          menuBtn.classList.remove('hidden');
+          menu.classList.add('hidden');
+          
+          menuBtn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
           });
         }
-      });
-
-      // Generate feedback HTML
-      let feedbackHtml = '<h3 class="text-xl font-semibold mb-4">Incorrect Answers Feedback</h3>';
-      if (incorrectAnswers.length === 0) {
-        feedbackHtml += '<p class="text-green-500">All answers were correct! No feedback needed.</p>';
-      } else {
-        incorrectAnswers.forEach(item => {
-          feedbackHtml += `
-            <div class="mb-4 p-4 bg-red-100 rounded">
-              <p><strong>Question:</strong> ${item.question}</p>
-              <p><strong>Your Answer:</strong> ${item.userAnswer}</p>
-              <p><strong>Correct Answer:</strong> ${item.correctAnswer}</p>
-              <p><strong>Explanation:</strong> ${item.explanation}</p>
-            </div>
-          `;
-        });
+        // Initial render
+        renderSection(currentSection);
+      } catch (error) {
+        console.error('Initialization error:', error);
+        document.getElementById('content').innerHTML = `<p class="text-red">Initialization error: ${error.message}</p>`;
       }
-
-      const score = (correct / section.quiz.length) * 100;
-      localStorage.setItem(`score_${currentSectionId}`, score);
-
-      let message = '';
-      if (score >= 90) {
-        message = 'Excellent!';
-      } else if (score >= 70) {
-        message = 'Good Job!';
-      } else {
-        message = 'Needs to Improve. You have to score at least 70% to move on to the next section.';
-      }
-
-      document.getElementById('content').innerHTML = `
-        <h2 class="text-2xl font-semibold mb-4">${section.title} - Quiz Results</h2>
-        <p class="mb-4">You scored ${correct} out of ${section.quiz.length} (${score.toFixed(2)}%)</p>
-        <p class="mb-4 text-lg font-semibold ${score >= 70 ? 'text-green-500' : 'text-red-500'}">${message}</p>
-        ${feedbackHtml}
-        <div class="mt-6">
-          ${score >= 70 ? `
-            <button onclick="goToNextSection()" class="bg-blue-500 text-white px-4 py-2 rounded mr-4">Go to Next Section</button>
-          ` : `
-            <button onclick="retrySection()" class="bg-yellow-500 text-white px-4 py-2 rounded mr-4">Retry Section</button>
-          `}
-          <button onclick="renderSection()" class="bg-gray-500 text-white px-4 py-2 rounded">Review Content</button>
-        </div>
-      `;
-    }
-
-    // Initialize
-    renderSection();
+    });
   </script>
 </body>
 </html>
