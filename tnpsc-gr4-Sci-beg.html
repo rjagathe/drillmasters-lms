@@ -1,4 +1,339 @@
-const scienceContent = [
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Drillmasters LMS - TNPSC Group 4 Science (Beginner)</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; background-color: #f3f4f6; display: flex; flex-direction: column; min-height: 100vh; }
+    .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 15px; }
+    header { background-color: #2563eb; color: white; padding: 1rem 0; }
+    header h1 { font-size: 1.5rem; font-weight: bold; }
+    header h2 { font-size: 1.125rem; }
+    header .flex { display: flex; justify-content: space-between; align-items: center; }
+    nav { background-color: #1d4ed8; padding: 1rem 0; }
+    nav ul { list-style: none; display: flex; gap: 1rem; }
+    nav a { color: white; text-decoration: none; }
+    nav a:hover { text-decoration: underline; }
+    main { flex-grow: 1; padding: 1rem 0; }
+    #content { background-color: white; padding: 1.5rem; border-radius: 0.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+    footer { background-color: #1f2937; color: white; padding: 1rem 0; margin-top: auto; text-align: center; }
+    footer a { color: white; text-decoration: underline; }
+    button { padding: 0.5rem 1rem; border-radius: 0.25rem; cursor: pointer; }
+    .btn-blue { background-color: #3b82f6; color: white; border: none; }
+    .btn-blue:hover { background-color: #2563eb; }
+    .btn-gray { background-color: #6b7280; color: white; border: none; }
+    .btn-gray:hover { background-color: #4b5563; }
+    .btn-green { background-color: #22c55e; color: white; border: none; }
+    .btn-green:hover { background-color: #16a34a; }
+    .btn-yellow { background-color: #f59e0b; color: white; border: none; }
+    .btn-yellow:hover { background-color: #d97706; }
+    .text-red { color: #ef4444; }
+    .text-green { color: #22c55e; }
+    .hidden { display: none; }
+    #quiz-form { margin-top: 1rem; }
+    #quiz-form div { margin-bottom: 1rem; }
+    #quiz-form p { font-weight: bold; margin-bottom: 0.5rem; }
+    #quiz-form label { display: block; margin: 0.25rem 0; }
+    #quiz-form input[type="radio"] { margin-right: 0.5rem; }
+    #feedback { margin-top: 1rem; }
+    #navigation { margin-top: 1rem; }
+    @media (max-width: 768px) {
+      nav ul { flex-direction: column; gap: 0.5rem; }
+      #menu-btn { display: block; }
+      #menu { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container flex">
+      <div>
+        <h1>TNPSC Group 4 - Science</h1>
+        <h2>Beginner Level</h2>
+      </div>
+      <button id="menu-btn" class="hidden">☰</button>
+    </div>
+    <nav id="menu">
+      <div class="container">
+        <ul>
+          <li><a href="tnpsc-gr4-home.html">TNPSC Group 4 Home</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <div class="container">
+      <div id="content">
+        <p>Loading content...</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>© 2025 Drillmasters LMS. All rights reserved.</p>
+      <p>Contact: <a href="mailto:support@drillmasters.in">support@drillmasters.in</a> | <a href="https://www.drillmasters.in">www.drillmasters.in</a></p>
+    </div>
+  </footer>
+
+  <!-- Embedded JavaScript -->
+  <script>
+    // Data for 29 sections (real data for 1-10, placeholders for 11-29)
+  const quizData = [
+  {
+    sectionId: "grade6-physics-measurement-beginner",
+    quiz: [
+      { question: "What unit is used to measure length?", options: ["Kilogram", "Meter", "Second", "Liter"], answer: "Meter" },
+      { question: "Which tool measures mass?", options: ["Ruler", "Clock", "Weighing scale", "Thermometer"], answer: "Weighing scale" },
+      { question: "What is the unit for time?", options: ["Meter", "Kilogram", "Second", "Celsius"], answer: "Second" },
+      { question: "How long is a typical pencil?", options: ["15 meters", "15 centimeters", "15 kilometers", "15 millimeters"], answer: "15 centimeters" },
+      { question: "What does a clock measure?", options: ["Length", "Mass", "Time", "Volume"], answer: "Time" }
+    ]
+  },
+  {
+    sectionId: "grade6-physics-motion-beginner",
+    quiz: [
+      { question: "What is motion?", options: ["Change in shape", "Change in position", "Change in color", "Change in temperature"], answer: "Change in position" },
+      { question: "What does Newton’s First Law describe?", options: ["Inertia", "Gravity", "Magnetism", "Energy"], answer: "Inertia" },
+      { question: "Why does a ball stop rolling?", options: ["It gets tired", "Friction acts on it", "It loses energy", "It changes shape"], answer: "Friction acts on it" },
+      { question: "An object at rest stays at rest unless?", options: ["It is heated", "A force acts", "It is cooled", "It is painted"], answer: "A force acts" }
+    ]
+  },
+  {
+    sectionId: "grade6-physics-force-beginner",
+    quiz: [
+      { question: "What is a force?", options: ["A sound", "A push or pull", "A color", "A taste"], answer: "A push or pull" },
+      { question: "What is the formula for Newton’s Second Law?", options: ["F = ma", "E = mc²", "P = mv", "V = IR"], answer: "F = ma" },
+      { question: "Why does a heavy cart need more force?", options: ["It is bigger", "It has more mass", "It is faster", "It is slower"], answer: "It has more mass" },
+      { question: "What happens if you increase acceleration?", options: ["Force decreases", "Force increases", "Mass decreases", "Mass increases"], answer: "Force increases" }
+    ]
+  },
+  {
+    sectionId: "grade6-physics-pressure-beginner",
+    quiz: [
+      { question: "What is pressure?", options: ["Force times area", "Force divided by area", "Mass times area", "Mass divided by area"], answer: "Force divided by area" },
+      { question: "Why does a sharp knife cut better?", options: ["It has more force", "It has less area", "It is heavier", "It is longer"], answer: "It has less area" },
+      { question: "If you increase the area, pressure:", options: ["Increases", "Decreases", "Stays the same", "Doubles"], answer: "Decreases" }
+    ]
+  },
+  {
+    sectionId: "grade6-physics-energy-beginner",
+    quiz: [
+      { question: "What is energy?", options: ["A type of force", "Ability to do work", "A color", "A sound"], answer: "Ability to do work" },
+      { question: "What is kinetic energy?", options: ["Stored energy", "Energy of motion", "Heat energy", "Light energy"], answer: "Energy of motion" },
+      { question: "A stretched rubber band has:", options: ["Kinetic energy", "Potential energy", "Sound energy", "Electrical energy"], answer: "Potential energy" },
+      { question: "A moving car has:", options: ["Potential energy", "Kinetic energy", "Chemical energy", "Nuclear energy"], answer: "Kinetic energy" }
+    ]
+  },
+  {
+    sectionId: "grade6-physics-mechanics-beginner",
+    quiz: [
+      { question: "Why do bicycles use wheels?", options: ["To increase friction", "To reduce friction", "To add weight", "To make noise"], answer: "To reduce friction" },
+      { question: "A seesaw balances when:", options: ["Weights are equal", "One side is heavier", "It is moving", "It is painted"], answer: "Weights are equal" },
+      { question: "What helps a car stop?", options: ["Brakes", "Engine", "Wheels", "Horn"], answer: "Brakes" }
+    ]
+  },
+  {
+    sectionId: "grade6-physics-electricity-beginner",
+    quiz: [
+      { question: "What is electricity?", options: ["Flow of water", "Flow of electric charge", "Flow of air", "Flow of light"], answer: "Flow of electric charge" },
+      { question: "What does a circuit need to light a bulb?", options: ["Battery", "Paper", "Cloth", "Wood"], answer: "Battery" },
+      { question: "When does a torch light up?", options: ["Circuit is broken", "Circuit is complete", "Battery is removed", "Wires are cut"], answer: "Circuit is complete" },
+      { question: "What carries electricity in a circuit?", options: ["Wires", "Glass", "Plastic", "Rubber"], answer: "Wires" }
+    ]
+  },
+  {
+    sectionId: "grade6-physics-magnetism-beginner",
+    quiz: [
+      { question: "What does magnetism attract?", options: ["Plastic", "Iron", "Wood", "Paper"], answer: "Iron" },
+      { question: "What happens when like poles of magnets meet?", options: ["They attract", "They repel", "They stick", "They break"], answer: "They repel" },
+      { question: "Why does a compass point north?", options: ["Earth’s gravity", "Earth’s magnetic field", "Earth’s rotation", "Earth’s heat"], answer: "Earth’s magnetic field" },
+      { question: "Unlike poles of a magnet:", options: ["Repel", "Attract", "Spin", "Stop"], answer: "Attract" }
+    ]
+  },
+  {
+    sectionId: "grade6-physics-light-beginner",
+    quiz: [
+      { question: "How does light travel?", options: ["In circles", "In straight lines", "In waves", "In spirals"], answer: "In straight lines" },
+      { question: "What is reflection?", options: ["Light bending", "Light bouncing", "Light stopping", "Light heating"], answer: "Light bouncing" },
+      { question: "Why do we see our face in a mirror?", options: ["Absorption", "Reflection", "Refraction", "Diffusion"], answer: "Reflection" }
+    ]
+  },
+  {
+    sectionId: "grade6-physics-sound-beginner",
+    quiz: [
+      { question: "What is sound?", options: ["A light wave", "A vibration", "A color", "A smell"], answer: "A vibration" },
+      { question: "What does sound need to travel?", options: ["Vacuum", "Medium", "Darkness", "Heat"], answer: "Medium" },
+      { question: "Why do we hear a bell?", options: ["It glows", "It vibrates", "It moves", "It heats"], answer: "It vibrates" }
+    ]
+  },
+  {
+    sectionId: "grade6-physics-heat-beginner",
+    quiz: [
+      { question: "What is heat?", options: ["A form of energy", "A type of light", "A sound", "A smell"], answer: "A form of energy" },
+      { question: "Heat transfers from:", options: ["Cold to hot", "Hot to cold", "Big to small", "Small to big"], answer: "Hot to cold" },
+      { question: "Why does a hot cup of tea cool down?", options: ["Heat moves to air", "Tea evaporates", "Cup breaks", "Tea freezes"], answer: "Heat moves to air" }
+    ]
+  },
+  {
+    sectionId: "grade6-physics-nuclear-beginner",
+    quiz: [
+      { question: "What does nuclear physics study?", options: ["Stars", "Atoms’ nucleus", "Oceans", "Plants"], answer: "Atoms’ nucleus" },
+      { question: "What is nuclear fission?", options: ["Joining atoms", "Splitting atoms", "Heating atoms", "Cooling atoms"], answer: "Splitting atoms" },
+      { question: "What do nuclear power plants produce?", options: ["Water", "Electricity", "Food", "Clothes"], answer: "Electricity" }
+    ]
+  },
+  {
+    sectionId: "grade6-chemistry-elements-beginner",
+    quiz: [
+      { question: "What is an element?", options: ["A mixture", "A pure substance", "A compound", "A solution"], answer: "A pure substance" },
+      { question: "What is a compound?", options: ["One element", "Two or more elements combined", "A gas", "A liquid"], answer: "Two or more elements combined" },
+      { question: "What elements make water?", options: ["Carbon and oxygen", "Hydrogen and oxygen", "Nitrogen and hydrogen", "Iron and oxygen"], answer: "Hydrogen and oxygen" },
+      { question: "Oxygen is an example of:", options: ["Compound", "Element", "Mixture", "Solution"], answer: "Element" }
+    ]
+  },
+  {
+    sectionId: "grade6-chemistry-acids-beginner",
+    quiz: [
+      { question: "What is the pH of an acid?", options: ["Less than 7", "Equal to 7", "More than 7", "Zero"], answer: "Less than 7" },
+      { question: "How does a base feel?", options: ["Sour", "Slippery", "Sticky", "Dry"], answer: "Slippery" },
+      { question: "What is table salt?", options: ["An acid", "A base", "A salt", "An element"], answer: "A salt" },
+      { question: "Lemon juice is an example of:", options: ["Base", "Acid", "Salt", "Compound"], answer: "Acid" }
+    ]
+  },
+  {
+    sectionId: "grade6-chemistry-petroleum-beginner",
+    quiz: [
+      { question: "What are petroleum products made from?", options: ["Water", "Crude oil", "Sand", "Wood"], answer: "Crude oil" },
+      { question: "What is petrol used for?", options: ["Cooking", "Powering cars", "Cleaning", "Drinking"], answer: "Powering cars" },
+      { question: "Which is a petroleum product?", options: ["Sugar", "Kerosene", "Salt", "Milk"], answer: "Kerosene" }
+    ]
+  },
+  {
+    sectionId: "grade6-chemistry-fertilizers-beginner",
+    quiz: [
+      { question: "What do fertilizers provide to plants?", options: ["Water", "Nutrients", "Light", "Air"], answer: "Nutrients" },
+      { question: "What is urea?", options: ["A pesticide", "A fertilizer", "A fuel", "A food"], answer: "A fertilizer" },
+      { question: "Why do farmers use fertilizers?", options: ["To kill pests", "To help plants grow", "To clean soil", "To water plants"], answer: "To help plants grow" }
+    ]
+  },
+  {
+    sectionId: "grade6-chemistry-pesticides-beginner",
+    quiz: [
+      { question: "What do pesticides do?", options: ["Kill pests", "Grow plants", "Clean water", "Make food"], answer: "Kill pests" },
+      { question: "Why do farmers use pesticides?", options: ["To water crops", "To protect crops", "To harvest crops", "To fertilize crops"], answer: "To protect crops" },
+      { question: "What is a pest?", options: ["A helpful insect", "A harmful insect", "A type of plant", "A type of soil"], answer: "A harmful insect" }
+    ]
+  },
+  {
+    sectionId: "grade6-chemistry-metallurgy-beginner",
+    quiz: [
+      { question: "What is metallurgy?", options: ["Study of plants", "Extracting metals", "Making food", "Building houses"], answer: "Extracting metals" },
+      { question: "What is iron extracted from?", options: ["Iron ore", "Water", "Air", "Wood"], answer: "Iron ore" },
+      { question: "What is made from iron?", options: ["Plastic", "Steel", "Glass", "Paper"], answer: "Steel" }
+    ]
+  },
+  {
+    sectionId: "grade6-chemistry-adulterants-beginner",
+    quiz: [
+      { question: "What is a food adulterant?", options: ["A nutrient", "A harmful substance", "A flavor", "A vitamin"], answer: "A harmful substance" },
+      { question: "What might be added to flour?", options: ["Sugar", "Chalk powder", "Salt", "Oil"], answer: "Chalk powder" },
+      { question: "Why is water added to milk harmful?", options: ["It improves taste", "It reduces nutrition", "It makes it sweeter", "It makes it thicker"], answer: "It reduces nutrition" }
+    ]
+  },
+  {
+    sectionId: "grade6-biology-classification-beginner",
+    quiz: [
+      { question: "How are living organisms classified?", options: ["By size", "By groups like plants and animals", "By color", "By weight"], answer: "By groups like plants and animals" },
+      { question: "What do plants do?", options: ["Eat animals", "Make their own food", "Move fast", "Sleep"], answer: "Make their own food" },
+      { question: "A cow is an example of:", options: ["Plant", "Animal", "Mineral", "Machine"], answer: "Animal" },
+      { question: "A mango tree is:", options: ["An animal", "A plant", "A rock", "A cloud"], answer: "A plant" }
+    ]
+  },
+  {
+    sectionId: "grade6-biology-evolution-beginner",
+    quiz: [
+      { question: "What is evolution?", options: ["Change over time", "Staying the same", "Growing bigger", "Moving faster"], answer: "Change over time" },
+      { question: "Why do giraffes have long necks?", options: ["To swim better", "To reach high leaves", "To run faster", "To hide"], answer: "To reach high leaves" },
+      { question: "What helps animals survive in evolution?", options: ["Bright colors", "Useful traits", "Loud sounds", "Heavy weight"], answer: "Useful traits" }
+    ]
+  },
+  {
+    sectionId: "grade6-biology-genetics-beginner",
+    quiz: [
+      { question: "What does genetics study?", options: ["Weather", "Traits from parents", "Rocks", "Stars"], answer: "Traits from parents" },
+      { question: "What carries traits like eye color?", options: ["Bones", "Genes", "Skin", "Blood"], answer: "Genes" },
+      { question: "A child’s brown eyes come from:", options: ["Their food", "Their parents", "Their clothes", "Their toys"], answer: "Their parents" }
+    ]
+  },
+  {
+    sectionId: "grade6-biology-physiology-beginner",
+    quiz: [
+      { question: "What does physiology study?", options: ["How body parts work", "How plants grow", "How rocks form", "How stars shine"], answer: "How body parts work" },
+      { question: "What does the heart do?", options: ["Digests food", "Pumps blood", "Sees light", "Hears sound"], answer: "Pumps blood" },
+      { question: "Why does the body need blood?", options: ["To stay cool", "To supply oxygen", "To change color", "To make noise"], answer: "To supply oxygen" }
+    ]
+  },
+  {
+    sectionId: "grade6-biology-nutrition-beginner",
+    quiz: [
+      { question: "What does nutrition provide?", options: ["Energy and growth", "Color and smell", "Sound and light", "Weight and size"], answer: "Energy and growth" },
+      { question: "What do carbohydrates give?", options: ["Strength", "Energy", "Vision", "Hearing"], answer: "Energy" },
+      { question: "What do proteins build?", options: ["Muscles", "Bones", "Skin", "Hair"], answer: "Muscles" },
+      { question: "What is rice rich in?", options: ["Proteins", "Carbohydrates", "Vitamins", "Fats"], answer: "Carbohydrates" }
+    ]
+  },
+  {
+    sectionId: "grade6-biology-health-hygiene-beginner",
+    quiz: [
+      { question: "What is health?", options: ["Being sick", "Being free from disease", "Being tired", "Being heavy"], answer: "Being free from disease" },
+      { question: "What does hygiene do?", options: ["Makes you sick", "Keeps you healthy", "Changes your color", "Makes you run"], answer: "Keeps you healthy" },
+      { question: "Why wash your hands?", options: ["To get wet", "To prevent germs", "To eat food", "To sleep"], answer: "To prevent germs" },
+      { question: "Why brush your teeth?", options: ["To avoid cavities", "To grow hair", "To run faster", "To see better"], answer: "To avoid cavities" }
+    ]
+  },
+  {
+    sectionId: "grade6-biology-diseases-beginner",
+    quiz: [
+      { question: "What causes diseases?", options: ["Germs", "Toys", "Clothes", "Books"], answer: "Germs" },
+      { question: "What is a cold caused by?", options: ["Sugar", "Bacteria or viruses", "Sand", "Paint"], answer: "Bacteria or viruses" },
+      { question: "How can you prevent stomach infections?", options: ["Drink dirty water", "Drink clean water", "Eat sand", "Wear shoes"], answer: "Drink clean water" }
+    ]
+  },
+  {
+    sectionId: "grade6-biology-environmental-beginner",
+    quiz: [
+      { question: "What does environmental science study?", options: ["Stars", "Our surroundings", "Machines", "Books"], answer: "Our surroundings" },
+      { question: "What does pollution harm?", options: ["Air and water", "Toys", "Clothes", "Food"], answer: "Air and water" },
+      { question: "How can we reduce air pollution?", options: ["Cut trees", "Plant trees", "Burn trash", "Use more cars"], answer: "Plant trees" },
+      { question: "What is bad for the environment?", options: ["Recycling", "Pollution", "Cleaning", "Walking"], answer: "Pollution" }
+    ]
+  },
+  {
+    sectionId: "grade6-science-inventions-beginner",
+    quiz: [
+      { question: "What do inventions do?", options: ["Harm us", "Improve our lives", "Make noise", "Break things"], answer: "Improve our lives" },
+      { question: "What do solar panels use?", options: ["Water", "Sunlight", "Sand", "Oil"], answer: "Sunlight" },
+      { question: "What do solar panels produce?", options: ["Food", "Electricity", "Clothes", "Toys"], answer: "Electricity" }
+    ]
+  },
+  {
+    sectionId: "grade6-science-current-affairs-beginner",
+    quiz: [
+      { question: "What are current affairs?", options: ["Old stories", "Recent events", "Fairy tales", "Songs"], answer: "Recent events" },
+      { question: "What does Chandrayaan explore?", options: ["Mars", "Moon", "Sun", "Jupiter"], answer: "Moon" },
+      { question: "What do India’s space missions advance?", options: ["Cooking", "Space research", "Painting", "Dancing"], answer: "Space research" }
+    ]
+  }
+];
+
+   const scienceContent = [
   {
     id: "grade6-physics-measurement-beginner",
     title: "Measurement of Physical Quantities (Beginner)",
@@ -145,3 +480,378 @@ const scienceContent = [
     content: "Current affairs are recent science events. India’s Chandrayaan missions explore the Moon, finding water traces. ISRO’s Mangalyaan studied Mars’ atmosphere. These missions advance space research, making India a space leader. New vaccines protect against diseases like COVID-19. Scientists develop eco-friendly plastics that decompose faster. Solar power plants grow in India, providing clean energy. Recent inventions include foldable smartphones. Environmental efforts, like cleaning the Ganga River, fight pollution. India’s Aditya-L1 mission studies the Sun. Citizen science projects, like bird counts, involve students. Current affairs show science solving real-world problems, from climate change to health, inspiring young learners."
   }
 ];
+
+    const mcqData = [
+  ["Science", "Measurement of Physical Quantities", "Units", "Beginner", "What unit is used to measure length?", ["Kilogram", "Meter", "Second", "Liter"], "Length is measured in meters, not kilograms (mass), seconds (time), or liters (volume).", "Meter"],
+  ["Science", "Measurement of Physical Quantities", "Tools", "Beginner", "Which tool measures mass?", ["Ruler", "Clock", "Weighing scale", "Thermometer"], "A weighing scale measures mass, unlike a ruler (length), clock (time), or thermometer (temperature).", "Weighing scale"],
+  ["Science", "Measurement of Physical Quantities", "Time", "Beginner", "What is the unit for time?", ["Meter", "Kilogram", "Second", "Celsius"], "Time is measured in seconds, not meters (length), kilograms (mass), or Celsius (temperature).", "Second"],
+  ["Science", "Measurement of Physical Quantities", "Estimation", "Beginner", "How long is a typical pencil?", ["15 meters", "15 centimeters", "15 kilometers", "15 millimeters"], "A pencil is about 15 centimeters, not meters (too long), kilometers (far too long), or millimeters (too short).", "15 centimeters"],
+  ["Science", "Measurement of Physical Quantities", "Tools", "Beginner", "What does a clock measure?", ["Length", "Mass", "Time", "Volume"], "A clock measures time, not length, mass, or volume.", "Time"],
+  ["Science", "Motion", "Definition", "Beginner", "What is motion?", ["Change in shape", "Change in position", "Change in color", "Change in temperature"], "Motion is a change in position, not shape, color, or temperature.", "Change in position"],
+  ["Science", "Motion", "Newton’s Laws", "Beginner", "What does Newton’s First Law describe?", ["Inertia", "Gravity", "Magnetism", "Energy"], "Newton’s First Law describes inertia, the tendency to resist changes in motion.", "Inertia"],
+  ["Science", "Motion", "Friction", "Beginner", "Why does a ball stop rolling?", ["It gets tired", "Friction acts on it", "It loses energy", "It changes shape"], "Friction, a force opposing motion, causes a ball to stop, not tiredness or shape change.", "Friction acts on it"],
+  ["Science", "Motion", "Inertia", "Beginner", "An object at rest stays at rest unless?", ["It is heated", "A force acts", "It is cooled", "It is painted"], "A force must act to change an object’s state, per Newton’s First Law.", "A force acts"],
+  ["Science", "Force", "Definition", "Beginner", "What is a force?", ["A sound", "A push or pull", "A color", "A taste"], "A force is a push or pull that affects motion, not a sound, color, or taste.", "A push or pull"],
+  ["Science", "Force", "Newton’s Laws", "Beginner", "What is the formula for Newton’s Second Law?", ["F = ma", "E = mc²", "P = mv", "V = IR"], "Newton’s Second Law is F = ma (force = mass × acceleration), not other formulas.", "F = ma"],
+  ["Science", "Force", "Application", "Beginner", "Why does a heavy cart need more force?", ["It is bigger", "It has more mass", "It is faster", "It is slower"], "More mass requires more force, per F = ma.", "It has more mass"],
+  ["Science", "Force", "Effect", "Beginner", "What happens if you increase acceleration?", ["Force decreases", "Force increases", "Mass decreases", "Mass increases"], "Per F = ma, increasing acceleration increases force.", "Force increases"],
+  ["Science", "Pressure", "Definition", "Beginner", "What is pressure?", ["Force times area", "Force divided by area", "Mass times area", "Mass divided by area"], "Pressure is force divided by area, not multiplied or involving mass.", "Force divided by area"],
+  ["Science", "Pressure", "Application", "Beginner", "Why does a sharp knife cut better?", ["It has more force", "It has less area", "It is heavier", "It is longer"], "A sharp knife has less area, increasing pressure for the same force.", "It has less area"],
+  ["Science", "Pressure", "Effect", "Beginner", "If you increase the area, pressure:", ["Increases", "Decreases", "Stays the same", "Doubles"], "Pressure decreases when area increases, as pressure = force/area.", "Decreases"],
+  ["Science", "Energy", "Definition", "Beginner", "What is energy?", ["A type of force", "Ability to do work", "A color", "A sound"], "Energy is the ability to do work, not a force, color, or sound.", "Ability to do work"],
+  ["Science", "Energy", "Types", "Beginner", "What is kinetic energy?", ["Stored energy", "Energy of motion", "Heat energy", "Light energy"], "Kinetic energy is the energy of motion, not stored or other forms.", "Energy of motion"],
+  ["Science", "Energy", "Types", "Beginner", "A stretched rubber band has:", ["Kinetic energy", "Potential energy", "Sound energy", "Electrical energy"], "A stretched rubber band has potential energy, stored due to its position.", "Potential energy"],
+  ["Science", "Energy", "Examples", "Beginner", "A moving car has:", ["Potential energy", "Kinetic energy", "Chemical energy", "Nuclear energy"], "A moving car has kinetic energy due to its motion.", "Kinetic energy"],
+  ["Science", "Mechanics", "Friction", "Beginner", "Why do bicycles use wheels?", ["To increase friction", "To reduce friction", "To add weight", "To make noise"], "Wheels reduce friction, making movement easier.", "To reduce friction"],
+  ["Science", "Mechanics", "Balance", "Beginner", "A seesaw balances when:", ["Weights are equal", "One side is heavier", "It is moving", "It is painted"], "Equal weights on both sides balance a seesaw.", "Weights are equal"],
+  ["Science", "Mechanics", "Braking", "Beginner", "What helps a car stop?", ["Brakes", "Engine", "Wheels", "Horn"], "Brakes apply force to stop a car, not the engine, wheels, or horn.", "Brakes"],
+  ["Science", "Electricity", "Definition", "Beginner", "What is electricity?", ["Flow of water", "Flow of electric charge", "Flow of air", "Flow of light"], "Electricity is the flow of electric charge, not water, air, or light.", "Flow of electric charge"],
+  ["Science", "Electricity", "Circuit", "Beginner", "What does a circuit need to light a bulb?", ["Battery", "Paper", "Cloth", "Wood"], "A battery provides power for a circuit, unlike paper, cloth, or wood.", "Battery"],
+  ["Science", "Electricity", "Circuit", "Beginner", "When does a torch light up?", ["Circuit is broken", "Circuit is complete", "Battery is removed", "Wires are cut"], "A complete circuit allows electricity to flow, lighting the torch.", "Circuit is complete"],
+  ["Science", "Electricity", "Components", "Beginner", "What carries electricity in a circuit?", ["Wires", "Glass", "Plastic", "Rubber"], "Wires conduct electricity, unlike glass, plastic, or rubber.", "Wires"],
+  ["Science", "Magnetism", "Properties", "Beginner", "What does magnetism attract?", ["Plastic", "Iron", "Wood", "Paper"], "Magnetism attracts iron, not plastic, wood, or paper.", "Iron"],
+  ["Science", "Magnetism", "Poles", "Beginner", "What happens when like poles of magnets meet?", ["They attract", "They repel", "They stick", "They break"], "Like poles (e.g., north-north) repel each other.", "They repel"],
+  ["Science", "Magnetism", "Compass", "Beginner", "Why does a compass point north?", ["Earth’s gravity", "Earth’s magnetic field", "Earth’s rotation", "Earth’s heat"], "A compass aligns with Earth’s magnetic field, not gravity, rotation, or heat.", "Earth’s magnetic field"],
+  ["Science", "Magnetism", "Poles", "Beginner", "Unlike poles of a magnet:", ["Repel", "Attract", "Spin", "Stop"], "Unlike poles (e.g., north-south) attract each other.", "Attract"],
+  ["Science", "Light", "Travel", "Beginner", "How does light travel?", ["In circles", "In straight lines", "In waves", "In spirals"], "Light travels in straight lines, as seen in shadows.", "In straight lines"],
+  ["Science", "Light", "Reflection", "Beginner", "What is reflection?", ["Light bending", "Light bouncing", "Light stopping", "Light heating"], "Reflection is light bouncing off surfaces, like mirrors.", "Light bouncing"],
+  ["Science", "Light", "Application", "Beginner", "Why do we see our face in a mirror?", ["Absorption", "Reflection", "Refraction", "Diffusion"], "Reflection allows us to see our face in a mirror.", "Reflection"],
+  ["Science", "Sound", "Definition", "Beginner", "What is sound?", ["A light wave", "A vibration", "A color", "A smell"], "Sound is a vibration traveling through a medium, not a light wave, color, or smell.", "A vibration"],
+  ["Science", "Sound", "Medium", "Beginner", "What does sound need to travel?", ["Vacuum", "Medium", "Darkness", "Heat"], "Sound requires a medium like air or water, not a vacuum.", "Medium"],
+  ["Science", "Sound", "Source", "Beginner", "Why do we hear a bell?", ["It glows", "It vibrates", "It moves", "It heats"], "A bell vibrates, producing sound waves we hear.", "It vibrates"],
+  ["Science", "Heat", "Definition", "Beginner", "What is heat?", ["A form of energy", "A type of light", "A sound", "A smell"], "Heat is a form of energy, not light, sound, or smell.", "A form of energy"],
+  ["Science", "Heat", "Transfer", "Beginner", "Heat transfers from:", ["Cold to hot", "Hot to cold", "Big to small", "Small to big"], "Heat flows from hot to cold objects naturally.", "Hot to cold"],
+  ["Science", "Heat", "Application", "Beginner", "Why does a hot cup of tea cool down?", ["Heat moves to air", "Tea evaporates", "Cup breaks", "Tea freezes"], "Heat transfers to the air, cooling the tea.", "Heat moves to air"],
+  ["Science", "Nuclear Physics", "Focus", "Beginner", "What does nuclear physics study?", ["Stars", "Atoms’ nucleus", "Oceans", "Plants"], "Nuclear physics studies the nucleus of atoms, not stars, oceans, or plants.", "Atoms’ nucleus"],
+  ["Science", "Nuclear Physics", "Fission", "Beginner", "What is nuclear fission?", ["Joining atoms", "Splitting atoms", "Heating atoms", "Cooling atoms"], "Fission is splitting atoms to release energy.", "Splitting atoms"],
+  ["Science", "Nuclear Physics", "Application", "Beginner", "What do nuclear power plants produce?", ["Water", "Electricity", "Food", "Clothes"], "Nuclear power plants use fission to produce electricity.", "Electricity"],
+  ["Science", "Elements and Compounds", "Elements", "Beginner", "What is an element?", ["A mixture", "A pure substance", "A compound", "A solution"], "An element is a pure substance, like oxygen, not a mixture or compound.", "A pure substance"],
+  ["Science", "Elements and Compounds", "Compounds", "Beginner", "What is a compound?", ["One element", "Two or more elements combined", "A gas", "A liquid"], "A compound combines two or more elements, like water (H₂O).", "Two or more elements combined"],
+  ["Science", "Elements and Compounds", "Examples", "Beginner", "What elements make water?", ["Carbon and oxygen", "Hydrogen and oxygen", "Nitrogen and hydrogen", "Iron and oxygen"], "Water is made of hydrogen and oxygen, forming H₂O.", "Hydrogen and oxygen"],
+  ["Science", "Elements and Compounds", "Examples", "Beginner", "Oxygen is an example of:", ["Compound", "Element", "Mixture", "Solution"], "Oxygen is an element, a pure substance, not a compound or mixture.", "Element"],
+  ["Science", "Acids, Bases, Salts", "Acids", "Beginner", "What is the pH of an acid?", ["Less than 7", "Equal to 7", "More than 7", "Zero"], "Acids have a pH less than 7, indicating sourness.", "Less than 7"],
+  ["Science", "Acids, Bases, Salts", "Bases", "Beginner", "How does a base feel?", ["Sour", "Slippery", "Sticky", "Dry"], "Bases feel slippery, like soap, not sour, sticky, or dry.", "Slippery"],
+  ["Science", "Acids, Bases, Salts", "Salts", "Beginner", "What is table salt?", ["An acid", "A base", "A salt", "An element"], "Table salt (NaCl) is a salt, formed from an acid and base.", "A salt"],
+  ["Science", "Acids, Bases, Salts", "Examples", "Beginner", "Lemon juice is an example of:", ["Base", "Acid", "Salt", "Compound"], "Lemon juice is an acid, with a sour taste and low pH.", "Acid"],
+  ["Science", "Petroleum Products", "Source", "Beginner", "What are petroleum products made from?", ["Water", "Crude oil", "Sand", "Wood"], "Petroleum products come from crude oil, not water, sand, or wood.", "Crude oil"],
+  ["Science", "Petroleum Products", "Uses", "Beginner", "What is petrol used for?", ["Cooking", "Powering cars", "Cleaning", "Drinking"], "Petrol powers cars, not used for cooking, cleaning, or drinking.", "Powering cars"],
+  ["Science", "Petroleum Products", "Examples", "Beginner", "Which is a petroleum product?", ["Sugar", "Kerosene", "Salt", "Milk"], "Kerosene is a petroleum product, unlike sugar, salt, or milk.", "Kerosene"],
+  ["Science", "Fertilizers", "Purpose", "Beginner", "What do fertilizers provide to plants?", ["Water", "Nutrients", "Light", "Air"], "Fertilizers provide nutrients, not water, light, or air.", "Nutrients"],
+  ["Science", "Fertilizers", "Examples", "Beginner", "What is urea?", ["A pesticide", "A fertilizer", "A fuel", "A food"], "Urea is a fertilizer, supplying nitrogen to plants.", "A fertilizer"],
+  ["Science", "Fertilizers", "Application", "Beginner", "Why do farmers use fertilizers?", ["To kill pests", "To help plants grow", "To clean soil", "To water plants"], "Fertilizers help plants grow by providing nutrients.", "To help plants grow"],
+  ["Science", "Pesticides", "Purpose", "Beginner", "What do pesticides do?", ["Kill pests", "Grow plants", "Clean water", "Make food"], "Pesticides kill pests, protecting crops.", "Kill pests"],
+  ["Science", "Pesticides", "Application", "Beginner", "Why do farmers use pesticides?", ["To water crops", "To protect crops", "To harvest crops", "To fertilize crops"], "Pesticides protect crops from pests, not for watering or fertilizing.", "To protect crops"],
+  ["Science", "Pesticides", "Definition", "Beginner", "What is a pest?", ["A helpful insect", "A harmful insect", "A type of plant", "A type of soil"], "A pest is a harmful insect that damages crops.", "A harmful insect"],
+  ["Science", "Metallurgy", "Definition", "Beginner", "What is metallurgy?", ["Study of plants", "Extracting metals", "Making food", "Building houses"], "Metallurgy is the science of extracting metals from ores.", "Extracting metals"],
+  ["Science", "Metallurgy", "Source", "Beginner", "What is iron extracted from?", ["Iron ore", "Water", "Air", "Wood"], "Iron is extracted from iron ore, not water, air, or wood.", "Iron ore"],
+  ["Science", "Metallurgy", "Product", "Beginner", "What is made from iron?", ["Plastic", "Steel", "Glass", "Paper"], "Iron is used to make steel, not plastic, glass, or paper.", "Steel"],
+  ["Science", "Food Adulterants", "Adulteration", "Beginner", "What is a food adulterant?", ["A nutrient", "A harmful substance", "A flavor", "A vitamin"], "A food adulterant is a harmful substance added to food, not a nutrient, flavor, or vitamin.", "A harmful substance"],
+  ["Science", "Food Adulterants", "Examples", "Beginner", "What might be added to flour?", ["Sugar", "Chalk powder", "Salt", "Oil"], "Chalk powder is a harmful adulterant added to flour, unlike sugar, salt, or oil.", "Chalk powder"],
+  ["Science", "Food Adulterants", "Effects", "Beginner", "Why is water added to milk harmful?", ["It improves taste", "It reduces nutrition", "It makes it sweeter", "It makes it thicker"], "Adding water to milk reduces its nutritional value, not improving taste, sweetness, or thickness.", "It reduces nutrition"],
+  ["Science", "Classification of Living Organisms", "Classification", "Beginner", "How are living organisms classified?", ["By size", "By groups like plants and animals", "By color", "By weight"], "Organisms are classified into groups like plants and animals, not by size, color, or weight.", "By groups like plants and animals"],
+  ["Science", "Classification of Living Organisms", "Plants", "Beginner", "What do plants do?", ["Eat animals", "Make their own food", "Move fast", "Sleep"], "Plants make their own food via photosynthesis, unlike animals.", "Make their own food"],
+  ["Science", "Classification of Living Organisms", "Animals", "Beginner", "A cow is an example of:", ["Plant", "Animal", "Mineral", "Machine"], "A cow is an animal, not a plant, mineral, or machine.", "Animal"],
+  ["Science", "Classification of Living Organisms", "Plants", "Beginner", "A mango tree is:", ["An animal", "A plant", "A rock", "A cloud"], "A mango tree is a plant, producing its own food.", "A plant"],
+  ["Science", "Evolution", "Definition", "Beginner", "What is evolution?", ["Change over time", "Staying the same", "Growing bigger", "Moving faster"], "Evolution is change over time to adapt, not staying the same or just growing.", "Change over time"],
+  ["Science", "Evolution", "Adaptation", "Beginner", "Why do giraffes have long necks?", ["To swim better", "To reach high leaves", "To run faster", "To hide"], "Long necks help giraffes reach high leaves, an evolutionary adaptation.", "To reach high leaves"],
+  ["Science", "Evolution", "Survival", "Beginner", "What helps animals survive in evolution?", ["Bright colors", "Useful traits", "Loud sounds", "Heavy weight"], "Useful traits, like long necks, aid survival in evolution.", "Useful traits"],
+  ["Science", "Genetics", "Focus", "Beginner", "What does genetics study?", ["Weather", "Traits from parents", "Rocks", "Stars"], "Genetics studies traits passed from parents, not weather, rocks, or stars.", "Traits from parents"],
+  ["Science", "Genetics", "Genes", "Beginner", "What carries traits like eye color?", ["Bones", "Genes", "Skin", "Blood"], "Genes carry traits like eye color, not bones, skin, or blood.", "Genes"],
+  ["Science", "Genetics", "Inheritance", "Beginner", "A child’s brown eyes come from:", ["Their food", "Their parents", "Their clothes", "Their toys"], "Brown eyes are inherited from parents via genes.", "Their parents"],
+  ["Science", "Physiology", "Focus", "Beginner", "What does physiology study?", ["How body parts work", "How plants grow", "How rocks form", "How stars shine"], "Physiology studies how body parts work, like the heart.", "How body parts work"],
+  ["Science", "Physiology", "Heart", "Beginner", "What does the heart do?", ["Digests food", "Pumps blood", "Sees light", "Hears sound"], "The heart pumps blood, not digests food or senses light/sound.", "Pumps blood"],
+  ["Science", "Physiology", "Blood", "Beginner", "Why does the body need blood?", ["To stay cool", "To supply oxygen", "To change color", "To make noise"], "Blood supplies oxygen to the body, not for cooling or color.", "To supply oxygen"],
+  ["Science", "Nutrition", "Purpose", "Beginner", "What does nutrition provide?", ["Energy and growth", "Color and smell", "Sound and light", "Weight and size"], "Nutrition provides energy and growth, not color, sound, or size.", "Energy and growth"],
+  ["Science", "Nutrition", "Carbohydrates", "Beginner", "What do carbohydrates give?", ["Strength", "Energy", "Vision", "Hearing"], "Carbohydrates provide energy, not strength, vision, or hearing.", "Energy"],
+  ["Science", "Nutrition", "Proteins", "Beginner", "What do proteins build?", ["Muscles", "Bones", "Skin", "Hair"], "Proteins primarily build muscles, though they aid other tissues.", "Muscles"],
+  ["Science", "Nutrition", "Sources", "Beginner", "What is rice rich in?", ["Proteins", "Carbohydrates", "Vitamins", "Fats"], "Rice is rich in carbohydrates, providing energy.", "Carbohydrates"],
+  ["Science", "Health and Hygiene", "Health", "Beginner", "What is health?", ["Being sick", "Being free from disease", "Being tired", "Being heavy"], "Health is being free from disease, not sick, tired, or heavy.", "Being free from disease"],
+  ["Science", "Health and Hygiene", "Hygiene", "Beginner", "What does hygiene do?", ["Makes you sick", "Keeps you healthy", "Changes your color", "Makes you run"], "Hygiene, like handwashing, keeps you healthy.", "Keeps you healthy"],
+  ["Science", "Health and Hygiene", "Practices", "Beginner", "Why wash your hands?", ["To get wet", "To prevent germs", "To eat food", "To sleep"], "Handwashing prevents germs, reducing disease risk.", "To prevent germs"],
+  ["Science", "Health and Hygiene", "Dental", "Beginner", "Why brush your teeth?", ["To avoid cavities", "To grow hair", "To run faster", "To see better"], "Brushing teeth prevents cavities, not aiding hair, speed, or vision.", "To avoid cavities"],
+  ["Science", "Human Diseases", "Causes", "Beginner", "What causes diseases?", ["Germs", "Toys", "Clothes", "Books"], "Germs, like bacteria, cause diseases, not toys, clothes, or books.", "Germs"],
+  ["Science", "Human Diseases", "Examples", "Beginner", "What is a cold caused by?", ["Sugar", "Bacteria or viruses", "Sand", "Paint"], "Colds are caused by bacteria or viruses, not sugar, sand, or paint.", "Bacteria or viruses"],
+  ["Science", "Human Diseases", "Prevention", "Beginner", "How can you prevent stomach infections?", ["Drink dirty water", "Drink clean water", "Eat sand", "Wear shoes"], "Drinking clean water prevents stomach infections.", "Drink clean water"],
+  ["Science", "Environmental Science", "Focus", "Beginner", "What does environmental science study?", ["Stars", "Our surroundings", "Machines", "Books"], "Environmental science studies our surroundings, like air and water.", "Our surroundings"],
+  ["Science", "Environmental Science", "Pollution", "Beginner", "What does pollution harm?", ["Air and water", "Toys", "Clothes", "Food"], "Pollution harms air and water, not toys, clothes, or food.", "Air and water"],
+  ["Science", "Environmental Science", "Solutions", "Beginner", "How can we reduce air pollution?", ["Cut trees", "Plant trees", "Burn trash", "Use more cars"], "Planting trees reduces air pollution by absorbing carbon dioxide.", "Plant trees"],
+  ["Science", "Environmental Science", "Impact", "Beginner", "What is bad for the environment?", ["Recycling", "Pollution", "Cleaning", "Walking"], "Pollution harms the environment, unlike recycling or walking.", "Pollution"],
+  ["Science", "Latest Inventions", "Purpose", "Beginner", "What do inventions do?", ["Harm us", "Improve our lives", "Make noise", "Break things"], "Inventions improve our lives, like solar panels for energy.", "Improve our lives"],
+  ["Science", "Latest Inventions", "Solar Panels", "Beginner", "What do solar panels use?", ["Water", "Sunlight", "Sand", "Oil"], "Solar panels use sunlight to generate electricity.", "Sunlight"],
+  ["Science", "Latest Inventions", "Output", "Beginner", "What do solar panels produce?", ["Food", "Electricity", "Clothes", "Toys"], "Solar panels produce electricity, not food, clothes, or toys.", "Electricity"],
+  ["Science", "Current Affairs", "Events", "Beginner", "What are current affairs?", ["Old stories", "Recent events", "Fairy tales", "Songs"], "Current affairs are recent events, not old stories, fairy tales, or songs.", "Recent events"],
+  ["Science", "Current Affairs", "Space Missions", "Beginner", "What does Chandrayaan explore?", ["Mars", "Moon", "Sun", "Jupiter"], "Chandrayaan missions explore the Moon, not Mars, Sun, or Jupiter.", "Moon"],
+  ["Science", "Current Affairs", "Research", "Beginner", "What do India’s space missions advance?", ["Cooking", "Space research", "Painting", "Dancing"], "India’s space missions advance space research, not cooking, painting, or dancing.", "Space research"]
+];
+
+    // Initialize the application
+    document.addEventListener('DOMContentLoaded', () => {
+      try {
+        // Load external data (optional)
+        async function loadExternalData() {
+          try {
+            const response = await fetch('files.json');
+            if (!response.ok) throw new Error('Failed to load files.json');
+            const manifest = await response.json();
+            for (const file of manifest) {
+              const res = await fetch(file.name);
+              if (!res.ok) throw new Error(`Failed to load ${file.name}`);
+              const script = document.createElement('script');
+              script.text = await res.text();
+              document.head.appendChild(script);
+              if (window[file.variable]) {
+                console.log(`Loaded ${file.variable} from ${file.name}`);
+              }
+            }
+          } catch (error) {
+            console.error('Error loading external data:', error);
+          }
+        }
+        // Uncomment to enable external loading
+        // loadExternalData();
+
+        // Validate data
+        if (!Array.isArray(scienceContent) || scienceContent.length !== 29) {
+          throw new Error('scienceContent must have 29 sections');
+        }
+        if (!Array.isArray(quizData) || quizData.length !== 29 || !Array.isArray(mcqData)) {
+          throw new Error('quizData or mcqData invalid or incomplete');
+        }
+
+        // Combine science content and quiz data
+        const sections = scienceContent.map(content => {
+          const quizEntry = quizData.find(q => q.sectionId === content.id);
+          return {
+            id: content.id,
+            title: content.title,
+            content: content.content,
+            quiz: quizEntry ? quizEntry.quiz : []
+          };
+        });
+
+        let currentSection = 0;
+        let scores = JSON.parse(localStorage.getItem('scores')) || Array(sections.length).fill(null);
+
+        // Motivational messages
+        const motivationalMessages = [
+          "Great job! Keep learning!",
+          "You're doing amazing! Stay focused!",
+          "Well done! You're getting smarter every day!",
+          "Fantastic effort! Keep it up!",
+          "You're on the right track! Stay curious!"
+        ];
+
+        // Update navigation buttons
+        function updateNavigation(sectionIndex, hasSubmitted = false) {
+          const navDiv = document.getElementById('navigation');
+          if (!navDiv) return;
+          let html = '';
+          if (hasSubmitted) {
+            html += `<button id="retake-btn" class="btn-yellow">Retake Quiz</button>`;
+          }
+          if (sectionIndex > 0) {
+            html += `<button id="prev-btn" class="btn-gray">Previous</button>`;
+          }
+          // Only show "Next" if submitted and score >= 70
+          if (hasSubmitted && sectionIndex < 28 && scores[sectionIndex] >= 70) {
+            html += `<button id="next-btn" class="btn-blue">Next</button>`;
+          }
+          if (sectionIndex === 28) {
+            html += `<button id="complete-btn" class="btn-green">Complete Course</button>`;
+          }
+          navDiv.innerHTML = html;
+
+          const retakeBtn = document.getElementById('retake-btn');
+          if (retakeBtn) {
+            retakeBtn.addEventListener('click', () => {
+              const form = document.getElementById('quiz-form');
+              if (form) form.reset();
+              document.getElementById('feedback').innerHTML = '';
+              updateNavigation(sectionIndex, false);
+            });
+          }
+
+          const prevBtn = document.getElementById('prev-btn');
+          if (prevBtn) {
+            prevBtn.addEventListener('click', () => {
+              currentSection--;
+              renderSection(currentSection);
+            });
+          }
+
+          const nextBtn = document.getElementById('next-btn');
+          if (nextBtn) {
+            nextBtn.addEventListener('click', () => {
+              // Double-check score before navigating
+              if (scores[sectionIndex] >= 70) {
+                currentSection++;
+                renderSection(currentSection);
+              } else {
+                console.warn('Attempted to navigate without sufficient score');
+              }
+            });
+          }
+
+          const completeBtn = document.getElementById('complete-btn');
+          if (completeBtn) {
+            completeBtn.addEventListener('click', () => {
+              document.getElementById('content').innerHTML = `
+                <h2>Congratulations!</h2>
+                <p>You've completed the TNPSC Group 4 Science (Beginner) course!</p>
+                <a href="tnpsc-gr4-home.html" class="btn-blue">Return to Home</a>
+              `;
+            });
+          }
+        }
+
+        // Render section
+        function renderSection(sectionIndex) {
+          try {
+            if (sectionIndex < 0 || sectionIndex >= sections.length) {
+              console.error('Invalid section index:', sectionIndex);
+              return;
+            }
+            const section = sections[sectionIndex];
+            let html = `
+              <h2>${section.title}</h2>
+              <p class="mt-2">${section.content}</p>
+            `;
+            
+            if (section.quiz.length > 0) {
+              html += `
+                <h3 class="mt-4">Quiz</h3>
+                <form id="quiz-form">
+                  ${section.quiz.map((q, i) => `
+                    <div>
+                      <p>${i + 1}. ${q.question}</p>
+                      ${q.options.map(opt => `
+                        <label>
+                          <input type="radio" name="q${i}" value="${opt}" required>
+                          ${opt}
+                        </label>
+                      `).join('')}
+                    </div>
+                  `).join('')}
+                  <button type="submit" id="submit-btn" class="btn-blue">Submit</button>
+                </form>
+                <div id="feedback"></div>
+              `;
+            } else {
+              html += '<p class="text-red">No quiz available for this section.</p>';
+            }
+            
+            html += `<div id="navigation" class="mt-4"></div>`;
+            
+            console.log('Rendering section', sectionIndex, 'Quiz length:', section.quiz.length);
+            document.getElementById('content').innerHTML = html;
+
+            // Attach listeners
+            const quizForm = document.getElementById('quiz-form');
+            const submitBtn = document.getElementById('submit-btn');
+            console.log('Form found:', !!quizForm, 'Submit button found:', !!submitBtn);
+            
+            if (quizForm) {
+              quizForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const selected = Array.from(quizForm.querySelectorAll('input:checked'));
+                console.log('Submit event triggered, selected answers:', selected.map(input => input.value));
+                if (selected.length === section.quiz.length) {
+                  checkAnswers(sectionIndex);
+                } else {
+                  document.getElementById('feedback').innerHTML = '<p class="text-red">Please answer all questions.</p>';
+                }
+              });
+            } else {
+              console.error('quiz-form not found');
+            }
+            
+            if (submitBtn) {
+              submitBtn.addEventListener('click', () => {
+                console.log('Submit button clicked directly');
+                if (quizForm) quizForm.dispatchEvent(new Event('submit'));
+              });
+            } else {
+              console.error('submit-btn not found');
+            }
+
+            updateNavigation(sectionIndex, scores[sectionIndex] !== null);
+          } catch (error) {
+            console.error('Error in renderSection:', error);
+            document.getElementById('content').innerHTML = `<p class="text-red">Error rendering section: ${error.message}</p>`;
+          }
+        }
+
+        // Check answers
+        function checkAnswers(sectionIndex) {
+          try {
+            console.log('checkAnswers called for section', sectionIndex);
+            const form = document.getElementById('quiz-form');
+            const feedbackDiv = document.getElementById('feedback');
+            if (!form || !feedbackDiv) {
+              console.error('Form or feedback div not found in checkAnswers');
+              return;
+            }
+
+            let score = 0;
+            let incorrectFeedback = '';
+
+            sections[sectionIndex].quiz.forEach((q, i) => {
+              const selected = form.querySelector(`input[name="q${i}"]:checked`);
+              const isCorrect = selected && selected.value === q.answer;
+              if (isCorrect) score++;
+
+              const mcq = mcqData.find(m => m[4] === q.question && m[7] === q.answer);
+              if (mcq && selected && !isCorrect) {
+                incorrectFeedback += `
+                  <p><strong>${q.question}</strong><br>
+                  Your answer: ${selected.value}<br>
+                  Correct answer: ${q.answer}<br>
+                  Explanation: ${mcq[6]}</p>
+                `;
+              }
+            });
+
+            const percentage = (score / sections[sectionIndex].quiz.length) * 100;
+            scores[sectionIndex] = percentage;
+            localStorage.setItem('scores', JSON.stringify(scores));
+
+            let feedback = `
+              <p>Your score: ${score}/${sections[sectionIndex].quiz.length} (${percentage.toFixed(2)}%)</p>
+              ${percentage >= 70 ? `<p class="text-green">${motivationalMessages[Math.floor(Math.random() * motivationalMessages.length)]}</p>` : '<p class="text-red">You need 70% to proceed. Try again!</p>'}
+            `;
+            if (incorrectFeedback) {
+              feedback += `<h4>Feedback on incorrect answers:</h4>${incorrectFeedback}`;
+            } else if (score === sections[sectionIndex].quiz.length) {
+              feedback += `<p class="text-green">All answers correct! Well done!</p>`;
+            }
+
+            feedbackDiv.innerHTML = feedback;
+            updateNavigation(sectionIndex, true);
+          } catch (error) {
+            console.error('Error in checkAnswers:', error);
+            document.getElementById('content').innerHTML = `<p class="text-red">Error processing answers: ${error.message}</p>`;
+          }
+        }
+
+        // Hamburger menu toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const menu = document.getElementById('menu');
+        if (window.innerWidth <= 768) {
+          menuBtn.classList.remove('hidden');
+          menu.classList.add('hidden');
+          
+          menuBtn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+          });
+        }
+
+        // Initial render
+        renderSection(currentSection);
+      } catch (error) {
+        console.error('Initialization error:', error);
+        document.getElementById('content').innerHTML = `<p class="text-red">Initialization error: ${error.message}</p>`;
+      }
+    });
+  </script>
+</body>
+</html>
