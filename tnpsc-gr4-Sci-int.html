@@ -86,260 +86,173 @@
   <script>
     // Data for 29 sections (real data for 1-10, placeholders for 11-29)
 
-
-
-  const quizData = [
-  {
-    sectionId: "grade8-physics-motion-types-intermediate",
-    quiz: [
-      { question: "What describes circular motion?", options: ["Constant speed", "Angular velocity", "Linear path", "No acceleration"], answer: "Angular velocity" },
-      { question: "Which motion repeats regularly?", options: ["Linear", "Circular", "Periodic", "Random"], answer: "Periodic" },
-      { question: "What is acceleration?", options: ["Speed change rate", "Distance traveled", "Constant velocity", "Total displacement"], answer: "Speed change rate" },
-      { question: "Which has non-uniform motion?", options: ["Train at steady speed", "Car speeding up", "Earth rotating", "Pendulum"], answer: "Car speeding up" }
-    ]
-  },
-  {
-    sectionId: "grade8-physics-simple-machines-intermediate",
-    quiz: [
-      { question: "What is a first-class lever?", options: ["Wheelbarrow", "Seesaw", "Tweezers", "Nutcracker"], answer: "Seesaw" },
-      { question: "What increases pulley advantage?", options: ["Single rope", "More ropes", "Shorter rope", "No friction"], answer: "More ropes" },
-      { question: "What affects machine efficiency?", options: ["Friction", "Weight", "Speed", "Color"], answer: "Friction" },
-      { question: "Which is an inclined plane?", options: ["Screw", "Ramp", "Lever", "Pulley"], answer: "Ramp" }
-    ]
-  },
-  {
-    sectionId: "grade8-physics-light-refraction-intermediate",
-    quiz: [
-      { question: "What governs refraction?", options: ["Ohm’s Law", "Snell’s Law", "Newton’s Law", "Faraday’s Law"], answer: "Snell’s Law" },
-      { question: "What does a convex lens do?", options: ["Diverge light", "Converge light", "Reflect light", "Absorb light"], answer: "Converge light" },
-      { question: "What causes a rainbow?", options: ["Reflection", "Dispersion", "Absorption", "Diffraction"], answer: "Dispersion" },
-      { question: "Where is refraction used?", options: ["Mirrors", "Optical fibers", "Magnets", "Batteries"], answer: "Optical fibers" }
-    ]
-  },
-  {
-    sectionId: "grade8-physics-circuits-intermediate",
-    quiz: [
-      { question: "What is Ohm’s Law?", options: ["V = IR", "P = IV", "F = ma", "E = mc²"], answer: "V = IR" },
-      { question: "What is a parallel circuit?", options: ["Single path", "Multiple paths", "No resistance", "Battery only"], answer: "Multiple paths" },
-      { question: "What conserves current?", options: ["Ohm’s Law", "Kirchhoff’s Law", "Snell’s Law", "Newton’s Law"], answer: "Kirchhoff’s Law" },
-      { question: "What prevents circuit overload?", options: ["Resistor", "Fuse", "Capacitor", "Switch"], answer: "Fuse" }
-    ]
-  },
-  {
-    sectionId: "grade8-physics-energy-forms-intermediate",
-    quiz: [
-      { question: "What is conserved in a closed system?", options: ["Mass", "Energy", "Velocity", "Force"], answer: "Energy" },
-      { question: "What is mechanical energy?", options: ["Kinetic + potential", "Thermal only", "Chemical only", "Light energy"], answer: "Kinetic + potential" },
-      { question: "Which is renewable?", options: ["Coal", "Oil", "Wind", "Natural gas"], answer: "Wind" },
-      { question: "What converts light to electricity?", options: ["Battery", "Solar panel", "Motor", "Generator"], answer: "Solar panel" }
-    ]
-  },
-  {
-    sectionId: "grade8-physics-sound-intermediate",
-    quiz: [
-      { question: "What type is a sound wave?", options: ["Transverse", "Longitudinal", "Electromagnetic", "Circular"], answer: "Longitudinal" },
-      { question: "What measures sound intensity?", options: ["Hertz", "Decibel", "Watt", "Pascal"], answer: "Decibel" },
-      { question: "What causes the Doppler effect?", options: ["Medium change", "Relative motion", "Frequency drop", "Amplitude rise"], answer: "Relative motion" },
-      { question: "Where is sound used?", options: ["Sonar", "Lens", "Circuit", "Turbine"], answer: "Sonar" }
-    ]
-  },
-  {
-    sectionId: "grade8-physics-gravity-intermediate",
-    quiz: [
-      { question: "What is Newton’s gravity formula?", options: ["F = ma", "F = G (m1 m2 / r^2)", "V = IR", "E = mc²"], answer: "F = G (m1 m2 / r^2)" },
-      { question: "What is weight?", options: ["Mass only", "Gravitational force", "Volume", "Density"], answer: "Gravitational force" },
-      { question: "What drives planetary orbits?", options: ["Friction", "Gravity", "Magnetism", "Pressure"], answer: "Gravity" },
-      { question: "Where is gravity weaker?", options: ["Sea level", "Mountain peak", "Earth’s core", "Equator"], answer: "Mountain peak" }
-    ]
-  },
-  {
-    sectionId: "grade8-physics-pressure-intermediate",
-    quiz: [
-      { question: "What is pressure’s formula?", options: ["P = F/A", "P = mV", "P = IV", "P = E/t"], answer: "P = F/A" },
-      { question: "What is Pascal’s principle?", options: ["Equal pressure transmission", "Buoyancy force", "Energy conservation", "Momentum transfer"], answer: "Equal pressure transmission" },
-      { question: "What causes buoyancy?", options: ["Gravity", "Archimedes’ principle", "Friction", "Magnetism"], answer: "Archimedes’ principle" },
-      { question: "What measures atmospheric pressure?", options: ["Thermometer", "Barometer", "Hygrometer", "Anemometer"], answer: "Barometer" }
-    ]
-  },
-  {
-    sectionId: "grade8-physics-friction-intermediate",
-    quiz: [
-      { question: "What is static friction?", options: ["Motion friction", "Prevents movement", "Increases speed", "Reduces weight"], answer: "Prevents movement" },
-      { question: "What is friction’s formula?", options: ["F = μN", "F = ma", "F = P/A", "F = V/R"], answer: "F = μN" },
-      { question: "What reduces friction?", options: ["Rough surface", "Lubricant", "Weight increase", "High speed"], answer: "Lubricant" },
-      { question: "Where is friction beneficial?", options: ["Engine wear", "Braking", "Energy loss", "Slipping"], answer: "Braking" }
-    ]
-  },
-  {
-    sectionId: "grade8-physics-magnets-intermediate",
-    quiz: [
-      { question: "What creates an electromagnet?", options: ["Static charge", "Current in coil", "Permanent magnet", "Light wave"], answer: "Current in coil" },
-      { question: "What is Faraday’s law?", options: ["Induced voltage", "Force on charge", "Energy conservation", "Pressure transmission"], answer: "Induced voltage" },
-      { question: "What protects Earth from solar winds?", options: ["Gravity", "Magnetic field", "Atmosphere", "Ozone"], answer: "Magnetic field" },
-      { question: "Where are magnets used?", options: ["MRI scanners", "Batteries", "Lenses", "Barometers"], answer: "MRI scanners" }
-    ]
-  },
-  {
-    sectionId: "grade8-chemistry-elements-intermediate",
-    quiz: [
-      { question: "What determines atomic number?", options: ["Neutrons", "Protons", "Electrons", "Mass"], answer: "Protons" },
-      { question: "Which group is highly reactive?", options: ["Noble gases", "Alkali metals", "Halogens", "Transition metals"], answer: "Alkali metals" },
-      { question: "What increases across a period?", options: ["Atomic mass", "Electronegativity", "Atomic radius", "Valence electrons"], answer: "Electronegativity" },
-      { question: "Which is used in semiconductors?", options: ["Iron", "Silicon", "Sulfur", "Gold"], answer: "Silicon" }
-    ]
-  },
-  {
-    sectionId: "grade8-chemistry-compounds-intermediate",
-    quiz: [
-      { question: "What is an ionic bond?", options: ["Electron sharing", "Electron transfer", "Hydrogen bonding", "Van der Waals"], answer: "Electron transfer" },
-      { question: "What is methane’s formula?", options: ["CH4", "CO2", "H2O", "NaCl"], answer: "CH4" },
-      { question: "What forms compounds?", options: ["Physical mixing", "Chemical reaction", "Dissolving", "Melting"], answer: "Chemical reaction" },
-      { question: "Where are compounds used?", options: ["Fertilizers", "Mirrors", "Lenses", "Magnets"], answer: "Fertilizers" }
-    ]
-  },
-  {
-    sectionId: "grade8-chemistry-changes-intermediate",
-    quiz: [
-      { question: "What is a chemical change example?", options: ["Boiling water", "Rusting iron", "Cutting wood", "Melting ice"], answer: "Rusting iron" },
-      { question: "What is an exothermic reaction?", options: ["Absorbs heat", "Releases heat", "No heat change", "Uses light"], answer: "Releases heat" },
-      { question: "What speeds a reaction?", options: ["Catalyst", "Cooling", "Dilution", "Inhibitor"], answer: "Catalyst" },
-      { question: "Where is a chemical change used?", options: ["Recycling", "Plastic production", "Freezing", "Shaping metal"], answer: "Plastic production" }
-    ]
-  },
-  {
-    sectionId: "grade8-chemistry-acids-bases-intermediate",
-    quiz: [
-      { question: "What defines an acid?", options: ["Proton donor", "Electron donor", "Proton acceptor", "Electron acceptor"], answer: "Proton donor" },
-      { question: "What is pH of a strong acid?", options: ["7", "10", "2", "14"], answer: ["2"], options: ["7", "2", "10", "14"] },
-      { question: "What forms in neutralization?", options: ["Acid", "Base", "Salt", "Gas"], answer: "Salt" },
-      { question: "What measures acid concentration?", options: ["Filtration", "Titration", "Distillation", "Centrifugation"], answer: "Titration" }
-    ]
-  },
-  {
-    sectionId: "grade8-chemistry-solutions-intermediate",
-    quiz: [
-      { question: "What is molarity?", options: ["Mass/volume", "Moles/Liter", "Moles/gram", "Volume/Liter"], answer: "Moles/Liter" },
-      { question: "What is a saturated solution?", options: ["Holds maximum solute", "No solute", "Unstable", "Dilute"], answer: "Holds maximum solute" },
-      { question: "Which is a colloid?", options: ["Saltwater", "Milk"], ["Sugar water"], answer: ["Milk"], options: ["Saltwater", "Milk"] },
-      { question: "Where are solutions used?", options: ["IV fluids", "Mirrors"], ["Batteries"], answer: "IV fluids" }
-    ]
-  },
-  {
-    sectionId: "grade8-chemistry-metals-intermediate",
-    quiz: [
-      { question: "Which metal is most reactive?", options: ["Gold"], ["Potassium"], ["Potassium", "Copper"], answer: ["Potassium"] },
-      { question: "What is steel?", options: ["Pure iron"], ["Iron alloy"], answer: ["Iron alloy"], options: ["Pure iron", "Iron alloy"] },
-      { question: "What causes rusting?", options: ["Reduction"], ["Oxidation"], answer: ["Oxidation"], options: ["Reduction", "Oxidation"] },
-      { question: "Where are metals used?", options: ["Wiring"], answer: ["Wiring"], options: ["Wiring", "Copper wiring"] }
-    ]
-  },
-  {
-    sectionId: "grade8-chemistry-nonmetals-intermediate",
-    quiz: [
-      { question: "Which is a non-metal?", options: ["Sodium"], ["Phosphorus"], answer: ["Phosphorus"], options: ["Sodium", "Phosphorus"] },
-      { question: "What are halogens?", options: ["Group 1"], ["Group 17"], answer: ["Group 17"], options: ["Group 1", "Group 17"] },
-      { question: "What is a non-metal used in?", options: ["Wires"], ["Polymers"], answer: ["Polymers"], options: ["Wires", "Polymers"] }
-    ]
-  },
-  {
-    sectionId: "grade8-chemistry-air-composition-intermediate",
-    quiz: [
-      { question: "What gas drives global warming?", options: ["Nitrogen"], ["CO2"], answer: ["CO2"], options: ["Nitrogen", "CO2"] },
-      { question: "What is air’s nitrogen percentage?", options: ["21%", "78%"], answer: ["78%"], options: ["21%", "78%"] },
-      { question: "What affects air quality?", options: ["Particulates"], answer: ["Particulates"], options: ["Particulates"] }
-    ]
-  },
-  {
-    sectionId: "grade8-biology-photosynthesis-intermediate",
-    quiz: [
-      { question: "What is photosynthesis’s formula?", options: ["6CO2 + 6H2O → C6H12O6 + 6O2"], answer: ["Photosynthesis formula"], options: ["6CO2 + 6H2O → C6H12O6 + 6O2"] },
-      { question: "What absorbs light in photosynthesis?", options: ["Chlorophyll"], answer: ["Chlorophyll"], options: ["Chlorophyll"] },
-      { question: "What limits photosynthesis?", options: ["CO2"], answer: ["CO2"], options: ["CO2"] },
-      { question: "Where is photosynthesis used?", options: ["Biofuels"], answer: ["Biofuels"], options: ["Biofuels"] }
-    ]
-  },
-  {
-    sectionId: "grade8-biology-respiration-intermediate",
-    quiz: [
-      { question: "What is respiration’s formula?", options: ["C6H12O6 + 6O2 → 6CO2 + 6H2O + ATP"], answer: ["Respiration formula"], options: ["C6H12O6 + 6O2 → 6CO2 + 6H2O + ATP"] },
-      { question: "What produces ATP?", options: ["Mitochondria"], answer: ["Mitochondria"], options: ["Mitochondria"] },
-      { question: "What is anaerobic respiration?", options: ["No oxygen"], answer: ["No oxygen"], options: ["No oxygen"] }
-    ]
-  },
-  {
-    sectionId: "grade8-biology-digestion-intermediate",
-    quiz: [
-      { question: "What enzyme digests proteins?", options: ["Trypsin"], answer: ["Trypsin"], options: ["Trypsin"] },
-      { question: "What emulsifies fats?", options: ["Bile"], answer: ["Bile"], options: ["Bile"] },
-      { question: "What aids digestion?", options: ["Probiotics"], answer: ["Probiotics"], options: ["Probiotics"] }
-    ]
-  },
-  {
-    sectionId: "grade8-biology-circulation-intermediate",
-    quiz: [
-      { question: "What is systemic circulation?", options: ["Body blood delivery"], answer: ["Body"], options: ["Body blood delivery"] },
-      { question: "What binds oxygen?", options: ["Hemoglobin"], answer: ["Hemoglobin"], options: ["Hemoglobin"] },
-      { question: "What monitors hypertension?", options: ["Blood pressure"], answer: ["Blood pressure"], options: ["Blood pressure"] }
-    ]
-  },
-  {
-    sectionId: "grade8-biology-excretion-intermediate",
-    quiz: [
-      { question: "What filters blood in kidneys?", options: ["Nephrons"], answer: ["Nephrons"], options: ["Nephrons"] },
-      { question: "What detoxifies ammonia?", options: ["Liver"], answer: ["Liver"], options: ["Liver"] },
-      { question: "What is used in dialysis?", options: ["Kidney failure"], answer: ["Kidney failure"], options: ["Kidney failure"] }
-    ]
-  },
-  {
-    sectionId: "grade8-biology-ecosystems-intermediate",
-    quiz: [
-      { question: "What is a trophic level?", options: ["Energy level"], answer: ["Energy level"], options: ["Energy level"] },
-      { question: "What is energy transfer efficiency?", options: ["~10%"], answer: ["~10%"], options: ["~10%"] },
-      { question: "What sustains ecosystems?", options: ["Nutrient cycles"], answer: ["Nutrient cycles"], options: ["Nutrient cycles"] }
-    ]
-  },
-  {
-    sectionId: "grade8-biology-microorganisms-intermediate",
-    quiz: [
-      { question: "What lacks a nucleus?", options: ["Bacteria"], answer: ["Bacteria"], options: ["Bacteria"] },
-      { question: "What produces antibiotics?", options: ["Microbes"], answer: ["Microbes"], options: ["Microbes"] },
-      { question: "What cleans oil spills?", options: ["Bioremediation"], answer: ["Bioremediation"], options: ["Bioremediation"] }
-    ]
-  },
-  {
-    sectionId: "grade8-envsci-water-cycle-intermediate",
-    quiz: [
-      { question: "What stores water?", options: ["Aquifers"], answer: ["Aquifers"], options: ["Aquifers"] },
-      { question: "What increases runoff?", options: ["Urbanization"], answer: ["Urbanization"], options: ["Urbanization"] },
-      { question: "What optimizes water use?", options: ["Irrigation"], answer: ["Irrigation"], options: ["Irrigation"] }
-    ]
-  },
-  {
-    sectionId: "grade8-envsci-pollution-intermediate",
-    quiz: [
-      { question: "What causes algal blooms?", options: ["Eutrophication"], answer: ["Eutrophication"], options: ["Eutrophication"] },
-      { question: "What concentrates toxins?", options: ["Bioaccumulation"], answer: ["Bioaccumulation"], options: ["Bioaccumulation"] },
-      { question: "What reduces emissions?", options: ["Catalytic converters"], answer: ["Catalytic converters"], options: ["Catalytic converters"] }
-    ]
-  },
-  {
-    sectionId: "grade8-envsci-conservation-intermediate",
-    quiz: [
-      { question: "What restores habitats?", options: ["Reforestation"], answer: ["Reforestation"], options: ["Reforestation"] },
-      { question: "What preserves species?", options: ["National parks"], answer: ["National parks"], options: ["National parks"] },
-      { question: "What evaluates impacts?", options: ["Life cycle assessments"], answer: ["Life cycle assessments"], options: ["Life cycle assessments"] }
-    ]
-  },
-  {
-    sectionId: "grade8-biology-reproduction-intermediate",
-    quiz: [
-      { question: "What transfers pollen?", options: ["Pollination"], answer: ["Pollination"], options: ["Pollination"] },
-      { question: "What triggers flowering?", options: ["Photoperiodism"], answer: ["Photoperiodism"], options: ["Photoperiodism"] },
-      { question: "What enhances crop yields?", options: ["Hybrid crops"], answer: ["Hybrid crops"], options: ["Hybrid crops"] }
-    ]
-  }
+const quizData = [
+  { sectionId: "grade8-physics-motion-types-intermediate", quiz: [
+    { question: "What describes circular motion?", options: ["Constant speed", "Angular velocity", "Linear path", "No acceleration"], answer: "Angular velocity" },
+    { question: "Which motion repeats regularly?", options: ["Linear", "Circular", "Periodic", "Random"], answer: "Periodic" },
+    { question: "What is acceleration?", options: ["Speed change rate", "Distance traveled", "Constant velocity", "Total displacement"], answer: "Speed change rate" },
+    { question: "Which has non-uniform motion?", options: ["Train at steady speed", "Car speeding up", "Earth rotating", "Pendulum"], answer: "Car speeding up" }
+  ]},
+  { sectionId: "grade8-physics-simple-machines-intermediate", quiz: [
+    { question: "What is a first-class lever?", options: ["Wheelbarrow", "Seesaw", "Tweezers", "Nutcracker"], answer: "Seesaw" },
+    { question: "What increases pulley advantage?", options: ["Single rope", "More ropes", "Shorter rope", "No friction"], answer: "More ropes" },
+    { question: "What affects machine efficiency?", options: ["Friction", "Weight", "Speed", "Color"], answer: "Friction" },
+    { question: "Which is an inclined plane?", options: ["Screw", "Ramp", "Lever", "Pulley"], answer: "Ramp" }
+  ]},
+  { sectionId: "grade8-physics-light-refraction-intermediate", quiz: [
+    { question: "What governs refraction?", options: ["Ohm’s Law", "Snell’s Law", "Newton’s Law", "Faraday’s Law"], answer: "Snell’s Law" },
+    { question: "What does a convex lens do?", options: ["Diverge light", "Converge light", "Reflect light", "Absorb light"], answer: "Converge light" },
+    { question: "What causes a rainbow?", options: ["Reflection", "Dispersion", "Absorption", "Diffraction"], answer: "Dispersion" },
+    { question: "Where is refraction used?", options: ["Mirrors", "Optical fibers", "Magnets", "Batteries"], answer: "Optical fibers" }
+  ]},
+  { sectionId: "grade8-physics-circuits-intermediate", quiz: [
+    { question: "What is Ohm’s Law?", options: ["V = IR", "P = IV", "F = ma", "E = mc²"], answer: "V = IR" },
+    { question: "What is a parallel circuit?", options: ["Single path", "Multiple paths", "No resistance", "Battery only"], answer: "Multiple paths" },
+    { question: "What conserves current?", options: ["Ohm’s Law", "Kirchhoff’s Law", "Snell’s Law", "Newton’s Law"], answer: "Kirchhoff’s Law" },
+    { question: "What prevents circuit overload?", options: ["Resistor", "Fuse", "Capacitor", "Switch"], answer: "Fuse" }
+  ]},
+  { sectionId: "grade8-physics-energy-forms-intermediate", quiz: [
+    { question: "What is conserved in a closed system?", options: ["Mass", "Energy", "Velocity", "Force"], answer: "Energy" },
+    { question: "What is mechanical energy?", options: ["Kinetic + potential", "Thermal only", "Chemical only", "Light energy"], answer: "Kinetic + potential" },
+    { question: "Which is renewable?", options: ["Coal", "Oil", "Wind", "Natural gas"], answer: "Wind" },
+    { question: "What converts light to electricity?", options: ["Battery", "Solar panel", "Motor", "Generator"], answer: "Solar panel" }
+  ]},
+  { sectionId: "grade8-physics-sound-intermediate", quiz: [
+    { question: "What type is a sound wave?", options: ["Transverse", "Longitudinal", "Electromagnetic", "Circular"], answer: "Longitudinal" },
+    { question: "What measures sound intensity?", options: ["Hertz", "Decibel", "Watt", "Pascal"], answer: "Decibel" },
+    { question: "What causes the Doppler effect?", options: ["Medium change", "Relative motion", "Frequency drop", "Amplitude rise"], answer: "Relative motion" },
+    { question: "Where is sound used?", options: ["Sonar", "Lens", "Circuit", "Turbine"], answer: "Sonar" }
+  ]},
+  { sectionId: "grade8-physics-gravity-intermediate", quiz: [
+    { question: "What is Newton’s gravity formula?", options: ["F = ma", "F = G (m1 m2 / r^2)", "V = IR", "E = mc²"], answer: "F = G (m1 m2 / r^2)" },
+    { question: "What is weight?", options: ["Mass only", "Gravitational force", "Volume", "Density"], answer: "Gravitational force" },
+    { question: "What drives planetary orbits?", options: ["Friction", "Gravity", "Magnetism", "Pressure"], answer: "Gravity" },
+    { question: "Where is gravity weaker?", options: ["Sea level", "Mountain peak", "Earth’s core", "Equator"], answer: "Mountain peak" }
+  ]},
+  { sectionId: "grade8-physics-pressure-intermediate", quiz: [
+    { question: "What is pressure’s formula?", options: ["P = F/A", "P = mV", "P = IV", "P = E/t"], answer: "P = F/A" },
+    { question: "What is Pascal’s principle?", options: ["Equal pressure transmission", "Buoyancy force", "Energy conservation", "Momentum transfer"], answer: "Equal pressure transmission" },
+    { question: "What causes buoyancy?", options: ["Gravity", "Archimedes’ principle", "Friction", "Magnetism"], answer: "Archimedes’ principle" },
+    { question: "What measures atmospheric pressure?", options: ["Thermometer", "Barometer", "Hygrometer", "Anemometer"], answer: "Barometer" }
+  ]},
+  { sectionId: "grade8-physics-friction-intermediate", quiz: [
+    { question: "What is static friction?", options: ["Motion friction", "Prevents movement", "Increases speed", "Reduces weight"], answer: "Prevents movement" },
+    { question: "What is friction’s formula?", options: ["F = μN", "F = ma", "F = P/A", "F = V/R"], answer: "F = μN" },
+    { question: "What reduces friction?", options: ["Rough surface", "Lubricant", "Weight increase", "High speed"], answer: "Lubricant" },
+    { question: "Where is friction beneficial?", options: ["Engine wear", "Braking", "Energy loss", "Slipping"], answer: "Braking" }
+  ]},
+  { sectionId: "grade8-physics-magnets-intermediate", quiz: [
+    { question: "What creates an electromagnet?", options: ["Static charge", "Current in coil", "Permanent magnet", "Light wave"], answer: "Current in coil" },
+    { question: "What is Faraday’s law?", options: ["Induced voltage", "Force on charge", "Energy conservation", "Pressure transmission"], answer: "Induced voltage" },
+    { question: "What protects Earth from solar winds?", options: ["Gravity", "Magnetic field", "Atmosphere", "Ozone"], answer: "Magnetic field" },
+    { question: "Where are magnets used?", options: ["MRI scanners", "Batteries", "Lenses", "Barometers"], answer: "MRI scanners" }
+  ]},
+  { sectionId: "grade8-chemistry-elements-intermediate", quiz: [
+    { question: "What determines atomic number?", options: ["Neutrons", "Protons", "Electrons", "Mass"], answer: "Protons" },
+    { question: "Which group is highly reactive?", options: ["Noble gases", "Alkali metals", "Halogens", "Transition metals"], answer: "Alkali metals" },
+    { question: "What increases across a period?", options: ["Atomic mass", "Electronegativity", "Atomic radius", "Valence electrons"], answer: "Electronegativity" },
+    { question: "Which is used in semiconductors?", options: ["Iron", "Silicon", "Sulfur", "Gold"], answer: "Silicon" }
+  ]},
+  { sectionId: "grade8-chemistry-compounds-intermediate", quiz: [
+    { question: "What is an ionic bond?", options: ["Electron sharing", "Electron transfer", "Hydrogen bonding", "Van der Waals"], answer: "Electron transfer" },
+    { question: "What is methane’s formula?", options: ["CH4", "CO2", "H2O", "NaCl"], answer: "CH4" },
+    { question: "What forms compounds?", options: ["Physical mixing", "Chemical reaction", "Dissolving", "Melting"], answer: "Chemical reaction" },
+    { question: "Where are compounds used?", options: ["Fertilizers", "Mirrors", "Lenses", "Magnets"], answer: "Fertilizers" }
+  ]},
+  { sectionId: "grade8-chemistry-changes-intermediate", quiz: [
+    { question: "What is a chemical change example?", options: ["Boiling water", "Rusting iron", "Cutting wood", "Melting ice"], answer: "Rusting iron" },
+    { question: "What is an exothermic reaction?", options: ["Absorbs heat", "Releases heat", "No heat change", "Uses light"], answer: "Releases heat" },
+    { question: "What speeds a reaction?", options: ["Catalyst", "Cooling", "Dilution", "Inhibitor"], answer: "Catalyst" },
+    { question: "Where is a chemical change used?", options: ["Recycling", "Plastic production", "Freezing", "Shaping metal"], answer: "Plastic production" }
+  ]},
+  { sectionId: "grade8-chemistry-acids-bases-intermediate", quiz: [
+    { question: "What defines an acid?", options: ["Proton donor", "Electron donor", "Proton acceptor", "Electron acceptor"], answer: "Proton donor" },
+    { question: "What is pH of a strong acid?", options: ["7", "2", "10", "14"], answer: "2" },
+    { question: "What forms in neutralization?", options: ["Acid", "Base", "Salt", "Gas"], answer: "Salt" },
+    { question: "What measures acid concentration?", options: ["Filtration", "Titration", "Distillation", "Centrifugation"], answer: "Titration" }
+  ]},
+  { sectionId: "grade8-chemistry-solutions-intermediate", quiz: [
+    { question: "What is molarity?", options: ["Mass/volume", "Moles/Liter", "Moles/gram", "Volume/Liter"], answer: "Moles/Liter" },
+    { question: "What is a saturated solution?", options: ["Holds maximum solute", "No solute", "Unstable", "Dilute"], answer: "Holds maximum solute" },
+    { question: "Which is a colloid?", options: ["Saltwater", "Milk", "Sugar water", "Air"], answer: "Milk" },
+    { question: "Where are solutions used?", options: ["IV fluids", "Mirrors", "Batteries", "Lenses"], answer: "IV fluids" }
+  ]},
+  { sectionId: "grade8-chemistry-metals-intermediate", quiz: [
+    { question: "Which metal is most reactive?", options: ["Gold", "Potassium", "Copper", "Silver"], answer: "Potassium" },
+    { question: "What is steel?", options: ["Pure iron", "Iron alloy", "Iron oxide", "Iron sulfide"], answer: "Iron alloy" },
+    { question: "What causes rusting?", options: ["Reduction", "Oxidation", "Neutralization", "Precipitation"], answer: "Oxidation" },
+    { question: "Where are metals used?", options: ["Wiring", "Glass", "Plastic", "Wood"], answer: "Wiring" }
+  ]},
+  { sectionId: "grade8-chemistry-nonmetals-intermediate", quiz: [
+    { question: "Which is a non-metal?", options: ["Sodium", "Phosphorus", "Iron", "Copper"], answer: "Phosphorus" },
+    { question: "What are halogens?", options: ["Group 1", "Group 17", "Group 2", "Group 18"], answer: "Group 17" },
+    { question: "What is a non-metal used in?", options: ["Wires", "Polymers", "Mirrors", "Batteries"], answer: "Polymers" }
+  ]},
+  { sectionId: "grade8-chemistry-air-composition-intermediate", quiz: [
+    { question: "What gas drives global warming?", options: ["Nitrogen", "CO2", "Oxygen", "Argon"], answer: "CO2" },
+    { question: "What is air’s nitrogen percentage?", options: ["21%", "78%", "1%", "10%"], answer: "78%" },
+    { question: "What affects air quality?", options: ["Particulates", "Rain", "Wind", "Sunlight"], answer: "Particulates" }
+  ]},
+  { sectionId: "grade8-biology-photosynthesis-intermediate", quiz: [
+    { question: "What is photosynthesis’s formula?", options: ["6CO2 + 6H2O → C6H12O6 + 6O2", "C6H12O6 + 6O2 → 6CO2 + 6H2O", "H2O → O2 + H2", "CO2 → C + O2"], answer: "6CO2 + 6H2O → C6H12O6 + 6O2" },
+    { question: "What absorbs light in photosynthesis?", options: ["Chlorophyll", "Hemoglobin", "Melanin", "Carotene"], answer: "Chlorophyll" },
+    { question: "What limits photosynthesis?", options: ["CO2", "Nitrogen", "Oxygen", "Argon"], answer: "CO2" },
+    { question: "Where is photosynthesis used?", options: ["Biofuels", "Batteries", "Wiring", "Mirrors"], answer: "Biofuels" }
+  ]},
+  { sectionId: "grade8-biology-respiration-intermediate", quiz: [
+    { question: "What is respiration’s formula?", options: ["C6H12O6 + 6O2 → 6CO2 + 6H2O + ATP", "6CO2 + 6H2O → C6H12O6 + 6O2", "H2O → O2 + H2", "CO2 → C + O2"], answer: "C6H12O6 + 6O2 → 6CO2 + 6H2O + ATP" },
+    { question: "What produces ATP?", options: ["Mitochondria", "Chloroplasts", "Nucleus", "Ribosomes"], answer: "Mitochondria" },
+    { question: "What is anaerobic respiration?", options: ["No oxygen", "Uses oxygen", "In chloroplasts", "In nucleus"], answer: "No oxygen" }
+  ]},
+  { sectionId: "grade8-biology-digestion-intermediate", quiz: [
+    { question: "What enzyme digests proteins?", options: ["Trypsin", "Amylase", "Lipase", "Maltase"], answer: "Trypsin" },
+    { question: "What emulsifies fats?", options: ["Bile", "Saliva", "Pepsin", "Amylase"], answer: "Bile" },
+    { question: "What aids digestion?", options: ["Probiotics", "Antibiotics", "Analgesics", "Antihistamines"], answer: "Probiotics" }
+  ]},
+  { sectionId: "grade8-biology-circulation-intermediate", quiz: [
+    { question: "What is systemic circulation?", options: ["Body blood delivery", "Lung blood delivery", "Heart contraction", "Blood filtration"], answer: "Body blood delivery" },
+    { question: "What binds oxygen?", options: ["Hemoglobin", "Plasma", "Platelets", "White cells"], answer: "Hemoglobin" },
+    { question: "What monitors hypertension?", options: ["Blood pressure", "Heart rate", "Blood sugar", "Cholesterol"], answer: "Blood pressure" }
+  ]},
+  { sectionId: "grade8-biology-excretion-intermediate", quiz: [
+    { question: "What filters blood in kidneys?", options: ["Nephrons", "Alveoli", "Neurons", "Villi"], answer: "Nephrons" },
+    { question: "What detoxifies ammonia?", options: ["Liver", "Kidneys", "Lungs", "Heart"], answer: "Liver" },
+    { question: "What is used in dialysis?", options: ["Kidney failure", "Heart failure", "Lung failure", "Liver failure"], answer: "Kidney failure" }
+  ]},
+  { sectionId: "grade8-biology-ecosystems-intermediate", quiz: [
+    { question: "What is a trophic level?", options: ["Energy level", "Species count", "Habitat size", "Water content"], answer: "Energy level" },
+    { question: "What is energy transfer efficiency?", options: ["~10%", "~50%", "~90%", "~100%"], answer: "~10%" },
+    { question: "What sustains ecosystems?", options: ["Nutrient cycles", "Weather patterns", "Solar flares", "Tidal waves"], answer: "Nutrient cycles" }
+  ]},
+  { sectionId: "grade8-biology-microorganisms-intermediate", quiz: [
+    { question: "What lacks a nucleus?", options: ["Bacteria", "Fungi", "Protozoa", "Algae"], answer: "Bacteria" },
+    { question: "What produces antibiotics?", options: ["Microbes", "Plants", "Animals", "Minerals"], answer: "Microbes" },
+    { question: "What cleans oil spills?", options: ["Bioremediation", "Filtration", "Incineration", "Distillation"], answer: "Bioremediation" }
+  ]},
+  { sectionId: "grade8-envsci-water-cycle-intermediate", quiz: [
+    { question: "What stores water?", options: ["Aquifers", "Clouds", "Rivers", "Glaciers"], answer: "Aquifers" },
+    { question: "What increases runoff?", options: ["Urbanization", "Forestation", "Irrigation", "Evaporation"], answer: "Urbanization" },
+    { question: "What optimizes water use?", options: ["Irrigation", "Deforestation", "Urbanization", "Pollution"], answer: "Irrigation" }
+  ]},
+  { sectionId: "grade8-envsci-pollution-intermediate", quiz: [
+    { question: "What causes algal blooms?", options: ["Eutrophication", "Deforestation", "Urbanization", "Erosion"], answer: "Eutrophication" },
+    { question: "What concentrates toxins?", options: ["Bioaccumulation", "Evaporation", "Filtration", "Precipitation"], answer: "Bioaccumulation" },
+    { question: "What reduces emissions?", options: ["Catalytic converters", "Incinerators", "Landfills", "Oil rigs"], answer: "Catalytic converters" }
+  ]},
+  { sectionId: "grade8-envsci-conservation-intermediate", quiz: [
+    { question: "What restores habitats?", options: ["Reforestation", "Urbanization", "Deforestation", "Mining"], answer: "Reforestation" },
+    { question: "What preserves species?", options: ["National parks", "Factories", "Highways", "Dams"], answer: "National parks" },
+    { question: "What evaluates impacts?", options: ["Life cycle assessments", "Weather forecasts", "Economic reports", "Population surveys"], answer: "Life cycle assessments" }
+  ]},
+  { sectionId: "grade8-biology-reproduction-intermediate", quiz: [
+    { question: "What transfers pollen?", options: ["Pollination", "Fertilization", "Germination", "Transpiration"], answer: "Pollination" },
+    { question: "What triggers flowering?", options: ["Photoperiodism", "Geotropism", "Hydrotropism", "Thigmotropism"], answer: "Photoperiodism" },
+    { question: "What enhances crop yields?", options: ["Hybrid crops", "Monoculture", "Deforestation", "Pesticides"], answer: "Hybrid crops" }
+  ]}
 ];
 
+
+  
 
 
 
