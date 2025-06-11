@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Drillmasters LMS - TNPSC Group 4 Science (Advanced)</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; background-color: #f3f4f6; display: flex; flex-direction: column; min-height: 100vh; }
+    .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 15px; }
+    header { background-color: #2563eb; color: white; padding: 1rem 0; }
+    header h1 { font-size: 1.5rem; font-weight: bold; }
+    header h2 { font-size: 1.125rem; }
+    header .flex { display: flex; justify-content: space-between; align-items: center; }
+    nav { background-color: #1d4ed8; padding: 1rem 0; }
+    nav ul { list-style: none; display: flex; gap: 1rem; }
+    nav a { color: white; text-decoration: none; }
+    nav a:hover { text-decoration: underline; }
+    main { flex-grow: 1; padding: 1rem 0; }
+    #content { background-color: white; padding: 1.5rem; border-radius: 0.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+    footer { background-color: #1f2937; color: white; padding: 1rem 0; margin-top: auto; text-align: center; }
+    footer a { color: white; text-decoration: underline; }
+    button { padding: 0.5rem 1rem; border-radius: 0.25rem; cursor: pointer; }
+    .btn-blue { background-color: #3b82f6; color: white; border: none; }
+    .btn-blue:hover { background-color: #2563eb; }
+    .btn-gray { background-color: #6b7280; color: white; border: none; }
+    .btn-gray:hover { background-color: #4b5563; }
+    .btn-green { background-color: #22c55e; color: white; border: none; }
+    .btn-green:hover { background-color: #16a34a; }
+    .btn-yellow { background-color: #f59e0b; color: white; border: none; }
+    .btn-yellow:hover { background-color: #d97706; }
+    .text-red { color: #ef4444; }
+    .text-green { color: #22c55e; }
+    .hidden { display: none; }
+    #quiz-form { margin-top: 1rem; }
+    #quiz-form div { margin-bottom: 1rem; }
+    #quiz-form p { font-weight: bold; margin-bottom: 0.5rem; }
+    #quiz-form label { display: block; margin: 0.25rem 0; }
+    #quiz-form input[type="radio"] { margin-right: 0.5rem; }
+    #feedback { margin-top: 1rem; }
+    #navigation { margin-top: 1rem; }
+    @media (max-width: 768px) {
+      nav ul { flex-direction: column; gap: 0.5rem; }
+      #menu-btn { display: block; }
+      #menu { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container flex">
+      <div>
+        <h1>TNPSC Group 4 - Science</h1>
+        <h2>Advanced Level</h2>
+      </div>
+      <button id="menu-btn" class="hidden">☰</button>
+    </div>
+    <nav id="menu">
+      <div class="container">
+        <ul>
+          <li><a href="tnpsc-gr4-home.html">TNPSC Group 4 Home</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <div class="container">
+      <div id="content">
+        <p>Loading content...</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>© 2025 Drillmasters LMS. All rights reserved.</p>
+      <p>Contact: <a href="mailto:support@drillmasters.in">support@drillmasters.in</a> | <a href="https://www.drillmasters.in">www.drillmasters.in</a></p>
+    </div>
+  </footer>
+
+  <!-- Embedded JavaScript -->
+  <script>
+    // Data for 29 sections (real data for 1-10, placeholders for 11-29)
+
+const quizData = [
+  {
+    sectionId: "grade8-physics-motion-types-advanced",
+    quiz: [
+      { question: "What characterizes motion in a non-inertial frame?", options: ["Constant velocity", "Pseudo forces", "No acceleration", "Linear path"], answer: "Pseudo forces" },
+      { question: "What is relativistic motion?", options: ["Low-speed motion", "Near-light speed", "Circular motion", "Periodic motion"], answer: "Near-light speed" },
+      { question: "Which equation describes time dilation?", options: ["v = d/t", "t = t₀/√(1 - v²/c²)", "F = ma", "E = mc²"], answer: "t = t₀/√(1 - v²/c²)" },
+      { question: "What uses Lagrangian mechanics?", options: ["Static systems", "Coupled oscillators", "Thermal systems", "Electromagnetic waves"], answer: "Coupled oscillators" }
+    ]
+  },
+  {
+    sectionId: "grade8-physics-simple-machines-advanced",
+    quiz: [
+      { question: "What quantifies lever torque?", options: ["F = ma", "τ = rF sinθ", "P = F/A", "W = Fd"], answer: "τ = rF sinθ" },
+      { question: "What amplifies torque in machines?", options: ["Single pulley", "Gear system", "Short lever", "High friction"], answer: "Gear system" },
+      { question: "What reduces machine efficiency?", options: ["Friction", "Mass", "Speed", "Length"], answer: "Friction" },
+      { question: "Where are hydraulics used?", options: ["Robotic arms", "Light bulbs", "Solar panels", "Batteries"], answer: "Robotic arms" }
+    ]
+  },
+  {
+    sectionId: "grade8-physics-light-refraction-advanced",
+    quiz: [
+      { question: "What causes total internal reflection?", options: ["Low angle", "Critical angle", "High speed", "Low frequency"], answer: "Critical angle" },
+      { question: "What does the lensmaker’s equation calculate?", options: ["Wavelength", "Focal length", "Intensity", "Polarization"], answer: "Focal length" },
+      { question: "What filters light in LCDs?", options: ["Diffraction", "Polarization", "Reflection", "Absorption"], answer: "Polarization" },
+      { question: "Where is refraction used?", options: ["Laser communication", "Magnets", "Motors", "Circuits"], answer: "Laser communication" }
+    ]
+  },
+  {
+    sectionId: "grade8-physics-circuits-advanced",
+    quiz: [
+      { question: "What introduces phase shifts in AC circuits?", options: ["Resistors", "Capacitors", "Wires", "Switches"], answer: "Capacitors" },
+      { question: "What occurs at resonance?", options: ["Maximum impedance", "X_L = X_C", "No current", "High resistance"], answer: "X_L = X_C" },
+      { question: "What simplifies circuit analysis?", options: ["Ohm’s Law", "Thevenin’s theorem", "Snell’s Law", "Newton’s Law"], answer: "Thevenin’s theorem" },
+      { question: "Where is resonance used?", options: ["Radio tuners", "Batteries", "Lenses", "Pulleys"], answer: "Radio tuners" }
+    ]
+  },
+  {
+    sectionId: "grade8-physics-energy-forms-advanced",
+    quiz: [
+      { question: "What predicts reaction spontaneity?", options: ["Kinetic energy", "Gibbs free energy", "Potential energy", "Thermal energy"], answer: "Gibbs free energy" },
+      { question: "What powers nuclear reactors?", options: ["Fission", "Fusion", "Combustion", "Wind"], answer: "Fission" },
+      { question: "What limits solar cell efficiency?", options: ["Bandgap energy", "Wire length", "Panel size", "Color"], answer: "Bandgap energy" },
+      { question: "Where is energy storage advanced?", options: ["Supercapacitors", "Pulleys", "Lenses", "Mirrors"], answer: "Supercapacitors" }
+    ]
+  },
+  {
+    sectionId: "grade8-physics-sound-advanced",
+    quiz: [
+      { question: "What models sound propagation?", options: ["Wave equation", "Ohm’s law", "F = ma", "E = mc²"], answer: "Wave equation" },
+      { question: "What produces harmonics in pipes?", options: ["Friction", "Resonance", "Pressure", "Speed"], answer: "Resonance" },
+      { question: "What causes shock waves?", options: ["Low amplitude", "Nonlinear effects", "Low frequency", "High temperature"], answer: "Nonlinear effects" },
+      { question: "Where is sound used?", options: ["Seismic imaging", "ATP production", "Circuits", "Solar panels"], answer: "Seismic imaging" }
+    ]
+  },
+  {
+    sectionId: "grade8-physics-gravity-advanced",
+    quiz: [
+      { question: "What replaces Newtonian gravity?", options: ["Spacetime curvature", "Magnetic fields", "Electric charge", "Friction"], answer: "Spacetime curvature" },
+      { question: "What did LIGO detect?", options: ["Neutrinos", "Gravitational waves", "Photons", "Electrons"], answer: "Gravitational waves" },
+      { question: "What traps light in black holes?", options: ["Event horizon", "Core", "Singularity"], answer: "Event horizon" },
+      { question: "What corrects GPS time?", options: ["Friction", "Time dilation", "Magnetism", "Pressure"], answer: "Time dilation" }
+    ]
+  },
+  {
+    sectionId: "grade8-physics-pressure-advanced",
+    quiz: [
+      { question: "What governs fluid flow?", options: ["Bernoulli’s equation", "Ohm’s Law", "F = ma", "E = mc²"], answer: "Bernoulli’s equation" },
+      { question: "What affects turbulent flow?", options: ["Viscosity", "Mass", "Color", "Length"], answer: "Viscosity" },
+      { question: "What relates pressure to kinetic theory?", options: ["P = F/A", "P = (1/3)(n/V)m⟨v²⟩", "P = IV", "P = mV"], answer: "P = (1/3)(n/V)m⟨v²⟩" },
+      { question: "Where is high pressure used?", options: ["Diamond synthesis", "Light bulbs", "Solar panels", "Batteries"], answer: "Diamond synthesis" }
+    ]
+  },
+  {
+    sectionId: "grade8-physics-friction-advanced",
+    quiz: [
+      { question: "What breaks down at nanoscale?", options: ["Amontons-Coulomb law", "F = ma", "P = F/A", "V = IR"], answer: "Amontons-Coulomb law" },
+      { question: "What models velocity-dependent friction?", options: ["Ohm’s Law", "Stribeck curves", "Snell’s Law", "Bernoulli’s equation"], answer: "Stribeck curves" },
+      { question: "What reduces wear?", options: ["Rough surface", "Lubrication", "High speed", "Friction"], answer: "Lubrication" },
+      { question: "Where are friction coatings used?", options: ["Nanotechnology", "Mirrors", "Solar panels", "Batteries"], answer: "Nanotechnology" }
+    ]
+  },
+  {
+    sectionId: "grade8-physics-magnets-advanced",
+    quiz: [
+      { question: "What ensures zero magnetic field divergence?", options: ["Ohm’s Law", "Maxwell’s equations", "F = ma", "E = mc²"], answer: "Maxwell’s equations" },
+      { question: "What causes hysteresis?", options: ["Spin alignment", "Charge flow", "Electron transfer", "Magnetic field"], answer: "Spin alignment" },
+      { question: "What exhibits the Meissner effect?", options: ["Superconductors", "Magnets", "Insulators", "Semiconductors"], answer: "Superconductors" },
+      { question: "Where is magnetism used?", options: ["Maglev trains", "Batteries", "Lenses", "Barometers"], answer: "Maglev trains" }
+    ]
+  },
+  {
+    sectionId: "grade8-chemistry-elements-advanced",
+    quiz: [
+      { question: "What causes lanthanide contraction?", options: ["High shielding", "Poor f-orbital shielding", "Low mass", "High charge"], answer: "Poor f-orbital shielding" },
+      { question: "What explains Cr configuration?", options: ["Aufbau", "Hund's rule", "Pauli exclusion", "Octet rule"], answer: "Aufbau" },
+      { question: "What increases ionization energy?", options: ["Z_eff", "Atomic radius", "Electron affinity", "Electronegativity"], answer: "Z_eff" },
+      { question: "Where are isotopes used?", options: ["Spectroscopy", "Electrolysis", "Combustion", "Photosynthesis"], answer: "Spectroscopy" }
+    ]
+  },
+  {
+    sectionId: "grade8-chemistry-compounds-advanced",
+    quiz: [
+      { question: "What forms σ-bonds?", options: ["Electron transfer", "Orbital overlap", "Charge separation", "Spin pairing"], answer: "Orbital overlap" },
+      { question: "What dictates ionic stability?", options: ["Lattice energy", "Mass", "Volume", "Color"], answer: "Lattice energy" },
+      { question: "What drives SN2 reactions?", options: ["Sterics", "Reaction mechanism", "Temperature", "Pressure"], answer: "Reaction mechanism" },
+      { question: "Where are compounds used?", options: ["Catalysis", "Photosynthesis", "Respiration", "Digestion"], answer: "Catalysis" }
+    ]
+  },
+  {
+    sectionId: "grade8-chemistry-changes-advanced",
+    quiz: [
+      { question: "What affects reaction rate?", options: ["Arrhenius equation", "Ohm’s law", "Newton’s law", "Snell’s law"], answer: "Arrhenius equation" },
+      { question: "What governs phase transitions?", options: ["Gibbs phase rule", "Boyle's law", "Raoult's law", "Le Chatelier's principle"], answer: "Gibbs phase rule" },
+      { question: "What shifts equilibrium?", options: ["Le Chatelier’s principle", "Bernoulli's principle", "Archimedes' principle", "Pascal's principle"], answer: "Le Chatelier’s principle" },
+      { question: "Where is kinetics used?", options: ["Ammonia production", "Photosynthesis", "Respiration", "Digestion"], answer: "Ammonia production" }
+    ]
+  },
+  {
+    sectionId: "grade8-chemistry-acids-bases-advanced",
+    quiz: [
+      { question: "What defines a Lewis acid?", options: ["Proton donor", "Electron pair acceptor", "Proton acceptor", "Electron donor"], answer: "Electron pair acceptor" },
+      { question: "What maintains pH?", options: ["Buffer system", "Catalyst", "Enzyme", "Solvent"], answer: "Buffer system" },
+      { question: "What affects acid strength?", options: ["K_a", "K_b", "pH", "pOH"], answer: "K_a" },
+      { question: "Where are buffers used?", options: ["Blood pH", "Photosynthesis", "Respiration", "Digestion"], answer: "Blood pH" }
+    ]
+  },
+  {
+    sectionId: "grade8-chemistry-solutions-advanced",
+    quiz: [
+      { question: "What predicts vapor pressure?", options: ["Raoult’s Law", "Ohm’s Law", "Boyle's Law", "Charles's Law"], answer: "Raoult’s Law" },
+      { question: "What drives reverse osmosis?", options: ["Osmotic pressure", "Hydrostatic pressure", "Atmospheric pressure", "Partial pressure"], answer: "Osmotic pressure" },
+      { question: "What scatters light?", options: ["Colloids", "Solutions", "Suspensions", "Crystals"], answer: "Colloids" },
+      { question: "Where are solutions used?", options: ["Battery electrolytes", "Photosynthesis", "Respiration", "Digestion"], answer: "Battery electrolytes" }
+    ]
+  },
+  {
+    sectionId: "grade8-chemistry-metals-advanced",
+    quiz: [
+      { question: "What explains metal conductivity?", options: ["Band theory", "Ionization", "Electronegativity", "Lattice energy"], answer: "Band theory" },
+      { question: "What mitigates corrosion?", options: ["Cathodic protection", "Anodic protection", "Electrolysis", "Galvanization"], answer: "Cathodic protection" },
+      { question: "What extracts aluminum?", options: ["Electrolysis", "Distillation", "Filtration", "Sublimation"], answer: "Electrolysis" },
+      { question: "Where are metals used?", options: ["Fuel cells", "Photosynthesis", "Respiration", "Digestion"], answer: "Fuel cells" }
+    ]
+  },
+  {
+    sectionId: "grade8-chemistry-nonmetals-advanced",
+    quiz: [
+      { question: "What is a carbon allotrope?", options: ["Graphene", "Iron", "Copper", "Gold"], answer: "Graphene" },
+      { question: "What forms interhalogens?", options: ["Halogens", "Noble gases", "Alkali metals", "Alkaline earth metals"], answer: "Halogens" },
+      { question: "What causes acid rain?", options: ["Non-metal oxides", "Metal oxides", "Salts", "Bases"], answer: "Non-metal oxides" },
+      { question: "Where are non-metals used?", options: ["Semiconductors", "Photosynthesis", "Respiration", "Digestion"], answer: "Semiconductors" }
+    ]
+  },
+  {
+    sectionId: "grade8-chemistry-air-composition-advanced",
+    quiz: [
+      { question: "What depletes ozone?", options: ["CFCs", "CO2", "O2", "N2"], answer: "CFCs" },
+      { question: "What has high GWP?", options: ["CH4", "O2", "N2", "CO2"], answer: "CH4" },
+      { question: "What affects climate?", options: ["Aerosols", "Salts", "Bases", "Acids"], answer: "Aerosols" },
+      { question: "Where is air monitored?", options: ["Satellites", "Photosynthesis", "Respiration", "Digestion"], answer: "Satellites" }
+    ]
+  },
+  {
+    sectionId: "grade8-biology-photosynthesis-advanced",
+    quiz: [
+      { question: "What maps electron transport?", options: ["Z-scheme", "Krebs cycle", "Calvin cycle", "Glycolysis"], answer: "Z-scheme" },
+      { question: "What optimizes CO2 fixation?", options: ["C4 pathway", "C3 pathway", "CAM pathway", "Glycolysis"], answer: "C4 pathway" },
+      { question: "What reduces efficiency?", options: ["Photorespiration", "Photosynthesis", "Respiration", "Digestion"], answer: "Photorespiration" },
+      { question: "Where is photosynthesis used?", options: ["Biofuels", "Photosynthesis", "Respiration", "Digestion"], answer: "Biofuels" }
+    ]
+  },
+  {
+    sectionId: "grade8-biology-respiration-advanced",
+    quiz: [
+      { question: "What yields ATP?", options: ["Oxidative phosphorylation", "Photosynthesis", "Respiration", "Digestion"], answer: "Oxidative phosphorylation" },
+      { question: "What recycles intermediates?", options: ["Gluconeogenesis", "Photosynthesis", "Respiration", "Digestion"], answer: "Gluconeogenesis" },
+      { question: "What causes diseases?", options: ["Mitochondrial DNA mutations", "Photosynthesis", "Respiration", "Digestion"], answer: "Mitochondrial DNA mutations" },
+      { question: "Where is respiration used?", options: ["Metabolic engineering", "Photosynthesis", "Respiration", "Digestion"], answer: "Metabolic engineering" }
+    ]
+  },
+  {
+    sectionId: "grade8-biology-digestion-advanced",
+    quiz: [
+      { question: "What governs enzyme activity?", options: ["Michaelis-Menten", "Photosynthesis", "Respiration", "Digestion"], answer: "Michaelis-Menten" },
+      { question: "What synthesizes vitamins?", options: ["Gut microbiota", "Photosynthesis", "Respiration", "Digestion"], answer: "Gut microbiota" },
+      { question: "What regulates digestion?", options: ["Hormones", "Photosynthesis", "Respiration", "Digestion"], answer: "Hormones" },
+      { question: "Where are enzymes used?", options: ["Probiotics", "Photosynthesis", "Respiration", "Digestion"], answer: "Probiotics" }
+    ]
+  },
+  {
+    sectionId: "grade8-biology-circulation-advanced",
+    quiz: [
+      { question: "What governs blood flow?", options: ["Poiseuille’s law", "Photosynthesis", "Respiration", "Digestion"], answer: "Poiseuille’s law" },
+      { question: "What maintains pressure?", options: ["Baroreceptors", "Photosynthesis", "Respiration", "Digestion"], answer: "Baroreceptors" },
+      { question: "What narrows arteries?", options: ["Atherosclerosis", "Photosynthesis", "Respiration", "Digestion"], answer: "Atherosclerosis" },
+      { question: "Where is circulation modeled?", options: ["Wearable monitors", "Photosynthesis", "Respiration", "Digestion"], answer: "Wearable monitors" }
+    ]
+  },
+  {
+    sectionId: "grade8-biology-excretion-advanced",
+    quiz: [
+      { question: "What measures kidney function?", options: ["GFR", "Photosynthesis", "Respiration", "Digestion"], answer: "GFR" },
+      { question: "What regulates blood volume?", options: ["Renin-angiotensin system", "Photosynthesis", "Respiration", "Digestion"], answer: "Renin-angiotensin system" },
+      { question: "What detoxifies xenobiotics?", options: ["Cytochrome P450", "Photosynthesis", "Respiration", "Digestion"], answer: "Cytochrome P450" },
+      { question: "Where is excretion used?", options: ["Biosensors", "Photosynthesis", "Respiration", "Digestion"], answer: "Biosensors" }
+    ]
+  },
+  {
+    sectionId: "grade8-biology-ecosystems-advanced",
+    quiz: [
+      { question: "What stores carbon?", options: ["Forests", "Photosynthesis", "Respiration", "Digestion"], answer: "Forests" },
+      { question: "What regulates trophic levels?", options: ["Keystone species", "Photosynthesis", "Respiration", "Digestion"], answer: "Keystone species" },
+      { question: "What models populations?", options: ["Chaos theory", "Photosynthesis", "Respiration", "Digestion"], answer: "Chaos theory" },
+      { question: "Where are ecosystems restored?", options: ["Coral reefs", "Photosynthesis", "Respiration", "Digestion"], answer: "Coral reefs" }
+    ]
+  },
+  {
+    sectionId: "grade8-biology-microorganisms-advanced",
+    quiz: [
+      { question: "What edits bacterial genomes?", options: ["CRISPR", "Photosynthesis", "Respiration", "Digestion"], answer: "CRISPR" },
+      { question: "What coordinates biofilms?", options: ["Quorum sensing", "Photosynthesis", "Respiration", "Digestion"], answer: "Quorum sensing" },
+      { question: "What informs astrobiology?", options: ["Extremophiles", "Photosynthesis", "Respiration", "Digestion"], answer: "Extremophiles" },
+      { question: "Where are microbes used?", options: ["Bioreactors", "Photosynthesis", "Respiration", "Digestion"], answer: "Bioreactors" }
+    ]
+  },
+  {
+    sectionId: "grade8-envsci-water-cycle-advanced",
+    quiz: [
+      { question: "What traces water sources?", options: ["Isotope ratios", "Photosynthesis", "Respiration", "Digestion"], answer: "Isotope ratios" },
+      { question: "What drives water loss?", options: ["Evapotranspiration", "Photosynthesis", "Respiration", "Digestion"], answer: "Evapotranspiration" },
+      { question: "What shifts precipitation?", options: ["Climate change", "Photosynthesis", "Respiration", "Digestion"], answer: "Climate change" },
+      { question: "Where is water optimized?", options: ["Hydroinformatics", "Photosynthesis", "Respiration", "Digestion"], answer: "Hydroinformatics" }
+    ]
+  },
+  {
+    sectionId: "grade8-envsci-pollution-advanced",
+    quiz: [
+      { question: "What bioaccumulates?", options: ["POPs", "Photosynthesis", "Respiration", "Digestion"], answer: "POPs" },
+      { question: "What cycles heavy metals?", options: ["Redox reactions", "Photosynthesis", "Respiration", "Digestion"], answer: "Redox reactions" },
+      { question: "What degrades pollutants?", options: ["Photocatalysis", "Photosynthesis", "Respiration", "Digestion"], answer: "Photocatalysis" },
+      { question: "Where is pollution traced?", options: ["Environmental forensics", "Photosynthesis", "Respiration", "Digestion"], answer: "Environmental forensics" }
+    ]
+  },
+  {
+    sectionId: "grade8-envsci-conservation-advanced",
+    quiz: [
+      { question: "What quantifies diversity?", options: ["Shannon’s index", "Photosynthesis", "Respiration", "Digestion"], answer: "Shannon’s index" },
+      { question: "What reduces gene flow?", options: ["Habitat fragmentation", "Photosynthesis", "Respiration", "Digestion"], answer: "Habitat fragmentation" },
+      { question: "What incentivizes preservation?", options: ["Carbon credits", "Photosynthesis", "Respiration", "Digestion"], answer: "Carbon credits" },
+      { question: "Where is conservation used?", options: ["Rewilding", "Photosynthesis", "Respiration", "Digestion"], answer: "Rewilding" }
+    ]
+  },
+  {
+    sectionId: "grade8-biology-reproduction-advanced",
+    quiz: [
+      { question: "What boosts yields?", options: ["Hybrid vigor", "Photosynthesis", "Respiration", "Digestion"], answer: "Hybrid vigor" },
+      { question: "What enhances traits?", options: ["Polyploidy", "Photosynthesis", "Respiration", "Digestion"], answer: "Polyploidy" },
+      { question: "What regulates flowering?", options: ["DNA methylation", "Photosynthesis", "Respiration", "Digestion"], answer: "DNA methylation" },
+      { question: "Where is reproduction used?", options: ["GMO crops", "Photosynthesis", "Respiration", "Digestion"], answer: "GMO crops" }
+    ]
+  }
+];
+
+
+
+ const scienceContent = [
+  {
+    id: "grade8-physics-motion-types-advanced",
+    title: "Types of Motion (Advanced)",
+    content: "Advanced motion analysis includes non-inertial reference frames, where pseudo forces like Coriolis and centrifugal forces arise. Relativistic motion, governed by Einstein’s special relativity, alters time and length at near-light speeds. For example, a particle at 0.9c experiences time dilation, described by t = t₀/√(1 - v²/c²). Lagrangian mechanics reformulates motion using energy, simplifying complex systems like coupled oscillators. These concepts underpin GPS systems, adjusting for relativistic effects, and climate modeling, incorporating Coriolis effects."
+  },
+  {
+    id: "grade8-physics-simple-machines-advanced",
+    title: "Simple Machines (Advanced)",
+    content: "Simple machines at advanced levels involve energy transfer optimization. Levers and pulleys are analyzed via torque (τ = rF sinθ) and mechanical advantage, considering friction losses. Gear systems, compound machines, amplify torque, as in automotive transmissions. Efficiency is η = (work out/work in) × 100%, reduced by non-conservative forces. Hydraulic systems, per Pascal’s principle, multiply force in heavy machinery. Applications include robotic arms, where gear ratios and lever configurations optimize precision and load capacity."
+  },
+  {
+    id: "grade8-physics-light-refraction-advanced",
+    title: "Light and Refraction (Advanced)",
+    content: "Refraction at advanced levels involves wave optics and electromagnetic theory. Snell’s Law (n₁sinθ₁ = n₂sinθ₂) derives from wave speed changes. Total internal reflection, critical for fiber optics, occurs when sinθ_c = n₂/n₁. Lenses obey the lensmaker’s equation, 1/f = (n - 1)(1/R₁ - 1/R₂), enabling aberration correction in telescopes. Polarization, via Malus’s Law (I = I₀cos²θ), filters light in LCDs. Applications include laser communication, leveraging refraction in waveguides."
+  },
+  {
+    id: "grade8-physics-circuits-advanced",
+    title: "Electric Circuits (Advanced)",
+    content: "Advanced circuits involve AC analysis and transient responses. Kirchhoff’s laws apply to complex networks, solved via mesh analysis. Capacitors and inductors introduce phase shifts, described by impedance Z = R + j(X_L - X_C). Resonance occurs when X_L = X_C, critical in radio tuners. Thevenin’s theorem simplifies circuit analysis. Applications include power grids, where transformers step up voltage, and microelectronics, where RC circuits filter signals, optimizing device performance."
+  },
+  {
+    id: "grade8-physics-energy-forms-advanced",
+    title: "Forms of Energy (Advanced)",
+    content: "Energy at advanced levels includes thermodynamic and quantum perspectives. Gibbs free energy (G = H - TS) predicts reaction spontaneity. Nuclear energy, from E = mc², powers reactors via fission. Renewable systems, like photovoltaic cells, achieve ~20% efficiency, limited by bandgap energies. Energy storage in supercapacitors leverages high capacitance. Applications include fusion research, aiming for sustainable energy, and quantum computing, where energy levels dictate qubit states."
+  },
+  {
+    id: "grade8-physics-sound-advanced",
+    title: "Sound (Advanced)",
+    content: "Advanced sound analysis involves wave equations and acoustics. The wave equation, ∂²u/∂t² = c²∂²u/∂x², models sound propagation. Resonance in pipes produces harmonics, with frequencies f_n = nv/(2L) for open pipes. Sound intensity follows the inverse square law, I ∝ 1/r². Nonlinear effects, like shock waves, occur at high amplitudes. Applications include architectural acoustics, optimizing concert halls, and seismic imaging, using sound reflections to map subsurface structures."
+  },
+  {
+    id: "grade8-physics-gravity-advanced",
+    title: "Gravity (Advanced)",
+    content: "Gravity at advanced levels incorporates general relativity, where spacetime curvature replaces Newtonian forces. The Einstein field equation, G_μν = (8πG/c⁴)T_μν, describes gravitational effects. Gravitational waves, detected by LIGO, result from massive accelerations. Orbital mechanics uses Kepler’s laws with perturbations for satellite paths. Applications include black hole studies, where event horizons trap light, and GPS, correcting for time dilation due to gravitational fields."
+  },
+  {
+    id: "grade8-physics-pressure-advanced",
+    title: "Pressure (Advanced)",
+    content: "Advanced pressure analysis includes fluid dynamics and thermodynamics. Bernoulli’s equation, P + ρgh + ½ρv² = constant, governs flow in pipes. Viscosity, per Navier-Stokes equations, affects turbulent flow. In gases, pressure relates to kinetic theory: P = (1/3)(n/V)m⟨v²⟩. High-pressure applications include diamond synthesis in presses. Fluid-structure interactions inform bridge design, preventing resonance failures like Tacoma Narrows. These principles optimize aerodynamic systems in aviation."
+  },
+  {
+    id: "grade8-physics-friction-advanced",
+    title: "Friction (Advanced)",
+    content: "Friction at advanced levels involves tribology and surface physics. The Amontons-Coulomb law, F = μN, breaks down at nanoscale, where adhesion dominates. Kinetic friction depends on velocity, modeled by Stribeck curves. Lubrication regimes—hydrodynamic, boundary—reduce wear. Friction generates heat, quantified by Q = μNvd. Applications include nanotechnology, designing low-friction coatings, and automotive engineering, where tire friction models improve safety and efficiency."
+  },
+  {
+    id: "grade8-physics-magnets-advanced",
+    title: "Magnets and Magnetism (Advanced)",
+    content: "Advanced magnetism includes quantum and electromagnetic theory. Magnetic fields obey Maxwell’s equations, with ∇·B = 0. Spin alignment in ferromagnets produces hysteresis, described by B-H curves. Superconductors exhibit the Meissner effect, expelling fields. Magnetic resonance, from nuclear spin precession, enables MRI. Applications include maglev trains, using diamagnetic levitation, and quantum sensors, leveraging spin states for precision measurements."
+  },
+  {
+    id: "grade8-chemistry-elements-advanced",
+    title: "Elements and Periodic Table (Advanced)",
+    content: "Advanced periodic table analysis includes quantum chemistry. Electron configurations follow Aufbau, with exceptions like Cr ([Ar]3d⁵4s¹). Periodic trends, like ionization energy, reflect effective nuclear charge, Z_eff = Z - σ. Lanthanides contract due to poor f-orbital shielding. Isotopes, differing in neutrons, affect nuclear stability. Applications include spectroscopy, identifying elements in stars, and superheavy element synthesis, probing island of stability."
+  },
+  {
+    id: "grade8-chemistry-compounds-advanced",
+    title: "Compounds (Advanced)",
+    content: "Advanced compound analysis involves molecular orbital theory. Covalent bonds form via orbital overlap, e.g., σ-bonds in ethane. Ionic compounds’ lattice energy, U ∝ q₁q₂/r, dictates stability. Coordination compounds, like [Fe(CN)₆]⁴⁻, exhibit ligand field splitting. Reaction mechanisms, like SN2, reveal bond dynamics. Applications include catalysis, using organometallics, and drug design, tailoring molecular shapes for receptor binding."
+  },
+  {
+    id: "grade8-chemistry-changes-advanced",
+    title: "Physical and Chemical Changes (Advanced)",
+    content: "Advanced changes involve kinetics and thermodynamics. Reaction rates follow Arrhenius, k = Ae^(-Ea/RT), with catalysts lowering E_a. Phase transitions, governed by Gibbs phase rule, F = C - P + 2, occur at critical points. Chemical equilibrium, K = [products]/[reactants], shifts per Le Chatelier. Applications include industrial synthesis, optimizing ammonia production, and polymer processing, controlling phase changes for material properties."
+  },
+  {
+    id: "grade8-chemistry-acids-bases-advanced",
+    title: "Acids and Bases (Advanced)",
+    content: "Advanced acid-base chemistry uses Lewis theory, where acids accept electron pairs. Buffer systems maintain pH via Henderson-Hasselbalch, pH = pK_a + log([A⁻]/[HA]). Acid strength depends on K_a, influenced by electronegativity. Polyprotic acids, like H₃PO₄, have multiple K_a values. Applications include biochemical regulation, where blood pH is buffered, and environmental chemistry, neutralizing acid rain with limestone."
+  },
+  {
+    id: "grade8-chemistry-solutions-advanced",
+    title: "Solutions (Advanced)",
+    content: "Advanced solutions involve colligative properties and non-ideal behavior. Raoult’s Law, P = X₁P₁°, predicts vapor pressure lowering. Osmotic pressure, π = MRT, drives reverse osmosis in desalination. Activity coefficients adjust for deviations in concentrated solutions. Colloids exhibit Tyndall scattering. Applications include protein purification via dialysis and battery electrolytes, optimizing ion conductivity."
+  },
+  {
+    id: "grade8-chemistry-metals-advanced",
+    title: "Metals (Advanced)",
+    content: "Advanced metal chemistry includes metallurgy and electrochemistry. Band theory explains conductivity via delocalized electrons. Corrosion, an electrochemical process, is mitigated by cathodic protection. Metal extraction uses redox, e.g., Al via Hall-Héroult electrolysis. Shape memory alloys, like NiTi, revert to original forms. Applications include aerospace, using titanium alloys, and fuel cells, leveraging platinum catalysts."
+  },
+  {
+    id: "grade8-chemistry-nonmetals-advanced",
+    title: "Non-Metals (Advanced)",
+    content: "Non-metals at advanced levels involve covalent networks and reactivity. Carbon allotropes, like graphene, exhibit unique conductivity. Halogens form interhalogen compounds, e.g., IF₅. Non-metal oxides, like SO₂, cause acid rain. Phosphorous cycles drive eutrophication. Applications include semiconductors, using doped silicon, and explosives, leveraging nitrogen’s triple bond energy."
+  },
+  {
+    id: "grade8-chemistry-air-composition-advanced",
+    title: "Composition of Air (Advanced)",
+    content: "Advanced air composition analysis includes atmospheric chemistry. Ozone (O₃) absorbs UV, but CFCs deplete it via Cl radicals. Greenhouse gases, like CH₄, have high global warming potential. Aerosol dynamics affect climate via scattering. Air quality models use reaction kinetics. Applications include stratospheric monitoring, using satellites, and carbon capture, reducing CO₂ emissions."
+  },
+  {
+    id: "grade8-biology-photosynthesis-advanced",
+    title: "Photosynthesis (Advanced)",
+    content: "Advanced photosynthesis involves biochemical pathways. The Z-scheme maps electron transport, producing ATP and NADPH. C₄ and CAM pathways optimize CO₂ fixation in arid plants. Quantum yield measures photon efficiency. Photorespiration reduces efficiency in C₃ plants. Applications include synthetic biology, engineering chloroplasts for biofuels, and precision agriculture, using spectral analysis to monitor crop health."
+  },
+  {
+    id: "grade8-biology-respiration-advanced",
+    title: "Respiration (Advanced)",
+    content: "Advanced respiration includes metabolic regulation. Oxidative phosphorylation, via proton gradients, yields ~30 ATP per glucose. Metabolic pathways, like gluconeogenesis, recycle intermediates. Mitochondrial DNA mutations cause diseases. Respiration efficiency varies by substrate, e.g., fats yield more ATP. Applications include metabolic engineering, optimizing microbial fuel production, and medical diagnostics, detecting respiratory chain disorders."
+  },
+  {
+    id: "grade8-biology-digestion-advanced",
+    title: "Digestion (Advanced)",
+    content: "Advanced digestion involves enzymatic kinetics and microbiota. Enzyme activity follows Michaelis-Menten, v = V_max[S]/(K_m + [S]). Gut microbiota synthesize vitamins, influenced by diet. Hormones, like gastrin, regulate digestion. Malabsorption disorders, like celiac, disrupt nutrient uptake. Applications include microbiome therapies, using probiotics, and enzyme supplements, treating lactose intolerance."
+  },
+  {
+    id: "grade8-biology-circulation-advanced",
+    title: "Circulation (Advanced)",
+    content: "Advanced circulation includes hemodynamics and regulation. Blood flow follows Poiseuille’s law, Q = πr⁴ΔP/(8ηL), explaining vessel resistance. Baroreceptors maintain blood pressure via feedback loops. Atherosclerosis narrows arteries, increasing risk. Stem cell therapies regenerate cardiac tissue. Applications include computational fluid dynamics, modeling heart flow, and wearable monitors, tracking cardiovascular health."
+  },
+  {
+    id: "grade8-biology-excretion-advanced",
+    title: "Excretion (Advanced)",
+    content: "Advanced excretion involves renal physiology and homeostasis. Glomerular filtration rate (GFR), ~125 mL/min, measures kidney function. Renin-angiotensin system regulates blood volume. Xenobiotics are detoxified via cytochrome P450. Kidney transplants face rejection risks. Applications include biosensors, detecting urinary biomarkers, and water recycling, using filtration in space missions."
+  },
+  {
+    id: "grade8-biology-ecosystems-advanced",
+    title: "Ecosystems (Advanced)",
+    content: "Advanced ecosystems involve biogeochemical cycles and stability. Carbon sequestration rates vary by biome, e.g., forests store ~30 t/ha. Keystone species, like wolves, regulate trophic dynamics. Chaos theory models population fluctuations. Human impacts, like invasive species, disrupt balance. Applications include ecological engineering, restoring coral reefs, and climate models, predicting ecosystem shifts."
+  },
+  {
+    id: "grade8-biology-microorganisms-advanced",
+    title: "Microorganisms (Advanced)",
+    content: "Advanced microbiology includes genomics and synthetic biology. CRISPR edits bacterial genomes for antibiotic resistance. Quorum sensing coordinates biofilm formation. Extremophiles thrive in high-pressure vents, informing astrobiology. Metagenomics reveals microbial diversity. Applications include bioreactors, producing insulin, and phytoremediation, using microbes to detoxify soils."
+  },
+  {
+    id: "grade8-envsci-water-cycle-advanced",
+    title: "Water Cycle (Advanced)",
+    content: "Advanced water cycle analysis includes hydrological modeling. Isotope ratios (²H/¹H) trace water sources. Aquifer depletion exceeds recharge in arid regions. Evapotranspiration, modeled by Penman-Monteith, drives water loss. Climate change shifts precipitation patterns. Applications include hydroinformatics, optimizing water allocation, and desalination, using graphene membranes for efficiency."
+  },
+  {
+    id: "grade8-envsci-pollution-advanced",
+    title: "Pollution (Advanced)",
+    content: "Advanced pollution involves fate and transport modeling. Persistent organic pollutants (POPs) bioaccumulate, modeled by partition coefficients. Heavy metals, like Hg, cycle via redox reactions. Photocatalysis degrades pollutants using TiO₂. Policy frameworks, like Kyoto, reduce emissions. Applications include environmental forensics, tracing oil spills, and nanotechnology, using nanoparticles for water purification."
+  },
+  {
+    id: "grade8-envsci-conservation-advanced",
+    title: "Conservation (Advanced)",
+    content: "Advanced conservation includes biodiversity metrics and policy. Shannon’s index quantifies species diversity. Habitat fragmentation reduces gene flow, modeled by metapopulation theory. Carbon credits incentivize preservation. Ex-situ conservation, like seed banks, preserves genetics. Applications include rewilding, restoring ecosystems, and blockchain, tracking sustainable supply chains."
+  },
+  {
+    id: "grade8-biology-reproduction-advanced",
+    title: "Reproduction in Plants (Advanced)",
+    content: "Advanced plant reproduction involves genetics and epigenetics. Hybrid vigor, or heterosis, boosts yields in F1 hybrids. Polyploidy, common in crops, enhances traits. DNA methylation regulates flowering genes. Gene editing, via TALENs, improves resistance. Applications include GMO crops, like Bt maize, and vertical farming, optimizing pollination for urban agriculture."
+  }
+];
+
+
+
+const mcqData = [
+  // Motion Types
+  ["Science", "Motion Types", "Concepts", "Advanced", "What characterizes motion in a non-inertial frame?", ["Constant velocity", "Pseudo forces", "No acceleration", "Linear path"], "Pseudo forces, like Coriolis, appear in non-inertial frames due to acceleration.", "Pseudo forces"],
+  ["Science", "Motion Types", "Relativity", "Advanced", "What is relativistic motion?", ["Low-speed motion", "Near-light speed", "Circular motion", "Linear motion"], "Relativistic motion occurs at speeds near light, requiring Einstein’s equations.", "Near-light speed"],
+  ["Science", "Motion Types", "Equations", "Advanced", "What describes circular motion?", ["v = d/t", "t = t₀/√(1 - v²/c²)", "F = ma", "E = mc²"], "Time dilation relates proper and observed time.", "t = t₀/√(1 - v²/c²)"],
+  ["Science", "Motion Types", "Applications", "Advanced", "What uses Lagrangian?", ["Static systems", "Coupled oscillators", "Thermal systems", "Electromagnetic waves"], "Lagrangian simplifies complex systems like oscillators.", "Coupled oscillators"],
+
+  // Simple Machines
+  ["Science", "Simple Machines", "Torque", "Advanced", "What quantifies lever torque?", ["F = ma", "τ = rF sinθ", "P = F/A", "W = Fd"], "Torque is the rotational force times lever arm.", "τ = rF sinθ"],
+  ["Science", "Simple Machines", "Systems", "Advanced", "What amplifies torque?", ["Single pulley", "Gear system", "Short lever", "High friction"], "Gear systems amplify torque via ratios.", "Gear system"],
+  ["Science", "Simple Machines", "Efficiency", "Advanced", "What reduces machine efficiency?", ["Friction", "Losses", "Speed", "Length"], "Friction converts work to heat.", "Friction"],
+  ["Science", "Simple Machines", "Applications", "Advanced", "Where are hydraulics used?", ["Robotic arms", "Batteries", "Solar panels", "Light bulbs"], "Hydraulics multiply force in robotic arms.", "Robotic arms"],
+
+  // Light Refraction
+  ["Science", "Light Refraction", "Phenomena", "Advanced", "What causes total internal reflection?", ["Low angle", "Critical angle", "High speed", "Low frequency"], "Critical angle ensures total reflection.", "Critical angle"],
+  ["Science", "Light Refraction", "Equations", "Advanced", "What does the lensmaker's equation calculate?", ["Wavelength", "Focal length", "Intensity", "Polarization"], "Lensmaker’s equation determines lens focus.", "Focal length"],
+  ["Science", "Light Refraction", "Effects", "Advanced", "What filters light in LCDs?", ["Diffraction", "Polarization", "Reflection", "Absorption"], "Polarizers control light in LCDs.", "Polarization"],
+  ["Science", "Light Refraction", "Applications", "Advanced", "Where is refraction used?", ["Laser communication", "Magnets", "Motors", "Circuits"], "Refraction enables laser waveguides.", "Laser communication"],
+
+  // Circuits
+  ["Science", "Circuits", "Components", "Advanced", "What introduces phase shifts?", ["Resistors", "Capacitors", "Wires", "Switches"], "Capacitors and inductors shift AC phases.", "Capacitors"],
+  ["Science", "Circuits", "Resonance", "Advanced", "What occurs at resonance?", ["Maximum impedance", "X_L = X_C", "No current", "High resistance"], "Resonance balances inductive and capacitive reactance.", "X_L = X_C"],
+  ["Science", "Circuits", "Analysis", "Advanced", "What simplifies circuit analysis?", ["Ohm’s Law", "Thevenin’s theorem", "Snell’s Law", "Newton’s Law"], "Thevenin simplifies complex networks.", "Thevenin’s theorem"],
+  ["Science", "Circuits", "Applications", "Advanced", "Where is resonance used?", ["Radio tuners", "Batteries", "Lenses", "Pulleys"], "Where resonance tunes frequencies.", "Radio tuners"],
+
+  // Energy Forms
+  ["Science", "Energy Forms", "Thermodynamics", "Advanced", "What predicts spontaneity?", ["Kinetic energy", "Gibbs free energy", "Potential energy", "Thermal energy"], "Gibbs free energy determines reaction feasibility.", "Gibbs free energy"],
+  ["Science", "Energy Forms", "Sources", "Advanced", "What powers nuclear reactors?", ["Fission", "Fusion", "Combustion", "Wind"], "Nuclear fission splits atoms for energy.", "Fission"],
+  ["Science", "Energy Forms", "Limitations", "Advanced", "What limits solar efficiency?", ["Bandgap energy", "Wire length", "Panel size", "Color"], "Bandgap limits photon conversion.", "Bandgap energy"],
+  ["Science", "Energy Forms", "Storage", "Advanced", "Where is energy stored?", ["Supercapacitors", "Pulleys", "Lenses", "Mirrors"], "Supercapacitors store high charge.", "Supercapacitors"],
+
+  // Sound
+  ["Science", "Sound", "Equations", "Advanced", "What models sound propagation?", ["Wave equation", "Ohm’s law", "F = ma", "E = mc²"], "Wave equation describes sound waves.", "Wave equation"],
+  ["Science", "Sound", "Phenomena", "Advanced", "What produces harmonics?", ["Friction", "Resonance", "Pressure", "Speed"], "Resonance creates harmonic frequencies.", "Resonance"],
+  ["Science", "Sound", "Effects", "Advanced", "What causes shock waves?", ["Low amplitude", "Nonlinear effects", "Low frequency", "High temperature"], "Nonlinear effects produce shock waves.", "Nonlinear effects"],
+  ["Science", "Sound", "Applications", "Advanced", "Where is sound used?", ["Seismic imaging", "ATP production", "Circuits", "Solar panels"], "Seismic imaging maps subsurface structures.", "Seismic imaging"],
+
+  // Gravity
+  ["Science", "Gravity", "Theory", "Advanced", "What replaces Newtonian gravity?", ["Spacetime curvature", "Magnetic fields", "Electric charge", "Friction"], "General relativity uses spacetime curvature.", "Spacetime curvature"],
+  ["Science", "Gravity", "Gravitational", "Advanced", "What did LIGO detect?", ["Neutrinos", "Gravitational waves", "Photons", "Electrons"], "LIGO detects spacetime ripples.", "Gravitational waves"],
+  ["Science", "Gravity", "Gravitational Phenomena", "Advanced", "What traps light?", ["Event horizon", "Core", "Singularity", "Blackbody"], "Event horizon prevents light escape.", "Event horizon"],
+  ["Science", "Gravity", "Applications", "Advanced", "What corrects GPS?", ["Friction", "Time dilation", "Magnetism", "Pressure"], "Gravitational time dilation adjusts GPS.", "Time dilation"],
+
+  // Pressure
+  ["Science", "Pressure", "Equations", "Advanced", "What governs fluid flow?", ["Bernoulli’s equation", "Ohm’s Law", "F = ma", "E = mc²"], "Bernoulli equation balances energy in fluids.", "Bernoulli’s equation"],
+  ["Science", "Pressure", "Properties", "Advanced", "What affects turbulent flow?", ["Viscosity", "Mass", "Color", "Length"], "Viscosity influences turbulence.", "Viscosity"],
+  ["Science", "Pressure", "Theory", "Advanced", "What relates pressure to energy?", ["P = F/A", "P = (1/3)(n/V)m⟨v²⟩", "P = IV", "P = mV"], "Kinetic theory links pressure to energy.", "P = (1/3)(n/V)m⟨v²⟩"],
+  ["Science", "Pressure", "Applications", "Advanced", "Where is high pressure used?", ["Diamond synthesis", "Light bulbs", "Solar panels", "Batteries"], "High pressure forms diamonds.", "Diamond synthesis"],
+
+  // Friction
+  ["Science", "Friction", "Laws", "Advanced", "What breaks down at nanoscale?", ["Amontons-Coulomb law", "F = ma", "P = F/A", "V = IR"], "Adhesion dominates at nanoscale.", "Amontons-Coulomb law"],
+  ["Science", "Friction", "Models", "Advanced", "What models velocity-dependent friction?", ["Ohm’s Law", "Stribeck curves", "Snell’s Law", "Bernoulli’s equation"], "Stribeck curves describe friction regimes.", "Stribeck curves"],
+  ["Science", "Friction", "Reduction", "Advanced", "What reduces wear?", ["Rough surface", "Lubrication", "High speed", "Friction"], "Lubrication minimizes friction.", "Lubrication"],
+  ["Science", "Friction", "Applications", "Advanced", "Where are friction coatings used?", ["Nanotechnology", "Mirrors", "Solar panels", "Batteries"], "Coatings reduce nanoscale friction.", "Nanotechnology"],
+
+  // Magnets
+  ["Science", "Magnets", "Theory", "Advanced", "What ensures zero divergence?", ["Ohm’s Law", "Maxwell’s equations", "F = ma", "E = mc²"], "Maxwell’s ensure no magnetic monopoles.", "Maxwell’s equations"],
+  ["Science", "Magnets", "Phenomena", "Advanced", "What causes hysteresis?", ["Spin alignment", "Charge flow", "Electron transfer", "Magnetic field"], "Spin alignment causes magnetic hysteresis.", "Spin alignment"],
+  ["Science", "Magnets", "Properties", "Advanced", "What exhibits Meissner effect?", ["Superconductors", "Magnets", "Insulators", "Semiconductors"], "Superconductors expel magnetic fields.", "Superconductors"],
+  ["Science", "Magnets", "Applications", "Advanced", "Where is magnetism used?", ["Maglev trains", "Batteries", "Lenses", "Barometers"], "Maglev trains use magnetic levitation.", "Maglev trains"],
+
+  // Elements
+  ["Science", "Elements", "Trends", "Advanced", "What causes lanthanide contraction?", ["High shielding", "Poor f-orbital shielding", "Low mass", "High charge"], "Poor f-shielding reduces atomic radii.", "Poor f-orbital shielding"],
+  ["Science", "Elements", "Structure", "Advanced", "What explains Cr configuration?", ["Aufbau", "Hund's rule", "Pauli exclusion", "Octet rule"], "Aufbau principle predicts configurations.", "Aufbau"],
+  ["Science", "Elements", "Properties", "Advanced", "What increases ionization energy?", ["Z_eff", "Atomic radius", "Electron affinity", "Electronegativity"], "Effective nuclear charge drives ionization.", "Z_eff"],
+  ["Science", "Elements", "Applications", "Advanced", "Where are isotopes used?", ["Spectroscopy", "Electrolysis", "Combustion", "Photosynthesis"], "Spectroscopy identifies stellar elements.", "Spectroscopy"],
+
+  // Compounds
+  ["Science", "Compounds", "Bonds", "Advanced", "What forms σ-bonds?", ["Electron transfer", "Orbital overlap", "Charge separation", "Spin pairing"], "Orbital overlap forms σ-bonds.", "Orbital overlap"],
+  ["Science", "Compounds", "Stability", "Advanced", "What dictates lattice energy?", ["Lattice energy", "Mass", "Volume", "Color"], "Lattice energy stabilizes ionic compounds.", "Lattice energy"],
+  ["Science", "Compounds", "Mechanisms", "Advanced", "What drives SN2 reactions?", ["Sterics", "Reaction mechanism", "Temperature", "Pressure"], "SN2 involves backside attack.", "Reaction mechanism"],
+  ["Science", "Compounds", "Applications", "Advanced", "Where are compounds used?", ["Catalysis", "Photosynthesis", "Respiration", "Digestion"], "Organometallics catalyze reactions.", "Catalysis"],
+
+  // Changes
+  ["Science", "Changes", "Kinetics", "Advanced", "What affects reaction rate?", ["Arrhenius equation", "Ohm’s law", "Newton’s law", "Snell’s law"], "Arrhenius predicts rate constants.", "Arrhenius equation"],
+  ["Science", "Changes", "Properties", "Advanced", "What governs phase transitions?", ["Gibbs phase rule", "Boyle's law", "Raoult's law", "Le Chatelier's principle"], "Gibbs rule determines phases.", "Gibbs phase rule"],
+  ["Science", "Changes", "Equilibrium", "Advanced", "What shifts equilibrium?", ["Le Chatelier’s principle", "Bernoulli's principle", "Archimedes' principle", "Pascal's principle"], "Le Chatelier’s predicts shifts.", "Le Chatelier’s principle"],
+  ["Science", "Changes", "Applications", "Advanced", "How is kinetics applied?", ["Ammonia production", "Photosynthesis", "Respiration", "Digestion"], "Kinetics optimize ammonia synthesis.", "Ammonia production"],
+
+  // Acids and Bases
+  ["Science", "Acids and Bases", "Theory", "Advanced", "What defines a Lewis acid?", ["Proton donor", "Electron pair acceptor", "Proton acceptor", "Electron donor"], "Lewis acids accept electron pairs.", "Electron pair acceptor"],
+  ["Science", "Acids and Bases", "Systems", "Advanced", "What maintains pH?", ["Buffer system", "Catalyst", "Enzyme", "Solvent"], "Buffers resist pH changes.", "Buffer system"],
+  ["Science", "Acids and Bases", "Strength", "Advanced", "What affects acid strength?", ["K_a", "K_b", "pH", "pOH"], "K_a quantifies acid dissociation.", "K_a"],
+  ["Science", "Acids and Bases", "Applications", "Advanced", "Where are buffers used?", ["Blood pH", "Photosynthesis", "Respiration", "Digestion"], "Buffers stabilize blood pH.", "Blood pH"],
+
+  // Solutions
+  ["Science", "Solutions", "Properties", "Advanced", "What predicts vapor pressure?", ["Raoult’s Law", "Ohm’s Law", "Boyle's Law", "Charles's Law"], "Raoult’s Law lowers vapor pressure.", "Raoult’s Law"],
+  ["Science", "Solutions", "Processes", "Advanced", "What drives reverse osmosis?", ["Osmotic pressure", "Hydrostatic pressure", "Atmospheric pressure", "Partial pressure"], "Osmotic pressure drives water purification.", "Osmotic pressure"],
+  ["Science", "Solutions", "Effects", "Advanced", "What scatters light?", ["Colloids", "Solutions", "Suspensions", "Crystals"], "Colloids exhibit Tyndall effect.", "Colloids"],
+  ["Science", "Solutions", "Applications", "Advanced", "Where are solutions used?", ["Battery electrolytes", "Photosynthesis", "Respiration", "Digestion"], "Electrolytes enhance conductivity.", "Battery electrolytes"],
+
+  // Metals
+  ["Science", "Metals", "Properties", "Advanced", "What explains conductivity?", ["Band theory", "Ionization", "Electronegativity", "Lattice energy"], "Band theory describes electron mobility.", "Band theory"],
+  ["Science", "Metals", "Protection", "Advanced", "What mitigates corrosion?", ["Cathodic protection", "Anodic protection", "Electrolysis", "Galvanization"], "Cathodic protection prevents oxidation.", "Cathodic protection"],
+  ["Science", "Metals", "Extraction", "Advanced", "What extracts aluminum?", ["Electrolysis", "Distillation", "Filtration", "Sublimation"], "Electrolysis reduces alumina.", "Electrolysis"],
+  ["Science", "Metals", "Applications", "Advanced", "Where are metals used?", ["Fuel cells", "Photosynthesis", "Respiration", "Digestion"], "Fuel cells use platinum.", "Fuel cells"],
+
+  // Non-Metals
+  ["Science", "Non-Metals", "Allotropes", "Advanced", "What is a carbon allotrope?", ["Graphene", "Iron", "Copper", "Gold"], "Graphene has unique conductivity.", "Graphene"],
+  ["Science", "Non-Metals", "Compounds", "Advanced", "What forms interhalogens?", ["Halogens", "Noble gases", "Alkali metals", "Alkaline earth metals"], "Halogens form interhalogen compounds.", "Halogens"],
+  ["Science", "Non-Metals", "Effects", "Advanced", "What causes acid rain?", ["Non-metal oxides", "Metal oxides", "Salts", "Bases"], "Oxides like SO2 cause acid rain.", "Non-metal oxides"],
+  ["Science", "Non-Metals", "Applications", "Advanced", "What are applications of non-metals?", ["Semiconductors", "Photosynthesis", "Respiration", "Digestion"], "Doped silicon is used in semiconductors.", "Semiconductors"],
+
+  // Air Composition
+  ["Science", "Air Composition", "Chemistry", "Advanced", "What depletes ozone?", ["CFCs", "CO2", "O2", "N2"], "CFCs catalyze ozone breakdown.", "CFCs"],
+  ["Science", "Air Composition", "Climate", "Advanced", "What has high GWP?", ["CH4", "O2", "N2", "CO2"], "Methane traps heat effectively.", "CH4"],
+  ["Science", "Air Composition", "Effects", "Advanced", "What affects climate?", ["Aerosols", "Salts", "Bases", "Acids"], "Aerosols scatter sunlight.", "Aerosols"],
+  ["Science", "Air Composition", "Applications", "Advanced", "Where is air monitored?", ["Satellites", "Photosynthesis", "Respiration", "Digestion"], "Satellites track atmospheric composition.", "Satellites"],
+
+  // Photosynthesis
+  ["Science", "Photosynthesis", "Pathways", "Advanced", "What maps electron flow?", ["Z-scheme", "Krebs cycle", "Calvin cycle", "Glycolysis"], "Z-scheme traces electron transport.", "Z-scheme"],
+  ["Science", "Photosynthesis", "Optimizations", "Advanced", "What optimizes CO2?", ["C4 pathway", "C3 pathway", "CAM pathway", "Glycolysis"], "C4 pathway reduces photorespiration.", "C4 pathway"],
+  ["Science", "Photosynthesis", "Limits", "Advanced", "What reduces efficiency?", ["Photorespiration", "Photosynthesis", "Respiration", "Digestion"], "Photorespiration wastes carbon.", "Photorespiration"],
+  ["Science", "Photosynthesis", "Applications", "Advanced", "Where is photosynthesis used?", ["Biofuels", "Photosynthesis", "Respiration", "Digestion"], "Photosynthesis inspires biofuels.", "Biofuels"],
+
+  // Respiration
+  ["Science", "Respiration", "Processes", "Advanced", "What yields ATP?", ["Oxidative phosphorylation", "Photosynthesis", "Respiration", "Digestion"], "Phosphorylation drives ATP production.", "Oxidative phosphorylation"],
+  ["Science", "Respiration", "Pathways", "Advanced", "What recycles intermediates?", ["Gluconeogenesis", "Photosynthesis", "Respiration", "Digestion"], "Pathways recycle glucose derivatives.", "Gluconeogenesis"],
+  ["Science", "Respiration", "Disorders", "Advanced", "What causes diseases?", ["Mitochondrial DNA mutations", "Photosynthesis", "Respiration", "Digestion"], "Mutations disrupt energy production.", "Mitochondrial DNA mutations"],
+  ["Science", "Respiration", "Applications", "Advanced", "Where is respiration used?", ["Metabolic engineering", "Photosynthesis", "Respiration", "Digestion"], "Engineering optimizes microbial metabolism.", "Metabolic engineering"],
+
+  // Digestion
+  ["Science", "Digestion", "Kinetics", "Advanced", "What governs enzyme activity?", ["Michaelis-Menten", "Photosynthesis", "Respiration", "Digestion"], "Michaelis-Menten models enzyme kinetics.", "Michaelis-Menten"],
+  ["Science", "Digestion", "Microorganisms", "Advanced", "What synthesizes vitamins?", ["Gut microbiota", "Photosynthesis", "Respiration", "Digestion"], "Microbiota produce essential vitamins.", "Gut microbiota"],
+  ["Science", "Digestion", "Regulation", "Advanced", "What regulates digestion?", ["Hormones", "Photosynthesis", "Respiration", "Digestion"], "Hormones control digestive processes.", "Hormones"],
+  ["Science", "Digestion", "Applications", "Advanced", "Where are enzymes used?", ["Probiotics", "Photosynthesis", "Respiration", "Digestion"], "Probiotics enhance digestion.", "Probiotics"],
+
+  // Circulation
+  ["Science", "Circulation", "Dynamics", "Advanced", "What governs blood flow?", ["Poiseuille’s law", "Photosynthesis", "Respiration", "Digestion"], "Poiseuille’s law models vessel resistance.", "Poiseuille’s law"],
+  ["Science", "Circulation", "Regulation", "Advanced", "What maintains pressure?", ["Baroreceptors", "Photosynthesis", "Respiration", "Digestion"], "Baroreceptors stabilize blood pressure.", "Baroreceptors"],
+  ["Science", "Circulation", "Disease", "Advanced", "What narrows arteries?", ["Atherosclerosis", "Photosynthesis", "Respiration", "Digestion"], "Atherosclerosis restricts blood flow.", "Atherosclerosis"],
+  ["Science", "Circulation", "Applications", "Advanced", "Where is circulation modeled?", ["Wearable monitors", "Photosynthesis", "Respiration", "Digestion"], "Monitors track cardiovascular health.", "Wearable monitors"],
+
+  // Excretion
+  ["Science", "Excretion", "Function", "Advanced", "What measures kidney function?", ["GFR", "Photosynthesis", "Respiration", "Digestion"], "GFR assesses filtration efficiency.", "GFR"],
+  ["Science", "Excretion", "Regulation", "Advanced", "What regulates blood volume?", ["Renin-angiotensin system", "Photosynthesis", "Respiration", "Digestion"], "Renin system controls volume.", "Renin-angiotensin system"],
+  ["Science", "Excretion", "Detoxification", "Advanced", "What detoxifies xenobiotics?", ["Cytochrome P450", "Photosynthesis", "Respiration", "Digestion"], "P450 enzymes metabolize toxins.", "Cytochrome P450"],
+  ["Science", "Excretion", "Applications", "Advanced", "Where is excretion used?", ["Biosensors", "Photosynthesis", "Respiration", "Digestion"], "Biosensors detect urinary biomarkers.", "Biosensors"],
+
+  // Ecosystems
+  ["Science", "Ecosystems", "Storage", "Advanced", "What stores carbon?", ["Forests", "Photosynthesis", "Respiration", "Digestion"], "Forests sequester carbon.", "Forests"],
+  ["Science", "Ecosystems", "Dynamics", "Advanced", "What regulates trophic levels?", ["Keystone species", "Photosynthesis", "Respiration", "Digestion"], "Keystone species control ecosystems.", "Keystone species"],
+  ["Science", "Ecosystems", "Modeling", "Advanced", "What models populations?", ["Chaos theory", "Photosynthesis", "Respiration", "Digestion"], "Chaos theory predicts fluctuations.", "Chaos theory"],
+  ["Science", "Ecosystems", "Applications", "Advanced", "Where are ecosystems restored?", ["Coral reefs", "Photosynthesis", "Respiration", "Digestion"], "Reefs are ecologically restored.", "Coral reefs"],
+
+  // Microorganisms
+  ["Science", "Microorganisms", "Genetics", "Advanced", "What edits bacterial genomes?", ["CRISPR", "Photosynthesis", "Respiration", "Digestion"], "CRISPR precisely edits DNA.", "CRISPR"],
+  ["Science", "Microorganisms", "Communication", "Advanced", "What coordinates biofilms?", ["Quorum sensing", "Photosynthesis", "Respiration", "Digestion"], "Quorum sensing regulates biofilms.", "Quorum sensing"],
+  ["Science", "Microorganisms", "Environments", "Advanced", "What informs astrobiology?", ["Extremophiles", "Photosynthesis", "Respiration", "Digestion"], "Extremophiles suggest extraterrestrial life.", "Extremophiles"],
+  ["Science", "Microorganisms", "Applications", "Advanced", "Where are microbes used?", ["Bioreactors", "Photosynthesis", "Respiration", "Digestion"], "Bioreactors produce biomolecules.", "Bioreactors"],
+
+  // Water Cycle
+  ["Science", "Water Cycle", "Tracing", "Advanced", "What traces water sources?", ["Isotope ratios", "Photosynthesis", "Respiration", "Digestion"], "Isotopes identify water origins.", "Isotope ratios"],
+  ["Science", "Water Cycle", "Losses", "Advanced", "What drives water loss?", ["Evapotranspiration", "Photosynthesis", "Respiration", "Digestion"], "Evapotranspiration removes water.", "Evapotranspiration"],
+  ["Science", "Water Cycle", "Impacts", "Advanced", "What shifts precipitation?", ["Climate change", "Photosynthesis", "Respiration", "Digestion"], "Climate change alters rain patterns.", "Climate change"],
+  ["Science", "Water Cycle", "Applications", "Advanced", "Where is water optimized?", ["Hydroinformatics", "Photosynthesis", "Respiration", "Digestion"], "Hydroinformatics optimizes allocation.", "Hydroinformatics"],
+
+  // Pollution
+  ["Science", "Pollution", "Compounds", "Advanced", "What bioaccumulates?", ["POPs", "Photosynthesis", "Respiration", "Digestion"], "POPs concentrate in organisms.", "POPs"],
+  ["Science", "Pollution", "Cycles", "Advanced", "What cycles heavy metals?", ["Redox reactions", "Photosynthesis", "Respiration", "Digestion"], "Redox cycles metals.", "Redox reactions"],
+  ["Science", "Pollution", "Degradation", "Advanced", "What degrades pollutants?", ["Photocatalysis", "Photosynthesis", "Respiration", "Digestion"], "Photocatalysis breaks pollutants.", "Photocatalysis"],
+  ["Science", "Pollution", "Applications", "Advanced", "Where is pollution traced?", ["Environmental forensics", "Photosynthesis", "Respiration", "Digestion"], "Forensics trace pollutant sources.", "Environmental forensics"],
+
+  // Conservation
+  ["Science", "Conservation", "Metrics", "Advanced", "What quantifies diversity?", ["Shannon’s index", "Photosynthesis", "Respiration", "Digestion"], "Shannon’s index measures biodiversity.", "Shannon’s index"],
+  ["Science", "Conservation", "Impacts", "Advanced", "What reduces gene flow?", ["Habitat fragmentation", "Photosynthesis", "Respiration", "Digestion"], "Fragmentation isolates populations.", "Habitat fragmentation"],
+  ["Science", "Conservation", "Policy", "Advanced", "What incentivizes preservation?", ["Carbon credits", "Photosynthesis", "Respiration", "Digestion"], "Credits fund conservation.", "Carbon credits"],
+  ["Science", "Conservation", "Applications", "Advanced", "Where is conservation used?", ["Rewilding", "Photosynthesis", "Respiration", "Digestion"], "Rewilding restores ecosystems.", "Rewilding"],
+
+  // Reproduction
+  ["Science", "Reproduction", "Genetics", "Advanced", "What boosts yields?", ["Hybrid vigor", "Photosynthesis", "Respiration", "Digestion"], "Heterosis increases crop yields.", "Hybrid vigor"],
+  ["Science", "Reproduction", "Traits", "Advanced", "What enhances traits?", ["Polyploidy", "Photosynthesis", "Respiration", "Digestion"], "Polyploidy improves plant traits.", "Polyploidy"],
+  ["Science", "Reproduction", "Regulation", "Advanced", "What regulates flowering?", ["DNA methylation", "Photosynthesis", "Respiration", "Digestion"], "Methylation controls gene expression.", "DNA methylation"],
+  ["Science", "Reproduction", "Applications", "Advanced", "Where is reproduction used?", ["GMO crops", "Photosynthesis", "Respiration", "Digestion"], "GMOs enhance crop resilience.", "GMO crops"]
+];
+
+
+    // Initialize the application
+    document.addEventListener('DOMContentLoaded', () => {
+      try {
+        // Load external data (optional)
+        async function loadExternalData() {
+          try {
+            const response = await fetch('files.json');
+            if (!response.ok) throw new Error('Failed to load files.json');
+            const manifest = await response.json();
+            for (const file of manifest) {
+              const res = await fetch(file.name);
+              if (!res.ok) throw new Error(`Failed to load ${file.name}`);
+              const script = document.createElement('script');
+              script.text = await res.text();
+              document.head.appendChild(script);
+              if (window[file.variable]) {
+                console.log(`Loaded ${file.variable} from ${file.name}`);
+              }
+            }
+          } catch (error) {
+            console.error('Error loading external data:', error);
+          }
+        }
+        // Uncomment to enable external loading
+        // loadExternalData();
+
+        // Validate data
+        if (!Array.isArray(scienceContent) || scienceContent.length !== 29) {
+          throw new Error('scienceContent must have 29 sections');
+        }
+        if (!Array.isArray(quizData) || quizData.length !== 29 || !Array.isArray(mcqData)) {
+          throw new Error('quizData or mcqData invalid or incomplete');
+        }
+
+        // Combine science content and quiz data
+        const sections = scienceContent.map(content => {
+          const quizEntry = quizData.find(q => q.sectionId === content.id);
+          return {
+            id: content.id,
+            title: content.title,
+            content: content.content,
+            quiz: quizEntry ? quizEntry.quiz : []
+          };
+        });
+
+        let currentSection = 0;
+        let scores = JSON.parse(localStorage.getItem('scores')) || Array(sections.length).fill(null);
+
+        // Motivational messages
+        const motivationalMessages = [
+          "Great job! Keep learning!",
+          "You're doing amazing! Stay focused!",
+          "Well done! You're getting smarter every day!",
+          "Fantastic effort! Keep it up!",
+          "You're on the right track! Stay curious!"
+        ];
+
+        // Update navigation buttons
+        function updateNavigation(sectionIndex, hasSubmitted = false) {
+          const navDiv = document.getElementById('navigation');
+          if (!navDiv) return;
+          let html = '';
+          if (hasSubmitted) {
+            html += `<button id="retake-btn" class="btn-yellow">Retake Quiz</button>`;
+          }
+          if (sectionIndex > 0) {
+            html += `<button id="prev-btn" class="btn-gray">Previous</button>`;
+          }
+          // Only show "Next" if submitted and score >= 70
+          if (hasSubmitted && sectionIndex < 28 && scores[sectionIndex] >= 70) {
+            html += `<button id="next-btn" class="btn-blue">Next</button>`;
+          }
+          if (sectionIndex === 28) {
+            html += `<button id="complete-btn" class="btn-green">Complete Course</button>`;
+          }
+          navDiv.innerHTML = html;
+
+          const retakeBtn = document.getElementById('retake-btn');
+          if (retakeBtn) {
+            retakeBtn.addEventListener('click', () => {
+              const form = document.getElementById('quiz-form');
+              if (form) form.reset();
+              document.getElementById('feedback').innerHTML = '';
+              updateNavigation(sectionIndex, false);
+            });
+          }
+
+          const prevBtn = document.getElementById('prev-btn');
+          if (prevBtn) {
+            prevBtn.addEventListener('click', () => {
+              currentSection--;
+              renderSection(currentSection);
+            });
+          }
+
+          const nextBtn = document.getElementById('next-btn');
+          if (nextBtn) {
+            nextBtn.addEventListener('click', () => {
+              // Double-check score before navigating
+              if (scores[sectionIndex] >= 70) {
+                currentSection++;
+                renderSection(currentSection);
+              } else {
+                console.warn('Attempted to navigate without sufficient score');
+              }
+            });
+          }
+
+          const completeBtn = document.getElementById('complete-btn');
+          if (completeBtn) {
+            completeBtn.addEventListener('click', () => {
+              document.getElementById('content').innerHTML = `
+                <h2>Congratulations!</h2>
+                <p>You've completed the TNPSC Group 4 Science (Beginner) course!</p>
+                <a href="tnpsc-gr4-home.html" class="btn-blue">Return to Home</a>
+              `;
+            });
+          }
+        }
+
+        // Render section
+        function renderSection(sectionIndex) {
+          try {
+            if (sectionIndex < 0 || sectionIndex >= sections.length) {
+              console.error('Invalid section index:', sectionIndex);
+              return;
+            }
+            const section = sections[sectionIndex];
+            let html = `
+              <h2>${section.title}</h2>
+              <p class="mt-2">${section.content}</p>
+            `;
+            
+            if (section.quiz.length > 0) {
+              html += `
+                <h3 class="mt-4">Quiz</h3>
+                <form id="quiz-form">
+                  ${section.quiz.map((q, i) => `
+                    <div>
+                      <p>${i + 1}. ${q.question}</p>
+                      ${q.options.map(opt => `
+                        <label>
+                          <input type="radio" name="q${i}" value="${opt}" required>
+                          ${opt}
+                        </label>
+                      `).join('')}
+                    </div>
+                  `).join('')}
+                  <button type="submit" id="submit-btn" class="btn-blue">Submit</button>
+                </form>
+                <div id="feedback"></div>
+              `;
+            } else {
+              html += '<p class="text-red">No quiz available for this section.</p>';
+            }
+            
+            html += `<div id="navigation" class="mt-4"></div>`;
+            
+            console.log('Rendering section', sectionIndex, 'Quiz length:', section.quiz.length);
+            document.getElementById('content').innerHTML = html;
+
+            // Attach listeners
+            const quizForm = document.getElementById('quiz-form');
+            const submitBtn = document.getElementById('submit-btn');
+            console.log('Form found:', !!quizForm, 'Submit button found:', !!submitBtn);
+            
+            if (quizForm) {
+              quizForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const selected = Array.from(quizForm.querySelectorAll('input:checked'));
+                console.log('Submit event triggered, selected answers:', selected.map(input => input.value));
+                if (selected.length === section.quiz.length) {
+                  checkAnswers(sectionIndex);
+                } else {
+                  document.getElementById('feedback').innerHTML = '<p class="text-red">Please answer all questions.</p>';
+                }
+              });
+            } else {
+              console.error('quiz-form not found');
+            }
+            
+            if (submitBtn) {
+              submitBtn.addEventListener('click', () => {
+                console.log('Submit button clicked directly');
+                if (quizForm) quizForm.dispatchEvent(new Event('submit'));
+              });
+            } else {
+              console.error('submit-btn not found');
+            }
+
+            updateNavigation(sectionIndex, scores[sectionIndex] !== null);
+          } catch (error) {
+            console.error('Error in renderSection:', error);
+            document.getElementById('content').innerHTML = `<p class="text-red">Error rendering section: ${error.message}</p>`;
+          }
+        }
+
+        // Check answers
+        function checkAnswers(sectionIndex) {
+          try {
+            console.log('checkAnswers called for section', sectionIndex);
+            const form = document.getElementById('quiz-form');
+            const feedbackDiv = document.getElementById('feedback');
+            if (!form || !feedbackDiv) {
+              console.error('Form or feedback div not found in checkAnswers');
+              return;
+            }
+
+            let score = 0;
+            let incorrectFeedback = '';
+
+            sections[sectionIndex].quiz.forEach((q, i) => {
+              const selected = form.querySelector(`input[name="q${i}"]:checked`);
+              const isCorrect = selected && selected.value === q.answer;
+              if (isCorrect) score++;
+
+              const mcq = mcqData.find(m => m[4] === q.question && m[7] === q.answer);
+              if (mcq && selected && !isCorrect) {
+                incorrectFeedback += `
+                  <p><strong>${q.question}</strong><br>
+                  Your answer: ${selected.value}<br>
+                  Correct answer: ${q.answer}<br>
+                  Explanation: ${mcq[6]}</p>
+                `;
+              }
+            });
+
+            const percentage = (score / sections[sectionIndex].quiz.length) * 100;
+            scores[sectionIndex] = percentage;
+            localStorage.setItem('scores', JSON.stringify(scores));
+
+            let feedback = `
+              <p>Your score: ${score}/${sections[sectionIndex].quiz.length} (${percentage.toFixed(2)}%)</p>
+              ${percentage >= 70 ? `<p class="text-green">${motivationalMessages[Math.floor(Math.random() * motivationalMessages.length)]}</p>` : '<p class="text-red">You need 70% to proceed. Try again!</p>'}
+            `;
+            if (incorrectFeedback) {
+              feedback += `<h4>Feedback on incorrect answers:</h4>${incorrectFeedback}`;
+            } else if (score === sections[sectionIndex].quiz.length) {
+              feedback += `<p class="text-green">All answers correct! Well done!</p>`;
+            }
+
+            feedbackDiv.innerHTML = feedback;
+            updateNavigation(sectionIndex, true);
+          } catch (error) {
+            console.error('Error in checkAnswers:', error);
+            document.getElementById('content').innerHTML = `<p class="text-red">Error processing answers: ${error.message}</p>`;
+          }
+        }
+
+        // Hamburger menu toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const menu = document.getElementById('menu');
+        if (window.innerWidth <= 768) {
+          menuBtn.classList.remove('hidden');
+          menu.classList.add('hidden');
+          
+          menuBtn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+          });
+        }
+        // Initial render
+        renderSection(currentSection);
+      } catch (error) {
+        console.error('Initialization error:', error);
+        document.getElementById('content').innerHTML = `<p class="text-red">Initialization error: ${error.message}</p>`;
+      }
+    });
+  </script>
+</body>
+</html>
