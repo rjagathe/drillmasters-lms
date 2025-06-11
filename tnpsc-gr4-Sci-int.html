@@ -1,240 +1,906 @@
-<!DOCTYPE html>
+I want my html file as follows:<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Drillmasters LMS - TNPSC Group 4 Science (Intermediate)</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Drillmasters LMS - TNPSC Group 4 Science (Elementary)</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; background-color: #f3f4f6; display: flex; flex-direction: column; min-height: 100vh; }
+    .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 15px; }
+    header { background-color: #2563eb; color: white; padding: 1rem 0; }
+    header h1 { font-size: 1.5rem; font-weight: bold; }
+    header h2 { font-size: 1.125rem; }
+    header .flex { display: flex; justify-content: space-between; align-items: center; }
+    nav { background-color: #1d4ed8; padding: 1rem 0; }
+    nav ul { list-style: none; display: flex; gap: 1rem; }
+    nav a { color: white; text-decoration: none; }
+    nav a:hover { text-decoration: underline; }
+    main { flex-grow: 1; padding: 1rem 0; }
+    #content { background-color: white; padding: 1.5rem; border-radius: 0.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+    footer { background-color: #1f2937; color: white; padding: 1rem 0; margin-top: auto; text-align: center; }
+    footer a { color: white; text-decoration: underline; }
+    button { padding: 0.5rem 1rem; border-radius: 0.25rem; cursor: pointer; }
+    .btn-blue { background-color: #3b82f6; color: white; border: none; }
+    .btn-blue:hover { background-color: #2563eb; }
+    .btn-gray { background-color: #6b7280; color: white; border: none; }
+    .btn-gray:hover { background-color: #4b5563; }
+    .btn-green { background-color: #22c55e; color: white; border: none; }
+    .btn-green:hover { background-color: #16a34a; }
+    .btn-yellow { background-color: #f59e0b; color: white; border: none; }
+    .btn-yellow:hover { background-color: #d97706; }
+    .text-red { color: #ef4444; }
+    .text-green { color: #22c55e; }
+    .hidden { display: none; }
+    #quiz-form { margin-top: 1rem; }
+    #quiz-form div { margin-bottom: 1rem; }
+    #quiz-form p { font-weight: bold; margin-bottom: 0.5rem; }
+    #quiz-form label { display: block; margin: 0.25rem 0; }
+    #quiz-form input[type="radio"] { margin-right: 0.5rem; }
+    #feedback { margin-top: 1rem; }
+    #navigation { margin-top: 1rem; }
+    @media (max-width: 768px) {
+      nav ul { flex-direction: column; gap: 0.5rem; }
+      #menu-btn { display: block; }
+      #menu { display: none; }
+    }
+  </style>
 </head>
-<body class="bg-gray-100">
-  <div class="container mx-auto p-4">
-    <h1 class="text-3xl font-bold mb-2 text-center">TNPSC Group 4 - Science</h1>
-    <h2 class="text-2xl font-semibold mb-6 text-center">Intermediate Level</h2>
-    <div id="content" class="bg-white p-6 rounded-lg shadow-md"></div>
-  </div>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container flex">
+      <div>
+        <h1>TNPSC Group 4 - Science</h1>
+        <h2>Elementaryr Level</h2>
+      </div>
+      <button id="menu-btn" class="hidden">☰</button>
+    </div>
+    <nav id="menu">
+      <div class="container">
+        <ul>
+          <li><a href="tnpsc-gr4-home.html">TNPSC Group 4 Home</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <div class="container">
+      <div id="content">
+        <p>Loading content...</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>© 2025 Drillmasters LMS. All rights reserved.</p>
+      <p>Contact: <a href="mailto:support@drillmasters.in">support@drillmasters.in</a> | <a href="https://www.drillmasters.in">www.drillmasters.in</a></p>
+    </div>
+  </footer>
+
+  <!-- Embedded JavaScript -->
   <script>
-    // MCQ data (145 questions, sample shown for brevity)
+    // Data for 29 sections (real data for 1-10, placeholders for 11-29)
+
+
+
+  const quizData = [
+  {
+    sectionId: "grade8-physics-motion-types-intermediate",
+    quiz: [
+      { question: "What describes circular motion?", options: ["Constant speed", "Angular velocity", "Linear path", "No acceleration"], answer: "Angular velocity" },
+      { question: "Which motion repeats regularly?", options: ["Linear", "Circular", "Periodic", "Random"], answer: "Periodic" },
+      { question: "What is acceleration?", options: ["Speed change rate", "Distance traveled", "Constant velocity", "Total displacement"], answer: "Speed change rate" },
+      { question: "Which has non-uniform motion?", options: ["Train at steady speed", "Car speeding up", "Earth rotating", "Pendulum"], answer: "Car speeding up" }
+    ]
+  },
+  {
+    sectionId: "grade8-physics-simple-machines-intermediate",
+    quiz: [
+      { question: "What is a first-class lever?", options: ["Wheelbarrow", "Seesaw", "Tweezers", "Nutcracker"], answer: "Seesaw" },
+      { question: "What increases pulley advantage?", options: ["Single rope", "More ropes", "Shorter rope", "No friction"], answer: "More ropes" },
+      { question: "What affects machine efficiency?", options: ["Friction", "Weight", "Speed", "Color"], answer: "Friction" },
+      { question: "Which is an inclined plane?", options: ["Screw", "Ramp", "Lever", "Pulley"], answer: "Ramp" }
+    ]
+  },
+  {
+    sectionId: "grade8-physics-light-refraction-intermediate",
+    quiz: [
+      { question: "What governs refraction?", options: ["Ohm’s Law", "Snell’s Law", "Newton’s Law", "Faraday’s Law"], answer: "Snell’s Law" },
+      { question: "What does a convex lens do?", options: ["Diverge light", "Converge light", "Reflect light", "Absorb light"], answer: "Converge light" },
+      { question: "What causes a rainbow?", options: ["Reflection", "Dispersion", "Absorption", "Diffraction"], answer: "Dispersion" },
+      { question: "Where is refraction used?", options: ["Mirrors", "Optical fibers", "Magnets", "Batteries"], answer: "Optical fibers" }
+    ]
+  },
+  {
+    sectionId: "grade8-physics-circuits-intermediate",
+    quiz: [
+      { question: "What is Ohm’s Law?", options: ["V = IR", "P = IV", "F = ma", "E = mc²"], answer: "V = IR" },
+      { question: "What is a parallel circuit?", options: ["Single path", "Multiple paths", "No resistance", "Battery only"], answer: "Multiple paths" },
+      { question: "What conserves current?", options: ["Ohm’s Law", "Kirchhoff’s Law", "Snell’s Law", "Newton’s Law"], answer: "Kirchhoff’s Law" },
+      { question: "What prevents circuit overload?", options: ["Resistor", "Fuse", "Capacitor", "Switch"], answer: "Fuse" }
+    ]
+  },
+  {
+    sectionId: "grade8-physics-energy-forms-intermediate",
+    quiz: [
+      { question: "What is conserved in a closed system?", options: ["Mass", "Energy", "Velocity", "Force"], answer: "Energy" },
+      { question: "What is mechanical energy?", options: ["Kinetic + potential", "Thermal only", "Chemical only", "Light energy"], answer: "Kinetic + potential" },
+      { question: "Which is renewable?", options: ["Coal", "Oil", "Wind", "Natural gas"], answer: "Wind" },
+      { question: "What converts light to electricity?", options: ["Battery", "Solar panel", "Motor", "Generator"], answer: "Solar panel" }
+    ]
+  },
+  {
+    sectionId: "grade8-physics-sound-intermediate",
+    quiz: [
+      { question: "What type is a sound wave?", options: ["Transverse", "Longitudinal", "Electromagnetic", "Circular"], answer: "Longitudinal" },
+      { question: "What measures sound intensity?", options: ["Hertz", "Decibel", "Watt", "Pascal"], answer: "Decibel" },
+      { question: "What causes the Doppler effect?", options: ["Medium change", "Relative motion", "Frequency drop", "Amplitude rise"], answer: "Relative motion" },
+      { question: "Where is sound used?", options: ["Sonar", "Lens", "Circuit", "Turbine"], answer: "Sonar" }
+    ]
+  },
+  {
+    sectionId: "grade8-physics-gravity-intermediate",
+    quiz: [
+      { question: "What is Newton’s gravity formula?", options: ["F = ma", "F = G (m1 m2 / r^2)", "V = IR", "E = mc²"], answer: "F = G (m1 m2 / r^2)" },
+      { question: "What is weight?", options: ["Mass only", "Gravitational force", "Volume", "Density"], answer: "Gravitational force" },
+      { question: "What drives planetary orbits?", options: ["Friction", "Gravity", "Magnetism", "Pressure"], answer: "Gravity" },
+      { question: "Where is gravity weaker?", options: ["Sea level", "Mountain peak", "Earth’s core", "Equator"], answer: "Mountain peak" }
+    ]
+  },
+  {
+    sectionId: "grade8-physics-pressure-intermediate",
+    quiz: [
+      { question: "What is pressure’s formula?", options: ["P = F/A", "P = mV", "P = IV", "P = E/t"], answer: "P = F/A" },
+      { question: "What is Pascal’s principle?", options: ["Equal pressure transmission", "Buoyancy force", "Energy conservation", "Momentum transfer"], answer: "Equal pressure transmission" },
+      { question: "What causes buoyancy?", options: ["Gravity", "Archimedes’ principle", "Friction", "Magnetism"], answer: "Archimedes’ principle" },
+      { question: "What measures atmospheric pressure?", options: ["Thermometer", "Barometer", "Hygrometer", "Anemometer"], answer: "Barometer" }
+    ]
+  },
+  {
+    sectionId: "grade8-physics-friction-intermediate",
+    quiz: [
+      { question: "What is static friction?", options: ["Motion friction", "Prevents movement", "Increases speed", "Reduces weight"], answer: "Prevents movement" },
+      { question: "What is friction’s formula?", options: ["F = μN", "F = ma", "F = P/A", "F = V/R"], answer: "F = μN" },
+      { question: "What reduces friction?", options: ["Rough surface", "Lubricant", "Weight increase", "High speed"], answer: "Lubricant" },
+      { question: "Where is friction beneficial?", options: ["Engine wear", "Braking", "Energy loss", "Slipping"], answer: "Braking" }
+    ]
+  },
+  {
+    sectionId: "grade8-physics-magnets-intermediate",
+    quiz: [
+      { question: "What creates an electromagnet?", options: ["Static charge", "Current in coil", "Permanent magnet", "Light wave"], answer: "Current in coil" },
+      { question: "What is Faraday’s law?", options: ["Induced voltage", "Force on charge", "Energy conservation", "Pressure transmission"], answer: "Induced voltage" },
+      { question: "What protects Earth from solar winds?", options: ["Gravity", "Magnetic field", "Atmosphere", "Ozone"], answer: "Magnetic field" },
+      { question: "Where are magnets used?", options: ["MRI scanners", "Batteries", "Lenses", "Barometers"], answer: "MRI scanners" }
+    ]
+  },
+  {
+    sectionId: "grade8-chemistry-elements-intermediate",
+    quiz: [
+      { question: "What determines atomic number?", options: ["Neutrons", "Protons", "Electrons", "Mass"], answer: "Protons" },
+      { question: "Which group is highly reactive?", options: ["Noble gases", "Alkali metals", "Halogens", "Transition metals"], answer: "Alkali metals" },
+      { question: "What increases across a period?", options: ["Atomic mass", "Electronegativity", "Atomic radius", "Valence electrons"], answer: "Electronegativity" },
+      { question: "Which is used in semiconductors?", options: ["Iron", "Silicon", "Sulfur", "Gold"], answer: "Silicon" }
+    ]
+  },
+  {
+    sectionId: "grade8-chemistry-compounds-intermediate",
+    quiz: [
+      { question: "What is an ionic bond?", options: ["Electron sharing", "Electron transfer", "Hydrogen bonding", "Van der Waals"], answer: "Electron transfer" },
+      { question: "What is methane’s formula?", options: ["CH4", "CO2", "H2O", "NaCl"], answer: "CH4" },
+      { question: "What forms compounds?", options: ["Physical mixing", "Chemical reaction", "Dissolving", "Melting"], answer: "Chemical reaction" },
+      { question: "Where are compounds used?", options: ["Fertilizers", "Mirrors", "Lenses", "Magnets"], answer: "Fertilizers" }
+    ]
+  },
+  {
+    sectionId: "grade8-chemistry-changes-intermediate",
+    quiz: [
+      { question: "What is a chemical change example?", options: ["Boiling water", "Rusting iron", "Cutting wood", "Melting ice"], answer: "Rusting iron" },
+      { question: "What is an exothermic reaction?", options: ["Absorbs heat", "Releases heat", "No heat change", "Uses light"], answer: "Releases heat" },
+      { question: "What speeds a reaction?", options: ["Catalyst", "Cooling", "Dilution", "Inhibitor"], answer: "Catalyst" },
+      { question: "Where is a chemical change used?", options: ["Recycling", "Plastic production", "Freezing", "Shaping metal"], answer: "Plastic production" }
+    ]
+  },
+  {
+    sectionId: "grade8-chemistry-acids-bases-intermediate",
+    quiz: [
+      { question: "What defines an acid?", options: ["Proton donor", "Electron donor", "Proton acceptor", "Electron acceptor"], answer: "Proton donor" },
+      { question: "What is pH of a strong acid?", options: ["7", "10", "2", "14"], answer: ["2"], options: ["7", "2", "10", "14"] },
+      { question: "What forms in neutralization?", options: ["Acid", "Base", "Salt", "Gas"], answer: "Salt" },
+      { question: "What measures acid concentration?", options: ["Filtration", "Titration", "Distillation", "Centrifugation"], answer: "Titration" }
+    ]
+  },
+  {
+    sectionId: "grade8-chemistry-solutions-intermediate",
+    quiz: [
+      { question: "What is molarity?", options: ["Mass/volume", "Moles/Liter", "Moles/gram", "Volume/Liter"], answer: "Moles/Liter" },
+      { question: "What is a saturated solution?", options: ["Holds maximum solute", "No solute", "Unstable", "Dilute"], answer: "Holds maximum solute" },
+      { question: "Which is a colloid?", options: ["Saltwater", "Milk"], ["Sugar water"], answer: ["Milk"], options: ["Saltwater", "Milk"] },
+      { question: "Where are solutions used?", options: ["IV fluids", "Mirrors"], ["Batteries"], answer: "IV fluids" }
+    ]
+  },
+  {
+    sectionId: "grade8-chemistry-metals-intermediate",
+    quiz: [
+      { question: "Which metal is most reactive?", options: ["Gold"], ["Potassium"], ["Potassium", "Copper"], answer: ["Potassium"] },
+      { question: "What is steel?", options: ["Pure iron"], ["Iron alloy"], answer: ["Iron alloy"], options: ["Pure iron", "Iron alloy"] },
+      { question: "What causes rusting?", options: ["Reduction"], ["Oxidation"], answer: ["Oxidation"], options: ["Reduction", "Oxidation"] },
+      { question: "Where are metals used?", options: ["Wiring"], answer: ["Wiring"], options: ["Wiring", "Copper wiring"] }
+    ]
+  },
+  {
+    sectionId: "grade8-chemistry-nonmetals-intermediate",
+    quiz: [
+      { question: "Which is a non-metal?", options: ["Sodium"], ["Phosphorus"], answer: ["Phosphorus"], options: ["Sodium", "Phosphorus"] },
+      { question: "What are halogens?", options: ["Group 1"], ["Group 17"], answer: ["Group 17"], options: ["Group 1", "Group 17"] },
+      { question: "What is a non-metal used in?", options: ["Wires"], ["Polymers"], answer: ["Polymers"], options: ["Wires", "Polymers"] }
+    ]
+  },
+  {
+    sectionId: "grade8-chemistry-air-composition-intermediate",
+    quiz: [
+      { question: "What gas drives global warming?", options: ["Nitrogen"], ["CO2"], answer: ["CO2"], options: ["Nitrogen", "CO2"] },
+      { question: "What is air’s nitrogen percentage?", options: ["21%", "78%"], answer: ["78%"], options: ["21%", "78%"] },
+      { question: "What affects air quality?", options: ["Particulates"], answer: ["Particulates"], options: ["Particulates"] }
+    ]
+  },
+  {
+    sectionId: "grade8-biology-photosynthesis-intermediate",
+    quiz: [
+      { question: "What is photosynthesis’s formula?", options: ["6CO2 + 6H2O → C6H12O6 + 6O2"], answer: ["Photosynthesis formula"], options: ["6CO2 + 6H2O → C6H12O6 + 6O2"] },
+      { question: "What absorbs light in photosynthesis?", options: ["Chlorophyll"], answer: ["Chlorophyll"], options: ["Chlorophyll"] },
+      { question: "What limits photosynthesis?", options: ["CO2"], answer: ["CO2"], options: ["CO2"] },
+      { question: "Where is photosynthesis used?", options: ["Biofuels"], answer: ["Biofuels"], options: ["Biofuels"] }
+    ]
+  },
+  {
+    sectionId: "grade8-biology-respiration-intermediate",
+    quiz: [
+      { question: "What is respiration’s formula?", options: ["C6H12O6 + 6O2 → 6CO2 + 6H2O + ATP"], answer: ["Respiration formula"], options: ["C6H12O6 + 6O2 → 6CO2 + 6H2O + ATP"] },
+      { question: "What produces ATP?", options: ["Mitochondria"], answer: ["Mitochondria"], options: ["Mitochondria"] },
+      { question: "What is anaerobic respiration?", options: ["No oxygen"], answer: ["No oxygen"], options: ["No oxygen"] }
+    ]
+  },
+  {
+    sectionId: "grade8-biology-digestion-intermediate",
+    quiz: [
+      { question: "What enzyme digests proteins?", options: ["Trypsin"], answer: ["Trypsin"], options: ["Trypsin"] },
+      { question: "What emulsifies fats?", options: ["Bile"], answer: ["Bile"], options: ["Bile"] },
+      { question: "What aids digestion?", options: ["Probiotics"], answer: ["Probiotics"], options: ["Probiotics"] }
+    ]
+  },
+  {
+    sectionId: "grade8-biology-circulation-intermediate",
+    quiz: [
+      { question: "What is systemic circulation?", options: ["Body blood delivery"], answer: ["Body"], options: ["Body blood delivery"] },
+      { question: "What binds oxygen?", options: ["Hemoglobin"], answer: ["Hemoglobin"], options: ["Hemoglobin"] },
+      { question: "What monitors hypertension?", options: ["Blood pressure"], answer: ["Blood pressure"], options: ["Blood pressure"] }
+    ]
+  },
+  {
+    sectionId: "grade8-biology-excretion-intermediate",
+    quiz: [
+      { question: "What filters blood in kidneys?", options: ["Nephrons"], answer: ["Nephrons"], options: ["Nephrons"] },
+      { question: "What detoxifies ammonia?", options: ["Liver"], answer: ["Liver"], options: ["Liver"] },
+      { question: "What is used in dialysis?", options: ["Kidney failure"], answer: ["Kidney failure"], options: ["Kidney failure"] }
+    ]
+  },
+  {
+    sectionId: "grade8-biology-ecosystems-intermediate",
+    quiz: [
+      { question: "What is a trophic level?", options: ["Energy level"], answer: ["Energy level"], options: ["Energy level"] },
+      { question: "What is energy transfer efficiency?", options: ["~10%"], answer: ["~10%"], options: ["~10%"] },
+      { question: "What sustains ecosystems?", options: ["Nutrient cycles"], answer: ["Nutrient cycles"], options: ["Nutrient cycles"] }
+    ]
+  },
+  {
+    sectionId: "grade8-biology-microorganisms-intermediate",
+    quiz: [
+      { question: "What lacks a nucleus?", options: ["Bacteria"], answer: ["Bacteria"], options: ["Bacteria"] },
+      { question: "What produces antibiotics?", options: ["Microbes"], answer: ["Microbes"], options: ["Microbes"] },
+      { question: "What cleans oil spills?", options: ["Bioremediation"], answer: ["Bioremediation"], options: ["Bioremediation"] }
+    ]
+  },
+  {
+    sectionId: "grade8-envsci-water-cycle-intermediate",
+    quiz: [
+      { question: "What stores water?", options: ["Aquifers"], answer: ["Aquifers"], options: ["Aquifers"] },
+      { question: "What increases runoff?", options: ["Urbanization"], answer: ["Urbanization"], options: ["Urbanization"] },
+      { question: "What optimizes water use?", options: ["Irrigation"], answer: ["Irrigation"], options: ["Irrigation"] }
+    ]
+  },
+  {
+    sectionId: "grade8-envsci-pollution-intermediate",
+    quiz: [
+      { question: "What causes algal blooms?", options: ["Eutrophication"], answer: ["Eutrophication"], options: ["Eutrophication"] },
+      { question: "What concentrates toxins?", options: ["Bioaccumulation"], answer: ["Bioaccumulation"], options: ["Bioaccumulation"] },
+      { question: "What reduces emissions?", options: ["Catalytic converters"], answer: ["Catalytic converters"], options: ["Catalytic converters"] }
+    ]
+  },
+  {
+    sectionId: "grade8-envsci-conservation-intermediate",
+    quiz: [
+      { question: "What restores habitats?", options: ["Reforestation"], answer: ["Reforestation"], options: ["Reforestation"] },
+      { question: "What preserves species?", options: ["National parks"], answer: ["National parks"], options: ["National parks"] },
+      { question: "What evaluates impacts?", options: ["Life cycle assessments"], answer: ["Life cycle assessments"], options: ["Life cycle assessments"] }
+    ]
+  },
+  {
+    sectionId: "grade8-biology-reproduction-intermediate",
+    quiz: [
+      { question: "What transfers pollen?", options: ["Pollination"], answer: ["Pollination"], options: ["Pollination"] },
+      { question: "What triggers flowering?", options: ["Photoperiodism"], answer: ["Photoperiodism"], options: ["Photoperiodism"] },
+      { question: "What enhances crop yields?", options: ["Hybrid crops"], answer: ["Hybrid crops"], options: ["Hybrid crops"] }
+    ]
+  }
+];
+
+
+
+
+ const scienceContent = [
+  {
+    id: "grade8-physics-motion-types-intermediate",
+    title: "Types of Motion (Intermediate)",
+    content: "Motion involves changes in position relative to a reference point. Linear motion occurs along a straight path, like a car on a highway, described by distance and time. Circular motion, such as a wheel rotating, involves a fixed radius and angular velocity. Periodic motion, like a pendulum, repeats at regular intervals. Acceleration, the rate of velocity change, distinguishes uniform from non-uniform motion. For example, a cyclist speeding up has positive acceleration. These concepts are key in analyzing real-world systems, like vehicle dynamics or planetary orbits."
+  },
+  {
+    id: "grade8-physics-simple-machines-intermediate",
+    title: "Simple Machines (Intermediate)",
+    content: "Simple machines amplify force or redirect effort. Levers are classified by fulcrum position: first-class (seesaw), second-class (wheelbarrow), or third-class (tweezers). Pulleys, like those in cranes, reduce effort via multiple ropes, with mechanical advantage equal to rope segments. Inclined planes lower force needed over longer distances, as in ramps. Efficiency, affected by friction, measures useful work output. For instance, a screw’s efficiency depends on thread design. Understanding these principles aids in designing tools and machinery, optimizing energy use in construction or manufacturing."
+  },
+  {
+    id: "grade8-physics-light-refraction-intermediate",
+    title: "Light and Refraction (Intermediate)",
+    content: "Refraction occurs when light changes speed between mediums, governed by Snell’s Law: n1 sin θ1 = n2 sin θ2, where n is the refractive index. This bending causes phenomena like mirages or lens focusing. Convex lenses converge light for magnification, as in microscopes, while concave lenses diverge it, used in corrective glasses. Dispersion splits light into colors, as in prisms creating rainbows. Refraction’s applications include optical fibers for communication and telescopes for astronomy, requiring precise control of light paths."
+  },
+  {
+    id: "grade8-physics-circuits-intermediate",
+    title: "Electric Circuits (Intermediate)",
+    content: "Electric circuits comprise components like resistors, capacitors, and voltage sources. Parallel circuits offer multiple paths, maintaining voltage across branches, unlike series circuits. Ohm’s Law (V = IR) relates voltage, current, and resistance. For example, a 12V battery with a 4Ω resistor carries 3A current. Kirchhoff’s laws govern current and voltage conservation. Practical applications include household wiring and electronics, where circuit design ensures safety and efficiency, like using fuses to prevent overloads."
+  },
+  {
+    id: "grade8-physics-energy-forms-intermediate",
+    title: "Forms of Energy (Intermediate)",
+    content: "Energy exists as kinetic (motion), potential (position), thermal (heat), and more. Conservation of energy states total energy remains constant in closed systems. For instance, a roller coaster converts potential energy at its peak to kinetic energy during descent. Mechanical energy is the sum of kinetic and potential. Non-renewable sources like oil contrast with renewables like wind, which have lower environmental impact. Energy transformations power technologies, such as solar panels converting light to electricity, critical for sustainable development."
+  },
+  {
+    id: "grade8-physics-sound-intermediate",
+    title: "Sound (Intermediate)",
+    content: "Sound waves are longitudinal, compressing and rarefying mediums like air. Frequency determines pitch, measured in Hertz; a 440Hz wave produces an A note. Intensity, related to amplitude, affects loudness, measured in decibels. The Doppler effect alters perceived frequency due to relative motion, like a siren’s pitch changing as it approaches. Sound’s speed varies by medium: 343 m/s in air, faster in water. Applications include sonar for navigation and ultrasound in medical imaging, relying on wave properties."
+  },
+  {
+    id: "grade8-physics-gravity-intermediate",
+    title: "Gravity (Intermediate)",
+    content: "Gravity, described by Newton’s Universal Law, is F = G (m1 m2 / r^2), where G is the gravitational constant. It weakens with distance squared, explaining weaker gravity on mountain peaks. Weight, the gravitational force on mass, varies by planet; a 60kg person weighs 588N on Earth (g = 9.8 m/s^2). Gravity drives planetary orbits and tides. Applications include satellite positioning and space exploration, where understanding gravitational effects ensures accurate trajectories and mission success."
+  },
+  {
+    id: "grade8-physics-pressure-intermediate",
+    title: "Pressure (Intermediate)",
+    content: "Pressure, P = F/A, depends on force and area. In fluids, Pascal’s principle states pressure transmits equally, enabling hydraulic lifts where a small force lifts heavy loads. Buoyancy, an upward force, equals the weight of displaced fluid, per Archimedes’ principle. Atmospheric pressure decreases with altitude, affecting weather. For example, a 100N force on a 0.01m^2 area yields 10,000 Pa. Applications include barometers for weather forecasting and scuba gear design, balancing internal and external pressures."
+  },
+  {
+    id: "grade8-physics-friction-intermediate",
+    title: "Friction (Intermediate)",
+    content: "Friction opposes motion, with static friction preventing initial movement and kinetic friction acting during motion. The coefficient of friction (μ) quantifies surface interaction; μ = 0.6 for wood on wood. Frictional force is F = μN, where N is normal force. Lubricants like oil reduce μ, increasing efficiency. Friction enables braking in vehicles but causes wear in engines. Applications include designing tires for grip and bearings for smooth rotation, balancing friction’s benefits and drawbacks."
+  },
+  {
+    id: "grade8-physics-magnets-intermediate",
+    title: "Magnets and Magnetism (Intermediate)",
+    content: "Magnetic fields, visualized by field lines, exert forces on magnetic materials. Electromagnets, created by current through coils, vary in strength with current and turns. Faraday’s law links changing magnetic fields to induced voltage, enabling generators. Earth’s magnetic field, from its core, deflects solar winds. Applications include electric motors, where magnetic forces drive rotation, and MRI scanners, using field gradients for imaging. Understanding magnetism optimizes energy conversion in renewable technologies like wind turbines."
+  },
+  {
+    id: "grade8-chemistry-elements-intermediate",
+    title: "Elements and Periodic Table (Intermediate)",
+    content: "The periodic table groups elements by atomic number, reflecting proton count. Periods indicate energy levels; groups share valence electrons, dictating reactivity. Alkali metals (Group 1) are highly reactive, unlike noble gases (Group 18). Atomic mass includes protons and neutrons. For example, carbon-12 has 6 protons and 6 neutrons. Trends like electronegativity increase across periods. Applications include alloy design, using elements like chromium for corrosion resistance, and semiconductor production, leveraging silicon’s properties."
+  },
+  {
+    id: "grade8-chemistry-compounds-intermediate",
+    title: "Compounds (Intermediate)",
+    content: "Compounds form via chemical bonds, either ionic (electron transfer, e.g., NaCl) or covalent (electron sharing, e.g., CH4). Molecular formulas show atom ratios; water (H2O) has two hydrogens per oxygen. Properties differ from constituent elements; NaCl is stable, unlike reactive sodium. Reactions form or break compounds, like combustion producing CO2. Applications include pharmaceuticals, where compound structure determines function, and agriculture, using fertilizers like ammonium nitrate to enhance yields."
+  },
+  {
+    id: "grade8-chemistry-changes-intermediate",
+    title: "Physical and Chemical Changes (Intermediate)",
+    content: "Physical changes alter state or shape without new substances, like boiling water. Chemical changes form new substances via bond rearrangement, like rusting (Fe + O2 → Fe2O3). Energy changes, exothermic or endothermic, accompany reactions. Catalysts speed reactions without being consumed, as in catalytic converters reducing emissions. Applications include food preservation (physical) and chemical synthesis in industries, like producing plastics. Identifying change types ensures efficient resource use and safety."
+  },
+  {
+    id: "grade8-chemistry-acids-bases-intermediate",
+    title: "Acids and Bases (Intermediate)",
+    content: "Acids donate protons (H+), and bases accept them, per Brønsted-Lowry theory. Strong acids like HCl fully ionize; weak acids like acetic acid partially ionize. pH = -log[H+] quantifies acidity; pH 2 is ten times more acidic than pH 3. Neutralization forms salts, like HCl + NaOH → NaCl + H2O. Applications include pH adjustment in agriculture and antacids for digestion. Titrations measure concentrations, critical in quality control for medicines and food."
+  },
+  {
+    id: "grade8-chemistry-solutions-intermediate",
+    title: "Solutions (Intermediate)",
+    content: "Solutions are homogeneous mixtures, with solubility depending on temperature and pressure. Molarity (mol/L) measures concentration; a 1M NaCl solution has 58.5g/L. Saturated solutions hold maximum solute; supersaturated ones are unstable. Colloids, like milk, scatter light unlike true solutions. Applications include IV fluids, matching body salinity, and chemical analysis, using solutions for precise reactions. Understanding concentration aids environmental monitoring, like assessing water pollutant levels."
+  },
+  {
+    id: "grade8-chemistry-metals-intermediate",
+    title: "Metals (Intermediate)",
+    content: "Metals have delocalized electrons, enabling conductivity and malleability. The reactivity series ranks metals; potassium reacts vigorously with water, unlike gold. Alloys like steel (iron + carbon) enhance strength. Corrosion, like rusting, degrades metals via oxidation. Applications include copper wiring for circuits and titanium implants for biocompatibility. Extracting metals via electrolysis or reduction depends on reactivity, impacting mining efficiency and environmental considerations."
+  },
+  {
+    id: "grade8-chemistry-nonmetals-intermediate",
+    title: "Non-Metals (Intermediate)",
+    content: "Non-metals, like phosphorus or iodine, form covalent bonds and are insulators. They vary: oxygen is a gas, sulfur a solid. Non-metals are essential; nitrogen comprises 78% of air, critical for proteins. Halogens (Group 17) are reactive, forming salts like NaCl. Applications include carbon-based polymers and silicon in chips. Non-metal reactivity drives processes like combustion, requiring careful handling in industries and labs."
+  },
+  {
+    id: "grade8-chemistry-air-composition-intermediate",
+    title: "Composition of Air (Intermediate)",
+    content: "Air contains nitrogen (78%), oxygen (21%), and trace gases like CO2 (0.04%). Oxygen’s role in oxidation supports combustion and respiration. CO2, increasing due to emissions, drives global warming. Particulates from pollution affect air quality. Air separation yields industrial gases; nitrogen for fertilizers, oxygen for steelmaking. Monitoring air composition informs climate models and health policies, ensuring sustainable urban planning and emission controls."
+  },
+  {
+    id: "grade8-biology-photosynthesis-intermediate",
+    title: "Photosynthesis (Intermediate)",
+    content: "Photosynthesis, 6CO2 + 6H2O → C6H12O6 + 6O2, occurs in chloroplasts’ thylakoids and stroma. Light-dependent reactions produce ATP and NADPH; light-independent (Calvin cycle) fixes carbon. Chlorophyll absorbs red and blue light, reflecting green. Limiting factors include light, CO2, and temperature. Photosynthesis sustains biomass, supporting food webs. Applications include greenhouse farming, optimizing light, and biofuels, converting plant energy to fuel, addressing energy demands sustainably."
+  },
+  {
+    id: "grade8-biology-respiration-intermediate",
+    title: "Respiration (Intermediate)",
+    content: "Cellular respiration, C6H12O6 + 6O2 → 6CO2 + 6H2O + ATP, occurs in mitochondria. Glycolysis splits glucose, yielding 2 ATP; the Krebs cycle and electron transport chain produce up to 36 ATP. Anaerobic respiration, like fermentation, occurs without oxygen, producing lactic acid in muscles. Respiration powers cellular work. Applications include exercise physiology, optimizing oxygen use, and biogas production, harnessing microbial respiration for energy."
+  },
+  {
+    id: "grade8-biology-digestion-intermediate",
+    title: "Digestion (Intermediate)",
+    content: "Digestion hydrolyzes macromolecules: carbohydrates by amylase, proteins by proteases like trypsin, and lipids by lipase. The stomach’s low pH activates pepsin; the small intestine’s bile emulsifies fats. Nutrient absorption occurs via villi, increasing surface area. Gut microbiota aid digestion, producing vitamins. Applications include dietary planning, balancing macronutrients, and probiotics for gut health, ensuring efficient nutrient uptake and disease prevention."
+  },
+  {
+    id: "grade8-biology-circulation-intermediate",
+    title: "Circulation (Intermediate)",
+    content: "The circulatory system includes a four-chambered heart, arteries, veins, and capillaries. Systemic circulation delivers oxygenated blood; pulmonary circulation oxygenates blood via lungs. Blood pressure, highest in arteries, drives flow. Hemoglobin in red cells binds oxygen. Applications include monitoring hypertension and developing artificial hearts. Understanding circulation informs treatments for cardiovascular diseases, critical for public health, and sports science, enhancing athletic performance."
+  },
+  {
+    id: "grade8-biology-excretion-intermediate",
+    title: "Excretion (Intermediate)",
+    content: "Excretion maintains homeostasis by removing metabolic wastes. Nephrons in kidneys filter blood, reabsorbing water and glucose while excreting urea. The liver detoxifies ammonia into urea. Osmoregulation balances water; antidiuretic hormone conserves water. Applications include dialysis for kidney failure and urine analysis for health diagnostics. Excretion’s environmental impact, like nitrogen in wastewater, drives sustainable sanitation practices."
+  },
+  {
+    id: "grade8-biology-ecosystems-intermediate",
+    title: "Ecosystems (Intermediate)",
+    content: "Ecosystems feature biotic and abiotic interactions. Trophic levels include producers, primary consumers, and apex predators. Energy transfer efficiency is ~10% per level, limiting food chain length. Nutrient cycles, like nitrogen, sustain ecosystems. Human impacts, like deforestation, disrupt balance. Applications include ecological restoration and sustainable agriculture, using crop rotation to maintain soil fertility, preserving biodiversity and ecosystem services."
+  },
+  {
+    id: "grade8-biology-microorganisms-intermediate",
+    title: "Microorganisms (Intermediate)",
+    content: "Microorganisms include bacteria, archaea, fungi, protozoa, and viruses. Prokaryotes (bacteria) lack nuclei; eukaryotes (fungi) have organelles. Pathogens cause diseases like tuberculosis; beneficial microbes produce antibiotics. Biotechnology uses microbes for insulin production. Applications include bioremediation, using bacteria to clean oil spills, and vaccines, leveraging immune responses, critical for health and environmental sustainability."
+  },
+  {
+    id: "grade8-envsci-water-cycle-intermediate",
+    title: "Water Cycle (Intermediate)",
+    content: "The water cycle involves evaporation, condensation, precipitation, infiltration, and runoff. Groundwater aquifers store water, recharged by infiltration. Human activities, like urbanization, reduce permeable surfaces, increasing runoff. Climate change alters precipitation patterns. Applications include watershed management, ensuring water supply, and irrigation systems, optimizing agricultural water use, critical for food security and environmental balance."
+  },
+  {
+    id: "grade8-envsci-pollution-intermediate",
+    title: "Pollution (Intermediate)",
+    content: "Pollution includes air (particulates, SO2), water (nitrates, plastics), and soil (pesticides). Eutrophication from nutrient runoff causes algal blooms, depleting oxygen. Bioaccumulation concentrates toxins in food chains. Mitigation includes catalytic converters and bioremediation. Applications involve environmental regulations, like emission standards, and public awareness, promoting recycling, essential for ecosystem health and human well-being."
+  },
+  {
+    id: "grade8-envsci-conservation-intermediate",
+    title: "Conservation (Intermediate)",
+    content: "Conservation preserves resources via sustainable practices. Reforestation restores habitats; renewable energy reduces carbon footprints. Biodiversity loss threatens ecosystems; protected areas like national parks preserve species. Life cycle assessments evaluate product impacts. Applications include green technologies, like energy-efficient appliances, and policy, enforcing sustainable fishing, ensuring resource availability for future generations."
+  },
+  {
+    id: "grade8-biology-reproduction-intermediate",
+    title: "Reproduction in Plants (Intermediate)",
+    content: "Plant reproduction includes sexual (via seeds) and asexual (via cuttings). Pollination, by wind or insects, transfers pollen; fertilization forms seeds. Seed dispersal mechanisms, like burrs or wind, ensure spread. Photoperiodism triggers flowering. Applications include hybrid crops, enhancing yields, and vegetative propagation, cloning plants for agriculture, supporting food security and ornamental gardening."
+  }
+];
+
+
+
+
+//============================================================================================
+
+
+
+
     const mcqData = [
-      ["Science", "Measurement of Physical Quantities", "SI units", "Intermediate", "What is the SI unit of luminous intensity?", ["Candela", "Lumen", "Lux", "Watt"], "Candela is the SI unit of luminous intensity, measuring light emission. Lumen measures flux, lux measures illuminance, watt measures power.", "Candela"],
-      ["Science", "Measurement of Physical Quantities", "Dimensional analysis", "Intermediate", "What is the dimensional formula of force?", ["[MLT⁻¹]", "[MLT⁻²]", "[ML²T⁻²]", "[MLT⁻³]"], "Force = mass × acceleration = [M][LT⁻²] = [MLT⁻²].", "[MLT⁻²]"],
-      ["Science", "Measurement of Physical Quantities", "Unit conversion", "Intermediate", "Convert 36 km/h to m/s.", ["10 m/s", "12 m/s", "8 m/s", "15 m/s"], "36 km/h = (36 × 1000 m) / (3600 s) = 10 m/s.", "10 m/s"],
-      ["Science", "Measurement of Physical Quantities", "Error calculation", "Intermediate", "If a length is 5.0 ± 0.2 cm, what is the percentage error?", ["2%", "4%", "5%", "10%"], "Percentage error = (0.2 / 5.0) × 100 = 4%.", "4%"],
-      ["Science", "Measurement of Physical Quantities", "Significant figures", "Intermediate", "How many significant figures are in 0.00780?", ["2", "3", "4", "5"], "0.00780 has 3 significant figures (7, 8, 0 after 8). Leading zeros are not significant.", "3"],
-      // ... (140 more entries, covering all 29 sections)
-      ["Science", "Current Affairs", "Space mission", "Intermediate", "Which Indian mission aims to study the sun’s corona?", ["Aditya-L1", "Chandrayaan-3", "Mangalyaan-2", "Gaganyaan"], "Aditya-L1 studies the sun’s corona from Lagrange point L1. Chandrayaan-3 is lunar, Mangalyaan-2 is Martian, Gaganyaan is human spaceflight.", "Aditya-L1"],
-      ["Science", "Current Affairs", "Vaccine development", "Intermediate", "What technology was used in India’s iNCOVACC vaccine?", ["mRNA", "Viral vector", "Protein subunit", "Intranasal"], "iNCOVACC is an intranasal vaccine, delivering immunity via the nasal route.", "Intranasal"],
-      ["Science", "Current Affairs", "Renewable energy", "Intermediate", "What is India’s 2030 renewable energy target?", ["500 GW", "300 GW", "700 GW", "100 GW"], "India aims for 500 GW of renewable energy by 2030 to reduce fossil fuel reliance.", "500 GW"],
-      ["Science", "Current Affairs", "Scientific award", "Intermediate", "Who won the 2024 Nobel Prize in Physics?", ["John Hopfield", "Geoffrey Hinton", "Both A and B", "Elon Musk"], "John Hopfield and Geoffrey Hinton won for machine learning advancements.", "Both A and B"],
-      ["Science", "Current Affairs", "Climate initiative", "Intermediate", "What is the focus of India’s Green Hydrogen Mission?", ["Nuclear energy", "Hydrogen fuel", "Solar panels", "Wind turbines"], "The Green Hydrogen Mission promotes hydrogen fuel as a clean energy source.", "Hydrogen fuel"]
-    ];
+  ["Science", "Motion Types", "Definition", "Intermediate", "What describes circular motion?", ["Constant speed", "Angular velocity", "Linear path", "No acceleration"], "Circular motion involves rotation around a fixed point, described by angular velocity.", "Angular velocity"],
+  ["Science", "Motion Types", "Types", "Intermediate", "Which motion repeats regularly?", ["Linear", "Circular", "Periodic", "Random"], "Periodic motion, like a pendulum, repeats at fixed intervals.", "Periodic"],
+  ["Science", "Motion Types", "Acceleration", "Intermediate", "What is acceleration?", ["Speed change rate", "Distance traveled", "Constant velocity", "Total displacement"], "Acceleration measures the rate of velocity change over time.", "Speed change rate"],
+  ["Science", "Motion Types", "Examples", "Intermediate", "Which has non-uniform motion?", ["Train at steady speed", "Car speeding up", "Earth rotating", "Pendulum"], "Non-uniform motion involves changing speed, as in a car accelerating.", "Car speeding up"],
 
-    // Science content (29 sections, sample shown)
-    const scienceContent = [
-      {
-        id: "grade7-physics-measurement-intermediate",
-        title: "Measurement of Physical Quantities (Intermediate)",
-        content: "At the intermediate level, measurement involves all seven SI base units, including candela for luminous intensity and mole for substance amount. Dimensional analysis ensures unit consistency in equations, e.g., force’s dimensions are [MLT⁻²]. Conversions, like km/h to m/s, are critical, and error analysis quantifies measurement uncertainty. Significant figures determine precision; for example, 0.00780 has three significant figures. Practical applications include calculating errors in engineering designs or converting units in physics experiments.",
-        quiz: [
-          { question: "What is the SI unit of luminous intensity?", options: ["Candela", "Lumen", "Lux", "Watt"], answer: "Candela" },
-          { question: "What is the dimensional formula of force?", options: ["[MLT⁻¹]", "[MLT⁻²]", "[ML²T⁻²]", "[MLT⁻³]"], answer: "[MLT⁻²]" },
-          { question: "Convert 36 km/h to m/s.", options: ["10 m/s", "12 m/s", "8 m/s", "15 m/s"], answer: "10 m/s" },
-          { question: "If a length is 5.0 ± 0.2 cm, what is the percentage error?", options: ["2%", "4%", "5%", "10%"], answer: "4%" },
-          { question: "How many significant figures are in 0.00780?", options: ["2", "3", "4", "5"], answer: "3" }
-        ]
-      },
-      // ... (27 more sections, covering Motion, Force, etc.)
-      {
-        id: "grade7-current-affairs-intermediate",
-        title: "Current Affairs (Intermediate)",
-        content: "Recent scientific advancements shape India’s global presence. The Aditya-L1 mission studies the sun’s corona, enhancing solar physics knowledge. iNCOVACC, an intranasal COVID-19 vaccine, showcases India’s biotech innovation. The Green Hydrogen Mission aims for sustainable fuel by 2030, targeting 500 GW of renewable energy. Internationally, the 2024 Nobel Prize in Physics was awarded to John Hopfield and Geoffrey Hinton for machine learning. These developments highlight India’s focus on space, health, and clean energy.",
-        quiz: [
-          { question: "Which Indian mission aims to study the sun’s corona?", options: ["Aditya-L1", "Chandrayaan-3", "Mangalyaan-2", "Gaganyaan"], answer: "Aditya-L1" },
-          { question: "What technology was used in India’s iNCOVACC vaccine?", options: ["mRNA", "Viral vector", "Protein subunit", "Intranasal"], answer: "Intranasal" },
-          { question: "What is India’s 2030 renewable energy target?", options: ["500 GW", "300 GW", "700 GW", "100 GW"], answer: "500 GW" },
-          { question: "Who won the 2024 Nobel Prize in Physics?", options: ["John Hopfield", "Geoffrey Hinton", "Both A and B", "Elon Musk"], answer: "Both A and B" },
-          { question: "What is the focus of India’s Green Hydrogen Mission?", options: ["Nuclear energy", "Hydrogen fuel", "Solar panels", "Wind turbines"], answer: "Hydrogen fuel" }
-        ]
-      }
-    ];
+  ["Science", "Simple Machines", "Types", "Intermediate", "What is a first-class lever?", ["Wheelbarrow", "Seesaw", "Tweezers", "Nutcracker"], "A first-class lever has the fulcrum between effort and load, like a seesaw.", "Seesaw"],
+  ["Science", "Simple Machines", "Function", "Intermediate", "What increases pulley advantage?", ["Single rope", "More ropes", "Shorter rope", "No friction"], "More ropes in a pulley system increase mechanical advantage.", "More ropes"],
+  ["Science", "Simple Machines", "Efficiency", "Intermediate", "What affects machine efficiency?", ["Friction", "Weight", "Speed", "Color"], "Friction reduces efficiency by converting work to heat.", "Friction"],
+  ["Science", "Simple Machines", "Types", "Intermediate", "Which is an inclined plane?", ["Screw", "Ramp", "Lever", "Pulley"], "A ramp is an inclined plane, reducing effort over distance.", "Ramp"],
 
-    // Progression and state
-    const difficulties = ['beginner', 'elementary', 'intermediate', 'advanced', 'expert'];
-    let currentSectionId = localStorage.getItem('lastSectionIntermediate');
-    if (!currentSectionId || !scienceContent.some(s => s.id === currentSectionId)) {
-      currentSectionId = scienceContent[0].id;
-    }
-    let currentQuestionIndex = 0;
-    let quizAnswers = [];
+  ["Science", "Light Refraction", "Laws", "Intermediate", "What governs refraction?", ["Ohm’s Law", "Snell’s Law", "Newton’s Law", "Faraday’s Law"], "Snell’s Law relates angles and refractive indices in refraction.", "Snell’s Law"],
+  ["Science", "Light Refraction", "Lenses", "Intermediate", "What does a convex lens do?", ["Diverge light", "Converge light", "Reflect light", "Absorb light"], "Convex lenses converge light to form images, as in microscopes.", "Converge light"],
+  ["Science", "Light Refraction", "Phenomena", "Intermediate", "What causes a rainbow?", ["Reflection", "Dispersion", "Absorption", "Diffraction"], "Dispersion splits light into colors, creating rainbows.", "Dispersion"],
+  ["Science", "Light Refraction", "Applications", "Intermediate", "Where is refraction used?", ["Mirrors", "Optical fibers", "Magnets", "Batteries"], "Optical fibers use refraction for data transmission.", "Optical fibers"],
 
-    // Check if section is accessible
-    function isSectionAccessible(sectionId) {
-      const sectionIndex = scienceContent.findIndex(s => s.id === sectionId);
-      if (sectionIndex === 0) return true;
-      const prevSectionId = scienceContent[sectionIndex - 1].id;
-      const prevScore = localStorage.getItem(`score_${prevSectionId}`);
-      return prevScore !== null && parseFloat(prevScore) >= 70;
-    }
+  ["Science", "Circuits", "Laws", "Intermediate", "What is Ohm’s Law?", ["V = IR", "P = IV", "F = ma", "E = mc²"], "Ohm’s Law relates voltage, current, and resistance.", "V = IR"],
+  ["Science", "Circuits", "Types", "Intermediate", "What is a parallel circuit?", ["Single path", "Multiple paths", "No resistance", "Battery only"], "Parallel circuits have multiple current paths.", "Multiple paths"],
+  ["Science", "Circuits", "Conservation", "Intermediate", "What conserves current?", ["Ohm’s Law", "Kirchhoff’s Law", "Snell’s Law", "Newton’s Law"], "Kirchhoff’s Law ensures current conservation at junctions.", "Kirchhoff’s Law"],
+  ["Science", "Circuits", "Safety", "Intermediate", "What prevents circuit overload?", ["Resistor", "Fuse", "Capacitor", "Switch"], "Fuses break circuits to prevent overloads.", "Fuse"],
 
-    // Render section
-    function renderSection() {
-      let section = scienceContent.find(s => s.id === currentSectionId);
-      if (!section) {
-        section = scienceContent[0];
-        currentSectionId = section.id;
-      }
+  ["Science", "Energy Forms", "Conservation", "Intermediate", "What is conserved in a closed system?", ["Mass", "Energy", "Velocity", "Force"], "Energy is conserved in closed systems per the first law of thermodynamics.", "Energy"],
+  ["Science", "Energy Forms", "Types", "Intermediate", "What is mechanical energy?", ["Kinetic + potential", "Thermal only", "Chemical only", "Light energy"], "Mechanical energy is the sum of kinetic and potential energy.", "Kinetic + potential"],
+  ["Science", "Energy Forms", "Sources", "Intermediate", "Which is renewable?", ["Coal", "Oil", "Wind", "Natural gas"], "Wind is a renewable energy source.", "Wind"],
+  ["Science", "Energy Forms", "Applications", "Intermediate", "What converts light to electricity?", ["Battery", "Solar panel", "Motor", "Generator"], "Solar panels convert sunlight to electrical energy.", "Solar panel"],
 
-      if (!isSectionAccessible(currentSectionId)) {
-        document.getElementById('content').innerHTML = `
-          <p class="text-red-500 text-center">Complete the previous section with a score of 70% or higher to unlock this section.</p>
-          <button onclick="goToPreviousSection()" class="mt-4 bg-blue-500 text-white px-4 py-2 rounded mx-auto block">Go to Previous Section</button>
-        `;
-        return;
-      }
+  ["Science", "Sound", "Wave Type", "Intermediate", "What type is a sound wave?", ["Transverse", "Longitudinal", "Electromagnetic", "Circular"], "Sound waves are longitudinal, compressing the medium.", "Longitudinal"],
+  ["Science", "Sound", "Measurement", "Intermediate", "What measures sound intensity?", ["Hertz", "Decibel", "Watt", "Pascal"], "Decibels measure sound intensity or loudness.", "Decibel"],
+  ["Science", "Sound", "Effects", "Intermediate", "What causes the Doppler effect?", ["Medium change", "Relative motion", "Frequency drop", "Amplitude rise"], "Relative motion alters perceived frequency in the Doppler effect.", "Relative motion"],
+  ["Science", "Sound", "Applications", "Intermediate", "Where is sound used?", ["Sonar", "Lens", "Circuit", "Turbine"], "Sonar uses sound waves for navigation.", "Sonar"],
 
-      localStorage.setItem('lastSectionIntermediate', currentSectionId);
+  ["Science", "Gravity", "Formula", "Intermediate", "What is Newton’s gravity formula?", ["F = ma", "F = G (m1 m2 / r^2)", "V = IR", "E = mc²"], "Newton’s law calculates gravitational force between masses.", "F = G (m1 m2 / r^2)"],
+  ["Science", "Gravity", "Weight", "Intermediate", "What is weight?", ["Mass only", "Gravitational force", "Volume", "Density"], "Weight is the gravitational force on a mass.", "Gravitational force"],
+  ["Science", "Gravity", "Effects", "Intermediate", "What drives planetary orbits?", ["Friction", "Gravity", "Magnetism", "Pressure"], "Gravity maintains planets in elliptical orbits.", "Gravity"],
+  ["Science", "Gravity", "Variation", "Intermediate", "Where is gravity weaker?", ["Sea level", "Mountain peak", "Earth’s core", "Equator"], "Gravity decreases with distance from Earth’s center.", "Mountain peak"],
 
-      document.getElementById('content').innerHTML = `
-        <h2 class="text-2xl font-semibold mb-4">${section.title}</h2>
-        <p class="mb-6">${section.content}</p>
-        <div id="quiz" class="mt-6"></div>
-      `;
-      renderQuizQuestion();
-    }
+  ["Science", "Pressure", "Formula", "Intermediate", "What is pressure’s formula?", ["P = F/A", "P = mV", "P = IV", "P = E/t"], "Pressure is force per unit area.", "P = F/A"],
+  ["Science", "Pressure", "Principles", "Intermediate", "What is Pascal’s principle?", ["Equal pressure transmission", "Buoyancy force", "Energy conservation", "Momentum transfer"], "Pascal’s principle states pressure transmits equally in fluids.", "Equal pressure transmission"],
+  ["Science", "Pressure", "Buoyancy", "Intermediate", "What causes buoyancy?", ["Gravity", "Archimedes’ principle", "Friction", "Magnetism"], "Archimedes’ principle explains buoyancy via displaced fluid.", "Archimedes’ principle"],
+  ["Science", "Pressure", "Measurement", "Intermediate", "What measures atmospheric pressure?", ["Thermometer", "Barometer", "Hygrometer", "Anemometer"], "Barometers measure atmospheric pressure.", "Barometer"],
 
-    // Render quiz question
-    function renderQuizQuestion() {
-      const section = scienceContent.find(s => s.id === currentSectionId);
-      if (currentQuestionIndex >= section.quiz.length) {
-        showQuizResults();
-        return;
-      }
+  ["Science", "Friction", "Types", "Intermediate", "What is static friction?", ["Motion friction", "Prevents movement", "Increases speed", "Reduces weight"], "Static friction prevents initial motion between surfaces.", "Prevents movement"],
+  ["Science", "Friction", "Formula", "Intermediate", "What is friction’s formula?", ["F = μN", "F = ma", "F = P/A", "F = V/R"], "Frictional force depends on the coefficient and normal force.", "F = μN"],
+  ["Science", "Friction", "Reduction", "Intermediate", "What reduces friction?", ["Rough surface", "Lubricant", "Weight increase", "High speed"], "Lubricants lower the friction coefficient.", "Lubricant"],
+  ["Science", "Friction", "Applications", "Intermediate", "Where is friction beneficial?", ["Engine wear", "Braking", "Energy loss", "Slipping"], "Friction enables vehicle braking.", "Braking"],
 
-      const question = section.quiz[currentQuestionIndex];
-      document.getElementById('content').innerHTML = `
-        <h2 class="text-2xl font-semibold mb-4">${section.title}</h2>
-        <h3 class="text-xl font-semibold mb-2">Question ${currentQuestionIndex + 1}</h3>
-        <p class="mb-4">${question.question}</p>
-        ${question.options.map((option, index) => `
-          <label class="block mb-2">
-            <input type="radio" name="answer" value="${option}" class="mr-2" onchange="selectAnswer('${option}')">
-            ${option}
-          </label>
-        `).join('')}
-        <button onclick="nextQuestion()" id="nextBtn" class="mt-4 bg-blue-500 text-white px-4 py-2 rounded" disabled>Next</button>
-      `;
-    }
+  ["Science", "Magnets", "Electromagnetism", "Intermediate", "What creates an electromagnet?", ["Static charge", "Current in coil", "Permanent magnet", "Light wave"], "Current through a coil generates a magnetic field.", "Current in coil"],
+  ["Science", "Magnets", "Laws", "Intermediate", "What is Faraday’s law?", ["Induced voltage", "Force on charge", "Energy conservation", "Pressure transmission"], "Faraday’s law links magnetic flux change to voltage.", "Induced voltage"],
+  ["Science", "Magnets", "Earth", "Intermediate", "What protects Earth from solar winds?", ["Gravity", "Magnetic field", "Atmosphere", "Ozone"], "Earth’s magnetic field deflects solar particles.", "Magnetic field"],
+  ["Science", "Magnets", "Applications", "Intermediate", "Where are magnets used?", ["MRI scanners", "Batteries", "Lenses", "Barometers"], "MRI scanners use magnetic fields for imaging.", "MRI scanners"],
 
-    // Handle answer selection
-    function selectAnswer(option) {
-      quizAnswers[currentQuestionIndex] = option;
-      document.getElementById('nextBtn').disabled = false;
-    }
+  ["Science", "Elements", "Structure", "Intermediate", "What determines atomic number?", ["Neutrons", "Protons", "Electrons", "Mass"], "Atomic number equals the number of protons.", "Protons"],
+  ["Science", "Elements", "Reactivity", "Intermediate", "Which group is highly reactive?", ["Noble gases", "Alkali metals", "Halogens", "Transition metals"], "Alkali metals react vigorously due to one valence electron.", "Alkali metals"],
+  ["Science", "Elements", "Trends", "Intermediate", "What increases across a period?", ["Atomic mass", "Electronegativity", "Atomic radius", "Valence electrons"], "Electronegativity rises as atoms attract electrons more strongly.", "Electronegativity"],
+  ["Science", "Elements", "Applications", "Intermediate", "Which is used in semiconductors?", ["Iron", "Silicon", "Sulfur", "Gold"], "Silicon’s properties make it ideal for semiconductors.", "Silicon"],
 
-    // Move to next question
-    function nextQuestion() {
-      currentQuestionIndex++;
-      renderQuizQuestion();
-    }
+  ["Science", "Compounds", "Bonds", "Intermediate", "What is an ionic bond?", ["Electron sharing", "Electron transfer", "Hydrogen bonding", "Van der Waals"], "Ionic bonds form via electron transfer between atoms.", "Electron transfer"],
+  ["Science", "Compounds", "Formulas", "Intermediate", "What is methane’s formula?", ["CH4", "CO2", "H2O", "NaCl"], "Methane has one carbon and four hydrogens.", "CH4"],
+  ["Science", "Compounds", "Formation", "Intermediate", "What forms compounds?", ["Physical mixing", "Chemical reaction", "Dissolving", "Melting"], "Chemical reactions create new compounds.", "Chemical reaction"],
+  ["Science", "Compounds", "Applications", "Intermediate", "Where are compounds used?", ["Fertilizers", "Mirrors", "Lenses", "Magnets"], "Fertilizers like ammonium nitrate are compounds.", "Fertilizers"],
 
-    // Go to previous section
-    function goToPreviousSection() {
-      const currentIndex = scienceContent.findIndex(s => s.id === currentSectionId);
-      if (currentIndex > 0) {
-        currentSectionId = scienceContent[currentIndex - 1].id;
-        currentQuestionIndex = 0;
-        quizAnswers = [];
-        renderSection();
-      }
-    }
+  ["Science", "Changes", "Examples", "Intermediate", "What is a chemical change example?", ["Boiling water", "Rusting iron", "Cutting wood", "Melting ice"], "Rusting forms new substances via oxidation.", "Rusting iron"],
+  ["Science", "Changes", "Energy", "Intermediate", "What is an exothermic reaction?", ["Absorbs heat", "Releases heat", "No heat change", "Uses light"], "Exothermic reactions release heat to surroundings.", "Releases heat"],
+  ["Science", "Changes", "Catalysts", "Intermediate", "What speeds a reaction?", ["Catalyst", "Cooling", "Dilution", "Inhibitor"], "Catalysts lower activation energy.", "Catalyst"],
+  ["Science", "Changes", "Applications", "Intermediate", "Where is a chemical change used?", ["Recycling", "Plastic production", "Freezing", "Shaping metal"], "Plastic production involves chemical reactions.", "Plastic production"],
 
-    // Go to next section
-    function goToNextSection() {
-      const currentIndex = scienceContent.findIndex(s => s.id === currentSectionId);
-      if (currentIndex < scienceContent.length - 1) {
-        currentSectionId = scienceContent[currentIndex + 1].id;
-        currentQuestionIndex = 0;
-        quizAnswers = [];
-        renderSection();
-      } else {
-        document.getElementById('content').innerHTML = `
-          <p class="text-green-500 text-center">Congratulations! You have completed all sections in the Intermediate level.</p>
-        `;
-      }
-    }
+  ["Science", "Acids and Bases", "Definition", "Intermediate", "What defines an acid?", ["Proton donor", "Electron donor", "Proton acceptor", "Electron acceptor"], "Acids donate protons per Brønsted-Lowry theory.", "Proton donor"],
+  ["Science", "Acids and Bases", "pH", "Intermediate", "What is pH of a strong acid?", ["7", "2", "10", "14"], "Strong acids have low pH, around 2.", "2"],
+  ["Science", "Acids and Bases", "Reactions", "Intermediate", "What forms in neutralization?", ["Acid", "Base", "Salt", "Gas"], "Neutralization produces salts and water.", "Salt"],
+  ["Science", "Acids and Bases", "Measurement", "Intermediate", "What measures acid concentration?", ["Filtration", "Titration", "Distillation", "Centrifugation"], "Titration determines acid concentration.", "Titration"],
 
-    // Retry current section
-    function retrySection() {
-      currentQuestionIndex = 0;
-      quizAnswers = [];
-      renderSection();
-    }
+  ["Science", "Solutions", "Concentration", "Intermediate", "What is molarity?", ["Mass/volume", "Moles/Liter", "Moles/gram", "Volume/Liter"], "Molarity measures moles of solute per liter.", "Moles/Liter"],
+  ["Science", "Solutions", "Types", "Intermediate", "What is a saturated solution?", ["Holds maximum solute", "No solute", "Unstable", "Dilute"], "Saturated solutions contain maximum dissolved solute.", "Holds maximum solute"],
+  ["Science", "Solutions", "Colloids", "Intermediate", "Which is a colloid?", ["Saltwater", "Milk", "Sugar water", "Air"], "Milk is a colloid, scattering light.", "Milk"],
+  ["Science", "Solutions", "Applications", "Intermediate", "Where are solutions used?", ["IV fluids", "Mirrors", "Batteries", "Lenses"], "IV fluids are solutions matching body salinity.", "IV fluids"],
 
-    // Show quiz results
-    function showQuizResults() {
-      const section = scienceContent.find(s => s.id === currentSectionId);
-      let correct = 0;
-      let incorrectAnswers = [];
+  ["Science", "Metals", "Reactivity", "Intermediate", "Which metal is most reactive?", ["Gold", "Potassium", "Copper", "Silver"], "Potassium tops the reactivity series.", "Potassium"],
+  ["Science", "Metals", "Alloys", "Intermediate", "What is steel?", ["Pure iron", "Iron alloy", "Iron oxide", "Iron sulfide"], "Steel is iron alloyed with carbon.", "Iron alloy"],
+  ["Science", "Metals", "Corrosion", "Intermediate", "What causes rusting?", ["Reduction", "Oxidation", "Neutralization", "Precipitation"], "Rusting is oxidation of iron.", "Oxidation"],
+  ["Science", "Metals", "Applications", "Intermediate", "Where are metals used?", ["Wiring", "Glass", "Plastic", "Wood"], "Copper is used in electrical wiring.", "Wiring"],
 
-      section.quiz.forEach((q, index) => {
-        if (quizAnswers[index] === q.answer) {
-          correct++;
-        } else {
-          const mcqEntry = mcqData.find(m => m[4] === q.question && m[7] === q.answer);
-          incorrectAnswers.push({
-            question: q.question,
-            userAnswer: quizAnswers[index] || "Not answered",
-            correctAnswer: q.answer,
-            explanation: mcqEntry ? mcqEntry[6] : "No explanation available."
+  ["Science", "Non-Metals", "Examples", "Intermediate", "Which is a non-metal?", ["Sodium", "Phosphorus", "Iron", "Copper"], "Phosphorus lacks metallic properties.", "Phosphorus"],
+  ["Science", "Non-Metals", "Groups", "Intermediate", "What are halogens?", ["Group 1", "Group 17", "Group 2", "Group 18"], "Halogens are in Group 17, highly reactive.", "Group 17"],
+  ["Science", "Non-Metals", "Applications", "Intermediate", "What is a non-metal used in?", ["Wires", "Polymers", "Mirrors", "Batteries"], "Carbon forms polymers like plastics.", "Polymers"],
+
+  ["Science", "Air Composition", "Climate", "Intermediate", "What gas drives global warming?", ["Nitrogen", "CO2", "Oxygen", "Argon"], "CO2 traps heat, contributing to global warming.", "CO2"],
+  ["Science", "Air Composition", "Percentage", "Intermediate", "What is air’s nitrogen percentage?", ["21%", "78%", "1%", "10%"], "Nitrogen constitutes 78% of air.", "78%"],
+  ["Science", "Air Composition", "Pollution", "Intermediate", "What affects air quality?", ["Particulates", "Rain", "Wind", "Sunlight"], "Particulates from pollution degrade air quality.", "Particulates"],
+
+  ["Science", "Photosynthesis", "Formula", "Intermediate", "What is photosynthesis’s formula?", ["6CO2 + 6H2O → C6H12O6 + 6O2", "C6H12O6 + 6O2 → 6CO2 + 6H2O", "H2O → O2 + H2", "CO2 → C + O2"], "Photosynthesis converts CO2 and water to glucose and oxygen.", "6CO2 + 6H2O → C6H12O6 + 6O2"],
+  ["Science", "Photosynthesis", "Pigments", "Intermediate", "What absorbs light in photosynthesis?", ["Chlorophyll", "Hemoglobin", "Melanin", "Carotene"], "Chlorophyll absorbs light for energy conversion.", "Chlorophyll"],
+  ["Science", "Photosynthesis", "Factors", "Intermediate", "What limits photosynthesis?", ["CO2", "Nitrogen", "Oxygen", "Argon"], "CO2 concentration limits photosynthesis rate.", "CO2"],
+  ["Science", "Photosynthesis", "Applications", "Intermediate", "Where is photosynthesis used?", ["Biofuels", "Batteries", "Wiring", "Mirrors"], "Photosynthesis inspires biofuel production.", "Biofuels"],
+
+  ["Science", "Respiration", "Formula", "Intermediate", "What is respiration’s formula?", ["C6H12O6 + 6O2 → 6CO2 + 6H2O + ATP", "6CO2 + 6H2O → C6H12O6 + 6O2", "H2O → O2 + H2", "CO2 → C + O2"], "Respiration breaks glucose for energy.", "C6H12O6 + 6O2 → 6CO2 + 6H2O + ATP"],
+  ["Science", "Respiration", "Organelles", "Intermediate", "What produces ATP?", ["Mitochondria", "Chloroplasts", "Nucleus", "Ribosomes"], "Mitochondria generate ATP via respiration.", "Mitochondria"],
+  ["Science", "Respiration", "Types", "Intermediate", "What is anaerobic respiration?", ["No oxygen", "Uses oxygen", "In chloroplasts", "In nucleus"], "Anaerobic respiration occurs without oxygen.", "No oxygen"],
+
+  ["Science", "Digestion", "Enzymes", "Intermediate", "What enzyme digests proteins?", ["Trypsin", "Amylase", "Lipase", "Maltase"], "Trypsin breaks down proteins in the intestine.", "Trypsin"],
+  ["Science", "Digestion", "Emulsification", "Intermediate", "What emulsifies fats?", ["Bile", "Saliva", "Pepsin", "Amylase"], "Bile emulsifies fats for digestion.", "Bile"],
+  ["Science", "Digestion", "Health", "Intermediate", "What aids digestion?", ["Probiotics", "Antibiotics", "Analgesics", "Antihistamines"], "Probiotics support gut microbiota.", "Probiotics"],
+
+  ["Science", "Circulation", "Function", "Intermediate", "What is systemic circulation?", ["Body blood delivery", "Lung blood delivery", "Heart contraction", "Blood filtration"], "Systemic circulation delivers blood to the body.", "Body blood delivery"],
+  ["Science", "Circulation", "Components", "Intermediate", "What binds oxygen?", ["Hemoglobin", "Plasma", "Platelets", "White cells"], "Hemoglobin in red cells binds oxygen.", "Hemoglobin"],
+  ["Science", "Circulation", "Health", "Intermediate", "What monitors hypertension?", ["Blood pressure", "Heart rate", "Blood sugar", "Cholesterol"], "Blood pressure indicates hypertension.", "Blood pressure"],
+
+  ["Science", "Excretion", "Organs", "Intermediate", "What filters blood in kidneys?", ["Nephrons", "Alveoli", "Neurons", "Villi"], "Nephrons filter blood to form urine.", "Nephrons"],
+  ["Science", "Excretion", "Detoxification", "Intermediate", "What detoxifies ammonia?", ["Liver", "Kidneys", "Lungs", "Heart"], "The liver converts ammonia to urea.", "Liver"],
+  ["Science", "Excretion", "Applications", "Intermediate", "What is used in dialysis?", ["Kidney failure", "Heart failure", "Lung failure", "Liver failure"], "Dialysis treats kidney failure.", "Kidney failure"],
+
+  ["Science", "Ecosystems", "Structure", "Intermediate", "What is a trophic level?", ["Energy level", "Species count", "Habitat size", "Water content"], "Trophic levels represent energy transfer stages.", "Energy level"],
+  ["Science", "Ecosystems", "Efficiency", "Intermediate", "What is energy transfer efficiency?", ["~10%", "~50%", "~90%", "~100%"], "Only ~10% of energy transfers between trophic levels.", "~10%"],
+  ["Science", "Ecosystems", "Cycles", "Intermediate", "What sustains ecosystems?", ["Nutrient cycles", "Weather patterns", "Solar flares", "Tidal waves"], "Nutrient cycles recycle essential elements.", "Nutrient cycles"],
+
+  ["Science", "Microorganisms", "Structure", "Intermediate", "What lacks a nucleus?", ["Bacteria", "Fungi", "Protozoa", "Algae"], "Bacteria are prokaryotes, lacking a nucleus.", "Bacteria"],
+  ["Science", "Microorganisms", "Benefits", "Intermediate", "What produces antibiotics?", ["Microbes", "Plants", "Animals", "Minerals"], "Microbes like Penicillium produce antibiotics.", "Microbes"],
+  ["Science", "Microorganisms", "Applications", "Intermediate", "What cleans oil spills?", ["Bioremediation", "Filtration", "Incineration", "Distillation"], "Bioremediation uses microbes to degrade pollutants.", "Bioremediation"],
+
+  ["Science", "Water Cycle", "Storage", "Intermediate", "What stores water?", ["Aquifers", "Clouds", "Rivers", "Glaciers"], "Aquifers store groundwater underground.", "Aquifers"],
+  ["Science", "Water Cycle", "Impacts", "Intermediate", "What increases runoff?", ["Urbanization", "Forestation", "Irrigation", "Evaporation"], "Urbanization reduces permeable surfaces, increasing runoff.", "Urbanization"],
+  ["Science", "Water Cycle", "Applications", "Intermediate", "What optimizes water use?", ["Irrigation", "Deforestation", "Urbanization", "Pollution"], "Irrigation systems optimize agricultural water use.", "Irrigation"],
+
+  ["Science", "Pollution", "Effects", "Intermediate", "What causes algal blooms?", ["Eutrophication", "Deforestation", "Urbanization", "Erosion"], "Eutrophication from nutrient runoff causes algal blooms.", "Eutrophication"],
+  ["Science", "Pollution", "Toxins", "Intermediate", "What concentrates toxins?", ["Bioaccumulation", "Evaporation", "Filtration", "Precipitation"], "Bioaccumulation concentrates toxins in food chains.", "Bioaccumulation"],
+  ["Science", "Pollution", "Mitigation", "Intermediate", "What reduces emissions?", ["Catalytic converters", "Incinerators", "Landfills", "Oil rigs"], "Catalytic converters reduce vehicle emissions.", "Catalytic converters"],
+
+  ["Science", "Conservation", "Restoration", "Intermediate", "What restores habitats?", ["Reforestation", "Urbanization", "Deforestation", "Mining"], "Reforestation rebuilds forest ecosystems.", "Reforestation"],
+  ["Science", "Conservation", "Preservation", "Intermediate", "What preserves species?", ["National parks", "Factories", "Highways", "Dams"], "National parks protect biodiversity.", "National parks"],
+  ["Science", "Conservation", "Assessment", "Intermediate", "What evaluates environmental impact?", ["Life cycle assessments", "Weather forecasts", "Economic reports", "Population surveys"], "Life cycle assessments measure product impacts.", "Life cycle assessments"],
+
+  ["Science", "Reproduction", "Processes", "Intermediate", "What transfers pollen?", ["Pollination", "Fertilization", "Germination", "Transpiration"], "Pollination moves pollen to stigma.", "Pollination"],
+  ["Science", "Reproduction", "Triggers", "Intermediate", "What triggers flowering?", ["Photoperiodism", "Geotropism", "Hydrotropism", "Thigmotropism"], "Photoperiodism cues flowering based on light duration.", "Photoperiodism"],
+  ["Science", "Reproduction", "Applications", "Intermediate", "What enhances crop yields?", ["Hybrid crops", "Monoculture", "Deforestation", "Pesticides"], "Hybrid crops combine traits for higher yields.", "Hybrid crops"]
+];
+
+    // Initialize the application
+    document.addEventListener('DOMContentLoaded', () => {
+      try {
+        // Load external data (optional)
+        async function loadExternalData() {
+          try {
+            const response = await fetch('files.json');
+            if (!response.ok) throw new Error('Failed to load files.json');
+            const manifest = await response.json();
+            for (const file of manifest) {
+              const res = await fetch(file.name);
+              if (!res.ok) throw new Error(`Failed to load ${file.name}`);
+              const script = document.createElement('script');
+              script.text = await res.text();
+              document.head.appendChild(script);
+              if (window[file.variable]) {
+                console.log(`Loaded ${file.variable} from ${file.name}`);
+              }
+            }
+          } catch (error) {
+            console.error('Error loading external data:', error);
+          }
+        }
+        // Uncomment to enable external loading
+        // loadExternalData();
+
+        // Validate data
+        if (!Array.isArray(scienceContent) || scienceContent.length !== 29) {
+          throw new Error('scienceContent must have 29 sections');
+        }
+        if (!Array.isArray(quizData) || quizData.length !== 29 || !Array.isArray(mcqData)) {
+          throw new Error('quizData or mcqData invalid or incomplete');
+        }
+
+        // Combine science content and quiz data
+        const sections = scienceContent.map(content => {
+          const quizEntry = quizData.find(q => q.sectionId === content.id);
+          return {
+            id: content.id,
+            title: content.title,
+            content: content.content,
+            quiz: quizEntry ? quizEntry.quiz : []
+          };
+        });
+
+        let currentSection = 0;
+        let scores = JSON.parse(localStorage.getItem('scores')) || Array(sections.length).fill(null);
+
+        // Motivational messages
+        const motivationalMessages = [
+          "Great job! Keep learning!",
+          "You're doing amazing! Stay focused!",
+          "Well done! You're getting smarter every day!",
+          "Fantastic effort! Keep it up!",
+          "You're on the right track! Stay curious!"
+        ];
+
+        // Update navigation buttons
+        function updateNavigation(sectionIndex, hasSubmitted = false) {
+          const navDiv = document.getElementById('navigation');
+          if (!navDiv) return;
+          let html = '';
+          if (hasSubmitted) {
+            html += `<button id="retake-btn" class="btn-yellow">Retake Quiz</button>`;
+          }
+          if (sectionIndex > 0) {
+            html += `<button id="prev-btn" class="btn-gray">Previous</button>`;
+          }
+          // Only show "Next" if submitted and score >= 70
+          if (hasSubmitted && sectionIndex < 28 && scores[sectionIndex] >= 70) {
+            html += `<button id="next-btn" class="btn-blue">Next</button>`;
+          }
+          if (sectionIndex === 28) {
+            html += `<button id="complete-btn" class="btn-green">Complete Course</button>`;
+          }
+          navDiv.innerHTML = html;
+
+          const retakeBtn = document.getElementById('retake-btn');
+          if (retakeBtn) {
+            retakeBtn.addEventListener('click', () => {
+              const form = document.getElementById('quiz-form');
+              if (form) form.reset();
+              document.getElementById('feedback').innerHTML = '';
+              updateNavigation(sectionIndex, false);
+            });
+          }
+
+          const prevBtn = document.getElementById('prev-btn');
+          if (prevBtn) {
+            prevBtn.addEventListener('click', () => {
+              currentSection--;
+              renderSection(currentSection);
+            });
+          }
+
+          const nextBtn = document.getElementById('next-btn');
+          if (nextBtn) {
+            nextBtn.addEventListener('click', () => {
+              // Double-check score before navigating
+              if (scores[sectionIndex] >= 70) {
+                currentSection++;
+                renderSection(currentSection);
+              } else {
+                console.warn('Attempted to navigate without sufficient score');
+              }
+            });
+          }
+
+          const completeBtn = document.getElementById('complete-btn');
+          if (completeBtn) {
+            completeBtn.addEventListener('click', () => {
+              document.getElementById('content').innerHTML = `
+                <h2>Congratulations!</h2>
+                <p>You've completed the TNPSC Group 4 Science (Beginner) course!</p>
+                <a href="tnpsc-gr4-home.html" class="btn-blue">Return to Home</a>
+              `;
+            });
+          }
+        }
+
+        // Render section
+        function renderSection(sectionIndex) {
+          try {
+            if (sectionIndex < 0 || sectionIndex >= sections.length) {
+              console.error('Invalid section index:', sectionIndex);
+              return;
+            }
+            const section = sections[sectionIndex];
+            let html = `
+              <h2>${section.title}</h2>
+              <p class="mt-2">${section.content}</p>
+            `;
+            
+            if (section.quiz.length > 0) {
+              html += `
+                <h3 class="mt-4">Quiz</h3>
+                <form id="quiz-form">
+                  ${section.quiz.map((q, i) => `
+                    <div>
+                      <p>${i + 1}. ${q.question}</p>
+                      ${q.options.map(opt => `
+                        <label>
+                          <input type="radio" name="q${i}" value="${opt}" required>
+                          ${opt}
+                        </label>
+                      `).join('')}
+                    </div>
+                  `).join('')}
+                  <button type="submit" id="submit-btn" class="btn-blue">Submit</button>
+                </form>
+                <div id="feedback"></div>
+              `;
+            } else {
+              html += '<p class="text-red">No quiz available for this section.</p>';
+            }
+            
+            html += `<div id="navigation" class="mt-4"></div>`;
+            
+            console.log('Rendering section', sectionIndex, 'Quiz length:', section.quiz.length);
+            document.getElementById('content').innerHTML = html;
+
+            // Attach listeners
+            const quizForm = document.getElementById('quiz-form');
+            const submitBtn = document.getElementById('submit-btn');
+            console.log('Form found:', !!quizForm, 'Submit button found:', !!submitBtn);
+            
+            if (quizForm) {
+              quizForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const selected = Array.from(quizForm.querySelectorAll('input:checked'));
+                console.log('Submit event triggered, selected answers:', selected.map(input => input.value));
+                if (selected.length === section.quiz.length) {
+                  checkAnswers(sectionIndex);
+                } else {
+                  document.getElementById('feedback').innerHTML = '<p class="text-red">Please answer all questions.</p>';
+                }
+              });
+            } else {
+              console.error('quiz-form not found');
+            }
+            
+            if (submitBtn) {
+              submitBtn.addEventListener('click', () => {
+                console.log('Submit button clicked directly');
+                if (quizForm) quizForm.dispatchEvent(new Event('submit'));
+              });
+            } else {
+              console.error('submit-btn not found');
+            }
+
+            updateNavigation(sectionIndex, scores[sectionIndex] !== null);
+          } catch (error) {
+            console.error('Error in renderSection:', error);
+            document.getElementById('content').innerHTML = `<p class="text-red">Error rendering section: ${error.message}</p>`;
+          }
+        }
+
+        // Check answers
+        function checkAnswers(sectionIndex) {
+          try {
+            console.log('checkAnswers called for section', sectionIndex);
+            const form = document.getElementById('quiz-form');
+            const feedbackDiv = document.getElementById('feedback');
+            if (!form || !feedbackDiv) {
+              console.error('Form or feedback div not found in checkAnswers');
+              return;
+            }
+
+            let score = 0;
+            let incorrectFeedback = '';
+
+            sections[sectionIndex].quiz.forEach((q, i) => {
+              const selected = form.querySelector(`input[name="q${i}"]:checked`);
+              const isCorrect = selected && selected.value === q.answer;
+              if (isCorrect) score++;
+
+              const mcq = mcqData.find(m => m[4] === q.question && m[7] === q.answer);
+              if (mcq && selected && !isCorrect) {
+                incorrectFeedback += `
+                  <p><strong>${q.question}</strong><br>
+                  Your answer: ${selected.value}<br>
+                  Correct answer: ${q.answer}<br>
+                  Explanation: ${mcq[6]}</p>
+                `;
+              }
+            });
+
+            const percentage = (score / sections[sectionIndex].quiz.length) * 100;
+            scores[sectionIndex] = percentage;
+            localStorage.setItem('scores', JSON.stringify(scores));
+
+            let feedback = `
+              <p>Your score: ${score}/${sections[sectionIndex].quiz.length} (${percentage.toFixed(2)}%)</p>
+              ${percentage >= 70 ? `<p class="text-green">${motivationalMessages[Math.floor(Math.random() * motivationalMessages.length)]}</p>` : '<p class="text-red">You need 70% to proceed. Try again!</p>'}
+            `;
+            if (incorrectFeedback) {
+              feedback += `<h4>Feedback on incorrect answers:</h4>${incorrectFeedback}`;
+            } else if (score === sections[sectionIndex].quiz.length) {
+              feedback += `<p class="text-green">All answers correct! Well done!</p>`;
+            }
+
+            feedbackDiv.innerHTML = feedback;
+            updateNavigation(sectionIndex, true);
+          } catch (error) {
+            console.error('Error in checkAnswers:', error);
+            document.getElementById('content').innerHTML = `<p class="text-red">Error processing answers: ${error.message}</p>`;
+          }
+        }
+
+        // Hamburger menu toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const menu = document.getElementById('menu');
+        if (window.innerWidth <= 768) {
+          menuBtn.classList.remove('hidden');
+          menu.classList.add('hidden');
+          
+          menuBtn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
           });
         }
-      });
-
-      let feedbackHtml = '<h3 class="text-xl font-semibold mb-4">Incorrect Answers Feedback</h3>';
-      if (incorrectAnswers.length === 0) {
-        feedbackHtml += '<p class="text-green-500">All answers were correct! No feedback needed.</p>';
-      } else {
-        incorrectAnswers.forEach(item => {
-          feedbackHtml += `
-            <div class="mb-4 p-4 bg-red-100 rounded">
-              <p><strong>Question:</strong> ${item.question}</p>
-              <p><strong>Your Answer:</strong> ${item.userAnswer}</p>
-              <p><strong>Correct Answer:</strong> ${item.correctAnswer}</p>
-              <p><strong>Explanation:</strong> ${item.explanation}</p>
-            </div>
-          `;
-        });
+        // Initial render
+        renderSection(currentSection);
+      } catch (error) {
+        console.error('Initialization error:', error);
+        document.getElementById('content').innerHTML = `<p class="text-red">Initialization error: ${error.message}</p>`;
       }
-
-      const score = (correct / section.quiz.length) * 100;
-      localStorage.setItem(`score_${currentSectionId}`, score);
-
-      let message = '';
-      if (score >= 90) {
-        message = 'Excellent!';
-      } else if (score >= 70) {
-        message = 'Good Job!';
-      } else {
-        message = 'Needs to Improve. You have to score at least 70% to move on to the next section.';
-      }
-
-      document.getElementById('content').innerHTML = `
-        <h2 class="text-2xl font-semibold mb-4">${section.title} - Quiz Results</h2>
-        <p class="mb-4">You scored ${correct} out of ${section.quiz.length} (${score.toFixed(2)}%)</p>
-        <p class="mb-4 text-lg font-semibold ${score >= 70 ? 'text-green-500' : 'text-red-500'}">${message}</p>
-        ${feedbackHtml}
-        <div class="mt-6">
-          ${score >= 70 ? `
-            <button onclick="goToNextSection()" class="bg-blue-500 text-white px-4 py-2 rounded mr-4">Go to Next Section</button>
-          ` : `
-            <button onclick="retrySection()" class="bg-yellow-500 text-white px-4 py-2 rounded mr-4">Retry Section</button>
-          `}
-          <button onclick="renderSection()" class="bg-gray-500 text-white px-4 py-2 rounded">Review Content</button>
-        </div>
-      `;
-    }
-
-    // Initialize
-    renderSection();
+    });
   </script>
 </body>
 </html>
