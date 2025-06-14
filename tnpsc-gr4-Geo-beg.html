@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Drillmasters LMS - TNPSC Group 4 Geography (Beginner)</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js" defer></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; background-color: #f3f4f6; display: flex; flex-direction: column; min-height: 100vh; }
+    .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 15px; }
+    header { background-color: #2563eb; color: white; padding: 1rem 0; }
+    header h1 { font-size: 1.5rem; font-weight: bold; }
+    header h2 { font-size: 1.125rem; }
+    header .flex { display: flex; justify-content: space-between; align-items: center; }
+    nav { background-color: #1d4ed8; padding: 1rem 0; }
+    nav ul { list-style: none; display: flex; gap: 1rem; }
+    nav a { color: white; text-decoration: none; }
+    nav a:hover { text-decoration: underline; }
+    main { flex-grow: 1; padding: 1rem 0; }
+    #content { background-color: white; padding: 1.5rem; border-radius: 0.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+    footer { background-color: #1f2937; color: white; padding: 1rem 0; margin-top: auto; text-align: center; }
+    footer a { color: white; text-decoration: underline; }
+    button { padding: 0.5rem 1rem; border-radius: 0.25rem; cursor: pointer; margin: 0.25rem; }
+    .btn-blue { background-color: #3b82f6; color: white; border: none; }
+    .btn-blue:hover { background-color: #2563eb; }
+    .btn-gray { background-color: #6b7280; color: white; border: none; }
+    .btn-gray:hover { background-color: #4b5563; }
+    .btn-green { background-color: #22c55e; color: white; border: none; }
+    .btn-green:hover { background-color: #16a34a; }
+    .btn-yellow { background-color: #f59e0b; color: white; border: none; }
+    .btn-yellow:hover { background-color: #d97706; }
+    .text-red { color: #ef4444; }
+    .text-green { color: #22c55e; }
+    .hidden { display: none; }
+    #quiz-form { margin-top: 1rem; }
+    #quiz-form div { margin-bottom: 1rem; }
+    #quiz-form p { font-weight: bold; margin-bottom: 0.5rem; }
+    #quiz-form label { display: block; margin: 0.25rem 0; }
+    #quiz-form input[type="radio"] { margin-right: 0.5rem; }
+    #feedback { margin-top: 1rem; }
+    #navigation { margin-top: 1rem; display: flex; gap: 0.5rem; }
+    .content-image, .content-animation { background-color: #e5e7eb; padding: 1rem; text-align: center; margin: 1rem 0; }
+    .content-chart { margin: 1rem 0; }
+    @media (max-width: 768px) {
+      nav ul { flex-direction: column; gap: 0.5rem; }
+      #menu-btn { display: block; }
+      #menu.hidden { display: none; }
+      #menu { display: block; }
+      .container { padding: 0 10px; }
+      button { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container flex">
+      <div>
+        <h1>TNPSC Group 4 - Geography</h1>
+        <h2>Beginner Level</h2>
+      </div>
+      <button id="menu-btn" class="hidden">☰</button>
+    </div>
+    <nav id="menu">
+      <div class="container">
+        <ul>
+          <li><a href="tnpsc-gr4-home.html">TNPSC Group 4 Home</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <div class="container">
+      <div id="content">
+        <p>Loading content...</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>© 2025 Drillmasters LMS. All rights reserved.</p>
+      <p>Contact: <a href="mailto:support@drillmasters.in">support@drillmasters.in</a> | <a href="https://www.drillmasters.in">www.drillmasters.in</a></p>
+    </div>
+  </footer>
+
+  <script>
+    // Science Content (Geography)
+    const scienceContent = [
+      {
+        id: 1,
+        title: "Earth Location",
+        content: [
+          {
+            type: "text",
+            value: "Earth is a planet that orbits the Sun. It is the only known planet with life. Earth has land, oceans, and air. The Indian Ocean lies south of India. Tamil Nadu is a state in India’s southeast, near the Bay of Bengal. Earth spins to make day and night, taking 24 hours. It takes 365 days to go around the Sun, causing seasons like summer and winter. The Tropic of Cancer passes through India, making it warm. Maps show places like Vellore in Tamil Nadu using lines called latitude and longitude."
+          }
+        ]
+      },
+      {
+        id: 2,
+        title: "Physical Features",
+        content: [
+          {
+            type: "text",
+            value: "Physical features are natural shapes on Earth, like hills and rivers. India has the Himalayan Mountains in the north, which stop cold winds. Tamil Nadu has the Eastern Ghats, with hills near Salem. Plains are flat lands; the Coromandel Coast in Tamil Nadu is a plain near the sea. Deserts, like the Thar in Rajasthan, are dry. Tamil Nadu’s Palani hills attract visitors. Physical features help people; plains are good for growing crops, and hills are cool for living. They also make places beautiful, like Kanyakumari’s sea view."
+          }
+        ]
+      },
+      {
+        id: 3,
+        title: "Monsoon, Rainfall, Weather, and Climate",
+        content: [
+          {
+            type: "text",
+            value: "Monsoons are winds that bring rain to India. Tamil Nadu gets rain from October to December. Rainfall helps plants grow; Madurai gets about 85 cm of rain yearly. Weather changes daily, like cloudy or hot days. Climate is what the weather is like for many years. Tamil Nadu is mostly hot and wet. Monsoons can make rivers full, helping farmers but sometimes causing floods. Knowing the climate helps people plan, like wearing light clothes in Chennai’s heat or carrying umbrellas during rain."
+          }
+        ]
+      },
+      {
+        id: 4,
+        title: "Water Resources",
+        content: [
+          {
+            type: "text",
+            value: "Water resources are places where we get water, like ponds and wells. India has big rivers like the Yamuna. Tamil Nadu uses ponds in villages for water. Wells in Vellore give water for homes. Rain is collected in tanks to use later. Water is needed for drinking, washing, and growing crops. Tamil Nadu’s farmers use water from small streams. Too much use can make wells dry, so people save water by fixing leaks and using less. Water keeps people and animals healthy."
+          }
+        ]
+      },
+      {
+        id: 5,
+        title: "Rivers",
+        content: [
+          {
+            type: "text",
+            value: "Rivers are long streams of water. The Yamuna flows through Delhi. In Tamil Nadu, the Palar River helps Vellore farmers. Rivers come from hills and flow to the sea. The Vaigai River in Madurai joins the Bay of Bengal. Dams, like Krishnagiri Dam, save river water for crops. Rivers are used for bathing and fishing. Dirty water from cities harms rivers, so Tamil Nadu cleans rivers like the Adyar. Rivers are important for towns to grow and for people to live happily."
+          }
+        ]
+      },
+      {
+        id: 6,
+        title: "Soil, Minerals, and Natural Resources",
+        content: [
+          {
+            type: "text",
+            value: "Soil is where plants grow. Tamil Nadu’s black soil in Vellore is good for groundnuts. Minerals are found in rocks, like bauxite in Salem for aluminum. Natural resources are gifts from Earth, like water and air. India has iron in Odisha for steel. Tamil Nadu’s sandy soil near beaches grows coconuts. Using too many resources hurts Earth, so we save them. Soil helps farmers, and minerals make things like cars. Protecting resources keeps Tamil Nadu green and strong."
+          }
+        ]
+      },
+      {
+        id: 7,
+        title: "Forest and Wildlife",
+        content: [
+          {
+            type: "text",
+            value: "Forests are places with many trees. Tamil Nadu’s Anamalai Tiger Reserve has thick forests. Wildlife means animals like deer and peacocks. India has lions in Gujarat’s Gir Forest. Forests give us clean air and wood. Animals keep forests healthy; snakes eat rats that harm crops. Tamil Nadu’s Vedanthangal Bird Sanctuary has many birds. Cutting forests harms animals, so we make parks to save them. Planting trees in Coimbatore helps animals and makes the air fresh for people."
+          }
+        ]
+      },
+      {
+        id: 8,
+        title: "Agricultural Pattern",
+        content: [
+          {
+            type: "text",
+            value: "Agriculture means growing food. Tamil Nadu’s main crop is paddy, grown near rivers. India grows maize and lentils. Farmers use rain to water fields. In Tamil Nadu, Tirunelveli grows bananas. Dry lands grow groundnuts. Farmers use cows to plow fields. Changing crops each year helps soil. Agriculture gives food like rice for idli. Tamil Nadu’s markets sell tomatoes from Dharmapuri. Farmers save seeds and water to grow more food for everyone in India."
+          }
+        ]
+      },
+      {
+        id: 9,
+        title: "Transport and Communication",
+        content: [
+          {
+            type: "text",
+            value: "Transport moves people and things. Tamil Nadu has buses in Madurai and trains in Chennai. India’s highways connect cities like Bangalore. Communication is talking or sending messages. People use letters and emails. Tamil Nadu’s post offices in Trichy send mail. Buses carry vegetables to markets. Mobile phones help farmers in Salem check prices. Good transport and communication make life easy. They help students reach schools and families stay close, even far away in Tamil Nadu."
+          }
+        ]
+      },
+      {
+        id: 10,
+        title: "Population Density and Distribution",
+        content: [
+          {
+            type: "text",
+            value: "Population density means how many people live in an area. Tamil Nadu has more people in cities like Coimbatore than in hills. India has many people in states like Bihar. People live near water and jobs. Tamil Nadu’s Salem has many people because of markets. Mountains have fewer people. Too many people in one place need more houses and food. Planning towns helps everyone have space. Tamil Nadu builds schools for crowded areas to teach kids."
+          }
+        ]
+      },
+      {
+        id: 11,
+        title: "Calamities and Disaster Management",
+        content: [
+          {
+            type: "text",
+            value: "Calamities are bad events like cyclones. Tamil Nadu gets cyclones near Nagapattinam. India has droughts in dry areas. Disaster management helps people stay safe. Tamil Nadu makes strong buildings for storms. Families keep torches and food ready. India sends help after floods. Schools in Chennai teach how to hide during quakes. Planting mangroves in Tamil Nadu’s coast stops waves. Listening to radio warnings saves lives during cyclones in India and Tamil Nadu."
+          }
+        ]
+      },
+      {
+        id: 12,
+        title: "Environment, Climate Change, and Geographical Landmarks",
+        content: [
+          {
+            type: "text",
+            value: "The environment is our air, water, and trees. Climate change makes summers hotter. Tamil Nadu saves electricity to cool Earth. Landmarks are special places. India’s Gateway of India is in Mumbai. Tamil Nadu’s Marina Beach in Chennai is a long beach. Pollution dirties air in cities. Tamil Nadu cleans ponds in villages. Using cloth bags saves trees. Protecting landmarks like Mahabalipuram’s temples and keeping the environment clean makes Tamil Nadu and India special for everyone."
+          }
+        ]
+      }
+    ];
+
+    // Quiz Data
+    const quizData = [
+      {
+        sectionId: 1,
+        quiz: [
+          {
+            question: "Which ocean is south of India?",
+            options: ["Pacific", "Atlantic", "Indian", "Arctic"],
+            answer: "Indian"
+          },
+          {
+            question: "What makes day and night on Earth?",
+            options: ["Sun moving", "Earth spinning", "Moon shining", "Stars twinkling"],
+            answer: "Earth spinning"
+          },
+          {
+            question: "Where is Tamil Nadu in India?",
+            options: ["North", "West", "Southeast", "Center"],
+            answer: "Southeast"
+          }
+        ]
+      },
+      {
+        sectionId: 2,
+        quiz: [
+          {
+            question: "Which mountains protect India from cold winds?",
+            options: ["Eastern Ghats", "Himalayas", "Vindhyas", "Satpuras"],
+            answer: "Himalayas"
+          },
+          {
+            question: "What is Tamil Nadu’s Coromandel Coast?",
+            options: ["Mountain", "Plain", "Desert", "Forest"],
+            answer: "Plain"
+          },
+          {
+            question: "Which Tamil Nadu place has hills?",
+            options: ["Chennai", "Salem", "Thanjavur", "Ramanathapuram"],
+            answer: "Salem"
+          }
+        ]
+      },
+      {
+        sectionId: 3,
+        quiz: [
+          {
+            question: "What brings rain to Tamil Nadu?",
+            options: ["Cyclone", "Monsoon", "Drought", "Fog"],
+            answer: "Monsoon"
+          },
+          {
+            question: "What is daily weather like in Tamil Nadu?",
+            options: ["Always cold", "Mostly hot", "Always snowy", "Never rainy"],
+            answer: "Mostly hot"
+          },
+          {
+            question: "What can monsoons cause in Tamil Nadu?",
+            options: ["Earthquakes", "Floods", "Fires", "Snow"],
+            answer: "Floods"
+          }
+        ]
+      },
+      {
+        sectionId: 4,
+        quiz: [
+          {
+            question: "What is a water resource in Tamil Nadu villages?",
+            options: ["Road", "Pond", "School", "Market"],
+            answer: "Pond"
+          },
+          {
+            question: "Which river is a water resource in India?",
+            options: ["Yamuna", "Sahara", "Himalaya", "Thar"],
+            answer: "Yamuna"
+          },
+          {
+            question: "How do people save water in Tamil Nadu?",
+            options: ["Fix leaks", "Build roads", "Cut trees", "Burn waste"],
+            answer: "Fix leaks"
+          }
+        ]
+      },
+      {
+        sectionId: 5,
+        quiz: [
+          {
+            question: "Which river flows through Vellore?",
+            options: ["Vaigai", "Palar", "Adyar", "Bhavani"],
+            answer: "Palar"
+          },
+          {
+            question: "Where do rivers like Vaigai flow in Tamil Nadu?",
+            options: ["Mountains", "Deserts", "Sea", "Sky"],
+            answer: "Sea"
+          },
+          {
+            question: "What cleans rivers like Adyar in Tamil Nadu?",
+            options: ["Pollution", "Factories", "Cleaning", "Dams"],
+            answer: "Cleaning"
+          }
+        ]
+      },
+      {
+        sectionId: 6,
+        quiz: [
+          {
+            question: "Which soil grows groundnuts in Vellore?",
+            options: ["Sandy", "Black", "Red", "Clay"],
+            answer: "Black"
+          },
+          {
+            question: "Which mineral is found in Salem?",
+            options: ["Gold", "Bauxite", "Silver", "Copper"],
+            answer: "Bauxite"
+          },
+          {
+            question: "Where is iron found in India?",
+            options: ["Kerala", "Odisha", "Punjab", "Assam"],
+            answer: "Odisha"
+          }
+        ]
+      },
+      {
+        sectionId: 7,
+        quiz: [
+          {
+            question: "Which forest is in Tamil Nadu?",
+            options: ["Gir", "Anamalai", "Sundarbans", "Ranthambore"],
+            answer: "Anamalai"
+          },
+          {
+            question: "Which bird is in Vedanthangal, Tamil Nadu?",
+            options: ["Peacock", "Crow", "Migratory birds", "Parrot"],
+            answer: "Migratory birds"
+          },
+          {
+            question: "What do forests give us?",
+            options: ["Clean air", "Noise", "Smoke", "Trash"],
+            answer: "Clean air"
+          }
+        ]
+      },
+      {
+        sectionId: 8,
+        quiz: [
+          {
+            question: "What is the main crop in Tamil Nadu?",
+            options: ["Paddy", "Wheat", "Corn", "Jute"],
+            answer: "Paddy"
+          },
+          {
+            question: "Which fruit grows in Tirunelveli?",
+            options: ["Apple", "Banana", "Orange", "Grape"],
+            answer: "Banana"
+          },
+          {
+            question: "What helps soil in Tamil Nadu farms?",
+            options: ["Changing crops", "Building houses", "Cutting trees", "Mining"],
+            answer: "Changing crops"
+          }
+        ]
+      },
+      {
+        sectionId: 9,
+        quiz: [
+          {
+            question: "What transport is common in Madurai?",
+            options: ["Buses", "Planes", "Ships", "Camels"],
+            answer: "Buses"
+          },
+          {
+            question: "What is used for communication in Trichy?",
+            options: ["Drums", "Post offices", "Rivers", "Caves"],
+            answer: "Post offices"
+          },
+          {
+            question: "What helps farmers in Salem check prices?",
+            options: ["Mobile phones", "Books", "Rocks", "Trees"],
+            answer: "Mobile phones"
+          }
+        ]
+      },
+      {
+        sectionId: 10,
+        quiz: [
+          {
+            question: "Which Tamil Nadu city has many people?",
+            options: ["Coimbatore", "Yercaud", "Rameswaram", "Valparai"],
+            answer: "Coimbatore"
+          },
+          {
+            question: "Why do people live near Salem?",
+            options: ["Cold weather", "Markets", "Deserts", "Caves"],
+            answer: "Markets"
+          },
+          {
+            question: "Which state has many people in India?",
+            options: ["Goa", "Bihar", "Sikkim", "Manipur"],
+            answer: "Bihar"
+          }
+        ]
+      },
+      {
+        sectionId: 11,
+        quiz: [
+          {
+            question: "Which calamity hits Tamil Nadu’s coast?",
+            options: ["Cyclone", "Earthquake", "Volcano", "Blizzard"],
+            answer: "Cyclone"
+          },
+          {
+            question: "What keeps people safe in Tamil Nadu storms?",
+            options: ["Strong buildings", "Open fields", "Paper houses", "Tents"],
+            answer: "Strong buildings"
+          },
+          {
+            question: "What stops waves in Tamil Nadu’s coast?",
+            options: ["Mangroves", "Roads", "Hills", "Fences"],
+            answer: "Mangroves"
+          }
+        ]
+      },
+      {
+        sectionId: 12,
+        quiz: [
+          {
+            question: "Which is a Tamil Nadu landmark?",
+            options: ["Marina Beach", "Taj Mahal", "India Gate", "Lotus Temple"],
+            answer: "Marina Beach"
+          },
+          {
+            question: "What does climate change make hotter?",
+            options: ["Winters", "Summers", "Nights", "Oceans"],
+            answer: "Summers"
+          },
+          {
+            question: "What saves trees in Tamil Nadu?",
+            options: ["Plastic bags", "Cloth bags", "Burning waste", "Littering"],
+            answer: "Cloth bags"
+          }
+        ]
+      }
+    ];
+
+    // MCQ Data
+    const mcqData = [
+      {
+        question: "Which ocean is south of India?",
+        answer: "Indian",
+        explanation: "The Indian Ocean lies south of India, touching Tamil Nadu’s coast."
+      },
+      {
+        question: "What makes day and night on Earth?",
+        answer: "Earth spinning",
+        explanation: "Earth spins on its axis, taking 24 hours to make day and night."
+      },
+      {
+        question: "Where is Tamil Nadu in India?",
+        answer: "Southeast",
+        explanation: "Tamil Nadu is in India’s southeast, near the Bay of Bengal."
+      },
+      {
+        question: "Which mountains protect India from cold winds?",
+        answer: "Himalayas",
+        explanation: "The Himalayas in north India block cold winds from reaching south."
+      },
+      {
+        question: "What is Tamil Nadu’s Coromandel Coast?",
+        answer: "Plain",
+        explanation: "The Coromandel Coast is a flat plain along Tamil Nadu’s sea."
+      },
+      {
+        question: "Which Tamil Nadu place has hills?",
+        answer: "Salem",
+        explanation: "Salem has hills from the Eastern Ghats, good for visits."
+      },
+      {
+        question: "What brings rain to Tamil Nadu?",
+        answer: "Monsoon",
+        explanation: "Monsoon winds bring rain to Tamil Nadu from October to December."
+      },
+      {
+        question: "What is daily weather like in Tamil Nadu?",
+        answer: "Mostly hot",
+        explanation: "Tamil Nadu’s weather is mostly hot and wet due to its climate."
+      },
+      {
+        question: "What can monsoons cause in Tamil Nadu?",
+        answer: "Floods",
+        explanation: "Heavy monsoon rain can fill rivers and cause floods in Tamil Nadu."
+      },
+      {
+        question: "What is a water resource in Tamil Nadu villages?",
+        answer: "Pond",
+        explanation: "Ponds in Tamil Nadu villages store water for people and animals."
+      },
+      {
+        question: "Which river is a water resource in India?",
+        answer: "Yamuna",
+        explanation: "The Yamuna River in India gives water for cities like Delhi."
+      },
+      {
+        question: "How do people save water in Tamil Nadu?",
+        answer: "Fix leaks",
+        explanation: "Fixing leaks in pipes saves water for homes in Tamil Nadu."
+      },
+      {
+        question: "Which river flows through Vellore?",
+        answer: "Palar",
+        explanation: "The Palar River flows through Vellore, helping farmers grow crops."
+      },
+      {
+        question: "Where do rivers like Vaigai flow in Tamil Nadu?",
+        answer: "Sea",
+        explanation: "Rivers like Vaigai flow to the Bay of Bengal sea."
+      },
+      {
+        question: "What cleans rivers like Adyar in Tamil Nadu?",
+        answer: "Cleaning",
+        explanation: "Cleaning removes dirt from rivers like Adyar to keep them safe."
+      },
+      {
+        question: "Which soil grows groundnuts in Vellore?",
+        answer: "Black",
+        explanation: "Black soil in Vellore is good for growing groundnuts."
+      },
+      {
+        question: "Which mineral is found in Salem?",
+        answer: "Bauxite",
+        explanation: "Bauxite in Salem is used to make aluminum for things like cans."
+      },
+      {
+        question: "Where is iron found in India?",
+        answer: "Odisha",
+        explanation: "Odisha has iron used to make steel for buildings."
+      },
+      {
+        question: "Which forest is in Tamil Nadu?",
+        answer: "Anamalai",
+        explanation: "Anamalai Tiger Reserve in Tamil Nadu has many trees and animals."
+      },
+      {
+        question: "Which bird is in Vedanthangal, Tamil Nadu?",
+        answer: "Migratory birds",
+        explanation: "Vedanthangal Bird Sanctuary has migratory birds visiting yearly."
+      },
+      {
+        question: "What do forests give us?",
+        answer: "Clean air",
+        explanation: "Forests make clean air by taking in carbon dioxide."
+      },
+      {
+        question: "What is the main crop in Tamil Nadu?",
+        answer: "Paddy",
+        explanation: "Paddy is Tamil Nadu’s main crop, used to make rice."
+      },
+      {
+        question: "Which fruit grows in Tirunelveli?",
+        answer: "Banana",
+        explanation: "Tirunelveli grows bananas, sold in Tamil Nadu markets."
+      },
+      {
+        question: "What helps soil in Tamil Nadu farms?",
+        answer: "Changing crops",
+        explanation: "Changing crops keeps Tamil Nadu’s farm soil strong."
+      },
+      {
+        question: "What transport is common in Madurai?",
+        answer: "Buses",
+        explanation: "Buses in Madurai carry people to work and schools."
+      },
+      {
+        question: "What is used for communication in Trichy?",
+        answer: "Post offices",
+        explanation: "Post offices in Trichy send letters to connect people."
+      },
+      {
+        question: "What helps farmers in Salem check prices?",
+        answer: "Mobile phones",
+        explanation: "Mobile phones help Salem farmers know crop prices."
+      },
+      {
+        question: "Which Tamil Nadu city has many people?",
+        answer: "Coimbatore",
+        explanation: "Coimbatore has many people due to jobs and markets."
+      },
+      {
+        question: "Why do people live near Salem?",
+        answer: "Markets",
+        explanation: "Salem’s markets attract people for trade and jobs."
+      },
+      {
+        question: "Which state has many people in India?",
+        answer: "Bihar",
+        explanation: "Bihar has a large population living near rivers."
+      },
+      {
+        question: "Which calamity hits Tamil Nadu’s coast?",
+        answer: "Cyclone",
+        explanation: "Cyclones bring strong winds to Tamil Nadu’s coast."
+      },
+      {
+        question: "What keeps people safe in Tamil Nadu storms?",
+        answer: "Strong buildings",
+        explanation: "Strong buildings protect people during Tamil Nadu storms."
+      },
+      {
+        question: "What stops waves in Tamil Nadu’s coast?",
+        answer: "Mangroves",
+        explanation: "Mangroves on Tamil Nadu’s coast stop big waves."
+      },
+      {
+        question: "Which is a Tamil Nadu landmark?",
+        answer: "Marina Beach",
+        explanation: "Marina Beach in Chennai is a famous long beach."
+      },
+      {
+        question: "What does climate change make hotter?",
+        answer: "Summers",
+        explanation: "Climate change makes summers hotter in Tamil Nadu."
+      },
+      {
+        question: "What saves trees in Tamil Nadu?",
+        answer: "Cloth bags",
+        explanation: "Using cloth bags in Tamil Nadu saves trees by reducing plastic."
+      }
+    ];
+
+    // Combine sections
+    const sections = scienceContent.map(content => {
+      const quizEntry = quizData.find(q => q.sectionId === content.id);
+      return {
+        id: content.id,
+        title: content.title,
+        content: content.content,
+        quiz: quizEntry?.quiz || []
+      };
+    });
+
+    let currentSection = 0;
+    let scores = (() => {
+      try {
+        if (typeof localStorage === 'undefined') return Array(sections.length).fill(null);
+        const stored = JSON.parse(localStorage.getItem("geographyBeginnerScores"));
+        return Array.isArray(stored) && stored.length === sections.length ? stored : Array(sections.length).fill(null);
+      } catch {
+        return Array(sections.length).fill(null);
+      }
+    })();
+
+    const motivationalMessages = [
+      "Great job! Keep learning!",
+      "You're doing amazing! Stay focused!",
+      "Well done! You're getting smarter every day!",
+      "Fantastic effort! Keep it up!",
+      "You're on the right track! Stay curious!"
+    ];
+
+    // Render content items
+    function renderContent(contentItems) {
+      return contentItems.map(item => {
+        switch (item.type) {
+          case "text":
+            return `<p>${item.value}</p>`;
+          case "image":
+            return `<div class="content-image"><p>Image Placeholder: ${item.alt} (${item.caption})</p></div>`;
+          case "chart":
+            const canvasId = `chart-${Math.random().toString(36).substr(2, 9)}`;
+            setTimeout(() => {
+              const ctx = document.getElementById(canvasId)?.getContext("2d");
+              if (ctx && item.config) {
+                new Chart(ctx, item.config);
+              }
+            }, 0);
+            return `<div class="content-chart"><canvas id="${canvasId}"></canvas><p>${item.caption}</p></div>`;
+          case "animation":
+            return `<div class="content-animation"><p>Animation Placeholder: ${item.description}</p></div>`;
+          default:
+            return "";
+        }
+      }).join("");
+    }
+
+    // Update navigation
+    function updateNavigation(sectionIndex, hasSubmitted) {
+      const navDiv = document.getElementById("navigation");
+      if (!navDiv) return;
+      let html = "";
+      if (hasSubmitted) {
+        html += `<button id="retake-btn" class="btn-yellow" aria-label="Retake quiz">Retake Quiz</button>`;
+      }
+      if (sectionIndex > 0) {
+        html += `<button id="prev-btn" class="btn-gray" aria-label="Previous section">Previous</button>`;
+      }
+      if (hasSubmitted && sectionIndex < 11 && scores[sectionIndex] >= 70) {
+        html += `<button id="next-btn" class="btn-blue" aria-label="Next section">Next</button>`;
+      }
+      if (sectionIndex === 11 && hasSubmitted && scores[sectionIndex] >= 70) {
+        html += `<button id="complete-btn" class="btn-green" aria-label="Complete course">Complete Geography</button>`;
+      }
+      navDiv.innerHTML = html;
+
+      document.getElementById("retake-btn")?.addEventListener("click", () => {
+        document.getElementById("quiz-form")?.reset();
+        document.getElementById("feedback").innerHTML = "";
+        const submitBtn = document.querySelector("#quiz-form button[type='submit']");
+        if (submitBtn) submitBtn.disabled = false;
+        updateNavigation(sectionIndex, false);
+      });
+
+      document.getElementById("prev-btn")?.addEventListener("click", () => {
+        currentSection--;
+        renderSection(currentSection);
+      });
+
+      document.getElementById("next-btn")?.addEventListener("click", () => {
+        if (scores[sectionIndex] >= 70) {
+          currentSection++;
+          renderSection(currentSection);
+        }
+      });
+
+      document.getElementById("complete-btn")?.addEventListener("click", () => {
+        localStorage.removeItem("geographyBeginnerScores");
+        document.getElementById("content").innerHTML = `
+          <h2>Congratulations!</h2>
+          <p>You've completed the TNPSC Group 4 Geography (Beginner) course!</p>
+          <a href="tnpsc-gr4-home.html" class="btn-blue">Return to Home</a>
+        `;
+      });
+    }
+
+    // Render section
+    function renderSection(sectionIndex) {
+      try {
+        if (sectionIndex < 0 || sectionIndex >= sections.length) {
+          throw new Error("Invalid section index");
+        }
+        const section = sections[sectionIndex];
+        let html = `
+          <h2>${section.title}</h2>
+          ${renderContent(section.content)}
+        `;
+        if (section.quiz.length > 0) {
+          html += `
+            <h3>Quiz</h3>
+            <form id="quiz-form">
+              ${section.quiz.map((q, i) => `
+                <div>
+                  <p>${i + 1}. ${q.question}</p>
+                  ${q.options.map(opt => `
+                    <label for="q${i}-${opt.replace(/\s+/g, '')}">
+                      <input type="radio" id="q${i}-${opt.replace(/\s+/g, '')}" name="q${i}" value="${opt}" required>
+                      ${opt}
+                    </label>
+                  `).join("")}
+                </div>
+              `).join("")}
+              <button type="submit" class="btn-blue">Submit</button>
+            </form>
+            <div id="feedback"></div>
+          `;
+        } else {
+          html += '<p class="text-red">No quiz available for this section.</p>';
+        }
+        html += '<div id="navigation"></div>';
+        document.getElementById("content").innerHTML = html;
+
+        const quizForm = document.getElementById("quiz-form");
+        if (quizForm) {
+          quizForm.addEventListener("submit", e => {
+            e.preventDefault();
+            const selected = Array.from(quizForm.querySelectorAll("input:checked"));
+            if (selected.length === section.quiz.length) {
+              checkAnswers(sectionIndex);
+            } else {
+              document.getElementById("feedback").innerHTML = '<p class="text-red">Please answer all questions.</p>';
+            }
+          });
+        }
+        updateNavigation(sectionIndex, scores[sectionIndex] !== null);
+      } catch (error) {
+        console.error("Error rendering section:", error);
+        document.getElementById("content").innerHTML = `<p class="text-red">Error: ${error.message}</p>`;
+      }
+    }
+
+    // Check answers
+    function checkAnswers(sectionIndex) {
+      try {
+        const form = document.getElementById("quiz-form");
+        const feedbackDiv = document.getElementById("feedback");
+        if (!form || !feedbackDiv) {
+          throw new Error("Form or feedback div missing");
+        }
+        let score = 0;
+        let feedbackHtml = "";
+
+        const submitBtn = form.querySelector("button[type='submit']");
+        if (submitBtn) {
+          submitBtn.disabled = true;
+          submitBtn.style.opacity = "0.6";
+        }
+
+        sections[sectionIndex].quiz.forEach((q, i) => {
+          const selected = form.querySelector(`input[name="q${i}"]:checked`);
+          const isCorrect = selected && selected.value === q.answer;
+          if (isCorrect) score++;
+
+          const mcq = mcqData.find(m => m.question === q.question && m.answer === q.answer);
+          feedbackHtml += `
+            <p><strong>${q.question}</strong><br>
+            Your answer: ${selected?.value || "None"}<br>
+            Correct answer: ${q.answer}<br>
+            Explanation: ${mcq ? mcq.explanation : "Not available"}
+            </p>
+          `;
+        });
+
+        const percentage = (score / sections[sectionIndex].quiz.length) * 100;
+        scores[sectionIndex] = percentage;
+        localStorage.setItem("geographyBeginnerScores", JSON.stringify(scores));
+
+        feedbackDiv.innerHTML = `
+          <p>Your score: ${score}/${sections[sectionIndex].quiz.length} (${percentage.toFixed(2)}%)</p>
+          ${percentage >= 70 ? `<p class="text-green">${motivationalMessages[Math.floor(Math.random() * motivationalMessages.length)]}</p>` : "<p class=\"text-red\">You need 70% to proceed. Please retake the quiz.</p>"}
+          <h4>Feedback:</h4>
+          ${feedbackHtml}
+        `;
+
+        updateNavigation(sectionIndex, true);
+      } catch (error) {
+        console.error("Error checking answers:", error);
+        document.getElementById("feedback").innerHTML = `<p class="text-red">Error: ${error.message}</p>`;
+      }
+    }
+
+    // Hamburger menu
+    const menuBtn = document.getElementById("menu-btn");
+    const menu = document.getElementById("menu");
+
+    function setupMenuToggle() {
+      if (window.innerWidth <= 768) {
+        menuBtn.classList.remove("hidden");
+        if (!menu.classList.contains("hidden")) menu.classList.add("hidden");
+        menuBtn.addEventListener("click", () => {
+          menu.classList.toggle("hidden");
+        });
+      } else {
+        menuBtn.classList.add("hidden");
+        menu.classList.remove("hidden");
+      }
+    }
+
+    window.addEventListener("DOMContentLoaded", () => {
+      setupMenuToggle();
+      window.addEventListener("resize", setupMenuToggle);
+      renderSection(currentSection);
+    });
+  </script>
+</body>
+</html>
