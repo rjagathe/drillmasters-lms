@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Drillmasters LMS - TNPSC Group 4 Geography (Intermediate)</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js" defer></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; background-color: #f3f4f6; display: flex; flex-direction: column; min-height: 100vh; }
+    .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 15px; }
+    header { background-color: #2563eb; color: white; padding: 1rem 0; }
+    header h1 { font-size: 1.5rem; font-weight: bold; }
+    header h2 { font-size: 1.125rem; }
+    header .flex { display: flex; justify-content: space-between; align-items: center; }
+    nav { background-color: #1d4ed8; padding: 1rem 0; }
+    nav ul { list-style: none; display: flex; gap: 1rem; }
+    nav a { color: white; text-decoration: none; }
+    nav a:hover { text-decoration: underline; }
+    main { flex-grow: 1; padding: 1rem 0; }
+    #content { background-color: white; padding: 1.5rem; border-radius: 0.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+    footer { background-color: #1f2937; color: white; padding: 1rem 0; margin-top: auto; text-align: center; }
+    footer a { color: white; text-decoration: underline; }
+    button { padding: 0.5rem 1rem; border-radius: 0.25rem; cursor: pointer; margin: 0.25rem; }
+    .btn-blue { background-color: #3b82f6; color: white; border: none; }
+    .btn-blue:hover { background-color: #2563eb; }
+    .btn-gray { background-color: #6b7280; color: white; border: none; }
+    .btn-gray:hover { background-color: #4b5563; }
+    .btn-green { background-color: #22c55e; color: white; border: none; }
+    .btn-green:hover { background-color: #16a34a; }
+    .btn-yellow { background-color: #f59e0b; color: white; border: none; }
+    .btn-yellow:hover { background-color: #d97706; }
+    .text-red { color: #ef4444; }
+    .text-green { color: #22c55e; }
+    .hidden { display: none; }
+    #quiz-form { margin-top: 1rem; }
+    #quiz-form div { margin-bottom: 1rem; }
+    #quiz-form p { font-weight: bold; margin-bottom: 0.5rem; }
+    #quiz-form label { display: block; margin: 0.25rem 0; }
+    #quiz-form input[type="radio"] { margin-right: 0.5rem; }
+    #feedback { margin-top: 1rem; }
+    #navigation { margin-top: 1rem; display: flex; gap: 0.5rem; }
+    .content-image, .content-animation { background-color: #e5e7eb; padding: 1rem; text-align: center; margin: 1rem 0; }
+    .content-chart { margin: 1rem 0; }
+    @media (max-width: 768px) {
+      nav ul { flex-direction: column; gap: 0.5rem; }
+      #menu-btn { display: block; }
+      #menu.hidden { display: none; }
+      #menu { display: block; }
+      .container { padding: 0 10px; }
+      button { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container flex">
+      <div>
+        <h1>TNPSC Group 4 - Geography</h1>
+        <h2>Intermediate Level</h2>
+      </div>
+      <button id="menu-btn" class="hidden">☰</button>
+    </div>
+    <nav id="menu">
+      <div class="container">
+        <ul>
+          <li><a href="tnpsc-gr4-home.html">TNPSC Group 4 Home</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <div class="container">
+      <div id="content">
+        <p>Loading content...</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>© 2025 Drillmasters LMS. All rights reserved.</p>
+      <p>Contact: <a href="mailto:support@drillmasters.in">support@drillmasters.in</a> | <a href="https://www.drillmasters.in">www.drillmasters.in</a></p>
+    </div>
+  </footer>
+
+  <script>
+    // Science Content (Geography)
+    const scienceContent = [
+      {
+        id: 1,
+        title: "Earth Location",
+        content: [
+          {
+            type: "text",
+            value: "Earth, the third planet from the Sun, lies in the habitable zone, enabling life with water and air. It orbits the Sun at 150 million km, taking 365.25 days. Earth’s axis tilt of 23.5° causes seasons. India is in the Northern Hemisphere, with Tamil Nadu at 8°–13°N latitude and 76°–80°E longitude. The Arabian Sea borders Tamil Nadu’s west, and Sri Lanka lies south across the Palk Strait. Earth’s rotation, at 24 hours, creates day-night cycles. Plate tectonics shape Earth’s surface, forming India’s landmasses. Coordinates help locate places like Tirunelveli on maps."
+          }
+        ]
+      },
+      {
+        id: 2,
+        title: "Physical Features",
+        content: [
+          {
+            type: "text",
+            value: "Physical features include mountains, valleys, and coasts. The Himalayas, formed by tectonic plates, shield northern India. Tamil Nadu’s Western Ghats, a biodiversity hotspot, run parallel to the Arabian Sea. The Bay of Bengal coast, with sandy beaches like Mahabalipuram, supports trade. The Chotanagpur Plateau in eastern India holds minerals. Tamil Nadu’s Erode plains, formed by river deposits, are fertile for farming. Valleys, like the Kodaikanal valley, are cool and attract tourists. Physical features influence climate; the Western Ghats cause heavy rain in Coonoor. They shape lifestyles, with fishing along coasts and farming in plains."
+          }
+        ]
+      },
+      {
+        id: 3,
+        title: "Monsoon, Rainfall, Weather, and Climate",
+        content: [
+          {
+            type: "text",
+            value: "Monsoons are seasonal winds driven by land-ocean temperature differences. Tamil Nadu’s northeast monsoon (October–January) brings 60% of its rain, with Tirunelveli receiving ~90 cm annually. Weather varies daily, like humid days in Chennai. Climate, the long-term pattern, is tropical in Tamil Nadu, with hot summers (35°C) and mild winters (20°C). Monsoons recharge rivers but cause floods when drainage fails. India’s southwest monsoon (June–September) supports northern agriculture. Climate data helps predict crop yields. Tamil Nadu’s farmers rely on monsoon timing, but irregular rains affect harvests, requiring better forecasting."
+          }
+        ]
+      },
+      {
+        id: 4,
+        title: "Water Resources",
+        content: [
+          {
+            type: "text",
+            value: "Water resources include surface water (lagoons, reservoirs) and groundwater. India’s Indus River supports Punjab’s farms. Tamil Nadu’s Amaravathi Reservoir stores water for irrigation. Groundwater, accessed via borewells in Salem, meets 40% of rural needs. Lagoons, like Pulicat Lake near Chennai, support fishing. Rainwater harvesting in Tamil Nadu’s schools recharges aquifers. Over-extraction lowers water tables, threatening sustainability. Water is critical for agriculture (70% usage) and industry. Tamil Nadu’s water management includes desilting reservoirs and promoting drip irrigation to conserve water, ensuring supply for cities like Erode and rural areas."
+          }
+        ]
+      },
+      {
+        id: 5,
+        title: "Rivers",
+        content: [
+          {
+            type: "text",
+            value: "Rivers are vital waterways originating from highlands. The Brahmaputra, India’s voluminous river, flows through Assam. Tamil Nadu’s Bhavani River, a Kaveri tributary, irrigates Erode’s farms. Rivers deposit silt, creating fertile deltas. The Noyyal River in Coimbatore supports textile industries but faces pollution. Dams, like Bhavanisagar Dam, control floods and provide hydropower. Rivers enable navigation and trade. Tamil Nadu’s river cleaning projects, like for the Noyyal, reduce industrial waste. Over-reliance on rivers for irrigation risks drying; interlinking projects aim to balance water distribution across India."
+          }
+        ]
+      },
+      {
+        id: 6,
+        title: "Soil, Minerals, and Natural Resources",
+        content: [
+          {
+            type: "text",
+            value: "Soil types determine crop suitability; Tamil Nadu’s alluvial soil in Erode grows sugarcane. Minerals, like manganese in Madurai, support steel production. Natural resources include sunlight, wind, and biomass. India’s copper deposits in Rajasthan aid electrical industries. Tamil Nadu’s laterite soil in hilly areas grows tea. Over-mining depletes minerals; sustainable extraction is needed. Soil erosion from deforestation harms farmland. Tamil Nadu promotes organic farming to preserve soil nutrients. Natural resources drive economic growth, but conservation, like afforestation in Dharmapuri, ensures long-term availability for industries and agriculture."
+          }
+        ]
+      },
+      {
+        id: 7,
+        title: "Forest and Wildlife",
+        content: [
+          {
+            type: "text",
+            value: "Forests cover 20% of India, regulating climate and water cycles. Tamil Nadu’s Kalakkad Mundanthurai Tiger Reserve protects tigers and leopards. Wildlife, like the Indian bison in Topslip, maintains ecological balance. Forests store carbon, reducing global warming. Tamil Nadu’s mangrove forests in Pichavaram protect coasts from erosion. Deforestation for agriculture threatens species; conservation parks help. India’s Project Tiger increased tiger numbers. Tamil Nadu’s afforestation in Sivaganga adds forest cover. Wildlife tourism in Mudumalai boosts local economies but requires regulation to avoid habitat disturbance."
+          }
+        ]
+      },
+      {
+        id: 8,
+        title: "Agricultural Pattern",
+        content: [
+          {
+            type: "text",
+            value: "Agriculture employs 50% of India’s workforce. Tamil Nadu’s Coimbatore grows cotton with canal irrigation. India’s major crops include sorghum and pulses. Monsoon-dependent farming dominates, but Tamil Nadu uses drip irrigation for mangoes in Krishnagiri. Mixed farming, combining crops and livestock, is common in Salem. Overuse of chemical fertilizers degrades soil; organic methods gain traction. Crop diversification reduces risk; Tamil Nadu’s farmers grow millets in dry zones. Agricultural exports, like Tamil Nadu’s spices, boost income. Mechanization, like tractors in Erode, improves efficiency but needs affordable access."
+          }
+        ]
+      },
+      {
+        id: 9,
+        title: "Transport and Communication",
+        content: [
+          {
+            type: "text",
+            value: "Transport connects markets and people. Tamil Nadu’s Chennai Metro reduces urban traffic. India’s Golden Quadrilateral highways link major cities. Communication includes radio, TV, and internet. Tamil Nadu’s 4G networks cover 90% of villages. Ports in Chennai handle spice exports. Rural roads in Tiruppur aid textile trade. Digital communication, like apps in Coimbatore, helps farmers sell crops. Infrastructure gaps, like poor roads in hilly Nilgiris, hinder growth. Tamil Nadu’s transport upgrades, like electric buses, and communication expansion, like broadband in Trichy, drive economic and social progress."
+          }
+        ]
+      },
+      {
+        id: 10,
+        title: "Population Density and Distribution",
+        content: [
+          {
+            type: "text",
+            value: "Population density measures people per unit area. Tamil Nadu’s density is 550 persons/sq.km, with Tiruchirappalli densely populated due to industries. India’s density is 470 persons/sq.km, highest in West Bengal. Coastal and riverine areas, like Tamil Nadu’s Cauvery basin, attract settlements for water access. Hilly areas, like Yercaud, have low density. Urbanization drives migration to cities like Chennai, straining resources. High density increases demand for housing and healthcare. Tamil Nadu’s family planning and urban planning, like smart cities, manage population growth to balance resources and development."
+          }
+        ]
+      },
+      {
+        id: 11,
+        title: "Calamities and Disaster Management",
+        content: [
+          {
+            type: "text",
+            value: "Calamities include tsunamis and landslides. Tamil Nadu’s 2004 tsunami hit Nagapattinam, killing thousands. India faces heatwaves in central regions. Disaster management involves preparedness and response. Tamil Nadu’s cyclone shelters in Cuddalore save lives. Early warning systems, like radio alerts, reduce casualties. India’s NDRF conducts rescue operations. Tamil Nadu’s landslide prevention in Nilgiris includes slope stabilization. Community training in Chennai teaches first aid. Climate change increases calamity frequency; resilient infrastructure, like elevated roads in flood-prone areas, and mangrove restoration in Tamil Nadu mitigate risks."
+          }
+        ]
+      },
+      {
+        id: 12,
+        title: "Environment, Climate Change, and Geographical Landmarks",
+        content: [
+          {
+            type: "text",
+            value: "The environment sustains life through ecosystems. Climate change, driven by greenhouse gases, raises sea levels, threatening Tamil Nadu’s coasts. India’s Charminar in Hyderabad is a historic landmark. Tamil Nadu’s Mahabalipuram Shore Temple, a UNESCO site, attracts tourists. Pollution, like plastic in Chennai’s Adyar River, harms biodiversity. Tamil Nadu’s solar power in Ramanathapuram reduces emissions. Reforestation in Kanyakumari fights erosion. Climate adaptation, like salt-tolerant crops in Tamil Nadu, ensures food security. Preserving landmarks and cleaning environments maintain cultural and ecological heritage for future generations."
+          }
+        ]
+      }
+    ];
+
+    // Quiz Data
+    const quizData = [
+      {
+        sectionId: 1,
+        quiz: [
+          {
+            question: "What causes Earth’s seasons?",
+            options: ["Earth’s rotation", "Earth’s tilt", "Sun’s movement", "Moon’s orbit"],
+            answer: "Earth’s tilt"
+          },
+          {
+            question: "Which sea borders Tamil Nadu’s west?",
+            options: ["Bay of Bengal", "Arabian Sea", "Andaman Sea", "Red Sea"],
+            answer: "Arabian Sea"
+          },
+          {
+            question: "What shapes Earth’s surface like India?",
+            options: ["Plate tectonics", "Wind erosion", "Ocean currents", "Solar radiation"],
+            answer: "Plate tectonics"
+          }
+        ]
+      },
+      {
+        sectionId: 2,
+        quiz: [
+          {
+            question: "Which physical feature is a biodiversity hotspot in Tamil Nadu?",
+            options: ["Eastern Ghats", "Western Ghats", "Coromandel Coast", "Deccan Plateau"],
+            answer: "Western Ghats"
+          },
+          {
+            question: "What makes Erode’s plains fertile?",
+            options: ["River deposits", "Volcanic ash", "Desert sand", "Glacial ice"],
+            answer: "River deposits"
+          },
+          {
+            question: "Why does Coonoor get heavy rain?",
+            options: ["Flat plains", "Western Ghats", "Desert climate", "Low altitude"],
+            answer: "Western Ghats"
+          }
+        ]
+      },
+      {
+        sectionId: 3,
+        quiz: [
+          {
+            question: "When does Tamil Nadu’s northeast monsoon occur?",
+            options: ["June–September", "October–January", "February–April", "May–July"],
+            answer: "October–January"
+          },
+          {
+            question: "Why do monsoons cause floods in Tamil Nadu?",
+            options: ["Poor drainage", "Dry rivers", "Cold weather", "Low rainfall"],
+            answer: "Poor drainage"
+          },
+          {
+            question: "What climate does Tamil Nadu have?",
+            options: ["Temperate", "Tropical", "Arctic", "Desert"],
+            answer: "Tropical"
+          }
+        ]
+      },
+      {
+        sectionId: 4,
+        quiz: [
+          {
+            question: "Which reservoir is in Tamil Nadu?",
+            options: ["Amaravathi", "Sardar Sarovar", "Tehri", "Hirakud"],
+            answer: "Amaravathi"
+          },
+          {
+            question: "What supports fishing near Chennai?",
+            options: ["Pulicat Lake", "Mettur Dam", "Krishna River", "Thar Desert"],
+            answer: "Pulicat Lake"
+          },
+          {
+            question: "How does Tamil Nadu conserve water?",
+            options: ["Drip irrigation", "Deforestation", "Over-extraction", "Waste dumping"],
+            answer: "Drip irrigation"
+          }
+        ]
+      },
+      {
+        sectionId: 5,
+        quiz: [
+          {
+            question: "Which river irrigates Erode’s farms?",
+            options: ["Noyyal", "Bhavani", "Vaigai", "Palar"],
+            answer: "Bhavani"
+          },
+          {
+            question: "Which dam is on the Bhavani River?",
+            options: ["Bhavanisagar", "Mettur", "Krishnagiri", "Sathanur"],
+            answer: "Bhavanisagar"
+          },
+          {
+            question: "What pollutes the Noyyal River?",
+            options: ["Industrial waste", "Rainwater", "Fish farming", "Soil erosion"],
+            answer: "Industrial waste"
+          }
+        ]
+      },
+      {
+        sectionId: 6,
+        quiz: [
+          {
+            question: "Which soil in Erode grows sugarcane?",
+            options: ["Laterite", "Alluvial", "Red", "Sandy"],
+            answer: "Alluvial"
+          },
+          {
+            question: "Which mineral is found in Madurai?",
+            options: ["Manganese", "Gold", "Coal", "Petroleum"],
+            answer: "Manganese"
+          },
+          {
+            question: "What degrades soil in Tamil Nadu?",
+            options: ["Organic farming", "Chemical fertilizers", "Crop rotation", "Afforestation"],
+            answer: "Chemical fertilizers"
+          }
+        ]
+      },
+      {
+        sectionId: 7,
+        quiz: [
+          {
+            question: "Which reserve protects tigers in Tamil Nadu?",
+            options: ["Kalakkad Mundanthurai", "Anamalai", "Mudumalai", "Guindy"],
+            answer: "Kalakkad Mundanthurai"
+          },
+          {
+            question: "What protects Tamil Nadu’s coasts?",
+            options: ["Pichavaram mangroves", "Himalayan forests", "Deccan shrubs", "Thar cacti"],
+            answer: "Pichavaram mangroves"
+          },
+          {
+            question: "What reduces global warming?",
+            options: ["Deforestation", "Forest carbon storage", "Urbanization", "Mining"],
+            answer: "Forest carbon storage"
+          }
+        ]
+      },
+      {
+        sectionId: 8,
+        quiz: [
+          {
+            question: "Which crop is grown in Coimbatore?",
+            options: ["Cotton", "Rice", "Wheat", "Jute"],
+            answer: "Cotton"
+          },
+          {
+            question: "What irrigation is used in Krishnagiri?",
+            options: ["Flood", "Drip", "Sprinkler", "Canal"],
+            answer: "Drip"
+          },
+          {
+            question: "What improves farming in Erode?",
+            options: ["Mechanization", "Deforestation", "Monoculture", "Pesticides"],
+            answer: "Mechanization"
+          }
+        ]
+      },
+      {
+        sectionId: 9,
+        quiz: [
+          {
+            question: "What reduces traffic in Chennai?",
+            options: ["Metro", "Bicycles", "Carts", "Boats"],
+            answer: "Metro"
+          },
+          {
+            question: "What aids textile trade in Tiruppur?",
+            options: ["Rural roads", "Deserts", "Caves", "Glaciers"],
+            answer: "Rural roads"
+          },
+          {
+            question: "What communication covers Tamil Nadu villages?",
+            options: ["4G networks", "Telegraphs", "Smoke signals", "Pigeons"],
+            answer: "4G networks"
+          }
+        ]
+      },
+      {
+        sectionId: 10,
+        quiz: [
+          {
+            question: "Which Tamil Nadu city is densely populated?",
+            options: ["Tiruchirappalli", "Yercaud", "Kodaikanal", "Valparai"],
+            answer: "Tiruchirappalli"
+          },
+          {
+            question: "Why is the Cauvery basin populated?",
+            options: ["Water access", "High altitude", "Dry climate", "Forests"],
+            answer: "Water access"
+          },
+          {
+            question: "Which state has India’s highest density?",
+            options: ["West Bengal", "Goa", "Himachal Pradesh", "Arunachal Pradesh"],
+            answer: "West Bengal"
+          }
+        ]
+      },
+      {
+        sectionId: 11,
+        quiz: [
+          {
+            question: "Which calamity hit Nagapattinam in 2004?",
+            options: ["Tsunami", "Cyclone", "Earthquake", "Drought"],
+            answer: "Tsunami"
+          },
+          {
+            question: "What prevents landslides in Nilgiris?",
+            options: ["Slope stabilization", "Deforestation", "Mining", "Road cutting"],
+            answer: "Slope stabilization"
+          },
+          {
+            question: "What reduces calamity casualties in Tamil Nadu?",
+            options: ["Warning systems", "Open shelters", "Weak buildings", "No training"],
+            answer: "Warning systems"
+          }
+        ]
+      },
+      {
+        sectionId: 12,
+        quiz: [
+          {
+            question: "Which is a Tamil Nadu landmark?",
+            options: ["Shore Temple", "Charminar", "Hawa Mahal", "Konark Temple"],
+            answer: "Shore Temple"
+          },
+          {
+            question: "What threatens Tamil Nadu’s coasts?",
+            options: ["Sea level rise", "Cooling climate", "Desertification", "Snowfall"],
+            answer: "Sea level rise"
+          },
+          {
+            question: "What reduces emissions in Ramanathapuram?",
+            options: ["Solar power", "Coal plants", "Deforestation", "Plastic use"],
+            answer: "Solar power"
+          }
+        ]
+      }
+    ];
+
+    // MCQ Data
+    const mcqData = [
+      {
+        question: "What causes Earth’s seasons?",
+        answer: "Earth’s tilt",
+        explanation: "Earth’s tilt at 23.5° causes seasons by changing sunlight angles during its orbit."
+      },
+      {
+        question: "Which sea borders Tamil Nadu’s west?",
+        answer: "Arabian Sea",
+        explanation: "The Arabian Sea lies west of Tamil Nadu, influencing its coastal climate."
+      },
+      {
+        question: "What shapes Earth’s surface like India?",
+        answer: "Plate tectonics",
+        explanation: "Plate tectonics move Earth’s crust, forming landmasses like the Indian subcontinent."
+      },
+      {
+        question: "Which physical feature is a biodiversity hotspot in Tamil Nadu?",
+        answer: "Western Ghats",
+        explanation: "The Western Ghats in Tamil Nadu host diverse plants and animals."
+      },
+      {
+        question: "What makes Erode’s plains fertile?",
+        answer: "River deposits",
+        explanation: "River deposits create fertile alluvial soil in Erode’s plains."
+      },
+      {
+        question: "Why does Coonoor get heavy rain?",
+        answer: "Western Ghats",
+        explanation: "The Western Ghats block monsoon winds, causing heavy rain in Coonoor."
+      },
+      {
+        question: "When does Tamil Nadu’s northeast monsoon occur?",
+        answer: "October–January",
+        explanation: "Tamil Nadu’s northeast monsoon brings rain from October to January."
+      },
+      {
+        question: "Why do monsoons cause floods in Tamil Nadu?",
+        answer: "Poor drainage",
+        explanation: "Poor drainage in Tamil Nadu’s cities causes flooding during monsoons."
+      },
+      {
+        question: "What climate does Tamil Nadu have?",
+        answer: "Tropical",
+        explanation: "Tamil Nadu’s tropical climate has hot summers and heavy rains."
+      },
+      {
+        question: "Which reservoir is in Tamil Nadu?",
+        answer: "Amaravathi",
+        explanation: "Amaravathi Reservoir in Tamil Nadu stores water for irrigation."
+      },
+      {
+        question: "What supports fishing near Chennai?",
+        answer: "Pulicat Lake",
+        explanation: "Pulicat Lake near Chennai is a lagoon supporting fishing communities."
+      },
+      {
+        question: "How does Tamil Nadu conserve water?",
+        answer: "Drip irrigation",
+        explanation: "Drip irrigation in Tamil Nadu saves water for crops."
+      },
+      {
+        question: "Which river irrigates Erode’s farms?",
+        answer: "Bhavani",
+        explanation: "The Bhavani River irrigates farms in Erode, Tamil Nadu."
+      },
+      {
+        question: "Which dam is on the Bhavani River?",
+        answer: "Bhavanisagar",
+        explanation: "Bhavanisagar Dam on the Bhavani River provides water and power."
+      },
+      {
+        question: "What pollutes the Noyyal River?",
+        answer: "Industrial waste",
+        explanation: "Industrial waste from textiles pollutes the Noyyal River."
+      },
+      {
+        question: "Which soil in Erode grows sugarcane?",
+        answer: "Alluvial",
+        explanation: "Alluvial soil in Erode is fertile, ideal for sugarcane."
+      },
+      {
+        question: "Which mineral is found in Madurai?",
+        answer: "Manganese",
+        explanation: "Manganese in Madurai is used in steel production."
+      },
+      {
+        question: "What degrades soil in Tamil Nadu?",
+        answer: "Chemical fertilizers",
+        explanation: "Chemical fertilizers reduce soil nutrients in Tamil Nadu’s farms."
+      },
+      {
+        question: "Which reserve protects tigers in Tamil Nadu?",
+        answer: "Kalakkad Mundanthurai",
+        explanation: "Kalakkad Mundanthurai Tiger Reserve protects tigers and leopards."
+      },
+      {
+        question: "What protects Tamil Nadu’s coasts?",
+        answer: "Pichavaram mangroves",
+        explanation: "Pichavaram mangroves shield Tamil Nadu’s coasts from erosion."
+      },
+      {
+        question: "What reduces global warming?",
+        answer: "Forest carbon storage",
+        explanation: "Forests store carbon, reducing global warming."
+      },
+      {
+        question: "Which crop is grown in Coimbatore?",
+        answer: "Cotton",
+        explanation: "Coimbatore grows cotton with canal irrigation."
+      },
+      {
+        question: "What irrigation is used in Krishnagiri?",
+        answer: "Drip",
+        explanation: "Drip irrigation in Krishnagiri saves water for mangoes."
+      },
+      {
+        question: "What improves farming in Erode?",
+        answer: "Mechanization",
+        explanation: "Mechanization, like tractors, boosts farming in Erode."
+      },
+      {
+        question: "What reduces traffic in Chennai?",
+        answer: "Metro",
+        explanation: "Chennai’s Metro reduces urban traffic and pollution."
+      },
+      {
+        question: "What aids textile trade in Tiruppur?",
+        answer: "Rural roads",
+        explanation: "Rural roads in Tiruppur improve textile transport."
+      },
+      {
+        question: "What communication covers Tamil Nadu villages?",
+        answer: "4G networks",
+        explanation: "4G networks provide internet to Tamil Nadu’s villages."
+      },
+      {
+        question: "Which Tamil Nadu city is densely populated?",
+        answer: "Tiruchirappalli",
+        explanation: "Tiruchirappalli is dense due to industries and markets."
+      },
+      {
+        question: "Why is the Cauvery basin populated?",
+        answer: "Water access",
+        explanation: "The Cauvery basin has water for farming and living."
+      },
+      {
+        question: "Which state has India’s highest density?",
+        answer: "West Bengal",
+        explanation: "West Bengal has India’s highest population density."
+      },
+      {
+        question: "Which calamity hit Nagapattinam in 2004?",
+        answer: "Tsunami",
+        explanation: "The 2004 tsunami devastated Nagapattinam’s coast."
+      },
+      {
+        question: "What prevents landslides in Nilgiris?",
+        answer: "Slope stabilization",
+        explanation: "Slope stabilization in Nilgiris prevents landslides."
+      },
+      {
+        question: "What reduces calamity casualties in Tamil Nadu?",
+        answer: "Warning systems",
+        explanation: "Warning systems alert Tamil Nadu to reduce casualties."
+      },
+      {
+        question: "Which is a Tamil Nadu landmark?",
+        answer: "Shore Temple",
+        explanation: "Mahabalipuram’s Shore Temple is a UNESCO landmark."
+      },
+      {
+        question: "What threatens Tamil Nadu’s coasts?",
+        answer: "Sea level rise",
+        explanation: "Sea level rise from climate change threatens coasts."
+      },
+      {
+        question: "What reduces emissions in Ramanathapuram?",
+        answer: "Solar power",
+        explanation: "Solar power in Ramanathapuram cuts carbon emissions."
+      }
+    ];
+
+    // Combine sections
+    const sections = scienceContent.map(content => {
+      const quizEntry = quizData.find(q => q.sectionId === content.id);
+      return {
+        id: content.id,
+        title: content.title,
+        content: content.content,
+        quiz: quizEntry?.quiz || []
+      };
+    });
+
+    let currentSection = 0;
+    let scores = (() => {
+      try {
+        if (typeof localStorage === 'undefined') return Array(sections.length).fill(null);
+        const stored = JSON.parse(localStorage.getItem("geographyIntermediateScores"));
+        return Array.isArray(stored) && stored.length === sections.length ? stored : Array(sections.length).fill(null);
+      } catch {
+        return Array(sections.length).fill(null);
+      }
+    })();
+
+    const motivationalMessages = [
+      "Great work! Keep exploring!",
+      "You’re mastering it! Stay sharp!",
+      "Excellent progress! Keep going!",
+      "Well done! You’re learning fast!",
+      "Impressive effort! Stay engaged!"
+    ];
+
+    // Render content items
+    function renderContent(contentItems) {
+      return contentItems.map(item => {
+        switch (item.type) {
+          case "text":
+            return `<p>${item.value}</p>`;
+          case "image":
+            return `<div class="content-image"><p>Image Placeholder: ${item.alt} (${item.caption})</p></div>`;
+          case "chart":
+            const canvasId = `chart-${Math.random().toString(36).substr(2, 9)}`;
+            setTimeout(() => {
+              const ctx = document.getElementById(canvasId)?.getContext("2d");
+              if (ctx && item.config) {
+                new Chart(ctx, item.config);
+              }
+            }, 0);
+            return `<div class="content-chart"><canvas id="${canvasId}"></canvas><p>${item.caption}</p></div>`;
+          case "animation":
+            return `<div class="content-animation"><p>Animation Placeholder: ${item.description}</p></div>`;
+          default:
+            return "";
+        }
+      }).join("");
+    }
+
+    // Update navigation
+    function updateNavigation(sectionIndex, hasSubmitted) {
+      const navDiv = document.getElementById("navigation");
+      if (!navDiv) return;
+      let html = "";
+      if (hasSubmitted) {
+        html += `<button id="retake-btn" class="btn-yellow" aria-label="Retake quiz">Retake Quiz</button>`;
+      }
+      if (sectionIndex > 0) {
+        html += `<button id="prev-btn" class="btn-gray" aria-label="Previous section">Previous</button>`;
+      }
+      if (hasSubmitted && sectionIndex < 11 && scores[sectionIndex] >= 70) {
+        html += `<button id="next-btn" class="btn-blue" aria-label="Next section">Next</button>`;
+      }
+      if (sectionIndex === 11 && hasSubmitted && scores[sectionIndex] >= 70) {
+        html += `<button id="complete-btn" class="btn-green" aria-label="Complete course">Complete Geography</button>`;
+      }
+      navDiv.innerHTML = html;
+
+      document.getElementById("retake-btn")?.addEventListener("click", () => {
+        document.getElementById("quiz-form")?.reset();
+        document.getElementById("feedback").innerHTML = "";
+        const submitBtn = document.querySelector("#quiz-form button[type='submit']");
+        if (submitBtn) submitBtn.disabled = false;
+        updateNavigation(sectionIndex, false);
+      });
+
+      document.getElementById("prev-btn")?.addEventListener("click", () => {
+        currentSection--;
+        renderSection(currentSection);
+      });
+
+      document.getElementById("next-btn")?.addEventListener("click", () => {
+        if (scores[sectionIndex] >= 70) {
+          currentSection++;
+          renderSection(currentSection);
+        }
+      });
+
+      document.getElementById("complete-btn")?.addEventListener("click", () => {
+        localStorage.removeItem("geographyIntermediateScores");
+        document.getElementById("content").innerHTML = `
+          <h2>Congratulations!</h2>
+          <p>You've completed the TNPSC Group 4 Geography (Intermediate) course!</p>
+          <a href="tnpsc-gr4-home.html" class="btn-blue">Return to Home</a>
+        `;
+      });
+    }
+
+    // Render section
+    function renderSection(sectionIndex) {
+      try {
+        if (sectionIndex < 0 || sectionIndex >= sections.length) {
+          throw new Error("Invalid section index");
+        }
+        const section = sections[sectionIndex];
+        let html = `
+          <h2>${section.title}</h2>
+          ${renderContent(section.content)}
+        `;
+        if (section.quiz.length > 0) {
+          html += `
+            <h3>Quiz</h3>
+            <form id="quiz-form">
+              ${section.quiz.map((q, i) => `
+                <div>
+                  <p>${i + 1}. ${q.question}</p>
+                  ${q.options.map(opt => `
+                    <label for="q${i}-${opt.replace(/\s+/g, '')}">
+                      <input type="radio" id="q${i}-${opt.replace(/\s+/g, '')}" name="q${i}" value="${opt}" required>
+                      ${opt}
+                    </label>
+                  `).join("")}
+                </div>
+              `).join("")}
+              <button type="submit" class="btn-blue">Submit</button>
+            </form>
+            <div id="feedback"></div>
+          `;
+        } else {
+          html += '<p class="text-red">No quiz available for this section.</p>';
+        }
+        html += '<div id="navigation"></div>';
+        document.getElementById("content").innerHTML = html;
+
+        const quizForm = document.getElementById("quiz-form");
+        if (quizForm) {
+          quizForm.addEventListener("submit", e => {
+            e.preventDefault();
+            const selected = Array.from(quizForm.querySelectorAll("input:checked"));
+            if (selected.length === section.quiz.length) {
+              checkAnswers(sectionIndex);
+            } else {
+              document.getElementById("feedback").innerHTML = '<p class="text-red">Please answer all questions.</p>';
+            }
+          });
+        }
+        updateNavigation(sectionIndex, scores[sectionIndex] !== null);
+      } catch (error) {
+        console.error("Error rendering section:", error);
+        document.getElementById("content").innerHTML = `<p class="text-red">Error: ${error.message}</p>`;
+      }
+    }
+
+    // Check answers
+    function checkAnswers(sectionIndex) {
+      try {
+        const form = document.getElementById("quiz-form");
+        const feedbackDiv = document.getElementById("feedback");
+        if (!form || !feedbackDiv) {
+          throw new Error("Form or feedback div missing");
+        }
+        let score = 0;
+        let feedbackHtml = "";
+
+        const submitBtn = form.querySelector("button[type='submit']");
+        if (submitBtn) {
+          submitBtn.disabled = true;
+          submitBtn.style.opacity = "0.6";
+        }
+
+        sections[sectionIndex].quiz.forEach((q, i) => {
+          const selected = form.querySelector(`input[name="q${i}"]:checked`);
+          const isCorrect = selected && selected.value === q.answer;
+          if (isCorrect) score++;
+
+          const mcq = mcqData.find(m => m.question === q.question && m.answer === q.answer);
+          feedbackHtml += `
+            <p><strong>${q.question}</strong><br>
+            Your answer: ${selected?.value || "None"}<br>
+            Correct answer: ${q.answer}<br>
+            Explanation: ${mcq ? mcq.explanation : "Not available"}
+            </p>
+          `;
+        });
+
+        const percentage = (score / sections[sectionIndex].quiz.length) * 100;
+        scores[sectionIndex] = percentage;
+        localStorage.setItem("geographyIntermediateScores", JSON.stringify(scores));
+
+        feedbackDiv.innerHTML = `
+          <p>Your score: ${score}/${sections[sectionIndex].quiz.length} (${percentage.toFixed(2)}%)</p>
+          ${percentage >= 70 ? `<p class="text-green">${motivationalMessages[Math.floor(Math.random() * motivationalMessages.length)]}</p>` : "<p class=\"text-red\">You need 70% to proceed. Please retake the quiz.</p>"}
+          <h4>Feedback:</h4>
+          ${feedbackHtml}
+        `;
+
+        updateNavigation(sectionIndex, true);
+      } catch (error) {
+        console.error("Error checking answers:", error);
+        document.getElementById("feedback").innerHTML = `<p class="text-red">Error: ${error.message}</p>`;
+      }
+    }
+
+    // Hamburger menu
+    const menuBtn = document.getElementById("menu-btn");
+    const menu = document.getElementById("menu");
+
+    function setupMenuToggle() {
+      if (window.innerWidth <= 768) {
+        menuBtn.classList.remove("hidden");
+        if (!menu.classList.contains("hidden")) menu.classList.add("hidden");
+        menuBtn.addEventListener("click", () => {
+          menu.classList.toggle("hidden");
+        });
+      } else {
+        menuBtn.classList.add("hidden");
+        menu.classList.remove("hidden");
+      }
+    }
+
+    window.addEventListener("DOMContentLoaded", () => {
+      setupMenuToggle();
+      window.addEventListener("resize", setupMenuToggle);
+      renderSection(currentSection);
+    });
+  </script>
+</body>
+</html>
