@@ -1,0 +1,1150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Drillmasters LMS - TNPSC Group 4 Science (Expert)</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js" defer></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; background-color: #f3f4f6; display: flex; flex-direction: column; min-height: 100vh; }
+    .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 15px; }
+    header { background-color: #2563eb; color: white; padding: 1rem 0; }
+    header h1 { font-size: 1.5rem; font-weight: bold; }
+    header h2 { font-size: 1.125rem; }
+    header .flex { display: flex; justify-content: space-between; align-items: center; }
+    nav { background-color: #1d4ed8; padding: 1rem 0; }
+    nav ul { list-style: none; display: flex; gap: 1rem; }
+    nav a { color: white; text-decoration: none; }
+    nav a:hover { text-decoration: underline; }
+    main { flex-grow: 1; padding: 1rem 0; }
+    #content { background-color: white; padding: 1.5rem; border-radius: 0.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+    footer { background-color: #1f2937; color: white; padding: 1rem 0; margin-top: auto; text-align: center; }
+    footer a { color: white; text-decoration: underline; }
+    button { padding: 0.5rem 1rem; border-radius: 0.25rem; cursor: pointer; margin: 0.25rem; }
+    .btn-blue { background-color: #3b82f6; color: white; border: none; }
+    .btn-blue:hover { background-color: #2563eb; }
+    .btn-gray { background-color: #6b7280; color: white; border: none; }
+    .btn-gray:hover { background-color: #4b5563; }
+    .btn-green { background-color: #22c55e; color: white; border: none; }
+    .btn-green:hover { background-color: #16a34a; }
+    .btn-yellow { background-color: #f59e0b; color: white; border: none; }
+    .btn-yellow:hover { background-color: #d97706; }
+    .text-red { color: #ef4444; }
+    .text-green { color: #22c55e; }
+    .hidden { display: none; }
+    #quiz-form { margin-top: 1rem; }
+    #quiz-form div { margin-bottom: 1rem; }
+    #quiz-form p { font-weight: bold; margin-bottom: 0.5rem; }
+    #quiz-form label { display: block; margin: 0.25rem 0; }
+    #quiz-form input[type="radio"] { margin-right: 0.5rem; }
+    #feedback { margin-top: 1rem; }
+    #navigation { margin-top: 1rem; display: flex; gap: 0.5rem; }
+    .content-image, .content-animation { background-color: #e5e7eb; padding: 1rem; text-align: center; margin: 1rem 0; }
+    .content-chart { margin: 1rem 0; }
+    @media (max-width: 768px) {
+      nav ul { flex-direction: column; gap: 0.5rem; }
+      #menu-btn { display: block; }
+      #menu.hidden { display: none; }
+      #menu { display: block; }
+      .container { padding: 0 10px; }
+      button { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container flex">
+      <div>
+        <h1>TNPSC Group 4 - Science</h1>
+        <h2>Expert Level</h2>
+      </div>
+      <button id="menu-btn" class="hidden">☰</button>
+    </div>
+    <nav id="menu">
+      <div class="container">
+        <ul>
+          <li><a href="tnpsc-gr4-home.html">TNPSC Group 4 Home</a></li>
+          <li><a href="#physics">Physics</a></li>
+          <li><a href="#chemistry">Chemistry</a></li>
+          <li><a href="#biology">Biology</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <div class="container">
+      <div id="content">
+        <p>Loading content...</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>© 2025 Drillmasters LMS. All rights reserved.</p>
+      <p>Contact: <a href="mailto:support@drillmasters.in">support@drillmasters.in</a> | <a href="https://www.drillmasters.in">www.drillmasters.in</a></p>
+    </div>
+  </footer>
+
+  <script>
+    // Science Content (Physics + Chemistry + Biology)
+    const scienceContent = [
+      {
+        id: 1,
+        title: "Measurement of Physical Quantities",
+        content: [
+          {
+            type: "text",
+            value: "Measurement involves assigning numerical values to properties like length, mass, and time using standardized units. The SI system defines meter (m), kilogram (kg), and second (s) as base units. Derived units, such as velocity (m/s) and density (kg/m³), are calculated from base units. Dimensional analysis ensures equation consistency; for example, the dimension of force is [M L T^-2]. Precision depends on instrument accuracy, e.g., a vernier caliper measures length to 0.01 mm. To measure the density of a 500 g object with volume 200 cm³, convert units: volume = 200 × 10^-6 m³, density = mass/volume = 0.5 / (200 × 10^-6) = 2500 kg/m³. Such measurements are critical in scientific experiments and engineering."
+          }
+        ]
+      },
+      {
+        id: 2,
+        title: "General Scientific Laws in Motion",
+        content: [
+          {
+            type: "text",
+            value: "Newton’s laws govern motion. The first law (inertia) states an object remains at rest or in uniform motion unless acted upon by a net force. The second law, F = ma, quantifies force; for a 2 kg object accelerating at 5 m/s², F = 2 × 5 = 10 N. The third law states that for every action, there is an equal and opposite reaction. Kinematics describes motion using equations like v = u + at and s = ut + (1/2)at². For a car starting from rest with a = 2 m/s² over 10 s, final velocity v = 0 + 2 × 10 = 20 m/s, and distance s = 0 + (1/2) × 2 × (10)² = 100 m. These laws explain phenomena from vehicle motion to planetary orbits."
+          }
+        ]
+      },
+      {
+        id: 3,
+        title: "Force, Pressure, and Energy",
+        content: [
+          {
+            type: "text",
+            value: "Force is a push or pull, measured in newtons (N). Pressure is force per unit area, P = F/A, with units pascal (Pa). For a 100 N force on a 0.02 m² surface, P = 100 / 0.02 = 5000 Pa. Energy, the capacity to do work, exists as kinetic (KE = (1/2)mv²) and potential (PE = mgh). A 1 kg object moving at 4 m/s has KE = (1/2) × 1 × (4)² = 8 J. If lifted 2 m (g = 10 m/s²), PE = 1 × 10 × 2 = 20 J. Conservation of energy states total energy remains constant; for a falling object, PE converts to KE. These concepts apply to hydraulic systems, vehicle dynamics, and power generation."
+          }
+        ]
+      },
+      {
+        id: 4,
+        title: "Everyday Applications of Mechanics",
+        content: [
+          {
+            type: "text",
+            value: "Mechanics principles are embedded in daily life. Levers amplify force; in a see-saw, a 30 kg child 2 m from the pivot balances a 60 kg adult 1 m away, as torques (30 × 10 × 2 = 60 × 10 × 1) equate. Pulleys reduce effort in lifting; a single movable pulley halves the force needed to lift a 100 N load, ignoring friction. Friction, F = μN, enables walking but resists motion; for a 50 kg box (N = 50 × 10 = 500 N) on a surface with μ = 0.4, F = 0.4 × 500 = 200 N. Inclined planes, like ramps, reduce lifting force; a 200 N object on a 30° ramp requires F = 200 × sin(30°) = 100 N. These applications enhance efficiency in tools and machines."
+          }
+        ]
+      },
+      {
+        id: 5,
+        title: "Everyday Applications of Electricity, Magnetism, Light, Sound, Heat, and Nuclear Physics",
+        content: [
+          {
+            type: "text",
+            value: "Physics shapes daily technologies. Electricity powers homes via circuits; a 100 W bulb at 220 V draws current I = P/V = 100 / 220 ≈ 0.45 A. Magnetism operates in electric motors, where current in a coil produces motion via magnetic fields. Light’s reflection and refraction enable mirrors and eyeglasses; a convex lens corrects farsightedness by converging light. Sound’s intensity decreases with distance; a siren’s loudness drops fourfold at double the distance (inverse square law). Heat transfer via conduction cooks food; a metal pan conducts heat faster than wood. Nuclear physics ensures safety in medical X-rays, where radiation dosage is minimized. These principles drive household appliances, communication, and healthcare."
+          }
+        ]
+      },
+      {
+        id: 6,
+        title: "Elements and Compounds",
+        content: [
+          {
+            type: "text",
+            value: "Elements are pure substances with one type of atom, identified by atomic number, e.g., oxygen (O, Z=8). Compounds are substances formed by chemical bonding of two or more elements in fixed ratios, e.g., water (H2O). Elements are classified as metals (e.g., iron), non-metals (e.g., sulfur), and metalloids (e.g., silicon). Compounds form via ionic bonds (e.g., NaCl, where Na+ and Cl⁻ attract) or covalent bonds (e.g., CO2, sharing electrons). To calculate the molecular mass of glucose (C6H12O6): C = 6 × 12 = 72, H = 12 × 1 = 12, O = 6 × 16 = 96, total = 180 u. Properties like boiling point differ; NaCl (ionic) has a high melting point (801°C), while H2O (covalent) is lower (100°C). These concepts underpin chemical reactions in industry and biology."
+          }
+        ]
+      },
+      {
+        id: 7,
+        title: "Acids, Bases, Salts",
+        content: [
+          {
+            type: "text",
+            value: "Acids release H+ ions in water, e.g., HCl → H+ + Cl⁻, with pH < 7. Bases release OH⁻ ions, e.g., NaOH → Na+ + OH⁻, with pH > 7. Salts form via neutralization: HCl + NaOH → NaCl + H2O. The pH of a 0.01 M HCl solution is calculated as pH = -log[H+] = -log(0.01) = 2. Strong acids (e.g., H2SO4) fully dissociate, while weak acids (e.g., CH3COOH) partially dissociate. Bases like NH3 form weak solutions (pH ≈ 11). Salts like CaCO3 are used in antacids. To find the molarity of NaOH neutralizing 50 mL of 0.1 M HCl, use M1V1 = M2V2: 0.1 × 50 = M2 × 50, M2 = 0.1 M. These reactions are vital in agriculture, medicine, and industry."
+          }
+        ]
+      },
+      {
+        id: 8,
+        title: "Petroleum Products",
+        content: [
+          {
+            type: "text",
+            value: "Petroleum, a crude oil mixture of hydrocarbons, is separated by fractional distillation based on boiling points. Fractions include gases (C1-C4, e.g., methane), petrol (C5-C10, 40-180°C), kerosene (C10-C16, 180-250°C), and diesel (C16-C20, 250-350°C). Petrol powers vehicles, kerosene fuels stoves, and bitumen (C20+) paves roads. Combustion of octane (C8H18): 2C8H18 + 25O2 → 16CO2 + 18H2O releases energy but produces CO2, contributing to greenhouse effects. To calculate CO2 from 114 g of C8H18 (molar mass = 114 g/mol): moles = 114 / 114 = 1 mol, producing 16 mol CO2 = 16 × 44 = 704 g. Petroleum products drive economies but pose environmental challenges like air pollution and oil spills."
+          }
+        ]
+      },
+      {
+        id: 9,
+        title: "Fertilizers and Pesticides",
+        content: [
+          {
+            type: "text",
+            value: "Fertilizers supply nutrients like nitrogen (N), phosphorus (P), and potassium (K) to crops. Ammonium nitrate (NH4NO3) provides N; superphosphate (Ca(H2PO4)2) supplies P. To calculate N content in 100 g NH4NO3 (molar mass = 80 g/mol): N = 2 × 14 = 28 g/mol, %N = (28 / 80) × 100 = 35%. Pesticides, like DDT (C14H9Cl5), control pests but persist in ecosystems, causing bioaccumulation. Organophosphates (e.g., malathion) are less persistent but toxic. Overuse of fertilizers leads to eutrophication; 1 kg of NH4NO3 in a 10,000 L pond yields [NO3⁻] = (0.35 × 1000) / 10,000 ≈ 0.035 g/L, promoting algal blooms. Sustainable use balances agricultural yield with environmental safety."
+          }
+        ]
+      },
+      {
+        id: 10,
+        title: "Metallurgy and Food Adulterants",
+        content: [
+          {
+            type: "text",
+            value: "Metallurgy extracts metals from ores. For iron, hematite (Fe2O3) is reduced in a blast furnace: Fe2O3 + 3CO → 2Fe + 3CO2. Aluminium is extracted from bauxite (Al2O3) via electrolysis, consuming high energy. To calculate iron yield from 160 g Fe2O3 (molar mass = 160 g/mol): moles = 160 / 160 = 1 mol, producing 2 mol Fe = 2 × 56 = 112 g. Food adulterants, like melamine in milk, mimic protein content but harm health. Metanil yellow in turmeric is detected by adding HCl, yielding a pink color. Adulteration tests, e.g., starch in milk via iodine (blue-black color), ensure food safety. Metallurgy supports industry, while adulterant detection protects consumers."
+          }
+        ]
+      },
+      {
+        id: 11,
+        title: "Main Concepts of Life Science",
+        content: [
+          {
+            type: "text",
+            value: "Life science studies living organisms, focusing on their structure, function, and interactions. Key characteristics of life include metabolism (e.g., glucose breakdown: C6H12O6 + 6O2 → 6CO2 + 6H2O, releasing 2870 kJ/mol), growth, reproduction, and response to stimuli. Cells are the basic unit of life; prokaryotes (e.g., bacteria) lack a nucleus, while eukaryotes (e.g., humans) have membrane-bound organelles. Homeostasis maintains internal balance, e.g., human body temperature at 37°C via sweating or shivering. Ecosystems involve biotic (living) and abiotic (non-living) components; energy flows through food chains (producers → consumers → decomposers). Life sciences underpin medicine, agriculture, and environmental conservation."
+          }
+        ]
+      },
+      {
+        id: 12,
+        title: "Classification of Living Organisms",
+        content: [
+          {
+            type: "text",
+            value: "Classification organizes organisms based on shared characteristics. Linnaean taxonomy uses hierarchical levels: Domain, Kingdom, Phylum, Class, Order, Family, Genus, Species. Binomial nomenclature assigns two-part names, e.g., Homo sapiens for humans. The three domains are Archaea, Bacteria, and Eukarya. Five kingdoms include Monera (bacteria), Protista (amoebas), Fungi (mushrooms), Plantae (trees), and Animalia (mammals). Chordates (e.g., humans) have a notochord; arthropods (e.g., insects) have exoskeletons. To classify a tiger: Kingdom Animalia, Phylum Chordata, Class Mammalia, Order Carnivora, Family Felidae, Genus Panthera, Species tigris. Classification aids biodiversity studies and evolutionary research."
+          }
+        ]
+      },
+      {
+        id: 13,
+        title: "Evolution",
+        content: [
+          {
+            type: "text",
+            value: "Evolution explains species diversity via changes in genetic makeup over generations. Darwin’s natural selection states organisms with advantageous traits survive and reproduce, e.g., antibiotic-resistant bacteria. Evidence includes fossils (e.g., Archaeopteryx), homologous structures (e.g., human arm, whale flipper), and DNA similarities (99% between humans and chimpanzees). Speciation occurs when populations diverge, e.g., Darwin’s finches. Hardy-Weinberg equilibrium predicts allele frequencies: p² + 2pq + q² = 1. For a population with 16% recessive (q² = 0.16), q = √0.16 = 0.4, p = 1 - 0.4 = 0.6, heterozygote frequency = 2pq = 2 × 0.6 × 0.4 = 0.48. Evolution drives adaptation and biodiversity."
+          }
+        ]
+      },
+      {
+        id: 14,
+        title: "Genetics",
+        content: [
+          {
+            type: "text",
+            value: "Genetics studies heredity and variation. DNA, a double helix, encodes genes on chromosomes. Mendel’s laws govern inheritance: segregation (alleles separate during gamete formation) and independent assortment (traits assort independently). For a monohybrid cross (Aa × Aa), the phenotypic ratio is 3:1 (75% dominant, 25% recessive). In a dihybrid cross (AaBb × AaBb), the ratio is 9:3:3:1. Human blood types (ABO) follow codominance; IAIB yields type AB. Mutations, e.g., sickle-cell anemia (GAG → GTG), alter proteins. To calculate recessive trait probability in a population (q² = 0.01), q = √0.01 = 0.1, carrier frequency = 2pq = 2 × 0.9 × 0.1 = 0.18. Genetics informs medical diagnostics and biotechnology."
+          }
+        ]
+      },
+      {
+        id: 15,
+        title: "Physiology",
+        content: [
+          {
+            type: "text",
+            value: "Physiology studies organism functions. In humans, the circulatory system transports oxygen via hemoglobin; cardiac output = heart rate × stroke volume (e.g., 70 bpm × 70 mL = 4900 mL/min). The respiratory system exchanges gases; Fick’s law governs diffusion: rate ∝ surface area × concentration gradient. The nervous system transmits signals via neurons; action potential speed in myelinated axons reaches 120 m/s. Digestion breaks down nutrients; amylase in saliva converts starch to maltose. Homeostasis regulates blood glucose; insulin lowers it, glucagon raises it. To calculate oxygen consumption at rest (250 mL/min for a 70 kg person), divide by body weight: 250 / 70 ≈ 3.57 mL/kg/min. Physiology is critical for understanding health."
+          }
+        ]
+      },
+      {
+        id: 16,
+        title: "Nutrition",
+        content: [
+          {
+            type: "text",
+            value: "Nutrition provides energy and materials for growth. Macronutrients include carbohydrates (4 kcal/g, e.g., glucose), proteins (4 kcal/g, e.g., amino acids), and fats (9 kcal/g, e.g., triglycerides). Micronutrients, like vitamin C (prevents scurvy), are needed in trace amounts. A balanced diet for a 2000 kcal daily requirement might include 50% carbohydrates (1000 kcal ÷ 4 = 250 g), 30% fats (600 kcal ÷ 9 = 67 g), and 20% proteins (400 kcal ÷ 4 = 100 g). Malnutrition causes kwashiorkor (protein deficiency) or obesity (excess calories). Plants synthesize nutrients via photosynthesis: 6CO2 + 6H2O → C6H12O6 + 6O2. Nutrition impacts health, immunity, and development."
+          }
+        ]
+      },
+      {
+        id: 17,
+        title: "Health and Hygiene",
+        content: [
+          {
+            type: "text",
+            value: "Health is physical, mental, and social well-being. Hygiene prevents disease through practices like handwashing, reducing bacterial transmission by 50%. Water purification (e.g., chlorination) eliminates pathogens like Vibrio cholerae. Vaccination induces immunity; the BCG vaccine protects against tuberculosis. Regular exercise (30 min/day) reduces cardiovascular risk by 20%. To calculate BMI: weight (kg) ÷ height² (m²); for 70 kg, 1.7 m, BMI = 70 ÷ (1.7)² ≈ 24.2 (normal). Poor hygiene causes infections; E. coli in contaminated food leads to diarrhea. Health education promotes sanitation, nutrition, and mental health, critical for community well-being."
+          }
+        ]
+      },
+      {
+        id: 18,
+        title: "Human Diseases",
+        content: [
+          {
+            type: "text",
+            value: "Human diseases disrupt normal functions. Infectious diseases, like malaria (Plasmodium falciparum, mosquito vector), spread via pathogens. Non-infectious diseases include diabetes (insulin deficiency) and cancer (uncontrolled cell growth). Tuberculosis (Mycobacterium tuberculosis) infects lungs; sputum microscopy detects 70% of cases. HIV weakens immunity; CD4 count <200 cells/mm³ indicates AIDS. To calculate disease prevalence: (cases ÷ population) × 100; for 500 cases in 10,000 people, prevalence = (500 ÷ 10,000) × 100 = 5%. Prevention includes vaccination, sanitation, and screening. Antibiotics treat bacterial infections but not viruses, emphasizing correct usage to combat resistance."
+          }
+        ]
+      }
+    ];
+
+    // Quiz Data (Physics + Chemistry + Biology)
+    const quizData = [
+      {
+        sectionId: 1,
+        quiz: [
+          {
+            question: "A cylindrical object has a mass of 800 g and a volume of 400 cm³. What is its density in kg/m³?",
+            options: ["1000 kg/m³", "2000 kg/m³", "3000 kg/m³", "4000 kg/m³"],
+            answer: "2000 kg/m³"
+          },
+          {
+            question: "What is the dimensional formula for density?",
+            options: ["[M L^-3]", "[M L^3]", "[M L T^-2]", "[M L^-2 T^-1]"],
+            answer: "[M L^-3]"
+          },
+          {
+            question: "Which tool is best suited for measuring the diameter of a wire to a precision of 0.01 mm?",
+            options: ["Ruler", "Micrometer screw gauge", "Tape measure", "Meter stick"],
+            answer: "Micrometer screw gauge"
+          }
+        ]
+      },
+      {
+        sectionId: 2,
+        quiz: [
+          {
+            question: "A truck starts from rest and accelerates at 1.5 m/s² for 8 seconds. How far does it travel?",
+            options: ["24 m", "48 m", "72 m", "96 m"],
+            answer: "48 m"
+          },
+          {
+            question: "A 4 kg box is pushed with a 20 N force. What is its acceleration, assuming no friction?",
+            options: ["2 m/s²", "4 m/s²", "5 m/s²", "10 m/s²"],
+            answer: "5 m/s²"
+          },
+          {
+            question: "Which Newton’s law explains why a person feels pushed back when a bus starts moving?",
+            options: ["First law", "Second law", "Third law", "None of these"],
+            answer: "First law"
+          }
+        ]
+      },
+      {
+        sectionId: 3,
+        quiz: [
+          {
+            question: "A 150 N force is applied over a 0.03 m² surface. What is the pressure exerted?",
+            options: ["3000 Pa", "4500 Pa", "5000 Pa", "6000 Pa"],
+            answer: "5000 Pa"
+          },
+          {
+            question: "A 0.5 kg ball moving at 6 m/s has what kinetic energy?",
+            options: ["6 J", "9 J", "18 J", "36 J"],
+            answer: "9 J"
+          },
+          {
+            question: "A 2 kg object is lifted 3 m above the ground (g = 10 m/s²). What is its potential energy?",
+            options: ["30 J", "60 J", "90 J", "120 J"],
+            answer: "60 J"
+          }
+        ]
+      },
+      {
+        sectionId: 4,
+        quiz: [
+          {
+            question: "A 300 N crate is moved up a 30° inclined plane with a force parallel to the plane. What force is required?",
+            options: ["100 N", "150 N", "200 N", "300 N"],
+            answer: "150 N"
+          },
+          {
+            question: "A 20 kg table on a floor (μ = 0.3, g = 10 m/s²) experiences what frictional force when pushed?",
+            options: ["30 N", "60 N", "90 N", "120 N"],
+            answer: "60 N"
+          },
+          {
+            question: "In a lever system, a 50 kg load 2 m from the pivot is balanced by a 100 kg mass at what distance?",
+            options: ["0.5 m", "1 m", "1.5 m", "2 m"],
+            answer: "1 m"
+          }
+        ]
+      },
+      {
+        sectionId: 5,
+        quiz: [
+          {
+            question: "A 60 W electric fan runs on a 240 V supply. What current does it draw?",
+            options: ["0.15 A", "0.25 A", "0.35 A", "0.45 A"],
+            answer: "0.25 A"
+          },
+          {
+            question: "Which physics principle allows a periscope to function in submarines?",
+            options: ["Refraction", "Diffraction", "Reflection", "Interference"],
+            answer: "Reflection"
+          },
+          {
+            question: "Why does a metal spoon feel hotter than a wooden spoon in hot tea?",
+            options: ["Metal reflects heat", "Metal conducts heat better", "Metal absorbs sound", "Metal has higher density"],
+            answer: "Metal conducts heat better"
+          }
+        ]
+      },
+      {
+        sectionId: 6,
+        quiz: [
+          {
+            question: "What is the molecular mass of ethanol (C2H5OH)?",
+            options: ["32 u", "46 u", "60 u", "78 u"],
+            answer: "46 u"
+          },
+          {
+            question: "Which type of bond is formed in sodium chloride (NaCl)?",
+            options: ["Covalent", "Ionic", "Metallic", "Hydrogen"],
+            answer: "Ionic"
+          },
+          {
+            question: "Which element is classified as a metalloid?",
+            options: ["Iron", "Sulfur", "Silicon", "Oxygen"],
+            answer: "Silicon"
+          }
+        ]
+      },
+      {
+        sectionId: 7,
+        quiz: [
+          {
+            question: "What is the pH of a 0.001 M HCl solution?",
+            options: ["1", "2", "3", "4"],
+            answer: "3"
+          },
+          {
+            question: "What is the product of the neutralization reaction between H2SO4 and KOH?",
+            options: ["KCl", "K2SO4", "Na2SO4", "CaSO4"],
+            answer: "K2SO4"
+          },
+          {
+            question: "Which substance is used as an antacid to neutralize stomach acid?",
+            options: ["NaCl", "CaCO3", "HCl", "NH3"],
+            answer: "CaCO3"
+          }
+        ]
+      },
+      {
+        sectionId: 8,
+        quiz: [
+          {
+            question: "How many grams of CO2 are produced by the complete combustion of 57 g of C4H10 (molar mass = 58 g/mol)?",
+            options: ["88 g", "132 g", "176 g", "264 g"],
+            answer: "176 g"
+          },
+          {
+            question: "Which petroleum fraction is used as fuel in jet engines?",
+            options: ["Petrol", "Kerosene", "Diesel", "Bitumen"],
+            answer: "Kerosene"
+          },
+          {
+            question: "What environmental issue is primarily caused by CO2 emissions from petroleum combustion?",
+            options: ["Ozone depletion", "Acid rain", "Greenhouse effect", "Soil erosion"],
+            answer: "Greenhouse effect"
+          }
+        ]
+      },
+      {
+        sectionId: 9,
+        quiz: [
+          {
+            question: "What is the percentage of nitrogen in ammonium sulfate ((NH4)2SO4, molar mass = 132 g/mol)?",
+            options: ["14%", "21%", "28%", "35%"],
+            answer: "21%"
+          },
+          {
+            question: "Which pesticide is known for causing bioaccumulation in ecosystems?",
+            options: ["Malathion", "DDT", "Urea", "Glyphosate"],
+            answer: "DDT"
+          },
+          {
+            question: "What is a major environmental consequence of excessive fertilizer use?",
+            options: ["Soil acidification", "Eutrophication", "Global warming", "Deforestation"],
+            answer: "Eutrophication"
+          }
+        ]
+      },
+      {
+        sectionId: 10,
+        quiz: [
+          {
+            question: "How many grams of aluminium are produced from 102 g of Al2O3 (molar mass = 102 g/mol) via electrolysis?",
+            options: ["27 g", "54 g", "81 g", "108 g"],
+            answer: "54 g"
+          },
+          {
+            question: "Which chemical is used to detect starch adulteration in milk?",
+            options: ["HCl", "Iodine", "NaOH", "AgNO3"],
+            answer: "Iodine"
+          },
+          {
+            question: "What color indicates the presence of metanil yellow in turmeric when tested with HCl?",
+            options: ["Blue", "Green", "Pink", "Yellow"],
+            answer: "Pink"
+          }
+        ]
+      },
+      {
+        sectionId: 11,
+        quiz: [
+          {
+            question: "What is the primary energy yield of glucose metabolism per mole?",
+            options: ["1870 kJ", "2870 kJ", "3870 kJ", "4870 kJ"],
+            answer: "2870 kJ"
+          },
+          {
+            question: "Which cell type lacks a nucleus?",
+            options: ["Eukaryote", "Prokaryote", "Neuron", "Erythrocyte"],
+            answer: "Prokaryote"
+          },
+          {
+            question: "What maintains human body temperature at 37°C?",
+            options: ["Metabolism", "Homeostasis", "Photosynthesis", "Diffusion"],
+            answer: "Homeostasis"
+          }
+        ]
+      },
+      {
+        sectionId: 12,
+        quiz: [
+          {
+            question: "What is the scientific name for a tiger?",
+            options: ["Felis catus", "Panthera leo", "Panthera tigris", "Canis lupus"],
+            answer: "Panthera tigris"
+          },
+          {
+            question: "Which kingdom includes mushrooms?",
+            options: ["Monera", "Protista", "Fungi", "Plantae"],
+            answer: "Fungi"
+          },
+          {
+            question: "Which phylum includes organisms with a notochord?",
+            options: ["Arthropoda", "Chordata", "Mollusca", "Annelida"],
+            answer: "Chordata"
+          }
+        ]
+      },
+      {
+        sectionId: 13,
+        quiz: [
+          {
+            question: "What is the heterozygote frequency in a population with 16% recessive traits?",
+            options: ["0.24", "0.36", "0.48", "0.64"],
+            answer: "0.48"
+          },
+          {
+            question: "Which structure is evidence of common ancestry?",
+            options: ["Analogous", "Homologous", "Vestigial", "Fossil"],
+            answer: "Homologous"
+          },
+          {
+            question: "What process led to Darwin’s finches diversity?",
+            options: ["Mutation", "Speciation", "Hybridization", "Migration"],
+            answer: "Speciation"
+          }
+        ]
+      },
+      {
+        sectionId: 14,
+        quiz: [
+          {
+            question: "What is the phenotypic ratio of a monohybrid cross (Aa × Aa)?",
+            options: ["1:1", "3:1", "1:2:1", "9:3:3:1"],
+            answer: "3:1"
+          },
+          {
+            question: "Which blood type results from IAIB genotype?",
+            options: ["A", "B", "AB", "O"],
+            answer: "AB"
+          },
+          {
+            question: "What is the carrier frequency for a recessive trait with q² = 0.01?",
+            options: ["0.09", "0.18", "0.27", "0.36"],
+            answer: "0.18"
+          }
+        ]
+      },
+      {
+        sectionId: 15,
+        quiz: [
+          {
+            question: "What is the cardiac output for a heart rate of 70 bpm and stroke volume of 70 mL?",
+            options: ["3500 mL/min", "4900 mL/min", "5600 mL/min", "6300 mL/min"],
+            answer: "4900 mL/min"
+          },
+          {
+            question: "Which enzyme converts starch to maltose in saliva?",
+            options: ["Lipase", "Protease", "Amylase", "Nuclease"],
+            answer: "Amylase"
+          },
+          {
+            question: "Which hormone lowers blood glucose levels?",
+            options: ["Glucagon", "Insulin", "Adrenaline", "Cortisol"],
+            answer: "Insulin"
+          }
+        ]
+      },
+      {
+        sectionId: 16,
+        quiz: [
+          {
+            question: "How many grams of carbohydrates are needed for 50% of a 2000 kcal diet?",
+            options: ["150 g", "200 g", "250 g", "300 g"],
+            answer: "250 g"
+          },
+          {
+            question: "Which vitamin prevents scurvy?",
+            options: ["Vitamin A", "Vitamin B12", "Vitamin C", "Vitamin D"],
+            answer: "Vitamin C"
+          },
+          {
+            question: "What deficiency causes kwashiorkor?",
+            options: ["Carbohydrate", "Protein", "Fat", "Vitamin"],
+            answer: "Protein"
+          }
+        ]
+      },
+      {
+        sectionId: 17,
+        quiz: [
+          {
+            question: "What is the BMI for a 70 kg person with a height of 1.7 m?",
+            options: ["22.1", "24.2", "26.3", "28.4"],
+            answer: "24.2"
+          },
+          {
+            question: "Which vaccine protects against tuberculosis?",
+            options: ["MMR", "BCG", "DPT", "Polio"],
+            answer: "BCG"
+          },
+          {
+            question: "What reduces bacterial transmission by 50%?",
+            options: ["Exercise", "Handwashing", "Diet", "Sleep"],
+            answer: "Handwashing"
+          }
+        ]
+      },
+      {
+        sectionId: 18,
+        quiz: [
+          {
+            question: "What is the prevalence of a disease with 500 cases in 10,000 people?",
+            options: ["2%", "5%", "8%", "10%"],
+            answer: "5%"
+          },
+          {
+            question: "Which pathogen causes malaria?",
+            options: ["Bacteria", "Virus", "Fungus", "Protozoa"],
+            answer: "Protozoa"
+          },
+          {
+            question: "What CD4 count indicates AIDS in HIV patients?",
+            options: ["<200 cells/mm³", "<500 cells/mm³", "<800 cells/mm³", "<1000 cells/mm³"],
+            answer: "<200 cells/mm³"
+          }
+        ]
+      }
+    ];
+
+    // MCQ Data (Physics + Chemistry + Biology)
+    const mcqData = [
+      {
+        question: "A cylindrical object has a mass of 800 g and a volume of 400 cm³. What is its density in kg/m³?",
+        answer: "2000 kg/m³",
+        explanation: "Density is calculated as ρ = mass/volume. Convert mass: 800 g = 0.8 kg. Convert volume: 400 cm³ = 400 × 10^-6 m³ = 0.0004 m³. Thus, ρ = 0.8 / 0.0004 = 2000 kg/m³."
+      },
+      {
+        question: "What is the dimensional formula for density?",
+        answer: "[M L^-3]",
+        explanation: "Density = mass/volume. Mass has dimension [M], and volume has dimension [L^3]. Therefore, density’s dimension is [M] / [L^3] = [M L^-3]."
+      },
+      {
+        question: "Which tool is best suited for measuring the diameter of a wire to a precision of 0.01 mm?",
+        answer: "Micrometer screw gauge",
+        explanation: "A micrometer screw gauge offers high precision, measuring to 0.01 mm, ideal for small dimensions like a wire’s diameter."
+      },
+      {
+        question: "A truck starts from rest and accelerates at 1.5 m/s² for 8 seconds. How far does it travel?",
+        answer: "48 m",
+        explanation: "Use the kinematic equation s = ut + (1/2)at². Initial velocity u = 0, acceleration a = 1.5 m/s², time t = 8 s. Thus, s = 0 + (1/2) × 1.5 × (8)² = 0.75 × 64 = 48 m."
+      },
+      {
+        question: "A 4 kg box is pushed with a 20 N force. What is its acceleration, assuming no friction?",
+        answer: "5 m/s²",
+        explanation: "Newton’s second law states F = ma. Force F = 20 N, mass m = 4 kg. Acceleration a = F/m = 20 / 4 = 5 m/s²."
+      },
+      {
+        question: "Which Newton’s law explains why a person feels pushed back when a bus starts moving?",
+        answer: "First law",
+        explanation: "Newton’s first law (inertia) states that an object at rest tends to stay at rest unless acted upon by a net force."
+      },
+      {
+        question: "A 150 N force is applied over a 0.03 m² surface. What is the pressure exerted?",
+        answer: "5000 Pa",
+        explanation: "Pressure P = force/area. Force F = 150 N, area A = 0.03 m². Thus, P = 150 / 0.03 = 5000 Pa."
+      },
+      {
+        question: "A 0.5 kg ball moving at 6 m/s has what kinetic energy?",
+        answer: "9 J",
+        explanation: "Kinetic energy KE = (1/2)mv². Mass m = 0.5 kg, velocity v = 6 m/s. KE = (1/2) × 0.5 × (6)² = 0.25 × 36 = 9 J."
+      },
+      {
+        question: "A 2 kg object is lifted 3 m above the ground (g = 10 m/s²). What is its potential energy?",
+        answer: "60 J",
+        explanation: "Potential energy PE = mgh. Mass m = 2 kg, height h = 3 m, g = 10 m/s². PE = 2 × 10 × 3 = 60 J."
+      },
+      {
+        question: "A 300 N crate is moved up a 30° inclined plane with a force parallel to the plane. What force is required?",
+        answer: "150 N",
+        explanation: "For an inclined plane, the force parallel to the plane is F = mg sinθ. Weight = 300 N, θ = 30°, sin(30°) = 0.5. Thus, F = 300 × 0.5 = 150 N."
+      },
+      {
+        question: "A 20 kg table on a floor (μ = 0.3, g = 10 m/s²) experiences what frictional force when pushed?",
+        answer: "60 N",
+        explanation: "Frictional force F = μN, where normal force N = mg. Mass m = 20 kg, g = 10 m/s², μ = 0.3. N = 20 × 10 = 200 N, F = 0.3 × 200 = 60 N."
+      },
+      {
+        question: "In a lever system, a 50 kg load 2 m from the pivot is balanced by a 100 kg mass at what distance?",
+        answer: "1 m",
+        explanation: "For a balanced lever, torques equate: m₁g d₁ = m₂g d₂. Load: 50 kg, d₁ = 2 m; mass: 100 kg, d₂ = ?. 50 × 10 × 2 = 100 × 10 × d₂ → d₂ = 1 m."
+      },
+      {
+        question: "A 60 W electric fan runs on a 240 V supply. What current does it draw?",
+        answer: "0.25 A",
+        explanation: "Power P = VI, so current I = P/V. Power P = 60 W, voltage V = 240 V. I = 60 / 240 = 0.25 A."
+      },
+      {
+        question: "Which physics principle allows a periscope to function in submarines?",
+        answer: "Reflection",
+        explanation: "A periscope uses mirrors to reflect light, allowing users to see around obstacles."
+      },
+      {
+        question: "Why does a metal spoon feel hotter than a wooden spoon in hot tea?",
+        answer: "Metal conducts heat better",
+        explanation: "Metal has higher thermal conductivity than wood, transferring heat faster to the hand."
+      },
+      {
+        question: "What is the molecular mass of ethanol (C2H5OH)?",
+        answer: "46 u",
+        explanation: "Molecular mass is the sum of atomic masses. For ethanol (C2H5OH): C = 2 × 12 = 24, H = 6 × 1 = 6, O = 1 × 16 = 16. Total = 24 + 6 + 16 = 46 u."
+      },
+      {
+        question: "Which type of bond is formed in sodium chloride (NaCl)?",
+        answer: "Ionic",
+        explanation: "Sodium chloride forms via ionic bonding, where sodium (Na) donates an electron to chlorine (Cl), creating Na+ and Cl⁻ ions that attract electrostatically."
+      },
+      {
+        question: "Which element is classified as a metalloid?",
+        answer: "Silicon",
+        explanation: "Metalloids have properties between metals and non-metals. Silicon is a metalloid used in semiconductors, unlike iron (metal), sulfur (non-metal), or oxygen (non-metal)."
+      },
+      {
+        question: "What is the pH of a 0.001 M HCl solution?",
+        answer: "3",
+        explanation: "HCl is a strong acid, fully dissociating to give [H⁺] = 0.001 M. pH = -log[H⁺] = -log(0.001) = -log(10^-3) = 3."
+      },
+      {
+        question: "What is the product of the neutralization reaction between H2SO4 and KOH?",
+        answer: "K2SO4",
+        explanation: "Neutralization of sulfuric acid (H2SO4) with potassium hydroxide (KOH) forms a salt and water: H2SO4 + 2KOH → K2SO4 + 2H2O. The salt K2SO4 is produced."
+      },
+      {
+        question: "Which substance is used as an antacid to neutralize stomach acid?",
+        answer: "CaCO3",
+        explanation: "Calcium carbonate (CaCO3) neutralizes stomach acid (HCl): CaCO3 + 2HCl → CaCl2 + CO2 + H2O."
+      },
+      {
+        question: "How many grams of CO2 are produced by the complete combustion of 57 g of C4H10 (molar mass = 58 g/mol)?",
+        answer: "176 g",
+        explanation: "The combustion reaction is 2C4H10 + 13O2 → 8CO2 + 10H2O. Moles of C4H10 = 57 / 58 ≈ 0.983 mol. For 2 mol C4H10, 8 mol CO2 are produced, so 0.983 mol C4H10 yields (8/2) × 0.983 ≈ 3.932 mol CO2. Mass of CO2 = 3.932 × 44 = 176 g."
+      },
+      {
+        question: "Which petroleum fraction is used as fuel in jet engines?",
+        answer: "Kerosene",
+        explanation: "Kerosene (C10-C16, boiling range 180-250°C) is used as jet fuel, unlike petrol (vehicles), diesel (trucks), or bitumen (roads)."
+      },
+      {
+        question: "What environmental issue is primarily caused by CO2 emissions from petroleum combustion?",
+        answer: "Greenhouse effect",
+        explanation: "CO2 emissions from petroleum combustion trap heat, contributing to the greenhouse effect and global warming."
+      },
+      {
+        question: "What is the percentage of nitrogen in ammonium sulfate ((NH4)2SO4, molar mass = 132 g/mol)?",
+        answer: "21%",
+        explanation: "Molar mass of (NH4)2SO4 = (2 × 14) + (8 × 1) + (1 × 32) + (4 × 16) = 132 g/mol. Nitrogen mass = 2 × 14 = 28 g/mol. %N = (28 / 132) × 100 ≈ 21%."
+      },
+      {
+        question: "Which pesticide is known for causing bioaccumulation in ecosystems?",
+        answer: "DDT",
+        explanation: "DDT (C14H9Cl5) is a persistent pesticide that accumulates in food chains, causing ecological harm."
+      },
+      {
+        question: "What is a major environmental consequence of excessive fertilizer use?",
+        answer: "Eutrophication",
+        explanation: "Excessive fertilizers like NH4NO3 increase nutrient levels in water bodies, leading to algal blooms and eutrophication."
+      },
+      {
+        question: "How many grams of aluminium are produced from 102 g of Al2O3 (molar mass = 102 g/mol) via electrolysis?",
+        answer: "54 g",
+        explanation: "The reaction is 2Al2O3 → 4Al + 3O2. Moles of Al2O3 = 102 / 102 = 1 mol. From 2 mol Al2O3, 4 mol Al are produced, so 1 mol Al2O3 yields 2 mol Al. Mass of Al = 2 × 27 = 54 g."
+      },
+      {
+        question: "Which chemical is used to detect starch adulteration in milk?",
+        answer: "Iodine",
+        explanation: "Iodine reacts with starch to produce a blue-black color, a standard test for starch adulteration in milk."
+      },
+      {
+        question: "What color indicates the presence of metanil yellow in turmeric when tested with HCl?",
+        answer: "Pink",
+        explanation: "Metanil yellow, an adulterant in turmeric, turns pink when mixed with HCl."
+      },
+      {
+        question: "What is the primary energy yield of glucose metabolism per mole?",
+        answer: "2870 kJ",
+        explanation: "Glucose metabolism (cellular respiration) yields 2870 kJ/mol: C6H12O6 + 6O2 → 6CO2 + 6H2O. This energy drives cellular processes."
+      },
+      {
+        question: "Which cell type lacks a nucleus?",
+        answer: "Prokaryote",
+        explanation: "Prokaryotes, like bacteria, lack a nucleus, with DNA in the cytoplasm. Eukaryotes (neurons) have nuclei, and erythrocytes lack nuclei in mammals but are not a cell type."
+      },
+      {
+        question: "What maintains human body temperature at 37°C?",
+        answer: "Homeostasis",
+        explanation: "Homeostasis regulates body temperature at 37°C via mechanisms like sweating or shivering."
+      },
+      {
+        question: "What is the scientific name for a tiger?",
+        answer: "Panthera tigris",
+        explanation: "Binomial nomenclature assigns Panthera tigris to tigers: Genus Panthera, Species tigris."
+      },
+      {
+        question: "Which kingdom includes mushrooms?",
+        answer: "Fungi",
+        explanation: "Mushrooms belong to Kingdom Fungi, characterized by chitin cell walls and heterotrophic nutrition."
+      },
+      {
+        question: "Which phylum includes organisms with a notochord?",
+        answer: "Chordata",
+        explanation: "Phylum Chordata includes organisms with a notochord, like humans."
+      },
+      {
+        question: "What is the heterozygote frequency in a population with 16% recessive traits?",
+        answer: "0.48",
+        explanation: "For q² = 0.16, q = √0.16 = 0.4, p = 1 - 0.4 = 0.6. Heterozygote frequency = 2pq = 2 × 0.6 × 0.4 = 0.48, per Hardy-Weinberg."
+      },
+      {
+        question: "Which structure is evidence of common ancestry?",
+        answer: "Homologous",
+        explanation: "Homologous structures, like human arms and whale flippers, share a common origin, indicating evolutionary relationships."
+      },
+      {
+        question: "What process led to Darwin’s finches diversity?",
+        answer: "Speciation",
+        explanation: "Speciation, driven by natural selection, caused Darwin’s finches to diverge into distinct species."
+      },
+      {
+        question: "What is the phenotypic ratio of a monohybrid cross (Aa × Aa)?",
+        answer: "3:1",
+        explanation: "A monohybrid cross (Aa × Aa) yields a 3:1 phenotypic ratio (75% dominant, 25% recessive), per Mendel’s law of segregation."
+      },
+      {
+        question: "Which blood type results from IAIB genotype?",
+        answer: "AB",
+        explanation: "The IAIB genotype exhibits codominance, producing blood type AB."
+      },
+      {
+        question: "What is the carrier frequency for a recessive trait with q² = 0.01?",
+        answer: "0.18",
+        explanation: "For q² = 0.01, q = √0.01 = 0.1, p = 1 - 0.1 = 0.9. Carrier frequency = 2pq = 2 × 0.9 × 0.1 = 0.18."
+      },
+      {
+        question: "What is the cardiac output for a heart rate of 70 bpm and stroke volume of 70 mL?",
+        answer: "4900 mL/min",
+        explanation: "Cardiac output = heart rate × stroke volume = 70 bpm × 70 mL = 4900 mL/min."
+      },
+      {
+        question: "Which enzyme converts starch to maltose in saliva?",
+        answer: "Amylase",
+        explanation: "Salivary amylase breaks down starch into maltose."
+      },
+      {
+        question: "Which hormone lowers blood glucose levels?",
+        answer: "Insulin",
+        explanation: "Insulin, secreted by the pancreas, lowers blood glucose by promoting uptake."
+      },
+      {
+        question: "How many grams of carbohydrates are needed for 50% of a 2000 kcal diet?",
+        answer: "250 g",
+        explanation: "For 50% of 2000 kcal = 1000 kcal, carbohydrates (4 kcal/g) require 1000 ÷ 4 = 250 g."
+      },
+      {
+        question: "Which vitamin prevents scurvy?",
+        answer: "Vitamin C",
+        explanation: "Vitamin C prevents scurvy, a deficiency disease."
+      },
+      {
+        question: "What deficiency causes kwashiorkor?",
+        answer: "Protein",
+        explanation: "Kwashiorkor results from protein deficiency, leading to edema and growth failure."
+      },
+      {
+        question: "What is the BMI for a 70 kg person with a height of 1.7 m?",
+        answer: "24.2",
+        explanation: "BMI = weight ÷ height² = 70 ÷ (1.7)² ≈ 70 ÷ 2.89 ≈ 24.2, within the normal range."
+      },
+      {
+        question: "Which vaccine protects against tuberculosis?",
+        answer: "BCG",
+        explanation: "The BCG vaccine provides immunity against tuberculosis."
+      },
+      {
+        question: "What reduces bacterial transmission by 50%?",
+        answer: "Handwashing",
+        explanation: "Handwashing reduces bacterial transmission by 50%, a key hygiene practice."
+      },
+      {
+        question: "What is the prevalence of a disease with 500 cases in 10,000 people?",
+        answer: "5%",
+        explanation: "Prevalence = (cases ÷ population) × 100 = (500 ÷ 10,000) × 100 = 5%."
+      },
+      {
+        question: "Which pathogen causes malaria?",
+        answer: "Protozoa",
+        explanation: "Malaria is caused by Plasmodium falciparum, a protozoan, transmitted by mosquitoes."
+      },
+      {
+        question: "What CD4 count indicates AIDS in HIV patients?",
+        answer: "<200 cells/mm³",
+        explanation: "A CD4 count below 200 cells/mm³ indicates AIDS in HIV patients."
+      }
+    ];
+
+    // Combine sections
+    const sections = scienceContent.map(content => {
+      const quizEntry = quizData.find(q => q.sectionId === content.id);
+      return {
+        id: content.id,
+        title: content.title,
+        content: content.content,
+        quiz: quizEntry?.quiz || []
+      };
+    });
+
+    let currentSection = 0;
+    let scores = (() => {
+      try {
+        if (typeof localStorage === 'undefined') return Array(sections.length).fill(null);
+        const stored = JSON.parse(localStorage.getItem("scienceScores"));
+        return Array.isArray(stored) && stored.length === sections.length ? stored : Array(sections.length).fill(null);
+      } catch {
+        return Array(sections.length).fill(null);
+      }
+    })();
+
+    const motivationalMessages = [
+      "Great job! Keep learning!",
+      "You're doing amazing! Stay focused!",
+      "Well done! You're getting smarter every day!",
+      "Fantastic effort! Keep it up!",
+      "You're on the right track! Stay curious!"
+    ];
+
+    // Render content items
+    function renderContent(contentItems) {
+      return contentItems.map(item => {
+        switch (item.type) {
+          case "text":
+            return `<p>${item.value}</p>`;
+          case "image":
+            return `<div class="content-image"><p>Image Placeholder: ${item.alt} (${item.caption})</p></div>`;
+          case "chart":
+            const canvasId = `chart-${Math.random().toString(36).substr(2, 9)}`;
+            setTimeout(() => {
+              const ctx = document.getElementById(canvasId)?.getContext("2d");
+              if (ctx && item.config) {
+                new Chart(ctx, item.config);
+              }
+            }, 0);
+            return `<div class="content-chart"><canvas id="${canvasId}"></canvas><p>${item.caption}</p></div>`;
+          case "animation":
+            return `<div class="content-animation"><p>Animation Placeholder: ${item.description}</p></div>`;
+          default:
+            return "";
+        }
+      }).join("");
+    }
+
+    // Update navigation
+    function updateNavigation(sectionIndex, hasSubmitted) {
+      const navDiv = document.getElementById("navigation");
+      if (!navDiv) return;
+      let html = "";
+      if (hasSubmitted) {
+        html += `<button id="retake-btn" class="btn-yellow" aria-label="Retake quiz">Retake Quiz</button>`;
+      }
+      if (sectionIndex > 0) {
+        html += `<button id="prev-btn" class="btn-gray" aria-label="Previous section">Previous</button>`;
+      }
+      if (hasSubmitted && sectionIndex < 17 && scores[sectionIndex] >= 70) {
+        html += `<button id="next-btn" class="btn-blue" aria-label="Next section">Next</button>`;
+      }
+      if (sectionIndex === 17 && hasSubmitted && scores[sectionIndex] >= 70) {
+        html += `<button id="complete-btn" class="btn-green" aria-label="Complete course">Complete Physics, Chemistry & Biology</button>`;
+      }
+      navDiv.innerHTML = html;
+
+      document.getElementById("retake-btn")?.addEventListener("click", () => {
+        document.getElementById("quiz-form")?.reset();
+        document.getElementById("feedback").innerHTML = "";
+        const submitBtn = document.querySelector("#quiz-form button[type='submit']");
+        if (submitBtn) submitBtn.disabled = false;
+        updateNavigation(sectionIndex, false);
+      });
+
+      document.getElementById("prev-btn")?.addEventListener("click", () => {
+        currentSection--;
+        renderSection(currentSection);
+      });
+
+      document.getElementById("next-btn")?.addEventListener("click", () => {
+        if (scores[sectionIndex] >= 70) {
+          currentSection++;
+          renderSection(currentSection);
+        }
+      });
+
+      document.getElementById("complete-btn")?.addEventListener("click", () => {
+        localStorage.removeItem("scienceScores");
+        document.getElementById("content").innerHTML = `
+          <h2>Congratulations!</h2>
+          <p>You've completed the TNPSC Group 4 Physics, Chemistry & Biology (Advanced) course!</p>
+          <a href="tnpsc-gr4-home.html" class="btn-blue">Return to Home</a>
+        `;
+      });
+    }
+
+    // Render section
+    function renderSection(sectionIndex) {
+      try {
+        if (sectionIndex < 0 || sectionIndex >= sections.length) {
+          throw new Error("Invalid section index");
+        }
+        const section = sections[sectionIndex];
+        let html = `
+          <h2>${section.title}</h2>
+          ${renderContent(section.content)}
+        `;
+        if (section.quiz.length > 0) {
+          html += `
+            <h3>Quiz</h3>
+            <form id="quiz-form">
+              ${section.quiz.map((q, i) => `
+                <div>
+                  <p>${i + 1}. ${q.question}</p>
+                  ${q.options.map(opt => `
+                    <label for="q${i}-${opt.replace(/\s+/g, '')}">
+                      <input type="radio" id="q${i}-${opt.replace(/\s+/g, '')}" name="q${i}" value="${opt}" required>
+                      ${opt}
+                    </label>
+                  `).join("")}
+                </div>
+              `).join("")}
+              <button type="submit" class="btn-blue">Submit</button>
+            </form>
+            <div id="feedback"></div>
+          `;
+        } else {
+          html += '<p class="text-red">No quiz available for this section.</p>';
+        }
+        html += '<div id="navigation"></div>';
+        document.getElementById("content").innerHTML = html;
+
+        const quizForm = document.getElementById("quiz-form");
+        if (quizForm) {
+          quizForm.addEventListener("submit", e => {
+            e.preventDefault();
+            const selected = Array.from(quizForm.querySelectorAll("input:checked"));
+            if (selected.length === section.quiz.length) {
+              checkAnswers(sectionIndex);
+            } else {
+              document.getElementById("feedback").innerHTML = '<p class="text-red">Please answer all questions.</p>';
+            }
+          });
+        }
+        updateNavigation(sectionIndex, scores[sectionIndex] !== null);
+      } catch (error) {
+        console.error("Error rendering section:", error);
+        document.getElementById("content").innerHTML = `<p class="text-red">Error: ${error.message}</p>`;
+      }
+    }
+
+    // Check answers
+    function checkAnswers(sectionIndex) {
+      try {
+        const form = document.getElementById("quiz-form");
+        const feedbackDiv = document.getElementById("feedback");
+        if (!form || !feedbackDiv) {
+          throw new Error("Form or feedback div missing");
+        }
+        let score = 0;
+        let feedbackHtml = "";
+
+        const submitBtn = form.querySelector("button[type='submit']");
+        if (submitBtn) {
+          submitBtn.disabled = true;
+          submitBtn.style.opacity = "0.6";
+        }
+
+        sections[sectionIndex].quiz.forEach((q, i) => {
+          const selected = form.querySelector(`input[name="q${i}"]:checked`);
+          const isCorrect = selected && selected.value === q.answer;
+          if (isCorrect) score++;
+
+          const mcq = mcqData.find(m => m.question === q.question && m.answer === q.answer);
+          feedbackHtml += `
+            <p><strong>${q.question}</strong><br>
+            Your answer: ${selected?.value || "None"}<br>
+            Correct answer: ${q.answer}<br>
+            Explanation: ${mcq ? mcq.explanation : "Not available"}
+            </p>
+          `;
+        });
+
+        const percentage = (score / sections[sectionIndex].quiz.length) * 100;
+        scores[sectionIndex] = percentage;
+        localStorage.setItem("scienceScores", JSON.stringify(scores));
+
+        feedbackDiv.innerHTML = `
+          <p>Your score: ${score}/${sections[sectionIndex].quiz.length} (${percentage.toFixed(2)}%)</p>
+          ${percentage >= 70 ? `<p class="text-green">${motivationalMessages[Math.floor(Math.random() * motivationalMessages.length)]}</p>` : "<p class=\"text-red\">You need 70% to proceed. Please retake the quiz.</p>"}
+          <h4>Feedback:</h4>
+          ${feedbackHtml}
+        `;
+
+        updateNavigation(sectionIndex, true);
+      } catch (error) {
+        console.error("Error checking answers:", error);
+        document.getElementById("feedback").innerHTML = `<p class="text-red">Error: ${error.message}</p>`;
+      }
+    }
+
+    // Hamburger menu
+    const menuBtn = document.getElementById("menu-btn");
+    const menu = document.getElementById("menu");
+
+    function setupMenuToggle() {
+      if (window.innerWidth <= 768) {
+        menuBtn.classList.remove("hidden");
+        if (!menu.classList.contains("hidden")) menu.classList.add("hidden");
+        menuBtn.addEventListener("click", () => {
+          menu.classList.toggle("hidden");
+        });
+      } else {
+        menuBtn.classList.add("hidden");
+        menu.classList.remove("hidden");
+      }
+    }
+
+    window.addEventListener("DOMContentLoaded", () => {
+      setupMenuToggle();
+      window.addEventListener("resize", setupMenuToggle);
+      renderSection(currentSection);
+    });
+  </script>
+</body>
+</html>
