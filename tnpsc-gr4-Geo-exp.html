@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Drillmasters LMS - TNPSC Group 4 Geography (Expert)</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js" defer></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; background-color: #f3f4f6; display: flex; flex-direction: column; min-height: 100vh; }
+    .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 15px; }
+    header { background-color: #2563eb; color: white; padding: 1rem 0; }
+    header h1 { font-size: 1.5rem; font-weight: bold; }
+    header h2 { font-size: 1.125rem; }
+    header .flex { display: flex; justify-content: space-between; align-items: center; }
+    nav { background-color: #1d4ed8; padding: 1rem 0; }
+    nav ul { list-style: none; display: flex; gap: 1rem; }
+    nav a { color: white; text-decoration: none; }
+    nav a:hover { text-decoration: underline; }
+    main { flex-grow: 1; padding: 1rem 0; }
+    #content { background-color: white; padding: 1.5rem; border-radius: 0.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+    footer { background-color: #1f2937; color: white; padding: 1rem 0; margin-top: auto; text-align: center; }
+    footer a { color: white; text-decoration: underline; }
+    button { padding: 0.5rem 1rem; border-radius: 0.25rem; cursor: pointer; margin: 0.25rem; }
+    .btn-blue { background-color: #3b82f6; color: white; border: none; }
+    .btn-blue:hover { background-color: #2563eb; }
+    .btn-gray { background-color: #6b7280; color: white; border: none; }
+    .btn-gray:hover { background-color: #4b5563; }
+    .btn-green { background-color: #22c55e; color: white; border: none; }
+    .btn-green:hover { background-color: #16a34a; }
+    .btn-yellow { background-color: #f59e0b; color: white; border: none; }
+    .btn-yellow:hover { background-color: #d97706; }
+    .text-red { color: #ef4444; }
+    .text-green { color: #22c55e; }
+    .hidden { display: none; }
+    #quiz-form { margin-top: 1rem; }
+    #quiz-form div { margin-bottom: 1rem; }
+    #quiz-form p { font-weight: bold; margin-bottom: 0.5rem; }
+    #quiz-form label { display: block; margin: 0.25rem 0; }
+    #quiz-form input[type="radio"] { margin-right: 0.5rem; }
+    #feedback { margin-top: 1rem; }
+    #navigation { margin-top: 1rem; display: flex; gap: 0.5rem; }
+    .content-image, .content-animation { background-color: #e5e7eb; padding: 1rem; text-align: center; margin: 1rem 0; }
+    .content-chart { margin: 1rem 0; }
+    @media (max-width: 768px) {
+      nav ul { flex-direction: column; gap: 0.5rem; }
+      #menu-btn { display: block; }
+      #menu.hidden { display: none; }
+      #menu { display: block; }
+      .container { padding: 0 10px; }
+      button { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container flex">
+      <div>
+        <h1>TNPSC Group 4 - Geography</h1>
+        <h2>Expert Level</h2>
+      </div>
+      <button id="menu-btn" class="hidden">☰</button>
+    </div>
+    <nav id="menu">
+      <div class="container">
+        <ul>
+          <li><a href="tnpsc-gr4-home.html">TNPSC Group 4 Home</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <div class="container">
+      <div id="content">
+        <p>Loading content...</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>© 2025 Drillmasters LMS. All rights reserved.</p>
+      <p>Contact: <a href="mailto:support@drillmasters.in">support@drillmasters.in</a> | <a href="https://www.drillmasters.in">www.drillmasters.in</a></p>
+    </div>
+  </footer>
+
+  <script>
+    // Science Content (Geography)
+    const scienceContent = [
+      {
+        id: 1,
+        title: "Earth Location",
+        content: [
+          {
+            type: "text",
+            value: "Earth’s position at ~149.6 million km from the Sun, within the habitable zone, sustains complex ecosystems. Its axial obliquity (23.4°–24.5°) and precession cycles, spanning 26,000 years, modulate climate regimes. India spans 8°–37°N and 68°–97°E, with Tamil Nadu at 8°–13°N and 76°–80°E. The Laccadive Sea borders Tamil Nadu’s southwest, shaping coastal dynamics. Earth’s rotational dynamics (23.93 hours) and orbital periodicity (365.256 days) govern temporal cycles. The Indian plate’s northward drift, at 5 cm/year, sculpted Tamil Nadu’s peninsular shield. Geospatial technologies, like ISRO’s Bhuvan, enable precise mapping for urban planning in Tiruchirappalli, integrating tectonic and climatic data."
+          }
+        ]
+      },
+      {
+        id: 2,
+        title: "Physical Features",
+        content: [
+          {
+            type: "text",
+            value: "Physical landscapes, sculpted by tectonic and erosional processes, define regional identities. Tamil Nadu’s Palani Hills, formed by fault-block tectonics, host unique shola forests. India’s Vindhya Range separates northern and southern hydrogeographies. Tamil Nadu’s Palk Bay, with shallow bathymetry near Ramanathapuram, supports coral ecosystems. The Malwa Plateau’s regur soil aids Madhya Pradesh’s agriculture. Tirunelveli’s coastal plains, shaped by wave action, foster aquaculture. The Palani Hills’ elevation gradient drives microclimates, boosting tea estates. These features shape socio-economic patterns, with Ramanathapuram’s fishers reliant on Palk Bay and Palani’s farmers leveraging fertile slopes."
+          }
+        ]
+      },
+      {
+        id: 3,
+        title: "Monsoon, Rainfall, Weather, and Climate",
+        content: [
+          {
+            type: "text",
+            value: "Monsoons, governed by Inter-Tropical Convergence Zone (ITCZ) shifts, deliver ~80% of India’s precipitation. Tamil Nadu’s northeast monsoon (October–December) contributes ~55% of its 95 cm annual rainfall, with Tirunelveli receiving ~70 cm. Weather anomalies, like Chennai’s urban heat islands, amplify heat stress. Tamil Nadu’s Köppen ‘Aw’ classification reflects wet-dry seasonality, modulated by Madden-Julian Oscillation. Monsoon predictability, critical for Tiruchirappalli’s paddy, hinges on coupled ocean-atmosphere models. Climate change intensifies extreme rainfall, increasing flood risks in Chennai by 30%. Tamil Nadu’s Doppler radar network enhances forecasting, supporting resilient agricultural planning."
+          }
+        ]
+      },
+      {
+        id: 4,
+        title: "Water Resources",
+        content: [
+          {
+            type: "text",
+            value: "Water resources, comprising surface and subsurface systems, are vital for socio-economic stability. India’s Narmada River supports Gujarat’s irrigation. Tamil Nadu’s Periyar Reservoir, fed by inter-state transfers, irrigates Theni’s farms. Tirunelveli’s aquifers, hosted in fractured granites, yield 30% of rural water. Wetlands like Point Calimere near Nagapattinam nurture migratory birds. Tamil Nadu’s micro-watershed management, covering 10,000 hectares in Sivaganga, boosts recharge rates. Over-extraction, reducing groundwater by 1 m/year in Chennai, threatens sustainability. Hydrogeological modeling and IoT-based irrigation in Theni optimize water use, balancing urban and rural demands."
+          }
+        ]
+      },
+      {
+        id: 5,
+        title: "Rivers",
+        content: [
+          {
+            type: "text",
+            value: "Rivers, as geomorphic agents, sculpt landscapes and economies. India’s Mahanadi sustains Odisha’s deltas. Tamil Nadu’s Thamirabarani River, originating in Agastyamalai, supports Tirunelveli’s irrigation via fractured granite baseflow. River interlinking proposals, like Ken-Betwa, raise ecological concerns. The Palar River in Vellore, degraded by sand mining, disrupts groundwater recharge. Manimuthar Dam generates 5 MW hydropower. Tamil Nadu’s ecorestoration, using phytoremediation for Palar, reduces heavy metal loads by 40%. Unsustainable extraction risks riverine ecosystems; dynamic flow models ensure Tamil Nadu’s river resilience."
+          }
+        ]
+      },
+      {
+        id: 6,
+        title: "Soil, Minerals, and Natural Resources",
+        content: [
+          {
+            type: "text",
+            value: "Soil pedogenesis governs agro-ecological potential; Tirunelveli’s sandy loam supports groundnuts. Minerals like limestone in Ariyalur fuel Tamil Nadu’s cement industry. India’s chromite in Odisha drives steel production. Natural resources, like tidal energy, remain untapped in Tamil Nadu’s Gulf of Mannar. Sivaganga’s clayey soil grows pulses. Soil desertification, affecting 15% of Tamil Nadu’s land, stems from overgrazing. Regenerative agriculture, using biochar in Theni, sequesters 2 tons/ha of carbon. Mineral governance requires balancing extraction with restoration; Tamil Nadu’s solar potential in Ramanathapuram offsets coal dependency."
+          }
+        ]
+      },
+      {
+        id: 7,
+        title: "Forest and Wildlife",
+        content: [
+          {
+            type: "text",
+            value: "Forests, occupying 22% of India, regulate biogeochemical cycles. Tamil Nadu’s Agasthyamalai Biosphere Reserve protects 400 endemic species. Wildlife, like Olive Ridley turtles in Nagapattinam, faces threats from coastal development. Gulf of Mannar’s coral reefs buffer storm surges. India’s forest loss, at 0.3% annually, stems from infrastructure projects. Tamil Nadu’s restoration in Ariyalur adds 300 hectares of scrub forest. Wildlife corridors in Agasthyamalai reduce human-animal conflict by 25%. India’s CBD commitments prioritize biodiversity. Tamil Nadu’s turtle hatcheries in Chennai balance conservation with tourism pressures."
+          }
+        ]
+      },
+      {
+        id: 8,
+        title: "Agricultural Pattern",
+        content: [
+          {
+            type: "text",
+            value: "Agriculture, underpinning 15% of India’s GDP, navigates climate and policy shifts. Tamil Nadu’s Sivaganga employs sensor-based irrigation for sesame. India’s millets revolution, led by Rajasthan, enhances food security. Tamil Nadu’s agroforestry in Tiruchirappalli integrates teak with crops, yielding 20% higher returns. AI-driven crop forecasting in Theni predicts yields with 95% accuracy. Land degradation, impacting 25% of India’s farmland, demands diversification. Tamil Nadu’s zero-budget farming in Ariyalur cuts costs by 30%. Digital cooperatives in Tamil Nadu bridge market gaps, but require scalable infrastructure for smallholders."
+          }
+        ]
+      },
+      {
+        id: 9,
+        title: "Transport and Communication",
+        content: [
+          {
+            type: "text",
+            value: "Transport and communication networks catalyze economic convergence. Tamil Nadu’s Vellore Smart City integrates autonomous buses. India’s Sagarmala project optimizes 7,500 km of coastline. Tamil Nadu’s 6G trials in Tiruchirappalli target 1 Tbps speeds. Nagapattinam Port handles 15 million tonnes of cargo. Rural roads in Ariyalur, under PMGSY, cut transport costs by 40%. Blockchain-based supply chains in Tamil Nadu’s fisheries enhance traceability. Connectivity gaps in Ramanathapuram’s islands hinder growth. Tamil Nadu’s GIS-based traffic management in Vellore reduces congestion by 15%, fostering sustainable mobility."
+          }
+        ]
+      },
+      {
+        id: 10,
+        title: "Population Density and Distribution",
+        content: [
+          {
+            type: "text",
+            value: "Population density mirrors resource and opportunity gradients. Tamil Nadu’s 555 persons/sq.km contrasts India’s 470, with Tiruchirappalli at 1,500 persons/sq.km due to industrial clusters. Bihar, at 1,200 persons/sq.km, tops India. Tamil Nadu’s Thamirabarani basin supports dense agrarian communities. Remote areas like Agasthyamalai average 50 persons/sq.km. Chennai’s urban sprawl, expanding 10% yearly, reduces green cover by 5%. Demographic dividend models forecast Tamil Nadu’s peak workforce by 2035. Geospatial analytics in Tiruchirappalli optimize urban expansion, mitigating density-driven resource stress."
+          }
+        ]
+      },
+      {
+        id: 11,
+        title: "Calamities and Disaster Management",
+        content: [
+          {
+            type: "text",
+            value: "Calamities, amplified by anthropogenic forcing, challenge resilience. Tamil Nadu’s 2018 Gaja cyclone devastated Nagapattinam, costing $1 billion. India’s Himalayan landslides threaten Uttarakhand. Tamil Nadu’s disaster framework leverages LiDAR for flood mapping in Chennai. India’s SDMA integrates multi-hazard zoning. Tamil Nadu’s drone-based early warning in Tirunelveli cuts response time by 50%. Seismic retrofitting in Vellore withstands 6.0 magnitude quakes. Community-based disaster risk reduction in Nagapattinam empowers 500 villages. Climate-resilient urban planning in Chennai, using green roofs, reduces flood vulnerability by 20%."
+          }
+        ]
+      },
+      {
+        id: 12,
+        title: "Environment, Climate Change, and Geographical Landmarks",
+        content: [
+          {
+            type: "text",
+            value: "Environmental integrity underpins sustainable development. Climate change, raising Tamil Nadu’s temperatures by 1.2°C, intensifies droughts in Sivaganga. India’s Humayun’s Tomb is a UNESCO site. Tamil Nadu’s Pamban Island, linked by a cyclonic-resistant bridge, hosts marine biodiversity. Vellore’s air pollution, with PM2.5 at 60 µg/m³, impacts health. Tamil Nadu’s offshore wind in Nagapattinam targets 500 MW by 2030. Mangrove restoration in Ramanathapuram sequesters 1,000 tons of carbon yearly. Climate-smart agriculture in Tiruchirappalli, using drought-tolerant sorghum, sustains yields. Preserving Pamban’s ecology and landmarks ensures Tamil Nadu’s heritage resilience."
+          }
+        ]
+      }
+    ];
+
+    // Quiz Data
+    const quizData = [
+      {
+        sectionId: 1,
+        quiz: [
+          {
+            question: "What drives Earth’s precession cycles?",
+            options: ["Axial obliquity", "Lunar tides", "Solar radiation", "Geothermal flux"],
+            answer: "Lunar tides"
+          },
+          {
+            question: "Which sea borders Tamil Nadu’s southwest?",
+            options: ["Laccadive Sea", "Andaman Sea", "Bay of Bengal", "Arabian Sea"],
+            answer: "Laccadive Sea"
+          },
+          {
+            question: "What sculpted Tamil Nadu’s peninsular shield?",
+            options: ["Indian plate drift", "Glacial erosion", "Aeolian deposition", "Volcanic rifting"],
+            answer: "Indian plate drift"
+          }
+        ]
+      },
+      {
+        sectionId: 2,
+        quiz: [
+          {
+            question: "What formed Tamil Nadu’s Palani Hills?",
+            options: ["Fault-block tectonics", "Subduction zones", "Alluvial deposition", "Karst processes"],
+            answer: "Fault-block tectonics"
+          },
+          {
+            question: "What supports coral ecosystems near Ramanathapuram?",
+            options: ["Palk Bay", "Palani Hills", "Vindhya Range", "Malwa Plateau"],
+            answer: "Palk Bay"
+          },
+          {
+            question: "What drives microclimates in Palani Hills?",
+            options: ["Elevation gradient", "Sea currents", "Urban sprawl", "Deforestation"],
+            answer: "Elevation gradient"
+          }
+        ]
+      },
+      {
+        sectionId: 3,
+        quiz: [
+          {
+            question: "What modulates Tamil Nadu’s monsoon seasonality?",
+            options: ["Madden-Julian Oscillation", "Polar jet stream", "Walker circulation", "Hadley cell"],
+            answer: "Madden-Julian Oscillation"
+          },
+          {
+            question: "Why does Tirunelveli receive moderate rainfall?",
+            options: ["Monsoon trough", "High elevation", "Desert proximity", "Urban cooling"],
+            answer: "Monsoon trough"
+          },
+          {
+            question: "What is Tamil Nadu’s Köppen classification?",
+            options: ["Aw", "Cfb", "BSh", "Dsa"],
+            answer: "Aw"
+          }
+        ]
+      },
+      {
+        sectionId: 4,
+        quiz: [
+          {
+            question: "Which reservoir irrigates Theni’s farms?",
+            options: ["Periyar", "Vaigai", "Amaravathi", "Mettur"],
+            answer: "Periyar"
+          },
+          {
+            question: "What nurtures birds near Nagapattinam?",
+            options: ["Point Calimere", "Vedanthangal", "Pulicat Lake", "Chilika Lake"],
+            answer: "Point Calimere"
+          },
+          {
+            question: "What boosts recharge in Sivaganga?",
+            options: ["Micro-watersheds", "Open canals", "Deep borewells", "Urban paving"],
+            answer: "Micro-watersheds"
+          }
+        ]
+      },
+      {
+        sectionId: 5,
+        quiz: [
+          {
+            question: "Which river supports Tirunelveli’s irrigation?",
+            options: ["Thamirabarani", "Palar", "Vaigai", "Noyyal"],
+            answer: "Thamirabarani"
+          },
+          {
+            question: "What degrades the Palar River?",
+            options: ["Sand mining", "Agricultural runoff", "Domestic sewage", "Natural silt"],
+            answer: "Sand mining"
+          },
+          {
+            question: "Which dam generates 5 MW hydropower?",
+            options: ["Manimuthar", "Vaigai", "Mettur", "Bhavanisagar"],
+            answer: "Manimuthar"
+          }
+        ]
+      },
+      {
+        sectionId: 6,
+        quiz: [
+          {
+            question: "Which soil in Tirunelveli suits groundnuts?",
+            options: ["Sandy loam", "Red soil", "Clayey", "Laterite"],
+            answer: "Sandy loam"
+          },
+          {
+            question: "Which mineral fuels Ariyalur’s cement industry?",
+            options: ["Limestone", "Magnesite", "Chromite", "Gypsum"],
+            answer: "Limestone"
+          },
+          {
+            question: "What sequesters carbon in Theni’s farms?",
+            options: ["Biochar", "Pesticides", "Monoculture", "Overgrazing"],
+            answer: "Biochar"
+          }
+        ]
+      },
+      {
+        sectionId: 7,
+        quiz: [
+          {
+            question: "Which reserve protects Tamil Nadu’s endemics?",
+            options: ["Agasthyamalai", "Sathyamangalam", "Mudumalai", "Anamalai"],
+            answer: "Agasthyamalai"
+          },
+          {
+            question: "What buffers storm surges in Tamil Nadu?",
+            options: ["Gulf of Mannar reefs", "Palk Bay mangroves", "Palani forests", "Vindhya shrubs"],
+            answer: "Gulf of Mannar reefs"
+          },
+          {
+            question: "What threatens Olive Ridley turtles?",
+            options: ["Coastal development", "Climate cooling", "Overhunting", "Soil erosion"],
+            answer: "Coastal development"
+          }
+        ]
+      },
+      {
+        sectionId: 8,
+        quiz: [
+          {
+            question: "What crop is grown in Sivaganga?",
+            options: ["Sesame", "Chillies", "Rice", "Cotton"],
+            answer: "Sesame"
+          },
+          {
+            question: "What predicts yields in Theni?",
+            options: ["AI forecasting", "Manual surveys", "Flood irrigation", "Burning stubble"],
+            answer: "AI forecasting"
+          },
+          {
+            question: "What integrates teak in Tiruchirappalli?",
+            options: ["Agroforestry", "Monoculture", "Slash farming", "Greenhousing"],
+            answer: "Agroforestry"
+          }
+        ]
+      },
+      {
+        sectionId: 9,
+        quiz: [
+          {
+            question: "What integrates mobility in Vellore?",
+            options: ["Autonomous buses", "Metro rails", "Cycle paths", "Horse carts"],
+            answer: "Autonomous buses"
+          },
+          {
+            question: "Which port supports Nagapattinam?",
+            options: ["Nagapattinam Port", "Tuticorin Port", "Chennai Port", "Kochin Port"],
+            answer: "Nagapattinam Port"
+          },
+          {
+            question: "What targets 1 Tbps in Tiruchirappalli?",
+            options: ["6G", "5G", "Fiber optics", "Satellite links"],
+            answer: "6G"
+          }
+        ]
+      },
+      {
+        sectionId: 10,
+        quiz: [
+          {
+            question: "Which city has 1,500 persons/sq.km in Tamil Nadu?",
+            options: ["Tiruchirappalli", "Agasthyamalai", "Sivaganga", "Theni"],
+            answer: "Tiruchirappalli"
+          },
+          {
+            question: "Why is Thamirabarani basin populated?",
+            options: ["Agrarian resources", "High altitude", "Mineral wealth", "Desert access"],
+            answer: "Agrarian resources"
+          },
+          {
+            question: "Which state tops India’s density?",
+            options: ["Bihar", "Kerala", "West Bengal", "Punjab"],
+            answer: "Bihar"
+          }
+        ]
+      },
+      {
+        sectionId: 11,
+        quiz: [
+          {
+            question: "What devastated Nagapattinam in 2018?",
+            options: ["Gaja cyclone", "Chennai floods", "Vellore quake", "Theni drought"],
+            answer: "Gaja cyclone"
+          },
+          {
+            question: "What maps floods in Chennai?",
+            options: ["LiDAR", "Weather radar", "Manual gauges", "Satellite imagery"],
+            answer: "LiDAR"
+          },
+          {
+            question: "What reduces vulnerability in Chennai?",
+            options: ["Green roofs", "Open drains", "High embankments", "Deforestation"],
+            answer: "Green roofs"
+          }
+        ]
+      },
+      {
+        sectionId: 12,
+        quiz: [
+          {
+            question: "Which is a Tamil Nadu landmark?",
+            options: ["Pamban Island", "Humayun’s Tomb", "Fatehpur Sikri", "Khajuraho"],
+            answer: "Pamban Island"
+          },
+          {
+            question: "What intensifies droughts in Sivaganga?",
+            options: ["Temperature rise", "Glacial melt", "Soil fertility", "Urban cooling"],
+            answer: "Temperature rise"
+          },
+          {
+            question: "What sequesters carbon in Ramanathapuram?",
+            options: ["Mangrove restoration", "Coal plants", "Urban sprawl", "Diesel farms"],
+            answer: "Mangrove restoration"
+          }
+        ]
+      }
+    ];
+
+    // MCQ Data
+    const mcqData = [
+      {
+        question: "What drives Earth’s precession cycles?",
+        answer: "Lunar tides",
+        explanation: "Lunar tides influence Earth’s axial precession, impacting long-term climate patterns."
+      },
+      {
+        question: "Which sea borders Tamil Nadu’s southwest?",
+        answer: "Laccadive Sea",
+        explanation: "The Laccadive Sea shapes Tamil Nadu’s southwestern coastal dynamics."
+      },
+      {
+        question: "What sculpted Tamil Nadu’s peninsular shield?",
+        answer: "Indian plate drift",
+        explanation: "The Indian plate’s 5 cm/year drift formed Tamil Nadu’s peninsular shield."
+      },
+      {
+        question: "What formed Tamil Nadu’s Palani Hills?",
+        answer: "Fault-block tectonics",
+        explanation: "Fault-block tectonics uplifted the Palani Hills, creating shola forests."
+      },
+      {
+        question: "What supports coral ecosystems near Ramanathapuram?",
+        answer: "Palk Bay",
+        explanation: "Palk Bay’s shallow bathymetry fosters Ramanathapuram’s coral ecosystems."
+      },
+      {
+        question: "What drives microclimates in Palani Hills?",
+        answer: "Elevation gradient",
+        explanation: "Palani Hills’ elevation gradient creates diverse microclimates for tea estates."
+      },
+      {
+        question: "What modulates Tamil Nadu’s monsoon seasonality?",
+        answer: "Madden-Julian Oscillation",
+        explanation: "Madden-Julian Oscillation drives intra-seasonal monsoon variability in Tamil Nadu."
+      },
+      {
+        question: "Why does Tirunelveli receive moderate rainfall?",
+        answer: "Monsoon trough",
+        explanation: "The monsoon trough channels moderate rainfall to Tirunelveli."
+      },
+      {
+        question: "What is Tamil Nadu’s Köppen classification?",
+        answer: "Aw",
+        explanation: "Tamil Nadu’s ‘Aw’ classification denotes a tropical wet-dry climate."
+      },
+      {
+        question: "Which reservoir irrigates Theni’s farms?",
+        answer: "Periyar",
+        explanation: "Periyar Reservoir, via inter-state transfers, irrigates Theni’s agriculture."
+      },
+      {
+        question: "What nurtures birds near Nagapattinam?",
+        answer: "Point Calimere",
+        explanation: "Point Calimere’s wetlands support migratory birds near Nagapattinam."
+      },
+      {
+        question: "What boosts recharge in Sivaganga?",
+        answer: "Micro-watersheds",
+        explanation: "Micro-watersheds in Sivaganga enhance groundwater recharge by 20%."
+      },
+      {
+        question: "Which river supports Tirunelveli’s irrigation?",
+        answer: "Thamirabarani",
+        explanation: "Thamirabarani’s baseflow sustains Tirunelveli’s irrigation systems."
+      },
+      {
+        question: "What degrades the Palar River?",
+        answer: "Sand mining",
+        explanation: "Sand mining disrupts Palar’s recharge and channel morphology."
+      },
+      {
+        question: "Which dam generates 5 MW hydropower?",
+        answer: "Manimuthar",
+        explanation: "Manimuthar Dam produces 5 MW hydropower for Tamil Nadu."
+      },
+      {
+        question: "Which soil in Tirunelveli suits groundnuts?",
+        answer: "Sandy loam",
+        explanation: "Tirunelveli’s sandy loam is ideal for groundnut cultivation."
+      },
+      {
+        question: "Which mineral fuels Ariyalur’s cement industry?",
+        answer: "Limestone",
+        explanation: "Ariyalur’s limestone deposits drive Tamil Nadu’s cement production."
+      },
+      {
+        question: "What sequesters carbon in Theni’s farms?",
+        answer: "Biochar",
+        explanation: "Biochar in Theni sequesters 2 tons/ha of carbon in soils."
+      },
+      {
+        question: "Which reserve protects Tamil Nadu’s endemics?",
+        answer: "Agasthyamalai",
+        explanation: "Agasthyamalai Biosphere Reserve safeguards 400 endemic species."
+      },
+      {
+        question: "What buffers storm surges in Tamil Nadu?",
+        answer: "Gulf of Mannar reefs",
+        explanation: "Gulf of Mannar’s coral reefs mitigate Tamil Nadu’s storm surges."
+      },
+      {
+        question: "What threatens Olive Ridley turtles?",
+        answer: "Coastal development",
+        explanation: "Coastal development endangers Olive Ridley turtles’ nesting sites."
+      },
+      {
+        question: "What crop is grown in Sivaganga?",
+        answer: "Sesame",
+        explanation: "Sivaganga cultivates sesame using sensor-based irrigation."
+      },
+      {
+        question: "What predicts yields in Theni?",
+        answer: "AI forecasting",
+        explanation: "AI-driven forecasting in Theni predicts crop yields with 95% accuracy."
+      },
+      {
+        question: "What integrates teak in Tiruchirappalli?",
+        answer: "Agroforestry",
+        explanation: "Agroforestry in Tiruchirappalli integrates teak with crops."
+      },
+      {
+        question: "What integrates mobility in Vellore?",
+        answer: "Autonomous buses",
+        explanation: "Vellore’s Smart City deploys autonomous buses for mobility."
+      },
+      {
+        question: "Which port supports Nagapattinam?",
+        answer: "Nagapattinam Port",
+        explanation: "Nagapattinam Port handles 15 million tonnes of cargo yearly."
+      },
+      {
+        question: "What targets 1 Tbps in Tiruchirappalli?",
+        answer: "6G",
+        explanation: "6G trials in Tiruchirappalli aim for 1 Tbps data speeds."
+      },
+      {
+        question: "Which city has 1,500 persons/sq.km in Tamil Nadu?",
+        answer: "Tiruchirappalli",
+        explanation: "Tiruchirappalli’s density reaches 1,500 persons/sq.km due to industries."
+      },
+      {
+        question: "Why is Thamirabarani basin populated?",
+        answer: "Agrarian resources",
+        explanation: "Thamirabarani basin’s agrarian resources support dense settlements."
+      },
+      {
+        question: "Which state tops India’s density?",
+        answer: "Bihar",
+        explanation: "Bihar leads India’s population density at 1,200 persons/sq.km."
+      },
+      {
+        question: "What devastated Nagapattinam in 2018?",
+        answer: "Gaja cyclone",
+        explanation: "The 2018 Gaja cyclone caused $1 billion in damages in Nagapattinam."
+      },
+      {
+        question: "What maps floods in Chennai?",
+        answer: "LiDAR",
+        explanation: "LiDAR technology maps Chennai’s flood-prone zones with high precision."
+      },
+      {
+        question: "What reduces vulnerability in Chennai?",
+        answer: "Green roofs",
+        explanation: "Green roofs in Chennai reduce urban flood vulnerability by 20%."
+      },
+      {
+        question: "Which is a Tamil Nadu landmark?",
+        answer: "Pamban Island",
+        explanation: "Pamban Island’s bridge and marine biodiversity are iconic landmarks."
+      },
+      {
+        question: "What intensifies droughts in Sivaganga?",
+        answer: "Temperature rise",
+        explanation: "A 1.2°C temperature rise exacerbates Sivaganga’s droughts."
+      },
+      {
+        question: "What sequesters carbon in Ramanathapuram?",
+        answer: "Mangrove restoration",
+        explanation: "Mangrove restoration sequesters 1,000 tons of carbon yearly."
+      }
+    ];
+
+    // Main logic wrapped in IIFE to manage execution flow
+    (function initializeApp() {
+      // Combine sections: Define globally to fix scope issue
+      let sections = []; // Initialize globally
+      try {
+        sections = scienceContent.map(content => {
+          const quizEntry = quizData.find(q => q.sectionId === content.id);
+          return {
+            id: content.id,
+            title: content.title,
+            content: content.content,
+            quiz: quizEntry?.quiz || []
+          };
+        });
+      } catch (e) {
+        console.error("Error creating sections:", e);
+        document.getElementById("content").innerHTML = `<p class="text-red">Failed to load content. Please contact support.</p>`;
+        return; // Legal return within IIFE
+      }
+
+      let currentSection = 0;
+      let scores = (() => {
+        try {
+          if (typeof localStorage === 'undefined') return Array(sections.length).fill(null);
+          const stored = JSON.parse(localStorage.getItem("geographyExpertScores"));
+          return Array.isArray(stored) && stored.length === sections.length ? stored : Array(sections.length).fill(null);
+        } catch {
+          return Array(sections.length).fill(null);
+        }
+      })();
+
+      const motivationalMessages = [
+        "Masterful! Keep synthesizing!",
+        "Exceptional! Lead with insight!",
+        "Phenomenal! Conquer complexity!",
+        "Brilliant! Shape the discourse!",
+        "Elite performance! Drive innovation!"
+      ];
+
+      // Render content
+      function renderContent(contentItems) {
+        return contentItems.map(item => {
+          switch (item.type) {
+            case "text":
+              return `<p>${item.value}</p>`;
+            case "image":
+              return `<div class="content-image"><p>Image Placeholder: ${item.alt} (${item.caption})</p></div>`;
+            case "chart":
+              const canvasId = `chart-${Math.random().toString(36).substr(2, 9)}`;
+              setTimeout(() => {
+                const ctx = document.getElementById(canvasId)?.getContext("2d");
+                if (ctx && item.config) {
+                  new Chart(ctx, item.config);
+                }
+              }, 0);
+              return `<div class="content-chart"><canvas id="${canvasId}"></canvas><p>${item.caption}</p></div>`;
+            case "animation":
+              return `<div class="content-animation"><p>Animation Placeholder: ${item.description}</p></div>`;
+            default:
+              return "";
+          }
+        }).join("");
+      }
+
+      // Update navigation
+      function updateNavigation(sectionIndex, hasSubmitted) {
+        const navDiv = document.getElementById("navigation");
+        if (!navDiv) return;
+        let html = "";
+        if (hasSubmitted) {
+          html += `<button id="retake-btn" class="btn-yellow" aria-label="Retake quiz">Retake Quiz</button>`;
+        }
+        if (sectionIndex > 0) {
+          html += `<button id="prev-btn" class="btn-gray" aria-label="Previous section">Previous</button>`;
+        }
+        if (hasSubmitted && sectionIndex < sections.length - 1 && scores[sectionIndex] >= 70) {
+          html += `<button id="next-btn" class="btn-blue" aria-label="Next section">Next</button>`;
+        }
+        if (sectionIndex === sections.length - 1 && hasSubmitted && scores[sectionIndex] >= 70) {
+          html += `<button id="complete-btn" class="btn-green" aria-label="Complete course">Complete Geography</button>`;
+        }
+        navDiv.innerHTML = html;
+
+        document.getElementById("retake-btn")?.addEventListener("click", () => {
+          document.getElementById("quiz-form")?.reset();
+          document.getElementById("feedback").innerHTML = "";
+          const submitBtn = document.querySelector("#quiz-form button[type='submit']");
+          if (submitBtn) submitBtn.disabled = false;
+          updateNavigation(sectionIndex, false);
+        });
+
+        document.getElementById("prev-btn")?.addEventListener("click", () => {
+          currentSection--;
+          renderSection(currentSection);
+        });
+
+        document.getElementById("next-btn")?.addEventListener("click", () => {
+          if (scores[sectionIndex] >= 70) {
+            currentSection++;
+            renderSection(currentSection);
+          }
+        });
+
+        document.getElementById("complete-btn")?.addEventListener("click", () => {
+          localStorage.removeItem("geographyExpertScores");
+          document.getElementById("content").innerHTML = `
+            <h2>Congratulations!</h2>
+            <p>You've completed the TNPSC Group 4 Geography (Expert) course!</p>
+            <a href="tnpsc-gr4-home.html" class="btn-blue">Return to Home</a>
+          `;
+        });
+      }
+
+      // Render section
+      function renderSection(sectionIndex) {
+        try {
+          if (sectionIndex < 0 || sectionIndex >= sections.length) {
+            throw new Error("Invalid section index");
+          }
+          const section = sections[sectionIndex];
+          let html = `
+            <h2>${section.title}</h2>
+            ${renderContent(section.content)}
+          `;
+          if (section.quiz.length > 0) {
+            html += `
+              <h3>Quiz</h3>
+              <form id="quiz-form">
+                ${section.quiz.map((q, i) => `
+                  <div>
+                    <p>${i + 1}. ${q.question}</p>
+                    ${q.options.map(opt => `
+                      <label for="q${i}-${opt.replace(/\s+/g, '')}">
+                        <input type="radio" id="q${i}-${opt.replace(/\s+/g, '')}" name="q${i}" value="${opt}" required>
+                        ${opt}
+                      </label>
+                    `).join("")}
+                  </div>
+                `).join("")}
+                <button type="submit" class="btn-blue">Submit</button>
+              </form>
+              <div id="feedback"></div>
+            `;
+          } else {
+            html += '<p class="text-red">No quiz available for this section.</p>';
+          }
+          html += '<div id="navigation"></div>';
+          document.getElementById("content").innerHTML = html;
+
+          const quizForm = document.getElementById("quiz-form");
+          if (quizForm) {
+            quizForm.addEventListener("submit", e => {
+              e.preventDefault();
+              const selected = Array.from(quizForm.querySelectorAll("input:checked"));
+              if (selected.length === section.quiz.length) {
+                checkAnswers(sectionIndex);
+              } else {
+                document.getElementById("feedback").innerHTML = '<p class="text-red">Please answer all questions.</p>';
+              }
+            });
+          }
+          updateNavigation(sectionIndex, scores[sectionIndex] !== null);
+        } catch (error) {
+          console.error("Error rendering section:", error);
+          document.getElementById("content").innerHTML = `<p class="text-red">Error: ${error.message}</p>`;
+        }
+      }
+
+      // Check answers
+      function checkAnswers(sectionIndex) {
+        try {
+          const form = document.getElementById("quiz-form");
+          const feedbackDiv = document.getElementById("feedback");
+          if (!form || !feedbackDiv) {
+            throw new Error("Form or feedback div missing");
+          }
+          let score = 0;
+          let feedbackHtml = "";
+
+          const submitBtn = form.querySelector("button[type='submit']");
+          if (submitBtn) {
+            submitBtn.disabled = true;
+            submitBtn.style.opacity = "0.6";
+          }
+
+          sections[sectionIndex].quiz.forEach((q, i) => {
+            const selected = form.querySelector(`input[name="q${i}"]:checked`);
+            const isCorrect = selected && selected.value === q.answer;
+            if (isCorrect) score++;
+
+            const mcq = mcqData.find(m => m.question === q.question && m.answer === q.answer);
+            feedbackHtml += `
+              <p><strong>${q.question}</strong><br>
+              Your answer: ${selected?.value || "None"}<br>
+              Correct answer: ${q.answer}<br>
+              Explanation: ${mcq ? mcq.explanation : "Not available"}
+              </p>
+            `;
+          });
+
+          const percentage = (score / sections[sectionIndex].quiz.length) * 100;
+          scores[sectionIndex] = percentage;
+          localStorage.setItem("geographyExpertScores", JSON.stringify(scores));
+
+          feedbackDiv.innerHTML = `
+            <p>Your score: ${score}/${sections[sectionIndex].quiz.length} (${percentage.toFixed(2)}%)</p>
+            ${percentage >= 70 ? `<p class="text-green">${motivationalMessages[Math.floor(Math.random() * motivationalMessages.length)]}</p>` : "<p class=\"text-red\">You need 70% to proceed. Please retake the quiz.</p>"}
+            <h4>Feedback:</h4>
+            ${feedbackHtml}
+          `;
+
+          updateNavigation(sectionIndex, true);
+        } catch (error) {
+          console.error("Error checking answers:", error);
+          document.getElementById("feedback").innerHTML = `<p class="text-red">Error: ${error.message}</p>`;
+        }
+      }
+
+      // Hamburger menu
+      const menuBtn = document.getElementById("menu-btn");
+      const menu = document.getElementById("menu");
+
+      function setupMenuToggle() {
+        if (window.innerWidth <= 768) {
+          menuBtn.classList.remove("hidden");
+          if (!menu.classList.contains("hidden")) menu.classList.add("hidden");
+          menuBtn.addEventListener("click", () => {
+            menu.classList.toggle("hidden");
+          });
+        } else {
+          menuBtn.classList.add("hidden");
+          menu.classList.remove("hidden");
+        }
+      }
+
+      window.addEventListener("DOMContentLoaded", () => {
+        setupMenuToggle();
+        window.addEventListener("resize", setupMenuToggle);
+        renderSection(currentSection);
+      });
+    })();
+  </script>
+</body>
+</html>
