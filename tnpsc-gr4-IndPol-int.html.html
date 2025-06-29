@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Drillmasters LMS - Indian Constitution (Intermediate)</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; background-color: #f3f4f6; display: flex; flex-direction: column; min-height: 100vh; }
+    .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 15px; }
+    header { background-color: #2563eb; color: white; padding: 1rem 0; }
+    header h1 { font-size: 1.5rem; font-weight: bold; }
+    header h2 { font-size: 1.125rem; }
+    header .flex { display: flex; justify-content: space-between; align-items: center; }
+    nav { background-color: #1d4ed8; padding: 1rem 0; }
+    nav ul { list-style: none; display: flex; gap: 1rem; }
+    nav a { color: white; text-decoration: none; }
+    nav a:hover { text-decoration: underline; }
+    main { flex-grow: 1; padding: 1rem 0; }
+    #content { background-color: white; padding: 1.5rem; border-radius: 0.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+    footer { background-color: #1f2937; color: white; padding: 1rem 0; margin-top: auto; text-align: center; }
+    footer a { color: white; text-decoration: underline; }
+    button { padding: 0.5rem 1rem; border-radius: 0.25rem; cursor: pointer; margin: 0.25rem; }
+    .btn-blue { background-color: #3b82f6; color: white; border: none; }
+    .btn-blue:hover { background-color: #2563eb; }
+    .btn-gray { background-color: #6b7280; color: white; border: none; }
+    .btn-gray:hover { background-color: #4b5563; }
+    .btn-green { background-color: #22c55e; color: white; border: none; }
+    .btn-green:hover { background-color: #16a34a; }
+    .btn-yellow { background-color: #f59e0b; color: white; border: none; }
+    .btn-yellow:hover { background-color: #d97706; }
+    .text-red { color: #ef4444; }
+    .text-green { color: #22c55e; }
+    .hidden { display: none; }
+    #quiz-form { margin-top: 1rem; }
+    #quiz-form div { margin-bottom: 1rem; }
+    #quiz-form p { font-weight: bold; margin-bottom: 0.5rem; }
+    #quiz-form label { display: block; margin: 0.25rem 0; }
+    #quiz-form input[type="radio"] { margin-right: 0.5rem; }
+    #feedback { margin-top: 1rem; }
+    #navigation { margin-top: 1rem; display: flex; gap: 0.5rem; }
+    @media (max-width: 768px) {
+      nav ul { flex-direction: column; gap: 0.5rem; }
+      #menu-btn { display: block; }
+      #menu.hidden { display: none; }
+      .container { padding: 0 10px; }
+      button { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container flex">
+      <div>
+        <h1>Indian Constitution - Intermediate</h1>
+        <h2>TNPSC Group 4 Preparation</h2>
+      </div>
+      <button id="menu-btn" class="hidden">☰</button>
+    </div>
+    <nav id="menu">
+      <div class="container">
+        <ul>
+          <li><a href="tnpsc-gr4-home.html">TNPSC Group 4 Home</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <div class="container">
+      <div id="content">
+        <p>Loading content...</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>© 2025 Drillmasters LMS. All rights reserved.</p>
+      <p>Contact: <a href="mailto:support@drillmasters.in">support@drillmasters.in</a> | <a href="https://www.drillmasters.in ">www.drillmasters.in</a></p>
+    </div>
+  </footer>
+
+  <script>
+    // Constitution Content (Intermediate Level)
+    const constitutionContent = [
+      {
+        id: 1,
+        title: "Preamble and Salient Features of the Indian Constitution",
+        content: [
+          {
+            type: "text",
+            value: "The Preamble serves as the guiding philosophy of the Constitution, declaring India to be a sovereign, socialist, secular, democratic republic that ensures justice, liberty, equality, and fraternity for all citizens. It reflects the basic structure doctrine established in the Kesavananda Bharati case (1973), which limits Parliament's power to amend the Constitution’s core values. The Constitution is notable for being the longest written constitution in the world, incorporating features borrowed from various global systems while maintaining a unique balance between rigidity and flexibility."
+          }
+        ]
+      },
+      {
+        id: 2,
+        title: "Union, States, and Union Territories: Structure and Powers",
+        content: [
+          {
+            type: "text",
+            value: "India follows a federal system where powers are distributed among the Union, States, and Union Territories. Article 246 and the Seventh Schedule classify subjects into Union List, State List, and Concurrent List. The Union Government handles national defense, foreign affairs, and railways, while State Governments manage education, public health, and local governance. Union Territories operate under the direct control of the Central Government, though some, like Delhi and Puducherry, have limited self-governance. This framework ensures administrative efficiency while respecting regional diversity."
+          }
+        ]
+      },
+      {
+        id: 3,
+        title: "Citizenship, Fundamental Rights, and Duties",
+        content: [
+          {
+            type: "text",
+            value: "Part II of the Constitution defines citizenship, granting it uniformly across the country to promote national unity. Part III enshrines Fundamental Rights, including Right to Equality (Articles 14–18), Freedom of Speech and Expression (Article 19), and Protection against Exploitation (Articles 23–24). These rights are justiciable and can be enforced through courts. Part IV-A introduces Fundamental Duties, emphasizing civic responsibility. Together, they ensure a balance between individual freedoms and collective duties, reinforcing India’s democratic ethos."
+          }
+        ]
+      },
+      {
+        id: 4,
+        title: "Union and State Governance: Executive and Legislature",
+        content: [
+          {
+            type: "text",
+            value: "The Union executive includes the President, Vice-President, and Prime Minister-led Council of Ministers. The President acts on the advice of the Council, ensuring parliamentary supremacy. The Lok Sabha and Rajya Sabha constitute the Parliament, responsible for lawmaking. Similarly, State governments have Governors and Chief Ministers, with legislative assemblies and councils in some states. The structure maintains checks and balances, ensuring transparency and accountability at both levels of government."
+          }
+        ]
+      },
+      {
+        id: 5,
+        title: "Federalism and Centre-State Relations",
+        content: [
+          {
+            type: "text",
+            value: "Federalism in India strikes a balance between central authority and state autonomy. The distribution of powers through lists and judicial review mechanisms ensures this equilibrium. Institutions like the Finance Commission and Inter-State Council facilitate cooperation. However, during emergencies or conflicts, the Centre holds precedence, reflecting India’s quasi-federal nature. This dynamic fosters national integration while accommodating regional aspirations."
+          }
+        ]
+      },
+      {
+        id: 6,
+        title: "Elections and Electoral Process",
+        content: [
+          {
+            type: "text",
+            value: "The Election Commission of India (ECI), an autonomous constitutional body, oversees free and fair elections. It conducts general elections every five years using Electronic Voting Machines (EVMs) and Voter Verifiable Paper Audit Trail (VVPAT) systems. Political parties must register with the ECI and adhere to the Model Code of Conduct. The electoral process empowers citizens to choose their representatives democratically, strengthening India’s status as the world’s largest democracy."
+          }
+        ]
+      },
+      {
+        id: 7,
+        title: "Judiciary, Anti-Corruption Measures, and Human Rights",
+        content: [
+          {
+            type: "text",
+            value: "The judiciary upholds the rule of law and protects fundamental rights through judicial review. The Supreme Court and High Courts act as guardians of the Constitution. Anti-corruption measures include institutions like the Lokpal and Lokayuktas Act (2013), CBI, and Enforcement Directorate. Human rights are safeguarded through the National Human Rights Commission (NHRC) and Public Interest Litigation (PIL), ensuring access to justice for marginalized groups."
+          }
+        ]
+      },
+      {
+        id: 8,
+        title: "Political System and Parties in India and Tamil Nadu",
+        content: [
+          {
+            type: "text",
+            value: "India’s political system is multi-party, governed by the Representation of the People Act (1951). Major national parties include BJP, Congress, and CPI. In Tamil Nadu, DMK, AIADMK, and NTK dominate due to strong regional identity. Coalition politics has become common since the 1990s, with alliances like NDA and UPA shaping national governance. Tamil Nadu’s politics emphasizes social justice, linguistic pride, and welfare schemes, influencing voter behavior and policy priorities."
+          }
+        ]
+      }
+    ];
+
+    // Quiz Data (Intermediate Level)
+    const quizData = [
+      {
+        sectionId: 1,
+        quiz: [
+          {
+            question: "What doctrine was established in the Kesavananda Bharati case?",
+            options: ["Judicial Review", "Basic Structure", "Separation of Powers", "Federal Supremacy"],
+            answer: "Basic Structure"
+          },
+          {
+            question: "Which article governs the amendment process of the Constitution?",
+            options: ["Article 368", "Article 12", "Article 356", "Article 14"],
+            answer: "Article 368"
+          },
+          {
+            question: "Which part of the Constitution declares India a secular state?",
+            options: ["Preamble", "Fundamental Rights", "Directive Principles", "Fundamental Duties"],
+            answer: "Preamble"
+          }
+        ]
+      },
+      {
+        sectionId: 2,
+        quiz: [
+          {
+            question: "Which schedule deals with the allocation of powers between Union and States?",
+            options: ["Fourth", "Fifth", "Sixth", "Seventh"],
+            answer: "Seventh"
+          },
+          {
+            question: "Which commission recommends financial devolution between Centre and States?",
+            options: ["NITI Aayog", "Finance Commission", "Inter-State Council", "Planning Commission"],
+            answer: "Finance Commission"
+          },
+          {
+            question: "Which list includes subjects like education?",
+            options: ["Union List", "State List", "Concurrent List", "Residual List"],
+            answer: "State List"
+          }
+        ]
+      },
+      {
+        sectionId: 3,
+        quiz: [
+          {
+            question: "Which amendment introduced Fundamental Duties?",
+            options: ["42nd", "44th", "73rd", "86th"],
+            answer: "42nd"
+          },
+          {
+            question: "Which case expanded the scope of Article 21?",
+            options: ["Menaka Gandhi v. Union of India", "Golaknath Case", "Kesavananda Bharati Case", "Shah Bano Case"],
+            answer: "Menaka Gandhi v. Union of India"
+          },
+          {
+            question: "Which article guarantees cultural and educational rights?",
+            options: ["Article 21", "Article 25", "Article 29", "Article 32"],
+            answer: "Article 29"
+          }
+        ]
+      },
+      {
+        sectionId: 4,
+        quiz: [
+          {
+            question: "Who appoints the Governor of a State?",
+            options: ["President", "Chief Justice", "Prime Minister", "Chief Minister"],
+            answer: "President"
+          },
+          {
+            question: "Which house of Parliament is directly elected by people?",
+            options: ["Rajya Sabha", "Lok Sabha", "Legislative Assembly", "Legislative Council"],
+            answer: "Lok Sabha"
+          },
+          {
+            question: "Which article provides for the office of the Prime Minister?",
+            options: ["Article 74", "Article 75", "Article 76", "Article 77"],
+            answer: "Article 75"
+          }
+        ]
+      },
+      {
+        sectionId: 5,
+        quiz: [
+          {
+            question: "Which body resolves disputes between states?",
+            options: ["Supreme Court", "High Court", "President", "Council of Ministers"],
+            answer: "Supreme Court"
+          },
+          {
+            question: "Under which emergency does the Centre gain exclusive legislative power?",
+            options: ["National Emergency", "Financial Emergency", "President's Rule", "External Emergency"],
+            answer: "National Emergency"
+          },
+          {
+            question: "Which institution advises on inter-state water disputes?",
+            options: ["Supreme Court", "Water Disputes Tribunal", "Parliament", "President"],
+            answer: "Water Disputes Tribunal"
+          }
+        ]
+      },
+      {
+        sectionId: 6,
+        quiz: [
+          {
+            question: "Which body regulates elections in India?",
+            options: ["Election Commission", "President", "Parliament", "Supreme Court"],
+            answer: "Election Commission"
+          },
+          {
+            question: "Which act governs the conduct of elections in India?",
+            options: ["Representation of the People Act", "Delimitation Act", "Electoral Roll Act", "Election Symbols Order"],
+            answer: "Representation of the People Act"
+          },
+          {
+            question: "Which device ensures transparency in voting?",
+            options: ["EVM", "Ballot Box", "VVPAT", "Postal Ballot"],
+            answer: "VVPAT"
+          }
+        ]
+      },
+      {
+        sectionId: 7,
+        quiz: [
+          {
+            question: "Which article provides for the establishment of the Supreme Court?",
+            options: ["Article 124", "Article 130", "Article 143", "Article 145"],
+            answer: "Article 124"
+          },
+          {
+            question: "Which anti-corruption body investigates cases involving central government officials?",
+            options: ["CBI", "ED", "NIA", "CID"],
+            answer: "CBI"
+          },
+          {
+            question: "Which commission safeguards human rights?",
+            options: ["NHRC", "NCPCR", "NCSC", "NITI Aayog"],
+            answer: "NHRC"
+          }
+        ]
+      },
+      {
+        sectionId: 8,
+        quiz: [
+          {
+            question: "Which party leads the NDA coalition as of 2025?",
+            options: ["INC", "BJP", "DMK", "AAP"],
+            answer: "BJP"
+          },
+          {
+            question: "Which law governs political party registration?",
+            options: ["Representation of the People Act", "Companies Act", "IPC", "CrPC"],
+            answer: "Representation of the People Act"
+          },
+          {
+            question: "What is a key feature of Tamil Nadu’s politics?",
+            options: ["Economic liberalization", "Social justice", "Unitary governance", "Judicial activism"],
+            answer: "Social justice"
+          }
+        ]
+      }
+    ];
+
+    // MCQ Feedback Data
+    const mcqData = [
+      {
+        question: "What doctrine was established in the Kesavananda Bharati case?",
+        answer: "Basic Structure",
+        explanation: "The Basic Structure Doctrine limits Parliament's power to amend the Constitution’s core values, ensuring its democratic foundation remains intact."
+      },
+      {
+        question: "Which article governs the amendment process of the Constitution?",
+        answer: "Article 368",
+        explanation: "Article 368 outlines the procedure for amending the Constitution, balancing flexibility and rigidity."
+      },
+      {
+        question: "Which part of the Constitution declares India a secular state?",
+        answer: "Preamble",
+        explanation: "The Preamble declares India as a secular republic, ensuring religious freedom and neutrality of the state."
+      },
+      {
+        question: "Which schedule deals with the allocation of powers between Union and States?",
+        answer: "Seventh",
+        explanation: "The Seventh Schedule divides legislative powers between the Union and States via three lists."
+      },
+      {
+        question: "Which commission recommends financial devolution between Centre and States?",
+        answer: "Finance Commission",
+        explanation: "The Finance Commission allocates taxes and grants-in-aid to ensure fiscal equity between Centre and States."
+      },
+      {
+        question: "Which list includes subjects like education?",
+        answer: "State List",
+        explanation: "Education is primarily a State subject, allowing states to design curricula and policies accordingly."
+      },
+      {
+        question: "Which amendment introduced Fundamental Duties?",
+        answer: "42nd",
+        explanation: "The 42nd Amendment added Fundamental Duties to emphasize civic responsibilities alongside rights."
+      },
+      {
+        question: "Which case expanded the scope of Article 21?",
+        answer: "Menaka Gandhi v. Union of India",
+        explanation: "This landmark case broadened Article 21 to include the right to life and personal liberty beyond procedural fairness."
+      },
+      {
+        question: "Which article guarantees cultural and educational rights?",
+        answer: "Article 29",
+        explanation: "Article 29 protects the rights of minorities to conserve their language, script, and culture."
+      },
+      {
+        question: "Who appoints the Governor of a State?",
+        answer: "President",
+        explanation: "The President appoints the Governor, who acts as the Constitutional head of the state."
+      },
+      {
+        question: "Which house of Parliament is directly elected by people?",
+        answer: "Lok Sabha",
+        explanation: "The Lok Sabha represents the will of the people through direct elections."
+      },
+      {
+        question: "Which article provides for the office of the Prime Minister?",
+        answer: "Article 75",
+        explanation: "Article 75 establishes the position and appointment of the Prime Minister and Council of Ministers."
+      },
+      {
+        question: "Which body resolves disputes between states?",
+        answer: "Supreme Court",
+        explanation: "The Supreme Court has original jurisdiction in disputes between states."
+      },
+      {
+        question: "Under which emergency does the Centre gain exclusive legislative power?",
+        answer: "National Emergency",
+        explanation: "During a National Emergency, the Centre assumes exclusive legislative authority over State List subjects."
+      },
+      {
+        question: "Which institution advises on inter-state water disputes?",
+        answer: "Water Disputes Tribunal",
+        explanation: "The Water Disputes Tribunal adjudicates conflicts related to river water sharing between states."
+      },
+      {
+        question: "Which body regulates elections in India?",
+        answer: "Election Commission",
+        explanation: "The Election Commission ensures free and fair elections through strict enforcement of rules."
+      },
+      {
+        question: "Which act governs the conduct of elections in India?",
+        answer: "Representation of the People Act",
+        explanation: "The RPA (1951) regulates election procedures, candidate qualifications, and dispute resolution."
+      },
+      {
+        question: "Which device ensures transparency in voting?",
+        answer: "VVPAT",
+        explanation: "VVPAT allows voters to verify their choice, enhancing trust in electronic voting."
+      },
+      {
+        question: "Which article provides for the establishment of the Supreme Court?",
+        answer: "Article 124",
+        explanation: "Article 124 establishes the Supreme Court as the highest judicial authority in India."
+      },
+      {
+        question: "Which anti-corruption body investigates cases involving central government officials?",
+        answer: "CBI",
+        explanation: "The Central Bureau of Investigation handles major corruption cases involving central employees."
+      },
+      {
+        question: "Which commission safeguards human rights?",
+        answer: "NHRC",
+        explanation: "The National Human Rights Commission protects and promotes human rights across India."
+      },
+      {
+        question: "Which party leads the NDA coalition as of 2025?",
+        answer: "BJP",
+        explanation: "The Bharatiya Janata Party (BJP) is the leading force of the National Democratic Alliance (NDA)."
+      },
+      {
+        question: "Which law governs political party registration?",
+        answer: "Representation of the People Act",
+        explanation: "Political parties must register under the Representation of the People Act (1951) to contest elections."
+      },
+      {
+        question: "What is a key feature of Tamil Nadu’s politics?",
+        answer: "Social justice",
+        explanation: "Tamil Nadu’s politics is deeply rooted in principles of social justice, caste-based reservations, and regional pride."
+      }
+    ];
+
+    // Initialize App
+    document.addEventListener("DOMContentLoaded", () => {
+      let sections = [];
+      let tempScores = [];
+
+      try {
+        sections = constitutionContent.map(content => {
+          const quizEntry = quizData.find(q => q.sectionId === content.id);
+          return {
+            id: content.id,
+            title: content.title,
+            content: content.content,
+            quiz: quizEntry?.quiz || []
+          };
+        });
+        tempScores = Array(sections.length).fill(null);
+      } catch (e) {
+        console.error("Error initializing sections:", e);
+        document.getElementById("content").innerHTML = `<p class="text-red">Failed to load content. Please contact support@drillmasters.in.</p>`;
+        return;
+      }
+
+      let currentSection = 0;
+      const motivationalMessages = [
+        "Great job! Keep learning!",
+        "Well done! Stay curious!",
+        "Fantastic effort! Move forward!",
+        "Awesome! Master the basics!",
+        "Superb! Build your knowledge!"
+      ];
+
+      function renderContent(items) {
+        return items.map(item => `<p>${item.value}</p>`).join("");
+      }
+
+      function updateNavigation(sectionIndex, hasSubmitted) {
+        const navDiv = document.getElementById("navigation");
+        if (!navDiv) return;
+
+        let html = "";
+        if (hasSubmitted) {
+          html += `<button id="retake-btn" class="btn-yellow">Retake Quiz</button>`;
+        }
+
+        if (sectionIndex > 0) {
+          html += `<button id="prev-btn" class="btn-gray">Previous</button>`;
+        }
+
+        if (hasSubmitted && sectionIndex < sections.length - 1 && tempScores[sectionIndex] >= 70) {
+          html += `<button id="next-btn" class="btn-blue">Next</button>`;
+        }
+
+        if (sectionIndex === sections.length - 1 && hasSubmitted && tempScores[sectionIndex] >= 70) {
+          html += `<button id="complete-btn" class="btn-green">Complete Course</button>`;
+        }
+
+        navDiv.innerHTML = html;
+
+        document.getElementById("retake-btn")?.addEventListener("click", () => {
+          document.getElementById("quiz-form")?.reset();
+          document.getElementById("feedback").innerHTML = "";
+          const submitBtn = document.querySelector("#submit-btn");
+          if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.style.opacity = "1";
+          }
+          updateNavigation(sectionIndex, false);
+        });
+
+        document.getElementById("prev-btn")?.addEventListener("click", () => {
+          if (currentSection > 0) {
+            currentSection--;
+            renderSection(currentSection);
+          }
+        });
+
+        document.getElementById("next-btn")?.addEventListener("click", () => {
+          if (tempScores[sectionIndex] >= 70 && currentSection < sections.length - 1) {
+            currentSection++;
+            renderSection(currentSection);
+          }
+        });
+
+        document.getElementById("complete-btn")?.addEventListener("click", () => {
+          localStorage.removeItem("constitutionIntermediateScores");
+          document.getElementById("content").innerHTML = `
+            <h2>Congratulations!</h2>
+            <p>You've completed the Indian Constitution (Intermediate) course!</p>
+            <p>Explore more TNPSC Group 4 courses to continue your preparation journey.</p>
+            <a href="tnpsc-gr4-home.html" class="btn-blue">Return to Home</a>
+          `;
+          navDiv.innerHTML = "";
+        });
+      }
+
+      function renderSection(sectionIndex) {
+        try {
+          const section = sections[sectionIndex];
+          let html = `<h2>${section.title}</h2>`;
+          html += renderContent(section.content);
+
+          if (section.quiz.length > 0) {
+            html += `<h3>Quiz</h3>`;
+            html += `<form id="quiz-form">`;
+            section.quiz.forEach((q, i) => {
+              html += `<div><p>${i + 1}. ${q.question}</p>`;
+              q.options.forEach((opt, j) => {
+                html += `<label for="q${i}-${j}"><input type="radio" id="q${i}-${j}" name="q${i}" value="${opt}" required> ${opt}</label>`;
+              });
+              html += `</div>`;
+            });
+            html += `<button type="button" id="submit-btn" class="btn-blue">Submit</button></form>`;
+            html += `<div id="feedback"></div>`;
+          } else {
+            html += '<p class="text-red">No quiz available for this section.</p>';
+          }
+
+          html += `<div id="navigation"></div>`;
+          document.getElementById("content").innerHTML = html;
+
+          document.getElementById("submit-btn")?.addEventListener("click", () => checkAnswers(sectionIndex));
+
+          updateNavigation(sectionIndex, tempScores[sectionIndex] !== null);
+        } catch (e) {
+          console.error("Render error:", e);
+          document.getElementById("content").innerHTML = `<p class="text-red">Error loading section. Please try again later.</p>`;
+        }
+      }
+
+      function checkAnswers(sectionIndex) {
+        const form = document.getElementById("quiz-form");
+        const feedbackDiv = document.getElementById("feedback");
+
+        if (!form || !feedbackDiv) {
+          feedbackDiv.innerHTML = `<p class="text-red">Form not found. Please reload the page.</p>`;
+          return;
+        }
+
+        const selected = Array.from(form.querySelectorAll("input:checked"));
+        if (selected.length !== sections[sectionIndex].quiz.length) {
+          feedbackDiv.innerHTML = `<p class="text-red">Please answer all questions before submitting.</p>`;
+          return;
+        }
+
+        let score = 0;
+        let feedbackHtml = "";
+
+        sections[sectionIndex].quiz.forEach((q, i) => {
+          const selected = form.querySelector(`input[name="q${i}"]:checked`);
+          const isCorrect = selected && selected.value === q.answer;
+          if (isCorrect) score++;
+
+          const mcq = mcqData.find(m => m.question === q.question && m.answer === q.answer);
+          feedbackHtml += `
+            <p><strong>${q.question}</strong><br>
+            Your answer: ${selected?.value || "None"}<br>
+            Correct answer: ${q.answer}<br>
+            Explanation: ${mcq ? mcq.explanation : "Not available"}
+            </p>`;
+        });
+
+        const percentage = (score / sections[sectionIndex].quiz.length) * 100;
+        tempScores[sectionIndex] = percentage;
+
+        const submitBtn = document.getElementById("submit-btn");
+        if (submitBtn) {
+          submitBtn.disabled = true;
+          submitBtn.style.opacity = "0.6";
+        }
+
+        feedbackDiv.innerHTML = `
+          <p>Your score: ${score}/${sections[sectionIndex].quiz.length} (${percentage.toFixed(2)}%)</p>
+          ${percentage >= 70 ? `<p class="text-green">${motivationalMessages[Math.floor(Math.random() * motivationalMessages.length)]}</p>` : '<p class="text-red">You need 70% to proceed. Please retake the Quiz.</p>'}
+          <h4>Feedback:</h4>
+          ${feedbackHtml}`;
+
+        updateNavigation(sectionIndex, true);
+      }
+
+      function setupMenuToggle() {
+        const menuBtn = document.getElementById("menu-btn");
+        const menu = document.getElementById("menu");
+        if (!menuBtn || !menu) return;
+
+        if (window.innerWidth <= 768) {
+          menuBtn.classList.remove("hidden");
+          menu.classList.add("hidden");
+          menuBtn.onclick = () => menu.classList.toggle("hidden");
+        } else {
+          menuBtn.classList.add("hidden");
+          menu.classList.remove("hidden");
+        }
+      }
+
+      window.addEventListener("resize", debounce(setupMenuToggle, 200));
+      setupMenuToggle();
+      renderSection(currentSection);
+    });
+
+    function debounce(func, wait) {
+      let timeout;
+      return (...args) => {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => func.apply(this, args), wait);
+      };
+    }
+  </script>
+</body>
+</html>

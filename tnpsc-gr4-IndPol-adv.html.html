@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Drillmasters LMS - Indian Constitution (Advanced)</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; background-color: #f3f4f6; display: flex; flex-direction: column; min-height: 100vh; }
+    .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 15px; }
+    header { background-color: #2563eb; color: white; padding: 1rem 0; }
+    header h1 { font-size: 1.5rem; font-weight: bold; }
+    header h2 { font-size: 1.125rem; }
+    header .flex { display: flex; justify-content: space-between; align-items: center; }
+    nav { background-color: #1d4ed8; padding: 1rem 0; }
+    nav ul { list-style: none; display: flex; gap: 1rem; }
+    nav a { color: white; text-decoration: none; }
+    nav a:hover { text-decoration: underline; }
+    main { flex-grow: 1; padding: 1rem 0; }
+    #content { background-color: white; padding: 1.5rem; border-radius: 0.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+    footer { background-color: #1f2937; color: white; padding: 1rem 0; margin-top: auto; text-align: center; }
+    footer a { color: white; text-decoration: underline; }
+    button { padding: 0.5rem 1rem; border-radius: 0.25rem; cursor: pointer; margin: 0.25rem; }
+    .btn-blue { background-color: #3b82f6; color: white; border: none; }
+    .btn-blue:hover { background-color: #2563eb; }
+    .btn-gray { background-color: #6b7280; color: white; border: none; }
+    .btn-gray:hover { background-color: #4b5563; }
+    .btn-green { background-color: #22c55e; color: white; border: none; }
+    .btn-green:hover { background-color: #16a34a; }
+    .btn-yellow { background-color: #f59e0b; color: white; border: none; }
+    .btn-yellow:hover { background-color: #d97706; }
+    .text-red { color: #ef4444; }
+    .text-green { color: #22c55e; }
+    .hidden { display: none; }
+    #quiz-form { margin-top: 1rem; }
+    #quiz-form div { margin-bottom: 1rem; }
+    #quiz-form p { font-weight: bold; margin-bottom: 0.5rem; }
+    #quiz-form label { display: block; margin: 0.25rem 0; }
+    #quiz-form input[type="radio"] { margin-right: 0.5rem; }
+    #feedback { margin-top: 1rem; }
+    #navigation { margin-top: 1rem; display: flex; gap: 0.5rem; }
+    @media (max-width: 768px) {
+      nav ul { flex-direction: column; gap: 0.5rem; }
+      #menu-btn { display: block; }
+      #menu.hidden { display: none; }
+      .container { padding: 0 10px; }
+      button { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container flex">
+      <div>
+        <h1>Indian Constitution - Advanced</h1>
+        <h2>TNPSC Group 4 Preparation</h2>
+      </div>
+      <button id="menu-btn" class="hidden">☰</button>
+    </div>
+    <nav id="menu">
+      <div class="container">
+        <ul>
+          <li><a href="tnpsc-gr4-home.html">TNPSC Group 4 Home</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <div class="container">
+      <div id="content">
+        <p>Loading content...</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>© 2025 Drillmasters LMS. All rights reserved.</p>
+      <p>Contact: <a href="mailto:support@drillmasters.in">support@drillmasters.in</a> | <a href="https://www.drillmasters.in ">www.drillmasters.in</a></p>
+    </div>
+  </footer>
+
+  <script>
+    // Constitution Content (Advanced Level)
+    const constitutionContent = [
+      {
+        id: 1,
+        title: "Constitution of India - Preamble and Salient Features",
+        content: [
+          {
+            type: "text",
+            value: "The Indian Constitution, adopted in 1949 and enforced from 1950, is the longest written constitution globally. It establishes India as a sovereign, socialist, secular, democratic republic committed to justice, liberty, equality, and fraternity. The Kesavananda Bharati judgment (1973) affirmed that Parliament cannot alter the 'basic structure' of the Constitution, including judicial review and fundamental rights."
+          }
+        ]
+      },
+      {
+        id: 2,
+        title: "Union, States, and Union Territories",
+        content: [
+          {
+            type: "text",
+            value: "India follows a federal system with a strong Centre. Article 246 and the Seventh Schedule divide powers into Union List, State List, and Concurrent List. While the Union handles defense and foreign affairs, States manage education and public health. Some UTs like Delhi and Puducherry enjoy limited self-governance. Federalism in India is cooperative and flexible, ensuring unity in diversity."
+          }
+        ]
+      },
+      {
+        id: 3,
+        title: "Citizenship, Fundamental Rights, and Directive Principles",
+        content: [
+          {
+            type: "text",
+            value: "Part II defines citizenship uniformly across India. Part III guarantees Fundamental Rights like equality (Article 14), freedom of speech (Article 19), and protection against exploitation (Articles 23–24). These are justiciable. Part IV outlines Directive Principles guiding policy-making, promoting social welfare and economic equity. Together, they balance individual freedoms and state responsibility."
+          }
+        ]
+      },
+      {
+        id: 4,
+        title: "Union and State Executive & Legislature",
+        content: [
+          {
+            type: "text",
+            value: "The President is the ceremonial head, acting on advice from the Council of Ministers led by the Prime Minister. The Lok Sabha and Rajya Sabha constitute Parliament. Similarly, states have Governors and Chief Ministers, with legislative assemblies and councils in some states. This ensures checks and balances and accountability at all levels."
+          }
+        ]
+      },
+      {
+        id: 5,
+        title: "Federalism and Centre-State Relations",
+        content: [
+          {
+            type: "text",
+            value: "India’s federal structure balances autonomy and integration. Institutions like the Finance Commission and Inter-State Council promote cooperation. During emergencies, the Centre gains greater authority, reflecting India’s quasi-federal nature. Cases like S.R. Bommai v. Union of India (1994) reinforced democratic principles in federal governance."
+          }
+        ]
+      },
+      {
+        id: 6,
+        title: "Elections and Electoral Process",
+        content: [
+          {
+            type: "text",
+            value: "The Election Commission conducts free and fair elections under the Representation of the People Act (1951). Electronic Voting Machines (EVMs) and Voter Verifiable Paper Audit Trail (VVPAT) ensure transparency. Political parties must register with the ECI and follow the Model Code of Conduct. General elections occur every five years, upholding India’s status as the world’s largest democracy."
+          }
+        ]
+      },
+      {
+        id: 7,
+        title: "Judiciary, Anti-Corruption, Human Rights",
+        content: [
+          {
+            type: "text",
+            value: "The judiciary upholds the rule of law through judicial review. The Supreme Court and High Courts safeguard fundamental rights. Anti-corruption bodies include the CBI and Lokpal. The National Human Rights Commission protects vulnerable groups. Public Interest Litigation expands access to justice, empowering citizens to challenge systemic issues."
+          }
+        ]
+      },
+      {
+        id: 8,
+        title: "Political Parties and Systems in Tamil Nadu and India",
+        content: [
+          {
+            type: "text",
+            value: "India’s multi-party system allows diverse representation. Major national parties include BJP and Congress. In Tamil Nadu, DMK and AIADMK dominate due to regional identity and social justice focus. Coalition politics has become common since the 1990s, shaping both state and national governance."
+          }
+        ]
+      }
+    ];
+
+    // Quiz Data (Advanced Level)
+    const quizData = [
+      {
+        sectionId: 1,
+        quiz: [
+          {
+            question: "Which doctrine limits Parliament's power to amend the Constitution?",
+            options: ["Judicial Review", "Basic Structure", "Separation of Powers", "Federal Supremacy"],
+            answer: "Basic Structure"
+          },
+          {
+            question: "Which case upheld the basic structure doctrine?",
+            options: ["Golaknath Case", "Kesavananda Bharati Case", "Minerva Mills Case", "Shah Bano Case"],
+            answer: "Kesavananda Bharati Case"
+          },
+          {
+            question: "Which part declares India a secular state?",
+            options: ["Preamble", "Fundamental Rights", "Directive Principles", "Fundamental Duties"],
+            answer: "Preamble"
+          }
+        ]
+      },
+      {
+        sectionId: 2,
+        quiz: [
+          {
+            question: "Which schedule allocates legislative powers between Union and States?",
+            options: ["Fourth", "Fifth", "Sixth", "Seventh"],
+            answer: "Seventh"
+          },
+          {
+            question: "What replaced the Planning Commission to promote cooperative federalism?",
+            options: ["NITI Aayog", "Finance Commission", "Inter-State Council", "Zonal Councils"],
+            answer: "NITI Aayog"
+          },
+          {
+            question: "Which body resolves inter-state disputes under Article 263?",
+            options: ["Finance Commission", "Inter-State Council", "Supreme Court", "Election Commission"],
+            answer: "Inter-State Council"
+          }
+        ]
+      },
+      {
+        sectionId: 3,
+        quiz: [
+          {
+            question: "Which article provides for judicial review?",
+            options: ["Article 32", "Article 14", "Article 19", "Article 21"],
+            answer: "Article 32"
+          },
+          {
+            question: "Which case expanded the scope of Article 21?",
+            options: ["Menaka Gandhi v. Union of India", "Golaknath Case", "Kesavananda Bharati Case", "Shah Bano Case"],
+            answer: "Menaka Gandhi v. Union of India"
+          },
+          {
+            question: "Which amendment introduced Fundamental Duties?",
+            options: ["42nd", "44th", "73rd", "86th"],
+            answer: "42nd"
+          }
+        ]
+      },
+      {
+        sectionId: 4,
+        quiz: [
+          {
+            question: "When can the President exercise discretionary powers?",
+            options: ["During financial emergencies", "In hung parliaments", "During judicial reviews", "In State elections"],
+            answer: "In hung parliaments"
+          },
+          {
+            question: "Which amendments empowered local governance?",
+            options: ["42nd and 44th", "73rd and 74th", "86th and 101st", "52nd and 76th"],
+            answer: "73rd and 74th"
+          },
+          {
+            question: "What ensures executive accountability to the Lok Sabha?",
+            options: ["Judicial review", "Collective responsibility", "Emergency provisions", "Federal supremacy"],
+            answer: "Collective responsibility"
+          }
+        ]
+      },
+      {
+        sectionId: 5,
+        quiz: [
+          {
+            question: "Which case emphasized federalism in Centre-State relations?",
+            options: ["S.R. Bommai v. Union of India", "Kihoto Hollohan v. Zachillhu", "Maneka Gandhi v. Union of India", "Golaknath v. Punjab"],
+            answer: "S.R. Bommai v. Union of India"
+          },
+          {
+            question: "Which institution harmonizes taxation under federalism?",
+            options: ["Finance Commission", "GST Council", "NITI Aayog", "Inter-State Council"],
+            answer: "GST Council"
+          },
+          {
+            question: "Which commission critiqued the use of Article 356?",
+            options: ["Sarkaria Commission", "Mandal Commission", "Kothari Commission", "Radhakrishnan Commission"],
+            answer: "Sarkaria Commission"
+          }
+        ]
+      },
+      {
+        sectionId: 6,
+        quiz: [
+          {
+            question: "Which case upheld the Election Commission’s autonomy?",
+            options: ["Kihoto Hollohan v. Zachillhu", "T.N. Seshan v. Union of India", "Subramanian Swamy v. EC", "S.R. Bommai v. Union of India"],
+            answer: "T.N. Seshan v. Union of India"
+          },
+          {
+            question: "What enhances transparency in voting?",
+            options: ["Ballot Boxes", "EVMs", "Postal Ballots", "VVPAT"],
+            answer: "VVPAT"
+          },
+          {
+            question: "Which law regulates political party registration?",
+            options: ["Representation of the People Act", "Companies Act", "IPC", "CrPC"],
+            answer: "Representation of the People Act"
+          }
+        ]
+      },
+      {
+        sectionId: 7,
+        quiz: [
+          {
+            question: "Which case struck down the NJAC?",
+            options: ["Supreme Court Advocates-on-Record Association v. Union of India", "Kesavananda Bharati Case", "Maneka Gandhi v. Union of India", "Shah Bano Case"],
+            answer: "Supreme Court Advocates-on-Record Association v. Union of India"
+          },
+          {
+            question: "Which mechanism expands access to justice?",
+            options: ["Public Interest Litigation", "Writ Jurisdiction", "Appeal", "Review Petition"],
+            answer: "Public Interest Litigation"
+          },
+          {
+            question: "Which act promotes transparency to combat corruption?",
+            options: ["RTI Act", "Lokpal Act", "CBI Act", "Prevention of Corruption Act"],
+            answer: "RTI Act"
+          }
+        ]
+      },
+      {
+        sectionId: 8,
+        quiz: [
+          {
+            question: "Which party leads the NDA coalition as of 2025?",
+            options: ["INC", "BJP", "DMK", "AAP"],
+            answer: "BJP"
+          },
+          {
+            question: "What is a key feature of Tamil Nadu’s politics?",
+            options: ["Unitary governance", "Social justice", "Economic liberalization", "Judicial activism"],
+            answer: "Social justice"
+          },
+          {
+            question: "Which law governs political party registration?",
+            options: ["Representation of the People Act", "Companies Act", "IPC", "CrPC"],
+            answer: "Representation of the People Act"
+          }
+        ]
+      }
+    ];
+
+    // MCQ Feedback Data
+    const mcqData = [
+      {
+        question: "Which doctrine limits Parliament's power to amend the Constitution?",
+        answer: "Basic Structure",
+        explanation: "The Basic Structure Doctrine was established in the Kesavananda Bharati case (1973), preventing Parliament from altering core constitutional values."
+      },
+      {
+        question: "Which case upheld the basic structure doctrine?",
+        answer: "Kesavananda Bharati Case",
+        explanation: "This landmark case laid the foundation for the Basic Structure Doctrine, limiting Parliament's power to amend the Constitution."
+      },
+      {
+        question: "Which part declares India a secular state?",
+        answer: "Preamble",
+        explanation: "The Preamble declares India a secular republic, ensuring religious neutrality and freedom."
+      },
+      {
+        question: "Which schedule allocates legislative powers between Union and States?",
+        answer: "Seventh",
+        explanation: "The Seventh Schedule divides legislative powers via three lists: Union, State, and Concurrent."
+      },
+      {
+        question: "What replaced the Planning Commission to promote cooperative federalism?",
+        answer: "NITI Aayog",
+        explanation: "NITI Aayog replaced the Planning Commission in 2015, emphasizing cooperative federalism and decentralized planning."
+      },
+      {
+        question: "Which body resolves inter-state disputes under Article 263?",
+        answer: "Inter-State Council",
+        explanation: "The Inter-State Council facilitates coordination between the Centre and States, resolving conflicts and promoting harmony."
+      },
+      {
+        question: "Which article provides for judicial review?",
+        answer: "Article 32",
+        explanation: "Article 32 empowers citizens to approach the Supreme Court for enforcement of fundamental rights."
+      },
+      {
+        question: "Which case expanded the scope of Article 21?",
+        answer: "Menaka Gandhi v. Union of India",
+        explanation: "This case interpreted Article 21 to include dignity and due process, broadening the meaning of life and personal liberty."
+      },
+      {
+        question: "Which amendment introduced Fundamental Duties?",
+        answer: "42nd",
+        explanation: "The 42nd Amendment added Fundamental Duties in 1976, emphasizing civic responsibilities alongside rights."
+      },
+      {
+        question: "When can the President exercise discretionary powers?",
+        answer: "In hung parliaments",
+        explanation: "In hung parliaments, the President plays a pivotal role in government formation, exercising discretion in appointments."
+      },
+      {
+        question: "Which amendments empowered local governance?",
+        answer: "73rd and 74th",
+        explanation: "These amendments institutionalized Panchayati Raj and Urban Local Bodies, decentralizing governance."
+      },
+      {
+        question: "What ensures executive accountability to the Lok Sabha?",
+        answer: "Collective responsibility",
+        explanation: "The principle of collective responsibility ensures the Council of Ministers acts collectively and remains accountable to the Lok Sabha."
+      },
+      {
+        question: "Which case emphasized federalism in Centre-State relations?",
+        answer: "S.R. Bommai v. Union of India",
+        explanation: "This case reinforced democratic principles in federalism, limiting arbitrary imposition of President's Rule."
+      },
+      {
+        question: "Which institution harmonizes taxation under federalism?",
+        answer: "GST Council",
+        explanation: "The GST Council facilitates consensus between Centre and States on tax policies, ensuring cooperative federalism."
+      },
+      {
+        question: "Which commission critiqued the use of Article 356?",
+        answer: "Sarkaria Commission",
+        explanation: "The Sarkaria Commission reviewed Centre-State relations and recommended restraint in invoking Article 356 (President's Rule)."
+      },
+      {
+        question: "Which case upheld the Election Commission’s autonomy?",
+        answer: "T.N. Seshan v. Union of India",
+        explanation: "This case affirmed the Election Commission’s independence in conducting free and fair elections."
+      },
+      {
+        question: "What enhances transparency in voting?",
+        answer: "VVPAT",
+        explanation: "VVPAT enables voters to verify their votes, improving trust in the electoral process."
+      },
+      {
+        question: "Which law governs political party registration?",
+        answer: "Representation of the People Act",
+        explanation: "The RPA (1951) regulates election procedures and political party registration."
+      },
+      {
+        question: "Which case struck down the NJAC?",
+        answer: "Supreme Court Advocates-on-Record Association v. Union of India",
+        explanation: "This case upheld the collegium system, striking down the NJAC as unconstitutional."
+      },
+      {
+        question: "Which mechanism expands access to justice?",
+        answer: "Public Interest Litigation",
+        explanation: "PIL allows courts to hear cases involving public interest, enabling marginalized voices to seek justice."
+      },
+      {
+        question: "Which act promotes transparency to combat corruption?",
+        answer: "Right to Information Act",
+        explanation: "The RTI Act empowers citizens to access public information, reducing corruption through accountability."
+      },
+      {
+        question: "Which party leads the NDA coalition as of 2025?",
+        answer: "BJP",
+        explanation: "The BJP leads the National Democratic Alliance, a coalition of regional and national parties."
+      },
+      {
+        question: "What is a key feature of Tamil Nadu’s politics?",
+        answer: "Social justice",
+        explanation: "Tamil Nadu’s politics emphasizes caste-based reservations, linguistic pride, and welfare schemes."
+      },
+      {
+        question: "Which law governs political party registration?",
+        answer: "Representation of the People Act",
+        explanation: "Political parties must register under the RPA to contest elections, ensuring legal recognition and regulation."
+      }
+    ];
+
+    // Initialize App
+    document.addEventListener("DOMContentLoaded", () => {
+      let sections = [];
+      let tempScores = [];
+
+      try {
+        sections = constitutionContent.map(content => {
+          const quizEntry = quizData.find(q => q.sectionId === content.id);
+          return {
+            id: content.id,
+            title: content.title,
+            content: content.content,
+            quiz: quizEntry?.quiz || []
+          };
+        });
+        tempScores = Array(sections.length).fill(null);
+      } catch (e) {
+        console.error("Error initializing sections:", e);
+        document.getElementById("content").innerHTML = `<p class="text-red">Failed to load content. Please contact support@drillmasters.in.</p>`;
+        return;
+      }
+
+      let currentSection = 0;
+      const motivationalMessages = [
+        "Great job! Keep learning!",
+        "Well done! Stay curious!",
+        "Fantastic effort! Move forward!",
+        "Awesome! Master the basics!",
+        "Superb! Build your knowledge!"
+      ];
+
+      function renderContent(items) {
+        return items.map(item => `<p>${item.value}</p>`).join("");
+      }
+
+      function updateNavigation(sectionIndex, hasSubmitted) {
+        const navDiv = document.getElementById("navigation");
+        if (!navDiv) return;
+
+        let html = "";
+        if (hasSubmitted) {
+          html += `<button id="retake-btn" class="btn-yellow">Retake Quiz</button>`;
+        }
+        if (sectionIndex > 0) {
+          html += `<button id="prev-btn" class="btn-gray">Previous</button>`;
+        }
+        if (hasSubmitted && sectionIndex < sections.length - 1 && tempScores[sectionIndex] >= 70) {
+          html += `<button id="next-btn" class="btn-blue">Next</button>`;
+        }
+        if (sectionIndex === sections.length - 1 && hasSubmitted && tempScores[sectionIndex] >= 70) {
+          html += `<button id="complete-btn" class="btn-green">Complete Course</button>`;
+        }
+
+        navDiv.innerHTML = html;
+
+        document.getElementById("retake-btn")?.addEventListener("click", () => {
+          document.getElementById("quiz-form")?.reset();
+          document.getElementById("feedback").innerHTML = "";
+          const submitBtn = document.querySelector("#submit-btn");
+          if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.style.opacity = "1";
+          }
+          updateNavigation(sectionIndex, false);
+        });
+
+        document.getElementById("prev-btn")?.addEventListener("click", () => {
+          if (currentSection > 0) {
+            currentSection--;
+            renderSection(currentSection);
+          }
+        });
+
+        document.getElementById("next-btn")?.addEventListener("click", () => {
+          if (tempScores[sectionIndex] >= 70 && currentSection < sections.length - 1) {
+            currentSection++;
+            renderSection(currentSection);
+          }
+        });
+
+        document.getElementById("complete-btn")?.addEventListener("click", () => {
+          localStorage.removeItem("constitutionAdvancedScores");
+          document.getElementById("content").innerHTML = `
+            <h2>Congratulations!</h2>
+            <p>You've completed the Indian Constitution (Advanced) course!</p>
+            <p>Explore more TNPSC Group 4 courses to continue your preparation journey.</p>
+            <a href="tnpsc-gr4-home.html" class="btn-blue">Return to Home</a>
+          `;
+          navDiv.innerHTML = "";
+        });
+      }
+
+      function renderSection(sectionIndex) {
+        try {
+          const section = sections[sectionIndex];
+          let html = `<h2>${section.title}</h2>`;
+          html += renderContent(section.content);
+
+          if (section.quiz.length > 0) {
+            html += `<h3>Quiz</h3>`;
+            html += `<form id="quiz-form">`;
+            section.quiz.forEach((q, i) => {
+              html += `<div><p>${i + 1}. ${q.question}</p>`;
+              q.options.forEach((opt, j) => {
+                html += `<label for="q${i}-${j}"><input type="radio" id="q${i}-${j}" name="q${i}" value="${opt}" required> ${opt}</label>`;
+              });
+              html += `</div>`;
+            });
+            html += `<button type="button" id="submit-btn" class="btn-blue">Submit</button></form>`;
+            html += `<div id="feedback"></div>`;
+          } else {
+            html += '<p class="text-red">No quiz available for this section.</p>';
+          }
+
+          html += `<div id="navigation"></div>`;
+          document.getElementById("content").innerHTML = html;
+
+          document.getElementById("submit-btn")?.addEventListener("click", () => checkAnswers(sectionIndex));
+
+          updateNavigation(sectionIndex, tempScores[sectionIndex] !== null);
+        } catch (e) {
+          console.error("Render error:", e);
+          document.getElementById("content").innerHTML = `<p class="text-red">Error loading section. Please try again later.</p>`;
+        }
+      }
+
+      function checkAnswers(sectionIndex) {
+        const form = document.getElementById("quiz-form");
+        const feedbackDiv = document.getElementById("feedback");
+
+        if (!form || !feedbackDiv) {
+          feedbackDiv.innerHTML = `<p class="text-red">Form not found. Please reload the page.</p>`;
+          return;
+        }
+
+        const selected = Array.from(form.querySelectorAll("input:checked"));
+        if (selected.length !== sections[sectionIndex].quiz.length) {
+          feedbackDiv.innerHTML = `<p class="text-red">Please answer all questions before submitting.</p>`;
+          return;
+        }
+
+        let score = 0;
+        let feedbackHtml = "";
+
+        sections[sectionIndex].quiz.forEach((q, i) => {
+          const selected = form.querySelector(`input[name="q${i}"]:checked`);
+          const isCorrect = selected && selected.value === q.answer;
+          if (isCorrect) score++;
+
+          const mcq = mcqData.find(m => m.question === q.question && m.answer === q.answer);
+          feedbackHtml += `
+            <p><strong>${q.question}</strong><br>
+            Your answer: ${selected?.value || "None"}<br>
+            Correct answer: ${q.answer}<br>
+            Explanation: ${mcq ? mcq.explanation : "Not available"}
+            </p>`;
+        });
+
+        const percentage = (score / sections[sectionIndex].quiz.length) * 100;
+        tempScores[sectionIndex] = percentage;
+
+        const submitBtn = document.getElementById("submit-btn");
+        if (submitBtn) {
+          submitBtn.disabled = true;
+          submitBtn.style.opacity = "0.6";
+        }
+
+        feedbackDiv.innerHTML = `
+          <p>Your score: ${score}/${sections[sectionIndex].quiz.length} (${percentage.toFixed(2)}%)</p>
+          ${percentage >= 70 ? `<p class="text-green">${motivationalMessages[Math.floor(Math.random() * motivationalMessages.length)]</p>` : '<p class="text-red">You need 70% to proceed. Please retake the Quiz.</p>'}
+          <h4>Feedback:</h4>
+          ${feedbackHtml}`;
+
+        updateNavigation(sectionIndex, true);
+      }
+
+      function setupMenuToggle() {
+        const menuBtn = document.getElementById("menu-btn");
+        const menu = document.getElementById("menu");
+        if (!menuBtn || !menu) return;
+
+        if (window.innerWidth <= 768) {
+          menuBtn.classList.remove("hidden");
+          menu.classList.add("hidden");
+          menuBtn.onclick = () => menu.classList.toggle("hidden");
+        } else {
+          menuBtn.classList.add("hidden");
+          menu.classList.remove("hidden");
+        }
+      }
+
+      window.addEventListener("resize", debounce(setupMenuToggle, 200));
+      setupMenuToggle();
+      renderSection(currentSection);
+    });
+
+    function debounce(func, wait) {
+      let timeout;
+      return (...args) => {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => func.apply(this, args), wait);
+      };
+    }
+  </script>
+</body>
+</html>

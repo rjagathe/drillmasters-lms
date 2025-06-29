@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Drillmasters LMS - Indian Constitution (Beginner)</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; background-color: #f3f4f6; display: flex; flex-direction: column; min-height: 100vh; }
+    .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 15px; }
+    header { background-color: #2563eb; color: white; padding: 1rem 0; }
+    header h1 { font-size: 1.5rem; font-weight: bold; }
+    header h2 { font-size: 1.125rem; }
+    header .flex { display: flex; justify-content: space-between; align-items: center; }
+    nav { background-color: #1d4ed8; padding: 1rem 0; }
+    nav ul { list-style: none; display: flex; gap: 1rem; }
+    nav a { color: white; text-decoration: none; }
+    nav a:hover { text-decoration: underline; }
+    main { flex-grow: 1; padding: 1rem 0; }
+    #content { background-color: white; padding: 1.5rem; border-radius: 0.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+    footer { background-color: #1f2937; color: white; padding: 1rem 0; margin-top: auto; text-align: center; }
+    footer a { color: white; text-decoration: underline; }
+    button { padding: 0.5rem 1rem; border-radius: 0.25rem; cursor: pointer; margin: 0.25rem; }
+    .btn-blue { background-color: #3b82f6; color: white; border: none; }
+    .btn-blue:hover { background-color: #2563eb; }
+    .btn-gray { background-color: #6b7280; color: white; border: none; }
+    .btn-gray:hover { background-color: #4b5563; }
+    .btn-green { background-color: #22c55e; color: white; border: none; }
+    .btn-green:hover { background-color: #16a34a; }
+    .btn-yellow { background-color: #f59e0b; color: white; border: none; }
+    .btn-yellow:hover { background-color: #d97706; }
+    .text-red { color: #ef4444; }
+    .text-green { color: #22c55e; }
+    .hidden { display: none; }
+    #quiz-form { margin-top: 1rem; }
+    #quiz-form div { margin-bottom: 1rem; }
+    #quiz-form p { font-weight: bold; margin-bottom: 0.5rem; }
+    #quiz-form label { display: block; margin: 0.25rem 0; }
+    #quiz-form input[type="radio"] { margin-right: 0.5rem; }
+    #feedback { margin-top: 1rem; }
+    #navigation { margin-top: 1rem; display: flex; gap: 0.5rem; }
+    @media (max-width: 768px) {
+      nav ul { flex-direction: column; gap: 0.5rem; }
+      #menu-btn { display: block; }
+      #menu.hidden { display: none; }
+      #menu { display: block; }
+      .container { padding: 0 10px; }
+      button { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container flex">
+      <div>
+        <h1>Indian Constitution - Beginner</h1>
+        <h2>TNPSC Group 4 Preparation</h2>
+      </div>
+      <button id="menu-btn" class="hidden">☰</button>
+    </div>
+    <nav id="menu">
+      <div class="container">
+        <ul>
+          <li><a href="tnpsc-gr4-home.html">TNPSC Group 4 Home</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <div class="container">
+      <div id="content">
+        <p>Loading content...</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>© 2025 Drillmasters LMS. All rights reserved.</p>
+      <p>Contact: <a href="mailto:support@drillmasters.in">support@drillmasters.in</a> | <a href="https://www.drillmasters.in ">www.drillmasters.in</a></p>
+    </div>
+  </footer>
+
+  <!-- Script -->
+  <script>
+    // Constitution Content
+    const constitutionContent = [
+      {
+        id: 1,
+        title: "Constitution of India - Preamble and Salient Features",
+        content: [{
+          type: "text",
+          value: "The Constitution of India, adopted on November 26, 1949, and effective from January 26, 1950, is the supreme law of the land. The Preamble outlines its objectives: Justice, Liberty, Equality, and Fraternity, establishing India as a Sovereign, Socialist, Secular, Democratic Republic. Salient features include a federal structure with unitary bias, parliamentary democracy, fundamental rights and duties, directive principles, and an independent judiciary. It is the longest written constitution globally, with 470 articles and 12 schedules, amended 106 times by 2025. It ensures a balance between flexibility and rigidity, safeguarding India’s unity and diversity."
+        }]
+      },
+      {
+        id: 2,
+        title: "Union, State, and Union Territory",
+        content: [{
+          type: "text",
+          value: "India’s governance structure divides powers between the Union and States. The Union, led by the central government, handles national matters like defense and foreign affairs. States manage regional issues like education and law enforcement. Union Territories, such as Delhi and Puducherry, are centrally administered but may have partial state-like powers. The Constitution’s Seventh Schedule delineates Union, State, and Concurrent Lists. As of 2025, India has 28 states and 8 Union Territories, ensuring administrative efficiency and regional autonomy within a federal framework."
+        }]
+      },
+      {
+        id: 3,
+        title: "Citizenship, Fundamental Rights, Duties, and Directive Principles",
+        content: [{
+          type: "text",
+          value: "Citizenship defines membership in India’s political community, governed by the Citizenship Act, 1955. Fundamental Rights (Articles 12–35) guarantee equality, freedom, and protection from exploitation. Fundamental Duties (Article 51A), added by the 42nd Amendment, promote civic responsibilities. Directive Principles (Articles 36–51) guide the state toward social and economic justice, though non-justiciable. These elements ensure a balance between individual liberties and societal obligations, fostering equitable governance across India’s diverse population."
+        }]
+      },
+      {
+        id: 4,
+        title: "Union and State Executive, Legislature, Local Governments, and Panchayat Raj",
+        content: [{
+          type: "text",
+          value: "The Union Executive comprises the President, Prime Minister, and Council of Ministers, overseeing national governance. The Union Legislature, or Parliament, includes the Lok Sabha and Rajya Sabha. State Executives, led by Governors and Chief Ministers, manage state affairs. State Legislatures include Legislative Assemblies and, in some states, Legislative Councils. Local Governments, empowered by the 73rd and 74th Amendments, strengthen grassroots democracy through Panchayat Raj (rural) and Municipalities (urban), promoting decentralized governance and community participation."
+        }]
+      },
+      {
+        id: 5,
+        title: "Spirit of Federalism: Centre-State Relationships",
+        content: [{
+          type: "text",
+          value: "Federalism in India balances power between the Centre and States, with a unitary tilt during emergencies. The Constitution divides legislative, administrative, and financial powers via the Seventh Schedule. The Union holds precedence in conflicts. Mechanisms like the Inter-State Council and Finance Commission ensure cooperative federalism. Centre-State relations evolve through fiscal transfers and policy coordination, addressing regional disparities while maintaining national unity, vital for India’s diverse socio-political landscape."
+        }]
+      },
+      {
+        id: 6,
+        title: "Election",
+        content: [{
+          type: "text",
+          value: "Elections in India, managed by the Election Commission, ensure democratic representation. Conducted every five years for Parliament and State Assemblies, they use the First-Past-The-Post system. The Constitution mandates free and fair elections under Article 324. Over 900 million voters participate, with electronic voting machines ensuring efficiency. The Election Commission, an autonomous body, upholds electoral integrity, addressing challenges like voter awareness and accessibility across India’s vast electorate."
+        }]
+      },
+      {
+        id: 7,
+        title: "Judiciary, Corruption, Anti-Corruption Measures, and Human Rights",
+        content: [{
+          type: "text",
+          value: "India’s judiciary, led by the Supreme Court, ensures the rule of law and constitutional supremacy. Fundamental Rights protect citizens, while the Right to Information Act, 2005, promotes transparency. Corruption, a challenge in public life, is addressed through the Lokpal and Lokayuktas Act, 2013. Consumer Protection Forums safeguard economic rights, and the Human Rights Charter, under NHRC, protects dignity. Women’s empowerment initiatives, like Beti Bachao Beti Padhao, strengthen gender equity, fostering inclusive governance."
+        }]
+      },
+      {
+        id: 8,
+        title: "Political Parties and Political System in Tamil Nadu and India",
+        content: [{
+          type: "text",
+          value: "India’s multi-party system includes national and state parties, regulated by the Election Commission. Major national parties include BJP and INC, while Tamil Nadu’s key players are DMK and AIADMK. The parliamentary system ensures governance through elected representatives. Tamil Nadu’s politics emphasize social justice and regional identity, influencing national coalitions. Political parties shape policy, with India’s vibrant democracy reflecting diverse ideologies, ensuring representation across its complex socio-cultural fabric."
+        }]
+      }
+    ];
+
+    // Quiz Data
+    const quizData = [
+      {
+        sectionId: 1,
+        quiz: [
+          {
+            question: "When was the Constitution of India adopted?",
+            options: ["January 26, 1950", "November 26, 1949", "August 15, 1947", "October 2, 1949"],
+            answer: "November 26, 1949"
+          },
+          {
+            question: "What does the Preamble declare India to be?",
+            options: ["Sovereign Democratic Republic", "Socialist Secular Republic", "Sovereign Socialist Secular Democratic Republic", "Federal Republic"],
+            answer: "Sovereign Socialist Secular Democratic Republic"
+          },
+          {
+            question: "How many articles are in the Constitution as of 2025?",
+            options: ["395", "448", "470", "500"],
+            answer: "470"
+          }
+        ]
+      },
+      {
+        sectionId: 2,
+        quiz: [
+          {
+            question: "How many states does India have as of 2025?",
+            options: ["25", "28", "30", "32"],
+            answer: "28"
+          },
+          {
+            question: "Which schedule divides powers between Union and States?",
+            options: ["Fifth", "Seventh", "Ninth", "Eleventh"],
+            answer: "Seventh"
+          },
+          {
+            question: "Which Union Territory has partial state-like powers?",
+            options: ["Chandigarh", "Lakshadweep", "Delhi", "Andaman"],
+            answer: "Delhi"
+          }
+        ]
+      },
+      {
+        sectionId: 3,
+        quiz: [
+          {
+            question: "Which act governs citizenship in India?",
+            options: ["Citizenship Act, 1955", "Citizenship Act, 1960", "Citizenship Act, 1947", "Citizenship Act, 1975"],
+            answer: "Citizenship Act, 1955"
+          },
+          {
+            question: "Which article outlines Fundamental Duties?",
+            options: ["Article 21", "Article 51A", "Article 32", "Article 14"],
+            answer: "Article 51A"
+          },
+          {
+            question: "What is the nature of Directive Principles?",
+            options: ["Justiciable", "Non-justiciable", "Enforceable", "Binding"],
+            answer: "Non-justiciable"
+          }
+        ]
+      },
+      {
+        sectionId: 4,
+        quiz: [
+          {
+            question: "Who is part of the Union Executive?",
+            options: ["Chief Justice", "Prime Minister", "Speaker", "Election Commissioner"],
+            answer: "Prime Minister"
+          },
+          {
+            question: "Which amendment empowered Panchayat Raj?",
+            options: ["42nd", "73rd", "86th", "44th"],
+            answer: "73rd"
+          },
+          {
+            question: "What is the lower house of Parliament called?",
+            options: ["Rajya Sabha", "Lok Sabha", "Vidhan Sabha", "Vidhan Parishad"],
+            answer: "Lok Sabha"
+          }
+        ]
+      },
+      {
+        sectionId: 5,
+        quiz: [
+          {
+            question: "What ensures cooperative federalism in India?",
+            options: ["Supreme Court", "Inter-State Council", "Election Commission", "NITI Aayog"],
+            answer: "Inter-State Council"
+          },
+          {
+            question: "Which schedule governs Centre-State power division?",
+            options: ["Sixth", "Seventh", "Eighth", "Tenth"],
+            answer: "Seventh"
+          },
+          {
+            question: "When does India’s federal system show unitary bias?",
+            options: ["Elections", "Emergencies", "Budget sessions", "Judicial reviews"],
+            answer: "Emergencies"
+          }
+        ]
+      },
+      {
+        sectionId: 6,
+        quiz: [
+          {
+            question: "Who manages elections in India?",
+            options: ["Supreme Court", "Election Commission", "Parliament", "President"],
+            answer: "Election Commission"
+          },
+          {
+            question: "Which article ensures free and fair elections?",
+            options: ["Article 324", "Article 356", "Article 19", "Article 226"],
+            answer: "Article 324"
+          },
+          {
+            question: "What system is used for Indian elections?",
+            options: ["Proportional Representation", "First-Past-The-Post", "Ranked Choice", "Single Transferable Vote"],
+            answer: "First-Past-The-Post"
+          }
+        ]
+      },
+      {
+        sectionId: 7,
+        quiz: [
+          {
+            question: "Which act promotes transparency in governance?",
+            options: ["Right to Information Act, 2005", "Lokpal Act, 2013", "Consumer Protection Act, 2019", "Human Rights Act, 1993"],
+            answer: "Right to Information Act, 2005"
+          },
+          {
+            question: "What protects consumer rights in India?",
+            options: ["Lokpal", "Consumer Protection Forums", "NHRC", "Election Commission"],
+            answer: "Consumer Protection Forums"
+          },
+          {
+            question: "Which body addresses human rights violations?",
+            options: ["NHRC", "CBI", "CAG", "NITI Aayog"],
+            answer: "NHRC"
+          }
+        ]
+      },
+      {
+        sectionId: 8,
+        quiz: [
+          {
+            question: "Which is a major political party in Tamil Nadu?",
+            options: ["BJP", "DMK", "INC", "CPI"],
+            answer: "DMK"
+          },
+          {
+            question: "What regulates political parties in India?",
+            options: ["Supreme Court", "Election Commission", "Parliament", "President"],
+            answer: "Election Commission"
+          },
+          {
+            question: "What characterizes Tamil Nadu’s politics?",
+            options: ["Social justice", "Economic liberalization", "Unitary governance", "Judicial activism"],
+            answer: "Social justice"
+          }
+        ]
+      }
+    ];
+
+    // MCQ Feedback Data
+    const mcqData = [
+      { question: "When was the Constitution of India adopted?", answer: "November 26, 1949", explanation: "The Constitution was adopted on November 26, 1949, and came into effect on January 26, 1950." },
+      { question: "What does the Preamble declare India to be?", answer: "Sovereign Socialist Secular Democratic Republic", explanation: "The Preamble outlines India’s core values, establishing it as a Sovereign Socialist Secular Democratic Republic." },
+      { question: "How many articles are in the Constitution as of 2025?", answer: "470", explanation: "As of 2025, the Constitution contains 470 articles, making it the longest written constitution." },
+      { question: "How many states does India have as of 2025?", answer: "28", explanation: "India has 28 states as of 2025, reflecting administrative reorganizations." },
+      { question: "Which schedule divides powers between Union and States?", answer: "Seventh", explanation: "The Seventh Schedule delineates Union, State, and Concurrent Lists for power division." },
+      { question: "Which Union Territory has partial state-like powers?", answer: "Delhi", explanation: "Delhi has partial state-like powers, with its own legislature and executive." },
+      { question: "Which act governs citizenship in India?", answer: "Citizenship Act, 1955", explanation: "The Citizenship Act, 1955, regulates citizenship acquisition and termination." },
+      { question: "Which article outlines Fundamental Duties?", answer: "Article 51A", explanation: "Article 51A, added by the 42nd Amendment, lists citizens’ Fundamental Duties." },
+      { question: "What is the nature of Directive Principles?", answer: "Non-justiciable", explanation: "Directive Principles guide state policy but are non-enforceable in courts." },
+      { question: "Who is part of the Union Executive?", answer: "Prime Minister", explanation: "The Prime Minister leads the Union Executive, along with the President and Council of Ministers." },
+      { question: "Which amendment empowered Panchayat Raj?", answer: "73rd", explanation: "The 73rd Amendment empowered rural local governance through Panchayat Raj." },
+      { question: "What is the lower house of Parliament called?", answer: "Lok Sabha", explanation: "The Lok Sabha is the lower house of India’s Parliament, representing the people." },
+      { question: "What ensures cooperative federalism in India?", answer: "Inter-State Council", explanation: "The Inter-State Council fosters coordination between the Centre and States." },
+      { question: "Which schedule governs Centre-State power division?", answer: "Seventh", explanation: "The Seventh Schedule allocates legislative powers between the Centre and States." },
+      { question: "When does India’s federal system show unitary bias?", answer: "Emergencies", explanation: "During emergencies, the Constitution allows a unitary bias for national stability." },
+      { question: "Who manages elections in India?", answer: "Election Commission", explanation: "The Election Commission ensures free and fair elections under Article 324." },
+      { question: "Which article ensures free and fair elections?", answer: "Article 324", explanation: "Article 324 empowers the Election Commission to oversee elections." },
+      { question: "What system is used for Indian elections?", answer: "First-Past-The-Post", explanation: "India uses the First-Past-The-Post system for electing representatives." },
+      { question: "Which act promotes transparency in governance?", answer: "Right to Information Act, 2005", explanation: "The RTI Act, 2005, enables citizens to access public information, promoting transparency." },
+      { question: "What protects consumer rights in India?", answer: "Consumer Protection Forums", explanation: "Consumer Protection Forums address grievances and safeguard consumer rights." },
+      { question: "Which body addresses human rights violations?", answer: "NHRC", explanation: "The National Human Rights Commission investigates and protects human rights." },
+      { question: "Which is a major political party in Tamil Nadu?", answer: "DMK", explanation: "DMK is a prominent political party in Tamil Nadu, focusing on social justice." },
+      { question: "What regulates political parties in India?", answer: "Election Commission", explanation: "The Election Commission regulates political parties and their activities." },
+      { question: "What characterizes Tamil Nadu’s politics?", answer: "Social justice", explanation: "Tamil Nadu’s politics emphasizes social justice and regional identity." }
+    ];
+
+    // Initialize App
+    window.addEventListener("load", () => {
+      let sections = [];
+      try {
+        sections = constitutionContent.map(content => {
+          const quizEntry = quizData.find(q => q.sectionId === content.id);
+          return {
+            id: content.id,
+            title: content.title,
+            content: content.content,
+            quiz: quizEntry?.quiz || []
+          };
+        });
+      } catch (e) {
+        console.error("Error creating sections:", e);
+        document.getElementById("content").innerHTML = `<p class="text-red">Failed to load content. Please contact support.</p>`;
+        return;
+      }
+
+      function getScores() {
+        try {
+          if (typeof localStorage === 'undefined') return Array(sections.length).fill(null);
+          const stored = localStorage.getItem("constitutionBeginnerScores");
+          return stored ? JSON.parse(stored) : Array(sections.length).fill(null);
+        } catch {
+          return Array(sections.length).fill(null);
+        }
+      }
+
+      let currentSection = 0;
+      let scores = getScores();
+
+      const motivationalMessages = [
+        "Great job! Keep learning!",
+        "Well done! Stay curious!",
+        "Fantastic effort! Move forward!",
+        "Awesome! Master the basics!",
+        "Superb! Build your knowledge!"
+      ];
+
+      function renderContent(contentItems) {
+        return contentItems.map(item => {
+          switch (item.type) {
+            case "text":
+              return `<p>${item.value}</p>`;
+            default:
+              return "";
+          }
+        }).join("");
+      }
+
+      function updateNavigation(sectionIndex, hasSubmitted) {
+        const navDiv = document.getElementById("navigation");
+        if (!navDiv) return;
+        let html = "";
+
+        if (hasSubmitted) {
+          html += `<button id="retake-btn" class="btn-yellow" aria-label="Retake quiz">Retake Quiz</button>`;
+        }
+
+        if (sectionIndex > 0) {
+          html += `<button id="prev-btn" class="btn-gray" aria-label="Previous section">Previous</button>`;
+        }
+
+        if (hasSubmitted && sectionIndex < sections.length - 1 && scores[sectionIndex] >= 70) {
+          html += `<button id="next-btn" class="btn-blue" aria-label="Next section">Next</button>`;
+        }
+
+        if (sectionIndex === sections.length - 1 && hasSubmitted && scores[sectionIndex] >= 70) {
+          html += `<button id="complete-btn" class="btn-green" aria-label="Complete course">Complete Course</button>`;
+        }
+
+        navDiv.innerHTML = html;
+
+        const retakeBtn = document.getElementById("retake-btn");
+        retakeBtn?.removeEventListener("click", retakeQuizHandler);
+        retakeBtn?.addEventListener("click", retakeQuizHandler);
+
+        const prevBtn = document.getElementById("prev-btn");
+        prevBtn?.removeEventListener("click", prevHandler);
+        prevBtn?.addEventListener("click", prevHandler);
+
+        const nextBtn = document.getElementById("next-btn");
+        nextBtn?.removeEventListener("click", nextHandler);
+        nextBtn?.addEventListener("click", nextHandler);
+
+        const completeBtn = document.getElementById("complete-btn");
+        completeBtn?.removeEventListener("click", completeHandler);
+        completeBtn?.addEventListener("click", completeHandler);
+      }
+
+      function retakeQuizHandler() {
+        document.getElementById("quiz-form")?.reset();
+        document.getElementById("feedback").innerHTML = "";
+        const submitBtn = document.querySelector("#quiz-form button[type='submit']");
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.style.opacity = "1";
+        }
+        updateNavigation(currentSection, false);
+      }
+
+      function prevHandler() {
+        if (currentSection > 0) {
+          currentSection--;
+          renderSection(currentSection);
+        }
+      }
+
+      function nextHandler() {
+        if (scores[currentSection] >= 70) {
+          currentSection++;
+          renderSection(currentSection);
+        }
+      }
+
+      function completeHandler() {
+        localStorage.removeItem("constitutionBeginnerScores");
+        document.getElementById("content").innerHTML = `
+          <h2>Congratulations!</h2>
+          <p>You've completed the Indian Constitution (Beginner) course!</p>
+          <p>Explore more TNPSC Group 4 courses to continue your preparation journey.</p>
+          <a href="tnpsc-gr4-home.html" class="btn-blue">Return to Home</a>
+        `;
+      }
+
+      function renderSection(sectionIndex) {
+        try {
+          if (sectionIndex < 0 || sectionIndex >= sections.length) {
+            throw new Error("Invalid section index");
+          }
+          const section = sections[sectionIndex];
+          let html = `
+            <h2>${section.title}</h2>
+            ${renderContent(section.content)}
+          `;
+
+          if (section.quiz.length > 0) {
+            html += `
+              <h3>Quiz</h3>
+              <form id="quiz-form">
+                ${section.quiz.map((q, i) => `
+                  <div>
+                    <p>${i + 1}. ${q.question}</p>
+                    ${q.options.map(opt => `
+                      <label for="q${i}_${opt.replace(/\s+/g, '_')}">
+                        <input type="radio" id="q${i}_${opt.replace(/\s+/g, '_')}" name="q${i}" value="${opt}" required>
+                        ${opt}
+                      </label>
+                    `).join("")}
+                  </div>
+                `).join("")}
+                <button type="submit" class="btn-blue">Submit</button>
+              </form>
+              <div id="feedback"></div>
+            `;
+          } else {
+            html += '<p class="text-red">No quiz available for this section.</p>';
+          }
+
+          html += '<div id="navigation"></div>';
+          document.getElementById("content").innerHTML = html;
+
+          const quizForm = document.getElementById("quiz-form");
+          if (quizForm) {
+            quizForm.addEventListener("submit", handleQuizSubmit);
+          }
+
+          updateNavigation(sectionIndex, scores[sectionIndex] !== null);
+        } catch (error) {
+          console.error("Error rendering section:", error);
+          document.getElementById("content").innerHTML = `<p class="text-red">Error: ${error.message}</p>`;
+        }
+      }
+
+      function handleQuizSubmit(e) {
+        e.preventDefault();
+        const form = document.getElementById("quiz-form");
+        const selected = Array.from(form.querySelectorAll("input:checked"));
+        if (selected.length === sections[currentSection].quiz.length) {
+          checkAnswers(currentSection);
+        } else {
+          document.getElementById("feedback").innerHTML = '<p class="text-red">Please answer all questions.</p>';
+        }
+      }
+
+      function checkAnswers(sectionIndex) {
+        try {
+          const form = document.getElementById("quiz-form");
+          const feedbackDiv = document.getElementById("feedback");
+          if (!form || !feedbackDiv) {
+            throw new Error("Form or feedback div missing");
+          }
+
+          let score = 0;
+          let feedbackHtml = "";
+          const submitBtn = form.querySelector("button[type='submit']");
+
+          if (submitBtn) {
+            submitBtn.disabled = true;
+            submitBtn.style.opacity = "0.6";
+          }
+
+          sections[sectionIndex].quiz.forEach((q, i) => {
+            const selected = form.querySelector(`input[name="q${i}"]:checked`);
+            const isCorrect = selected && selected.value === q.answer;
+            if (isCorrect) score++;
+
+            const mcq = mcqData.find(m => m.question === q.question && m.answer === q.answer);
+            feedbackHtml += `
+              <p><strong>${q.question}</strong><br>
+              Your answer: ${selected?.value || "None"}<br>
+              Correct answer: ${q.answer}<br>
+              Explanation: ${mcq ? mcq.explanation : "Not available"}
+              </p>
+            `;
+          });
+
+          const percentage = (score / sections[sectionIndex].quiz.length) * 100;
+          scores[sectionIndex] = percentage;
+          localStorage.setItem("constitutionBeginnerScores", JSON.stringify(scores));
+
+          feedbackDiv.innerHTML = `
+            <p>Your score: ${score}/${sections[sectionIndex].quiz.length} (${percentage.toFixed(2)}%)</p>
+            ${percentage >= 70 ? `<p class="text-green">${motivationalMessages[Math.floor(Math.random() * motivationalMessages.length)]}</p>` : '<p class="text-red">You need 70% to proceed. Please <a href="#" id="retake-link">Retake the Quiz</a>.</p>'}
+            <h4>Feedback:</h4>
+            ${feedbackHtml}
+          `;
+
+          document.getElementById("retake-link")?.addEventListener("click", e => {
+            e.preventDefault();
+            document.getElementById("quiz-form")?.reset();
+            document.getElementById("feedback").innerHTML = "";
+            if (submitBtn) {
+              submitBtn.disabled = false;
+              submitBtn.style.opacity = "1";
+            }
+            updateNavigation(sectionIndex, false);
+          });
+
+          updateNavigation(sectionIndex, true);
+        } catch (error) {
+          console.error("Error checking answers:", error);
+          document.getElementById("feedback").innerHTML = `<p class="text-red">Error: ${error.message}</p>`;
+        }
+      }
+
+      // Hamburger Menu
+      const menuBtn = document.getElementById("menu-btn");
+      const menu = document.getElementById("menu");
+
+      function setupMenuToggle() {
+        if (window.innerWidth <= 768) {
+          menuBtn.classList.remove("hidden");
+          if (!menu.classList.contains("hidden")) menu.classList.add("hidden");
+          menuBtn.onclick = () => menu.classList.toggle("hidden");
+        } else {
+          menuBtn.classList.add("hidden");
+          menu.classList.remove("hidden");
+        }
+      }
+
+      window.addEventListener("resize", setupMenuToggle);
+
+      // Start app
+      renderSection(currentSection);
+      setupMenuToggle();
+    });
+  </script>
+</body>
+</html>
