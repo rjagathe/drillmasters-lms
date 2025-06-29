@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Drillmasters LMS - Indian Constitution (Expert)</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; background-color: #f3f4f6; display: flex; flex-direction: column; min-height: 100vh; }
+    .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 15px; }
+    header { background-color: #2563eb; color: white; padding: 1rem 0; }
+    header h1 { font-size: 1.5rem; font-weight: bold; }
+    header h2 { font-size: 1.125rem; }
+    header .flex { display: flex; justify-content: space-between; align-items: center; }
+    nav { background-color: #1d4ed8; padding: 1rem 0; }
+    nav ul { list-style: none; display: flex; gap: 1rem; }
+    nav a { color: white; text-decoration: none; }
+    nav a:hover { text-decoration: underline; }
+    main { flex-grow: 1; padding: 1rem 0; }
+    #content { background-color: white; padding: 1.5rem; border-radius: 0.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+    footer { background-color: #1f2937; color: white; padding: 1rem 0; margin-top: auto; text-align: center; }
+    footer a { color: white; text-decoration: underline; }
+    button { padding: 0.5rem 1rem; border-radius: 0.25rem; cursor: pointer; margin: 0.25rem; }
+    .btn-blue { background-color: #3b82f6; color: white; border: none; }
+    .btn-blue:hover { background-color: #2563eb; }
+    .btn-gray { background-color: #6b7280; color: white; border: none; }
+    .btn-gray:hover { background-color: #4b5563; }
+    .btn-green { background-color: #22c55e; color: white; border: none; }
+    .btn-green:hover { background-color: #16a34a; }
+    .btn-yellow { background-color: #f59e0b; color: white; border: none; }
+    .btn-yellow:hover { background-color: #d97706; }
+    .text-red { color: #ef4444; }
+    .text-green { color: #22c55e; }
+    .hidden { display: none; }
+    #quiz-form { margin-top: 1rem; }
+    #quiz-form div { margin-bottom: 1rem; }
+    #quiz-form p { font-weight: bold; margin-bottom: 0.5rem; }
+    #quiz-form label { display: block; margin: 0.25rem 0; }
+    #quiz-form input[type="radio"] { margin-right: 0.5rem; }
+    #feedback { margin-top: 1rem; }
+    #navigation { margin-top: 1rem; display: flex; gap: 0.5rem; }
+    @media (max-width: 768px) {
+      nav ul { flex-direction: column; gap: 0.5rem; }
+      #menu-btn { display: block; }
+      #menu.hidden { display: none; }
+      .container { padding: 0 10px; }
+      button { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container flex">
+      <div>
+        <h1>Indian Constitution - Expert</h1>
+        <h2>TNPSC Group 4 Preparation</h2>
+      </div>
+      <button id="menu-btn" class="hidden">☰</button>
+    </div>
+    <nav id="menu">
+      <div class="container">
+        <ul>
+          <li><a href="tnpsc-gr4-home.html">TNPSC Group 4 Home</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <div class="container">
+      <div id="content">
+        <p>Loading content...</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>© 2025 Drillmasters LMS. All rights reserved.</p>
+      <p>Contact: <a href="mailto:support@drillmasters.in">support@drillmasters.in</a> | <a href="https://www.drillmasters.in ">www.drillmasters.in</a></p>
+    </div>
+  </footer>
+
+  <script>
+    // Constitution Content (Expert Level)
+    const constitutionContent = [
+      {
+        id: 1,
+        title: "Constitutional Philosophy and the Doctrine of Basic Structure",
+        content: [
+          {
+            type: "text",
+            value: "The doctrine of Basic Structure was established in *Kesavananda Bharati v. State of Kerala* (1973), affirming that Parliament cannot alter the core democratic framework of the Constitution. This principle acts as a safeguard against authoritarian amendments. The judiciary interprets basic structure elements through evolving jurisprudence, ensuring constitutional integrity remains intact even amid socio-political changes."
+          }
+        ]
+      },
+      {
+        id: 2,
+        title: "Federalism: Theoretical Constructs and Practical Challenges",
+        content: [
+          {
+            type: "text",
+            value: "India's federalism balances unity with diversity, allowing states autonomy while maintaining central authority during emergencies. Cases like *State of West Bengal v. Union of India* (1963) upheld Union dominance when national interest is at stake. The creation of Telangana under Article 2 illustrates flexibility within federal design, though regional aspirations continue to test cohesion."
+          }
+        ]
+      },
+      {
+        id: 3,
+        title: "Citizenship and the Evolving Jurisprudence of Rights",
+        content: [
+          {
+            type: "text",
+            value: "Citizenship in India is dynamic, shaped by constitutional provisions and judicial interpretations. Landmark judgments like *A.K. Gopalan v. State of Madras* (1950) and *Maneka Gandhi v. Union of India* (1978) expanded the scope of fundamental rights. Environmental rights have also been recognized, as seen in *M.C. Mehta v. Union of India* (1986)."
+          }
+        ]
+      },
+      {
+        id: 4,
+        title: "Executive Power and Constitutional Constraints",
+        content: [
+          {
+            type: "text",
+            value: "Article 74 establishes the Council of Ministers to aid the President, reinforcing parliamentary supremacy. While the President holds formal powers, they act on ministerial advice. The judiciary ensures executive accountability through judicial review. Cases like *Ram Jawaya Kapoor v. State of Punjab* (1955) clarified the balance between executive discretion and constitutional limits."
+          }
+        ]
+      },
+      {
+        id: 5,
+        title: "Cooperative Federalism: Institutional Mechanisms and Tensions",
+        content: [
+          {
+            type: "text",
+            value: "Institutions like the Finance Commission and GST Council promote cooperative federalism. However, tensions persist due to resource allocation and policy implementation. The *S.R. Bommai Case* (1994) reinforced democratic principles in Centre-State relations, limiting arbitrary imposition of President’s Rule. Such mechanisms ensure harmonious governance across diverse regions."
+          }
+        ]
+      },
+      {
+        id: 6,
+        title: "Judicial Review and Constitutional Supremacy",
+        content: [
+          {
+            type: "text",
+            value: "Judicial review empowers courts to invalidate unconstitutional laws. Article 13 guarantees this right, enabling courts to strike down legislative or executive actions violating fundamental rights. The Supreme Court’s decision in *Minerva Mills Ltd. v. Union of India* (1980) further reinforced the basic structure doctrine, ensuring constitutional supremacy over political expediency."
+          }
+        ]
+      },
+      {
+        id: 7,
+        title: "Environmental Governance and Public Interest Litigation",
+        content: [
+          {
+            type: "text",
+            value: "Public Interest Litigation (PIL) has transformed environmental governance. In *M.C. Mehta v. Union of India*, courts mandated pollution control measures. PIL allows marginalized voices to seek justice, expanding access beyond traditional standing rules. It reflects the judiciary’s proactive role in enforcing environmental duties under Articles 48A and 51A(g)."
+          }
+        ]
+      },
+      {
+        id: 8,
+        title: "Electoral Reforms and Democratic Integrity",
+        content: [
+          {
+            type: "text",
+            value: "India’s electoral process is guided by judicial interventions such as *T.N. Seshan v. Union of India* (1995), which affirmed the Election Commission’s independence. VVPAT enhances transparency, while reforms like NOTA empower voter choice. These developments reinforce democratic integrity amid growing political polarization."
+          }
+        ]
+      }
+    ];
+
+    // Quiz Data (Expert Level)
+    const quizData = [
+      {
+        sectionId: 1,
+        quiz: [
+          {
+            question: "Which case established the Doctrine of Basic Structure?",
+            options: ["Golaknath Case", "Kesavananda Bharati Case", "Shah Bano Case", "Minerva Mills Case"],
+            answer: "Kesavananda Bharati Case"
+          },
+          {
+            question: "What does the Basic Structure Doctrine prevent?",
+            options: ["Amendment of Directive Principles", "Alteration of Fundamental Duties", "Modification of Core Constitutional Values", "Changes to Preamble"],
+            answer: "Modification of Core Constitutional Values"
+          },
+          {
+            question: "Which article guarantees judicial review?",
+            options: ["Article 32", "Article 14", "Article 19", "Article 21"],
+            answer: "Article 32"
+          }
+        ]
+      },
+      {
+        sectionId: 2,
+        quiz: [
+          {
+            question: "Which case upheld Union dominance in national interest?",
+            options: ["Kesavananda Bharati", "State of West Bengal v. Union of India", "Shah Bano Case", "Golaknath Case"],
+            answer: "State of West Bengal v. Union of India"
+          },
+          {
+            question: "Under which article can new states be created?",
+            options: ["Article 2", "Article 3", "Article 4", "Article 5"],
+            answer: "Article 2"
+          },
+          {
+            question: "Which state was formed most recently under Article 2?",
+            options: ["Telangana", "Chhattisgarh", "Jharkhand", "Uttarakhand"],
+            answer: "Telangana"
+          }
+        ]
+      },
+      {
+        sectionId: 3,
+        quiz: [
+          {
+            question: "Which case expanded the meaning of life and liberty under Article 21?",
+            options: ["Maneka Gandhi v. Union of India", "Golaknath Case", "Kesavananda Bharati Case", "Shah Bano Case"],
+            answer: "Maneka Gandhi v. Union of India"
+          },
+          {
+            question: "Which case recognized environmental rights?",
+            options: ["M.C. Mehta v. Union of India", "Kesavananda Bharati Case", "Shah Bano Case", "Golaknath Case"],
+            answer: "M.C. Mehta v. Union of India"
+          },
+          {
+            question: "Which articles address environmental protection?",
+            options: ["Articles 48A & 51A(g)", "Articles 14 & 15", "Articles 21 & 19", "Articles 32 & 226"],
+            answer: "Articles 48A & 51A(g)"
+          }
+        ]
+      },
+      {
+        sectionId: 4,
+        quiz: [
+          {
+            question: "Which article provides for the Council of Ministers to aid the President?",
+            options: ["Article 74", "Article 75", "Article 76", "Article 77"],
+            answer: "Article 74"
+          },
+          {
+            question: "Which case clarified executive accountability to Parliament?",
+            options: ["Ram Jawaya Kapoor v. Punjab", "Kesavananda Bharati", "Shah Bano", "Golaknath"],
+            answer: "Ram Jawaya Kapoor v. Punjab"
+          },
+          {
+            question: "Who appoints the Prime Minister?",
+            options: ["President", "Chief Justice", "Speaker", "Vice-President"],
+            answer: "President"
+          }
+        ]
+      },
+      {
+        sectionId: 5,
+        quiz: [
+          {
+            question: "Which institution facilitates tax coordination between Centre and States?",
+            options: ["Finance Commission", "NITI Aayog", "GST Council", "Inter-State Council"],
+            answer: "GST Council"
+          },
+          {
+            question: "Which case reinforced democratic principles in Centre-State relations?",
+            options: ["S.R. Bommai v. Union of India", "Kesavananda Bharati Case", "Shah Bano Case", "Golaknath Case"],
+            answer: "S.R. Bommai v. Union of India"
+          },
+          {
+            question: "Which commission reviews Centre-State financial relations?",
+            options: ["Sarkaria Commission", "Finance Commission", "NITI Aayog", "Planning Commission"],
+            answer: "Finance Commission"
+          }
+        ]
+      },
+      {
+        sectionId: 6,
+        quiz: [
+          {
+            question: "Which article enables judicial review of legislative actions?",
+            options: ["Article 13", "Article 32", "Article 226", "Article 14"],
+            answer: "Article 13"
+          },
+          {
+            question: "Which case reaffirmed the basic structure doctrine?",
+            options: ["Minerva Mills Case", "Kesavananda Bharati Case", "Shah Bano Case", "Golaknath Case"],
+            answer: "Minerva Mills Case"
+          },
+          {
+            question: "Which part of the Constitution outlines Fundamental Rights?",
+            options: ["Part III", "Part II", "Part IV", "Part IVA"],
+            answer: "Part III"
+          }
+        ]
+      },
+      {
+        sectionId: 7,
+        quiz: [
+          {
+            question: "Which case expanded access to justice through PIL?",
+            options: ["M.C. Mehta v. Union of India", "Kesavananda Bharati Case", "Shah Bano Case", "Golaknath Case"],
+            answer: "M.C. Mehta v. Union of India"
+          },
+          {
+            question: "What does PIL stand for?",
+            options: ["Public Interest Litigation", "Private Individual Litigation", "Political Inquiry Litigation", "Professional Inquiry Litigation"],
+            answer: "Public Interest Litigation"
+          },
+          {
+            question: "Which article supports environmental protection?",
+            options: ["Article 48A", "Article 14", "Article 21", "Article 19"],
+            answer: "Article 48A"
+          }
+        ]
+      },
+      {
+        sectionId: 8,
+        quiz: [
+          {
+            question: "Which case affirmed the Election Commission’s independence?",
+            options: ["T.N. Seshan v. Union of India", "Kesavananda Bharati Case", "Shah Bano Case", "Golaknath Case"],
+            answer: "T.N. Seshan v. Union of India"
+          },
+          {
+            question: "What does NOTA stand for?",
+            options: ["None of the Above", "No One To Appoint", "New Option To Approve", "Not Any Time Available"],
+            answer: "None of the Above"
+          },
+          {
+            question: "What device enhances voting transparency?",
+            options: ["Ballot Box", "EVM", "Postal Ballot", "VVPAT"],
+            answer: "VVPAT"
+          }
+        ]
+      }
+    ];
+
+    // MCQ Feedback Data
+    const mcqData = [
+      {
+        question: "Which case established the Doctrine of Basic Structure?",
+        answer: "Kesavananda Bharati Case",
+        explanation: "The Kesavananda Bharati Case (1973) laid the foundation for the Basic Structure Doctrine, preventing Parliament from altering the Constitution’s core values."
+      },
+      {
+        question: "What does the Basic Structure Doctrine prevent?",
+        answer: "Modification of Core Constitutional Values",
+        explanation: "The Doctrine prevents Parliament from amending the Constitution’s basic structure, including judicial review and fundamental rights."
+      },
+      {
+        question: "Which article guarantees judicial review?",
+        answer: "Article 32",
+        explanation: "Article 32 empowers citizens to approach the Supreme Court for enforcement of fundamental rights."
+      },
+      {
+        question: "Which case upheld Union dominance in national interest?",
+        answer: "State of West Bengal v. Union of India",
+        explanation: "This case affirmed the Union’s precedence in matters affecting national security and sovereignty."
+      },
+      {
+        question: "Under which article can new states be created?",
+        answer: "Article 2",
+        explanation: "Article 2 authorizes Parliament to admit or establish new states on terms and conditions it deems fit."
+      },
+      {
+        question: "Which state was formed most recently under Article 2?",
+        answer: "Telangana",
+        explanation: "Telangana was formed in 2014 under Article 2, reflecting federal flexibility in accommodating regional aspirations."
+      },
+      {
+        question: "Which case expanded the meaning of life and liberty under Article 21?",
+        answer: "Maneka Gandhi v. Union of India",
+        explanation: "This landmark case interpreted Article 21 to include dignity and due process, broadening the meaning of life and personal liberty."
+      },
+      {
+        question: "Which case recognized environmental rights?",
+        answer: "M.C. Mehta v. Union of India",
+        explanation: "This case emphasized the state’s duty to protect the environment under Articles 48A and 51A(g)."
+      },
+      {
+        question: "Which articles address environmental protection?",
+        answer: "Articles 48A & 51A(g)",
+        explanation: "Article 48A directs the state to protect the environment, while Article 51A(g) makes it a citizen’s duty."
+      },
+      {
+        question: "Which article provides for the Council of Ministers to aid the President?",
+        answer: "Article 74",
+        explanation: "Article 74 mandates that the President shall act on the aid and advice of the Council of Ministers."
+      },
+      {
+        question: "Which case clarified executive accountability to Parliament?",
+        answer: "Ram Jawaya Kapoor v. Punjab",
+        explanation: "This case confirmed that the executive must function collectively and remain accountable to Parliament."
+      },
+      {
+        question: "Who appoints the Prime Minister?",
+        answer: "President",
+        explanation: "The President appoints the Prime Minister based on majority support in the Lok Sabha."
+      },
+      {
+        question: "Which institution facilitates tax coordination between Centre and States?",
+        answer: "GST Council",
+        explanation: "The GST Council promotes cooperative federalism by harmonizing taxation policies between Centre and States."
+      },
+      {
+        question: "Which case reinforced democratic principles in Centre-State relations?",
+        answer: "S.R. Bommai v. Union of India",
+        explanation: "This case limited arbitrary use of Article 356, reinforcing democratic governance in states."
+      },
+      {
+        question: "Which commission reviews Centre-State financial relations?",
+        answer: "Finance Commission",
+        explanation: "The Finance Commission recommends distribution of taxes and grants-in-aid between Centre and States."
+      },
+      {
+        question: "Which article enables judicial review of legislative actions?",
+        answer: "Article 13",
+        explanation: "Article 13 invalidates any law that violates fundamental rights, establishing judicial review."
+      },
+      {
+        question: "Which case reaffirmed the basic structure doctrine?",
+        answer: "Minerva Mills Case",
+        explanation: "This case upheld the basic structure doctrine, limiting Parliament’s power to amend the Constitution."
+      },
+      {
+        question: "Which part of the Constitution outlines Fundamental Rights?",
+        answer: "Part III",
+        explanation: "Part III enshrines justiciable rights that are enforceable by courts."
+      },
+      {
+        question: "Which case expanded access to justice through PIL?",
+        answer: "M.C. Mehta v. Union of India",
+        explanation: "This case allowed courts to hear public interest litigation, expanding legal access for marginalized groups."
+      },
+      {
+        question: "What does PIL stand for?",
+        answer: "Public Interest Litigation",
+        explanation: "PIL enables courts to hear cases involving public interest, promoting social justice."
+      },
+      {
+        question: "Which article supports environmental protection?",
+        answer: "Article 48A",
+        explanation: "Article 48A mandates the state to protect and improve the environment."
+      },
+      {
+        question: "Which case affirmed the Election Commission’s independence?",
+        answer: "T.N. Seshan v. Union of India",
+        explanation: "This case affirmed the Election Commission’s autonomy in conducting free and fair elections."
+      },
+      {
+        question: "What does NOTA stand for?",
+        answer: "None of the Above",
+        explanation: "NOTA allows voters to reject all candidates, expressing disapproval without endorsing anyone."
+      },
+      {
+        question: "What device enhances voting transparency?",
+        answer: "VVPAT",
+        explanation: "VVPAT allows voters to verify their choices, enhancing trust in the electoral process."
+      }
+    ];
+
+    // Initialize App
+    document.addEventListener("DOMContentLoaded", () => {
+      let sections = [];
+      let tempScores = [];
+
+      try {
+        sections = constitutionContent.map(content => {
+          const quizEntry = quizData.find(q => q.sectionId === content.id);
+          return {
+            id: content.id,
+            title: content.title,
+            content: content.content,
+            quiz: quizEntry?.quiz || []
+          };
+        });
+        tempScores = Array(sections.length).fill(null);
+      } catch (e) {
+        console.error("Error initializing sections:", e);
+        document.getElementById("content").innerHTML = `<p class="text-red">Failed to load content. Please contact support@drillmasters.in.</p>`;
+        return;
+      }
+
+      let currentSection = 0;
+      const motivationalMessages = [
+        "Great job! Keep learning!",
+        "Well done! Stay curious!",
+        "Fantastic effort! Move forward!",
+        "Awesome! Master the basics!",
+        "Superb! Build your knowledge!"
+      ];
+
+      function renderContent(items) {
+        return items.map(item => `<p>${item.value}</p>`).join("");
+      }
+
+      function updateNavigation(sectionIndex, hasSubmitted) {
+        const navDiv = document.getElementById("navigation");
+        if (!navDiv) return;
+
+        let html = "";
+        if (hasSubmitted) {
+          html += `<button id="retake-btn" class="btn-yellow">Retake Quiz</button>`;
+        }
+        if (sectionIndex > 0) {
+          html += `<button id="prev-btn" class="btn-gray">Previous</button>`;
+        }
+        if (hasSubmitted && sectionIndex < sections.length - 1 && tempScores[sectionIndex] >= 70) {
+          html += `<button id="next-btn" class="btn-blue">Next</button>`;
+        }
+        if (sectionIndex === sections.length - 1 && hasSubmitted && tempScores[sectionIndex] >= 70) {
+          html += `<button id="complete-btn" class="btn-green">Complete Course</button>`;
+        }
+
+        navDiv.innerHTML = html;
+
+        document.getElementById("retake-btn")?.addEventListener("click", () => {
+          document.getElementById("quiz-form")?.reset();
+          document.getElementById("feedback").innerHTML = "";
+          const submitBtn = document.querySelector("#submit-btn");
+          if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.style.opacity = "1";
+          }
+          updateNavigation(sectionIndex, false);
+        });
+
+        document.getElementById("prev-btn")?.addEventListener("click", () => {
+          if (currentSection > 0) {
+            currentSection--;
+            renderSection(currentSection);
+          }
+        });
+
+        document.getElementById("next-btn")?.addEventListener("click", () => {
+          if (tempScores[sectionIndex] >= 70 && currentSection < sections.length - 1) {
+            currentSection++;
+            renderSection(currentSection);
+          }
+        });
+
+        document.getElementById("complete-btn")?.addEventListener("click", () => {
+          localStorage.removeItem("constitutionExpertScores");
+          document.getElementById("content").innerHTML = `
+            <h2>Congratulations!</h2>
+            <p>You've completed the Indian Constitution (Expert) course!</p>
+            <p>Explore more TNPSC Group 4 courses to continue your preparation journey.</p>
+            <a href="tnpsc-gr4-home.html" class="btn-blue">Return to Home</a>
+          `;
+          navDiv.innerHTML = "";
+        });
+      }
+
+      function renderSection(sectionIndex) {
+        try {
+          const section = sections[sectionIndex];
+          let html = `<h2>${section.title}</h2>`;
+          html += renderContent(section.content);
+
+          if (section.quiz.length > 0) {
+            html += `<h3>Quiz</h3>`;
+            html += `<form id="quiz-form">`;
+            section.quiz.forEach((q, i) => {
+              html += `<div><p>${i + 1}. ${q.question}</p>`;
+              q.options.forEach((opt, j) => {
+                html += `<label for="q${i}-${j}"><input type="radio" id="q${i}-${j}" name="q${i}" value="${opt}" required> ${opt}</label>`;
+              });
+              html += `</div>`;
+            });
+            html += `<button type="button" id="submit-btn" class="btn-blue">Submit</button></form>`;
+            html += `<div id="feedback"></div>`;
+          } else {
+            html += '<p class="text-red">No quiz available for this section.</p>';
+          }
+
+          html += `<div id="navigation"></div>`;
+          document.getElementById("content").innerHTML = html;
+
+          document.getElementById("submit-btn")?.addEventListener("click", () => checkAnswers(sectionIndex));
+
+          updateNavigation(sectionIndex, tempScores[sectionIndex] !== null);
+        } catch (e) {
+          console.error("Render error:", e);
+          document.getElementById("content").innerHTML = `<p class="text-red">Error loading section. Please try again later.</p>`;
+        }
+      }
+
+      function checkAnswers(sectionIndex) {
+        const form = document.getElementById("quiz-form");
+        const feedbackDiv = document.getElementById("feedback");
+
+        if (!form || !feedbackDiv) {
+          feedbackDiv.innerHTML = `<p class="text-red">Form not found. Please reload the page.</p>`;
+          return;
+        }
+
+        const selected = Array.from(form.querySelectorAll("input:checked"));
+        if (selected.length !== sections[sectionIndex].quiz.length) {
+          feedbackDiv.innerHTML = `<p class="text-red">Please answer all questions before submitting.</p>`;
+          return;
+        }
+
+        let score = 0;
+        let feedbackHtml = "";
+
+        sections[sectionIndex].quiz.forEach((q, i) => {
+          const selected = form.querySelector(`input[name="q${i}"]:checked`);
+          const isCorrect = selected && selected.value === q.answer;
+          if (isCorrect) score++;
+
+          const mcq = mcqData.find(m => m.question === q.question && m.answer === q.answer);
+          feedbackHtml += `
+            <p><strong>${q.question}</strong><br>
+            Your answer: ${selected?.value || "None"}<br>
+            Correct answer: ${q.answer}<br>
+            Explanation: ${mcq ? mcq.explanation : "Not available"}
+            </p>`;
+        });
+
+        const percentage = (score / sections[sectionIndex].quiz.length) * 100;
+        tempScores[sectionIndex] = percentage;
+
+        const submitBtn = document.getElementById("submit-btn");
+        if (submitBtn) {
+          submitBtn.disabled = true;
+          submitBtn.style.opacity = "0.6";
+        }
+
+        feedbackDiv.innerHTML = `
+          <p>Your score: ${score}/${sections[sectionIndex].quiz.length} (${percentage.toFixed(2)}%)</p>
+          ${percentage >= 70 ? `<p class="text-green">${motivationalMessages[Math.floor(Math.random() * motivationalMessages.length)]}</p>` : '<p class="text-red">You need 70% to proceed. Please retake the Quiz.</p>'}
+          <h4>Feedback:</h4>
+          ${feedbackHtml}`;
+
+        updateNavigation(sectionIndex, true);
+      }
+
+      function setupMenuToggle() {
+        const menuBtn = document.getElementById("menu-btn");
+        const menu = document.getElementById("menu");
+        if (!menuBtn || !menu) return;
+
+        if (window.innerWidth <= 768) {
+          menuBtn.classList.remove("hidden");
+          menu.classList.add("hidden");
+          menuBtn.onclick = () => menu.classList.toggle("hidden");
+        } else {
+          menuBtn.classList.add("hidden");
+          menu.classList.remove("hidden");
+        }
+      }
+
+      window.addEventListener("resize", debounce(setupMenuToggle, 200));
+      setupMenuToggle();
+      renderSection(currentSection);
+    });
+
+    function debounce(func, wait) {
+      let timeout;
+      return (...args) => {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => func.apply(this, args), wait);
+      };
+    }
+  </script>
+</body>
+</html>

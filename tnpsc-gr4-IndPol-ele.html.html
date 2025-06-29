@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Drillmasters LMS - Indian Constitution (Elementary)</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; background-color: #f3f4f6; display: flex; flex-direction: column; min-height: 100vh; }
+    .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 15px; }
+    header { background-color: #2563eb; color: white; padding: 1rem 0; }
+    header h1 { font-size: 1.5rem; font-weight: bold; }
+    header h2 { font-size: 1.125rem; }
+    header .flex { display: flex; justify-content: space-between; align-items: center; }
+    nav { background-color: #1d4ed8; padding: 1rem 0; }
+    nav ul { list-style: none; display: flex; gap: 1rem; }
+    nav a { color: white; text-decoration: none; }
+    nav a:hover { text-decoration: underline; }
+    main { flex-grow: 1; padding: 1rem 0; }
+    #content { background-color: white; padding: 1.5rem; border-radius: 0.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+    footer { background-color: #1f2937; color: white; padding: 1rem 0; margin-top: auto; text-align: center; }
+    footer a { color: white; text-decoration: underline; }
+    button { padding: 0.5rem 1rem; border-radius: 0.25rem; cursor: pointer; margin: 0.25rem; }
+    .btn-blue { background-color: #3b82f6; color: white; border: none; }
+    .btn-blue:hover { background-color: #2563eb; }
+    .btn-gray { background-color: #6b7280; color: white; border: none; }
+    .btn-gray:hover { background-color: #4b5563; }
+    .btn-green { background-color: #22c55e; color: white; border: none; }
+    .btn-green:hover { background-color: #16a34a; }
+    .btn-yellow { background-color: #f59e0b; color: white; border: none; }
+    .btn-yellow:hover { background-color: #d97706; }
+    .text-red { color: #ef4444; }
+    .text-green { color: #22c55e; }
+    .hidden { display: none; }
+    #quiz-form { margin-top: 1rem; }
+    #quiz-form div { margin-bottom: 1rem; }
+    #quiz-form p { font-weight: bold; margin-bottom: 0.5rem; }
+    #quiz-form label { display: block; margin: 0.25rem 0; }
+    #quiz-form input[type="radio"] { margin-right: 0.5rem; }
+    #feedback { margin-top: 1rem; }
+    #navigation { margin-top: 1rem; display: flex; gap: 0.5rem; }
+    @media (max-width: 768px) {
+      nav ul { flex-direction: column; gap: 0.5rem; }
+      #menu-btn { display: block; }
+      #menu.hidden { display: none; }
+      .container { padding: 0 10px; }
+      button { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container flex">
+      <div>
+        <h1>Indian Constitution - Elementary</h1>
+        <h2>TNPSC Group 4 Preparation</h2>
+      </div>
+      <button id="menu-btn" class="hidden">☰</button>
+    </div>
+    <nav id="menu">
+      <div class="container">
+        <ul>
+          <li><a href="tnpsc-gr4-home.html">TNPSC Group 4 Home</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <div class="container">
+      <div id="content">
+        <p>Loading content...</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>© 2025 Drillmasters LMS. All rights reserved.</p>
+      <p>Contact: <a href="mailto:support@drillmasters.in">support@drillmasters.in</a> | <a href="https://www.drillmasters.in ">www.drillmasters.in</a></p>
+    </div>
+  </footer>
+
+  <script>
+    // Constitution Content (Elementary Level)
+    const constitutionContent = [
+      {
+        id: 1,
+        title: "Constitution of India - Preamble and Salient Features",
+        content: [
+          {
+            type: "text",
+            value: "The Constitution is like a big rulebook for India. It tells everyone how the country should work. The Preamble is the introduction to this rulebook. It says India is a free, fair, and equal country where everyone can live happily. The Constitution was made in 1949 and started working in 1950. It has rules for voting, choosing leaders, and making sure everyone is treated fairly. It’s a very long book with many pages to help India stay strong and united."
+          }
+        ]
+      },
+      {
+        id: 2,
+        title: "Union, State, and Union Territory",
+        content: [
+          {
+            type: "text",
+            value: "India is divided into different parts to make it easy to govern. The Union is the main government in Delhi that looks after the whole country, like keeping us safe. States, like Tamil Nadu, have their own governments for things like schools and roads. Union Territories are special areas, like Puducherry, controlled by the Union. There are 28 states and 8 Union Territories in India. They work together to make India a happy place."
+          }
+        ]
+      },
+      {
+        id: 3,
+        title: "Citizenship, Fundamental Rights, Duties, and Directive Principles",
+        content: [
+          {
+            type: "text",
+            value: "Citizenship means you are part of India. Citizens have rights, like going to school and speaking freely. They also have duties, like keeping the country clean and respecting others. The Constitution has rules called Directive Principles that tell the government to make life better for everyone, like giving jobs and helping the poor. These rules make India fair and kind to all its people."
+          }
+        ]
+      },
+      {
+        id: 4,
+        title: "Union and State Executive, Legislature, Local Governments, Panchayat Raj",
+        content: [
+          {
+            type: "text",
+            value: "The Union has a President and a Prime Minister who lead the country. They make big decisions. The Parliament makes laws for India. States have Chief Ministers and Governors to run things like schools. States also have their own law-making groups. In villages, Panchayat Raj helps people make decisions for their area, like building parks. In cities, local governments do similar things. This helps everyone have a say."
+          }
+        ]
+      },
+      {
+        id: 5,
+        title: "Spirit of Federalism: Centre-State Relationships",
+        content: [
+          {
+            type: "text",
+            value: "Federalism is like teamwork between the Union (central government) and States. The Union looks after big things, like trains that go across India. States take care of local things, like schools in your town. They share work to make sure everyone is happy. Sometimes, the Union helps States with money or ideas to make India stronger together."
+          }
+        ]
+      },
+      {
+        id: 6,
+        title: "Election",
+        content: [
+          {
+            type: "text",
+            value: "Elections are how we choose our leaders, like picking a class monitor. People vote to decide who will make rules for the country or state. The Election Commission makes sure voting is fair. Everyone gets a chance to vote using special machines. Elections happen every five years, and they help India stay a democracy where people’s voices matter."
+          }
+        ]
+      },
+      {
+        id: 7,
+        title: "Judiciary, Corruption, Anti-Corruption, RTI, Women’s Empowerment, Consumer Protection, Human Rights",
+        content: [
+          {
+            type: "text",
+            value: "Courts in India, like the Supreme Court, make sure everyone follows the rules. Corruption is when people are dishonest, like taking money they shouldn’t. Laws like Lokpal help stop corruption. The Right to Information lets you ask the government questions. There are also rules to protect women, help people buy things safely, and make sure everyone is treated with respect. These keep India fair and safe."
+          }
+        ]
+      },
+      {
+        id: 8,
+        title: "Political Parties and Political System in Tamil Nadu and India",
+        content: [
+          {
+            type: "text",
+            value: "Political parties are groups of people with ideas about how to run India. In India, big parties are BJP and Congress. In Tamil Nadu, parties like DMK and AIADMK are important. They talk about things like schools and jobs. People vote for the party they like best. This helps India and Tamil Nadu choose leaders who care about the people."
+          }
+        ]
+      }
+    ];
+
+    // Quiz Data (Elementary Level)
+    const quizData = [
+      {
+        sectionId: 1,
+        quiz: [
+          {
+            question: "What is the Constitution of India?",
+            options: ["A storybook", "A rulebook", "A song"],
+            answer: "A rulebook"
+          },
+          {
+            question: "When did the Constitution start working?",
+            options: ["1947", "1950", "1960"],
+            answer: "1950"
+          },
+          {
+            question: "What does the Preamble say about India?",
+            options: ["It’s a small country", "It’s a fair country", "It’s a cold country"],
+            answer: "It’s a fair country"
+          }
+        ]
+      },
+      {
+        sectionId: 2,
+        quiz: [
+          {
+            question: "What does the Union government do?",
+            options: ["Runs schools", "Keeps India safe", "Builds houses"],
+            answer: "Keeps India safe"
+          },
+          {
+            question: "How many states are in India?",
+            options: ["28", "10", "50"],
+            answer: "28"
+          },
+          {
+            question: "Which is a Union Territory?",
+            options: ["Tamil Nadu", "Puducherry", "Kerala"],
+            answer: "Puducherry"
+          }
+        ]
+      },
+      {
+        sectionId: 3,
+        quiz: [
+          {
+            question: "What is a citizen’s right?",
+            options: ["Going to school", "Driving a car", "Eating sweets"],
+            answer: "Going to school"
+          },
+          {
+            question: "What is a citizen’s duty?",
+            options: ["Keeping India clean", "Playing games", "Watching TV"],
+            answer: "Keeping India clean"
+          },
+          {
+            question: "What do Directive Principles help with?",
+            options: ["Making life better", "Building roads", "Writing books"],
+            answer: "Making life better"
+          }
+        ]
+      },
+      {
+        sectionId: 4,
+        quiz: [
+          {
+            question: "Who leads the Union government?",
+            options: ["Teacher", "Prime Minister", "Doctor"],
+            answer: "Prime Minister"
+          },
+          {
+            question: "What does the Parliament do?",
+            options: ["Makes laws", "Teaches students", "Sells food"],
+            answer: "Makes laws"
+          },
+          {
+            question: "What is Panchayat Raj?",
+            options: ["A village group", "A big city", "A school"],
+            answer: "A village group"
+          }
+        ]
+      },
+      {
+        sectionId: 5,
+        quiz: [
+          {
+            question: "What is federalism?",
+            options: ["A game", "Teamwork between Union and States", "A type of food"],
+            answer: "Teamwork between Union and States"
+          },
+          {
+            question: "What does the Union government handle?",
+            options: ["Local schools", "Trains across India", "Village roads"],
+            answer: "Trains across India"
+          },
+          {
+            question: "How do the Union and States work together?",
+            options: ["They share work", "They compete", "They don’t talk"],
+            answer: "They share work"
+          }
+        ]
+      },
+      {
+        sectionId: 6,
+        quiz: [
+          {
+            question: "What is an election?",
+            options: ["Choosing leaders", "Buying things", "Playing sports"],
+            answer: "Choosing leaders"
+          },
+          {
+            question: "Who makes sure elections are fair?",
+            options: ["Election Commission", "School principal", "Police"],
+            answer: "Election Commission"
+          },
+          {
+            question: "How often do big elections happen?",
+            options: ["Every year", "Every five years", "Every ten years"],
+            answer: "Every five years"
+          }
+        ]
+      },
+      {
+        sectionId: 7,
+        quiz: [
+          {
+            question: "What do courts in India do?",
+            options: ["Make sure rules are followed", "Teach classes", "Sell products"],
+            answer: "Make sure rules are followed"
+          },
+          {
+            question: "What is the Right to Information?",
+            options: ["Asking government questions", "Buying things", "Playing games"],
+            answer: "Asking government questions"
+          },
+          {
+            question: "What protects people’s rights?",
+            options: ["Human Rights Charter", "A storybook", "A sports club"],
+            answer: "Human Rights Charter"
+          }
+        ]
+      },
+      {
+        sectionId: 8,
+        quiz: [
+          {
+            question: "What is a political party?",
+            options: ["A group with ideas", "A school team", "A music band"],
+            answer: "A group with ideas"
+          },
+          {
+            question: "Which is a Tamil Nadu political party?",
+            options: ["DMK", "Congress", "BJP"],
+            answer: "DMK"
+          },
+          {
+            question: "What do political parties do?",
+            options: ["Run schools", "Help choose leaders", "Make movies"],
+            answer: "Help choose leaders"
+          }
+        ]
+      }
+    ];
+
+    // MCQ Feedback Data
+    const mcqData = [
+      {
+        question: "What is the Constitution of India?",
+        answer: "A rulebook",
+        explanation: "The Constitution is a rulebook that tells us how India should be governed."
+      },
+      {
+        question: "When did the Constitution start working?",
+        answer: "1950",
+        explanation: "The Constitution started working in 1950 to guide India."
+      },
+      {
+        question: "What does the Preamble say about India?",
+        answer: "It’s a fair country",
+        explanation: "The Preamble says India is fair and equal for everyone."
+      },
+      {
+        question: "What does the Union government do?",
+        answer: "Keeps India safe",
+        explanation: "The Union government takes care of the whole country, like safety."
+      },
+      {
+        question: "How many states are in India?",
+        answer: "28",
+        explanation: "India has 28 states that help run different parts of the country."
+      },
+      {
+        question: "Which is a Union Territory?",
+        answer: "Puducherry",
+        explanation: "Puducherry is a special area called a Union Territory."
+      },
+      {
+        question: "What is a citizen’s right?",
+        answer: "Going to school",
+        explanation: "Citizens have the right to go to school to learn."
+      },
+      {
+        question: "What is a citizen’s duty?",
+        answer: "Keeping India clean",
+        explanation: "Citizens should help keep India clean and nice."
+      },
+      {
+        question: "What do Directive Principles help with?",
+        answer: "Making life better",
+        explanation: "Directive Principles tell the government to make life better for people."
+      },
+      {
+        question: "Who leads the Union government?",
+        answer: "Prime Minister",
+        explanation: "The Prime Minister leads the Union government to make big decisions."
+      },
+      {
+        question: "What does the Parliament do?",
+        answer: "Makes laws",
+        explanation: "The Parliament makes laws for the whole country."
+      },
+      {
+        question: "What is Panchayat Raj?",
+        answer: "A village group",
+        explanation: "Panchayat Raj is a group that helps villages make decisions."
+      },
+      {
+        question: "What is federalism?",
+        answer: "Teamwork between Union and States",
+        explanation: "Federalism means the Union and States work together like a team."
+      },
+      {
+        question: "What does the Union government handle?",
+        answer: "Trains across India",
+        explanation: "The Union government takes care of things like trains that go across India."
+      },
+      {
+        question: "How do the Union and States work together?",
+        answer: "They share work",
+        explanation: "The Union and States share work to make India better."
+      },
+      {
+        question: "What is an election?",
+        answer: "Choosing leaders",
+        explanation: "Elections let people choose their leaders by voting."
+      },
+      {
+        question: "Who makes sure elections are fair?",
+        answer: "Election Commission",
+        explanation: "The Election Commission makes sure everyone votes fairly."
+      },
+      {
+        question: "How often do big elections happen?",
+        answer: "Every five years",
+        explanation: "Big elections happen every five years to choose new leaders."
+      },
+      {
+        question: "What do courts in India do?",
+        answer: "Make sure rules are followed",
+        explanation: "Courts make sure everyone follows India’s rules."
+      },
+      {
+        question: "What is the Right to Information?",
+        answer: "Asking government questions",
+        explanation: "The Right to Information lets people ask the government questions."
+      },
+      {
+        question: "What protects people’s rights?",
+        answer: "Human Rights Charter",
+        explanation: "The Human Rights Charter keeps everyone safe and respected."
+      },
+      {
+        question: "What is a political party?",
+        answer: "A group with ideas",
+        explanation: "A political party is a group with ideas about running the country."
+      },
+      {
+        question: "Which is a Tamil Nadu political party?",
+        answer: "DMK",
+        explanation: "DMK is a popular political party in Tamil Nadu."
+      },
+      {
+        question: "What do political parties do?",
+        answer: "Help choose leaders",
+        explanation: "Political parties help people choose leaders by sharing their ideas."
+      }
+    ];
+
+    // Initialize App
+    document.addEventListener("DOMContentLoaded", () => {
+      let sections = [];
+      let tempScores = [];
+
+      try {
+        sections = constitutionContent.map(content => {
+          const quizEntry = quizData.find(q => q.sectionId === content.id);
+          return {
+            id: content.id,
+            title: content.title,
+            content: content.content,
+            quiz: quizEntry?.quiz || []
+          };
+        });
+        tempScores = Array(sections.length).fill(null);
+      } catch (e) {
+        console.error("Error initializing sections:", e);
+        document.getElementById("content").innerHTML = `<p class="text-red">Failed to load content. Please contact support@drillmasters.in.</p>`;
+        return;
+      }
+
+      let currentSection = 0;
+      const motivationalMessages = [
+        "Great job! Keep learning!",
+        "Well done! Stay curious!",
+        "Fantastic effort! Move forward!",
+        "Awesome! Master the basics!",
+        "Superb! Build your knowledge!"
+      ];
+
+      function renderContent(items) {
+        return items.map(item => `<p>${item.value}</p>`).join("");
+      }
+
+      function updateNavigation(sectionIndex, hasSubmitted) {
+        const navDiv = document.getElementById("navigation");
+        if (!navDiv) return;
+
+        let html = "";
+        if (hasSubmitted) {
+          html += `<button id="retake-btn" class="btn-yellow">Retake Quiz</button>`;
+        }
+
+        if (sectionIndex > 0) {
+          html += `<button id="prev-btn" class="btn-gray">Previous</button>`;
+        }
+
+        if (hasSubmitted && sectionIndex < sections.length - 1 && tempScores[sectionIndex] >= 70) {
+          html += `<button id="next-btn" class="btn-blue">Next</button>`;
+        }
+
+        if (sectionIndex === sections.length - 1 && hasSubmitted && tempScores[sectionIndex] >= 70) {
+          html += `<button id="complete-btn" class="btn-green">Complete Course</button>`;
+        }
+
+        navDiv.innerHTML = html;
+
+        document.getElementById("retake-btn")?.addEventListener("click", () => {
+          document.getElementById("quiz-form")?.reset();
+          document.getElementById("feedback").innerHTML = "";
+          const submitBtn = document.querySelector("#submit-btn");
+          if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.style.opacity = "1";
+          }
+          updateNavigation(sectionIndex, false);
+        });
+
+        document.getElementById("prev-btn")?.addEventListener("click", () => {
+          if (currentSection > 0) {
+            currentSection--;
+            renderSection(currentSection);
+          }
+        });
+
+        document.getElementById("next-btn")?.addEventListener("click", () => {
+          if (tempScores[sectionIndex] >= 70 && currentSection < sections.length - 1) {
+            currentSection++;
+            renderSection(currentSection);
+          }
+        });
+
+        document.getElementById("complete-btn")?.addEventListener("click", () => {
+          localStorage.removeItem("constitutionElementaryScores");
+          document.getElementById("content").innerHTML = `
+            <h2>Congratulations!</h2>
+            <p>You've completed the Indian Constitution (Elementary) course!</p>
+            <p>Explore more TNPSC Group 4 courses to continue your preparation journey.</p>
+            <a href="tnpsc-gr4-home.html" class="btn-blue">Return to Home</a>
+          `;
+          navDiv.innerHTML = "";
+        });
+      }
+
+      function renderSection(sectionIndex) {
+        try {
+          const section = sections[sectionIndex];
+          let html = `<h2>${section.title}</h2>`;
+          html += renderContent(section.content);
+
+          if (section.quiz.length > 0) {
+            html += `<h3>Quiz</h3>`;
+            html += `<form id="quiz-form">`;
+            section.quiz.forEach((q, i) => {
+              html += `<div><p>${i + 1}. ${q.question}</p>`;
+              q.options.forEach((opt, j) => {
+                html += `<label for="q${i}-${j}"><input type="radio" id="q${i}-${j}" name="q${i}" value="${opt}" required> ${opt}</label>`;
+              });
+              html += `</div>`;
+            });
+            html += `<button type="button" id="submit-btn" class="btn-blue">Submit</button></form>`;
+            html += `<div id="feedback"></div>`;
+          } else {
+            html += '<p class="text-red">No quiz available for this section.</p>';
+          }
+
+          html += `<div id="navigation"></div>`;
+          document.getElementById("content").innerHTML = html;
+
+          document.getElementById("submit-btn").addEventListener("click", () => checkAnswers(sectionIndex));
+
+          updateNavigation(sectionIndex, tempScores[sectionIndex] !== null);
+        } catch (e) {
+          console.error("Render error:", e);
+          document.getElementById("content").innerHTML = `<p class="text-red">Error loading section. Please try again later.</p>`;
+        }
+      }
+
+      function checkAnswers(sectionIndex) {
+        const form = document.getElementById("quiz-form");
+        const feedbackDiv = document.getElementById("feedback");
+
+        const selected = Array.from(form.querySelectorAll("input:checked"));
+        if (selected.length !== sections[sectionIndex].quiz.length) {
+          feedbackDiv.innerHTML = `<p class="text-red">Please answer all questions before submitting.</p>`;
+          return;
+        }
+
+        let score = 0;
+        let feedbackHtml = "";
+
+        sections[sectionIndex].quiz.forEach((q, i) => {
+          const selected = form.querySelector(`input[name="q${i}"]:checked`);
+          const isCorrect = selected && selected.value === q.answer;
+          if (isCorrect) score++;
+
+          const mcq = mcqData.find(m => m.question === q.question && m.answer === q.answer);
+          feedbackHtml += `
+            <p><strong>${q.question}</strong><br>
+            Your answer: ${selected?.value || "None"}<br>
+            Correct answer: ${q.answer}<br>
+            Explanation: ${mcq ? mcq.explanation : "Not available"}
+            </p>`;
+        });
+
+        const percentage = (score / sections[sectionIndex].quiz.length) * 100;
+        tempScores[sectionIndex] = percentage;
+
+        const submitBtn = document.getElementById("submit-btn");
+        submitBtn.disabled = true;
+        submitBtn.style.opacity = "0.6";
+
+        feedbackDiv.innerHTML = `
+          <p>Your score: ${score}/${sections[sectionIndex].quiz.length} (${percentage.toFixed(2)}%)</p>
+          ${percentage >= 70 ? `<p class="text-green">${motivationalMessages[Math.floor(Math.random() * motivationalMessages.length)]}</p>` : '<p class="text-red">You need 70% to proceed. Please <a href="#" id="retake-link">Retake the Quiz</a>.</p>'}
+          <h4>Feedback:</h4>
+          ${feedbackHtml}`;
+
+        document.getElementById("retake-link")?.addEventListener("click", e => {
+          e.preventDefault();
+          form.reset();
+          feedbackDiv.innerHTML = "";
+          submitBtn.disabled = false;
+          submitBtn.style.opacity = "1";
+          updateNavigation(sectionIndex, false);
+        });
+
+        updateNavigation(sectionIndex, true);
+      }
+
+      function setupMenuToggle() {
+        const menuBtn = document.getElementById("menu-btn");
+        const menu = document.getElementById("menu");
+        if (!menuBtn || !menu) return;
+
+        if (window.innerWidth <= 768) {
+          menuBtn.classList.remove("hidden");
+          menu.classList.add("hidden");
+          menuBtn.onclick = () => menu.classList.toggle("hidden");
+        } else {
+          menuBtn.classList.add("hidden");
+          menu.classList.remove("hidden");
+        }
+      }
+
+      window.addEventListener("resize", debounce(setupMenuToggle, 200));
+      setupMenuToggle();
+      renderSection(currentSection);
+    });
+
+    function debounce(func, wait) {
+      let timeout;
+      return (...args) => {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => func.apply(this, args), wait);
+      };
+    }
+  </script>
+</body>
+</html>
