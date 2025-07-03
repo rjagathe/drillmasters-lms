@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DrillMasters LMS | Modular Course Editor</title>
+  <style>
+    body { background: #e6f0fa; color: #333; font-family: Arial, sans-serif; margin:0; }
+    header, footer {
+      background: #2563eb;
+      color: #fff;
+      padding: 1rem 2rem;
+      text-align: center;
+    }
+    nav {
+      background: #1e40af;
+      color: #fff;
+      padding: 0.5em 2rem;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 0.3em 1em;
+      border-radius: 5px;
+      transition: background 0.2s;
+    }
+    nav a:hover, nav a.active {
+      background: #3b82f6;
+    }
+    main { max-width: 1000px; margin: 2rem auto; background: #fff; padding: 2rem; border-radius: 10px; }
+    .section { border: 2px solid #e0e7ef; border-radius: 10px; margin-bottom: 2em; padding: 1.5em 1em; background: #f8fbfe; }
+    .section-title { font-size: 1.2em; font-weight: bold; margin-bottom: 1em; color: #2563eb; }
+    .input-row { margin-bottom: 1em; }
+    input[type="text"] { width: 70%; padding: 0.4em; font-size: 1em; }
+    .editor-label { font-weight: bold; margin-top: 1em; }
+    .topic-block { border: 1px solid #ddd; border-radius: 8px; background: #f5f6fa; margin-bottom: 1.5em; padding: 1em; }
+    .topic-block .topic-header { font-weight: bold; margin-bottom: 0.5em; }
+    .topic-block .remove-topic-btn { float: right; background: #e11d48; color: #fff; border: none; border-radius: 4px; padding: 0.2em 1em; cursor: pointer; font-weight: bold; }
+    .topic-block .remove-topic-btn:hover { background: #be123c; }
+    .topic-content-edit { min-height: 120px; border: 1px solid #ccc; border-radius: 6px; background: #f9f9f9; padding: 1em; margin-bottom: 0.3em; font-size: 1.1em; outline: none; }
+    .mcq-edit { width: 100%; min-height: 80px; border: 1px solid #ccc; border-radius: 6px; background: #f9f9f9; padding: 0.5em; font-size: 1em; margin-bottom: 0.3em; resize: vertical; font-family: monospace; }
+    .save-btn { background: #bbb; color: #fff; border: none; padding: 0.4em 1.2em; border-radius: 4px; margin-bottom: 1em; cursor: not-allowed; user-select: none; font-weight: bold; }
+    .save-btn.active { background: #10b981; cursor: pointer; user-select: auto; }
+    .add-topic-btn { background: #2563eb; color: #fff; border: none; padding: 0.4em 1.2em; border-radius: 4px; margin-bottom: 1em; cursor: pointer; font-weight: bold; }
+    .add-topic-btn:hover { background: #1d4ed8; }
+    .error-table { width: 100%; border-collapse: collapse; margin-bottom: 0.5em; }
+    .error-table th, .error-table td { padding: 0.3em 0.5em; border: 1px solid #eee; font-family: monospace; }
+    .error-table tr.error { background: #ffeaea; }
+    .error-table td.error-msg { color: #c00; font-size: 0.95em; }
+    .error-table td.solution-msg { color: #007bff; font-size: 0.95em; }
+    .success-message { color: #107c10; font-size: 1em; margin-bottom: 1em; }
+    .modal { display: none; position: fixed; z-index: 10000; left: 0; top: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.5); align-items: center; justify-content: center; }
+    .modal.active { display: flex; }
+    .modal-content { background: #fff; padding: 2em; border-radius: 10px; text-align: center; max-width: 400px; width: 90%; }
+    .modal-content button { margin: 0 1em; padding: 0.5em 1.5em; border-radius: 6px; border: none; font-weight: bold; cursor: pointer; }
+    .modal-content button.add-btn { background-color: #10b981; color: white; }
+    .modal-content button.export-btn { background-color: #007bff; color: white; }
+    .file-label { font-weight: bold; }
+    .edit-section-controls { margin-bottom: 1em; }
+    .filename-input { width: 60%; padding: 0.3em; font-size: 1em; }
+    .wrong-answer { color: #c00; font-weight: bold; }
+    /* Player styles for exported HTML */
+    .topic-title { font-size: 1.5em; font-weight: bold; margin-bottom: 1rem; }
+    .topic-content { margin-bottom: 1.5rem; }
+    .quiz-question { font-weight: bold; margin-top: 1rem; }
+    .quiz-options label { display: block; margin: 0.3rem 0; cursor: pointer; }
+    .feedback { margin-top: 0.5rem; font-style: italic; color: #444; }
+    .motivational { color: #10b981; font-weight: bold; margin: 1em 0; }
+    .retake { color: #c00; font-weight: bold; margin: 1em 0; }
+    iframe { max-width: 100%; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>DrillMasters LMS</h1>
+    <p>Empowering Free & Accessible Learning</p>
+  </header>
+  <nav>
+    <a href="#" class="active">Course Editor</a>
+    <a href="#">My Courses</a>
+    <a href="#">Help</a>
+    <a href="#">About</a>
+  </nav>
+  <main>
+    <!-- Section 1: Create New Course -->
+    <div class="section" id="createSection">
+      <div class="section-title">Create a New Course File</div>
+      <div class="input-row">
+        <label><b>Course Name:</b></label>
+        <input type="text" id="courseName" />
+      </div>
+      <div class="input-row">
+        <label><b>Topic Name:</b></label>
+        <input type="text" id="topicName" />
+      </div>
+      <div class="editor-label">Topic Content (Paste from Word, Google Docs, etc):</div>
+      <button id="insertYoutubeBtn" type="button">Insert YouTube/Embed</button>
+      <div id="contentBox" contenteditable="true" spellcheck="true" placeholder="Paste or type your content here"></div>
+      <button id="saveContentsBtn" class="save-btn" disabled>Save Contents</button>
+      <div class="editor-label">Unified MCQ Data:<br>
+        <span style="font-size:0.95em;color:#888;">
+          Paste from Google Sheets/Excel/CSV/TSV, with or without headers.<br>
+          <b>Columns:</b> Question, Option 1, Option 2, Option 3, Option 4, Correct Answer, Explanation, Link to lessons
+        </span>
+      </div>
+      <textarea id="editorMCQ" placeholder="Paste your MCQ data table here"></textarea>
+      <div id="mcqErrorTable"></div>
+      <button id="saveMCQBtn" class="save-btn" disabled>Save MCQ Data</button>
+      <button id="saveAllBtn" class="save-btn" style="display:none;">Save Topic</button>
+      <div id="exportStatus" class="success-message"></div>
+    </div>
+
+    <!-- Section 2: Edit/Update Existing HTML File -->
+    <div class="section" id="editSection">
+      <div class="section-title">Edit/Update Existing HTML File</div>
+      <div class="input-row">
+        <label class="file-label">Choose File:</label>
+        <input type="file" id="chooseFileInput" accept=".html,.htm" />
+      </div>
+      <div id="editCourseArea" style="display:none;">
+        <div class="input-row">
+          <label><b>Course Name:</b></label>
+          <input type="text" id="editCourseName" />
+        </div>
+        <div id="editTopicsArea"></div>
+        <button id="addEditTopicBtn" class="add-topic-btn">+ Add New Topic</button>
+        <div class="edit-section-controls">
+          <label>Export file name: </label>
+          <input type="text" id="editExportFileName" class="filename-input" />
+        </div>
+        <button id="saveEditBtn" class="save-btn" disabled>Save All Changes</button>
+        <div id="editExportStatus" class="success-message"></div>
+      </div>
+    </div>
+
+    <!-- Modal for both sections -->
+    <div id="addMoreModal" class="modal" tabindex="-1">
+      <div class="modal-content">
+        <p style="font-size:1.1em;">Do you want to add more Topic or Export the contents as HTML file?</p>
+        <button id="modalYesBtn" class="add-btn">Yes. Add more Topics</button>
+        <button id="modalNoBtn" class="export-btn">No. Export existing contents as HTML file</button>
+      </div>
+    </div>
+    <!-- YouTube/Embed Insert Modal -->
+    <div id="youtubeModal" class="modal" tabindex="-1">
+      <div class="modal-content">
+        <p>Paste a YouTube link or any embed code (iframe/object):</p>
+        <input type="text" id="youtubeInput" style="width:90%;padding:0.5em;font-size:1em;" />
+        <div style="margin-top:1em;">
+          <button id="youtubeInsertBtn" class="add-btn">Insert</button>
+          <button id="youtubeCancelBtn" class="export-btn">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer>
+    &copy; 2025 DrillMasters. Built for educators, by educators.
+  </footer>
+  <script>
+    // --- Utility: MCQ Parsing (used by both sections) ---
+    function parseUnifiedMCQ(text) {
+      let sep = '\t';
+      if (text.indexOf(',') !== -1 && text.indexOf('\t') === -1) sep = ',';
+      if (text.indexOf('|') !== -1) sep = '|';
+      let lines = text.split('\n').map(line => line.trim()).filter(line => line);
+      let arr = [];
+      let rowErrors = [];
+      let headers = [];
+      if (lines.length && (
+          lines[0].toLowerCase().includes('question') &&
+          lines[0].toLowerCase().includes('option') &&
+          lines[0].toLowerCase().includes('correct') &&
+          lines[0].toLowerCase().includes('explanation')
+        )) {
+        headers = lines[0].split(sep).map(h=>h.trim().toLowerCase());
+        lines = lines.slice(1);
+      }
+      lines.forEach((line, idx) => {
+        let parts = line.split(sep).map(s => s.trim());
+        if (headers.length) {
+          let obj = {};
+          headers.forEach((h,i)=>{ obj[h] = parts[i]||''; });
+          let missingFields = [];
+          ['question','option 1','option 2','option 3','option 4','correct answer','explanation'].forEach(f => {
+            if (!obj[f]) missingFields.push(f);
+          });
+          if (missingFields.length) {
+            rowErrors[idx] = {
+              error: "Missing required field(s): " + missingFields.join(', '),
+              solution: "Fill all columns. Required: Question, Option 1-4, Correct Answer, Explanation"
+            };
+          } else {
+            arr.push({
+              question: obj['question'],
+              options: [obj['option 1'], obj['option 2'], obj['option 3'], obj['option 4']],
+              answer: obj['correct answer'],
+              explanation: obj['explanation'],
+              link: obj['link to lessons'] || ''
+            });
+            rowErrors[idx] = null;
+          }
+        } else {
+          if (parts.length < 7 || parts.slice(0,7).some(cell=>!cell)) {
+            rowErrors[idx] = {
+              error: "Must have at least 7 fields (question, 4 options, correct answer, explanation), none empty.",
+              solution: "Fill all columns or check separator."
+            };
+          } else {
+            arr.push({
+              question: parts[0],
+              options: parts.slice(1,5),
+              answer: parts[5],
+              explanation: parts[6],
+              link: parts[7] || ''
+            });
+            rowErrors[idx] = null;
+          }
+        }
+      });
+      return {data: arr, rowErrors, sep, headers};
+    }
+    function renderMCQErrorTable(text, containerId) {
+      const {rowErrors, sep, headers} = parseUnifiedMCQ(text);
+      const lines = text.split('\n').map(line => line.trim()).filter(line => line);
+      let html = `<table class="error-table"><tr><th>#</th><th>Question</th><th>Option 1</th><th>Option 2</th><th>Option 3</th><th>Option 4</th><th>Correct</th><th>Explanation</th><th>Link</th><th>Error</th><th>Solution</th></tr>`;
+      lines.forEach((line, idx) => {
+        let parts = line.split(sep).map(s => s.trim());
+        let isErr = rowErrors[idx] != null;
+        html += `<tr${isErr ? ' class="error"' : ''}><td>${idx+1}</td>`;
+        for (let i = 0; i < 8; ++i) {
+          html += `<td>${parts[i] ? parts[i].replace(/</g,"&lt;") : ''}</td>`;
+        }
+        html += `<td class="error-msg">${isErr ? rowErrors[idx].error : ''}</td>`;
+        html += `<td class="solution-msg">${isErr ? rowErrors[idx].solution : ''}</td>`;
+        html += `</tr>`;
+      });
+      html += `</table>`;
+      document.getElementById(containerId).innerHTML = html;
+    }
+
+    // --- Section 1: Create New Course ---
+    const contentBox = document.getElementById('contentBox');
+    const saveContentsBtn = document.getElementById('saveContentsBtn');
+    contentBox.addEventListener('input', () => {
+      saveContentsBtn.disabled = false;
+      saveContentsBtn.classList.add('active');
+    });
+    saveContentsBtn.onclick = () => {
+      saveContentsBtn.disabled = true;
+      saveContentsBtn.classList.remove('active');
+      alert('Contents saved!');
+      savedContents = true;
+      checkAllSaved();
+    };
+
+    const saveMCQBtn = document.getElementById('saveMCQBtn');
+    const editorMCQ = document.getElementById('editorMCQ');
+    editorMCQ.addEventListener('input', function() {
+      renderMCQErrorTable(editorMCQ.value, 'mcqErrorTable');
+      const {rowErrors, data} = parseUnifiedMCQ(editorMCQ.value);
+      if (data.length > 0 && rowErrors.every(e=>!e)) {
+        saveMCQBtn.disabled = false;
+        saveMCQBtn.classList.add('active');
+      } else {
+        saveMCQBtn.disabled = true;
+        saveMCQBtn.classList.remove('active');
+      }
+    });
+    renderMCQErrorTable(editorMCQ.value, 'mcqErrorTable');
+    saveMCQBtn.onclick = () => {
+      saveMCQBtn.disabled = true;
+      saveMCQBtn.classList.remove('active');
+      alert('MCQ data saved!');
+      savedMCQ = true;
+      checkAllSaved();
+    };
+
+    let savedContents = false, savedMCQ = false;
+    let courseName = "", topics = [];
+    let currentTopic = {};
+    const saveAllBtn = document.getElementById('saveAllBtn');
+    const modal = document.getElementById('addMoreModal');
+    const modalYesBtn = document.getElementById('modalYesBtn');
+    const modalNoBtn = document.getElementById('modalNoBtn');
+    function checkAllSaved() {
+      if (savedContents && savedMCQ) {
+        saveAllBtn.style.display = 'inline-block';
+        saveAllBtn.disabled = false;
+        saveAllBtn.classList.add('active');
+      } else {
+        saveAllBtn.style.display = 'none';
+      }
+    }
+    saveAllBtn.onclick = () => {
+      courseName = document.getElementById('courseName').value.trim();
+      currentTopic.topicName = document.getElementById('topicName').value.trim();
+      currentTopic.contents = contentBox.innerHTML;
+      if (!currentTopic.topicName || !currentTopic.contents || !currentTopic.mcqData) {
+        alert('Please fill in all fields and save each section.');
+        return;
+      }
+      topics.push(JSON.parse(JSON.stringify(currentTopic)));
+      modal.classList.add('active');
+      modal.focus();
+    };
+    modalYesBtn.onclick = () => {
+      modal.classList.remove('active');
+      document.getElementById('topicName').value = '';
+      contentBox.innerHTML = '';
+      editorMCQ.value = '';
+      renderMCQErrorTable(editorMCQ.value, 'mcqErrorTable');
+      savedContents = false; savedMCQ = false;
+      saveContentsBtn.disabled = true; saveContentsBtn.classList.remove('active');
+      saveMCQBtn.disabled = true; saveMCQBtn.classList.remove('active');
+      saveAllBtn.style.display = 'none';
+      currentTopic = {};
+      alert('Ready to add new topic.');
+      contentBox.focus();
+    };
+    modalNoBtn.onclick = () => {
+      modal.classList.remove('active');
+      exportHTMLFile(courseName, topics);
+      contentBox.focus();
+    };
+
+    // Save topic content and MCQ data
+    contentBox.addEventListener('input', () => {
+      currentTopic.contents = contentBox.innerHTML;
+    });
+    editorMCQ.addEventListener('input', function() {
+      const {data} = parseUnifiedMCQ(editorMCQ.value);
+      currentTopic.mcqData = data;
+    });
+
+    // --- Export HTML logic (shared) ---
+    function exportHTMLFile(courseName, topics, fileName) {
+      const html = `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>${courseName}</title>
+  <style>
+    body { background: #e6f0fa; color: #333; font-family: Arial, sans-serif; margin:0; }
+    header, footer { background: #2563eb; color: #fff; padding: 1rem 2rem; text-align: center; }
+    nav { background: #1e40af; color: #fff; padding: 0.5em 2rem; display: flex; justify-content: center; gap: 2rem;}
+    nav a { color: #fff; text-decoration: none; font-weight: bold; padding: 0.3em 1em; border-radius: 5px;}
+    nav a:hover, nav a.active { background: #3b82f6; }
+    main { max-width: 900px; margin: 2rem auto; background: #fff; padding: 2rem; border-radius: 10px; }
+    .topic-title { font-size: 1.5em; font-weight: bold; margin-bottom: 1rem; }
+    .topic-content { margin-bottom: 1.5rem; }
+    .quiz-question { font-weight: bold; margin-top: 1rem; }
+    .quiz-options label { display: block; margin: 0.3rem 0; cursor: pointer; }
+    .feedback { margin-top: 0.5rem; font-style: italic; color: #444; }
+    .motivational { color: #10b981; font-weight: bold; margin: 1em 0; }
+    .retake { color: #c00; font-weight: bold; margin: 1em 0; }
+    iframe { max-width: 100%; }
+    .wrong-answer { color: #c00; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>DrillMasters LMS</h1>
+    <p>Empowering Free & Accessible Learning</p>
+  </header>
+  <nav>
+    <a href="#" class="active">Course Player</a>
+    <a href="#">My Courses</a>
+    <a href="#">Help</a>
+    <a href="#">About</a>
+  </nav>
+  <main>
+    <h1>${courseName}</h1>
+    <div id="player"></div>
+  </main>
+  <footer>
+    &copy; 2025 DrillMasters. Built for educators, by educators.
+  </footer>
+  <script>
+const topics = ${JSON.stringify(topics)};
+let currentIndex = 0;
+function renderTopic(idx) {
+  const t = topics[idx];
+  let html = '<div class="topic-title">' + t.topicName + '</div>';
+  html += '<div class="topic-content">' + t.contents + '</div>';
+  if (!t.mcqData || !t.mcqData.length) {
+    html += '<p>No quiz available for this topic.</p>';
+    html += navButtons(idx, true);
+    document.getElementById('player').innerHTML = html;
+    return;
+  }
+  html += '<form id="quiz-form">';
+  t.mcqData.forEach((q, qidx) => {
+    html += '<div class="quiz-question">' + (qidx+1) + '. ' + q.question + '</div>';
+    html += '<div class="quiz-options">';
+    q.options.forEach(opt => {
+      html += '<label><input type="radio" name="q' + qidx + '" value="' + opt + '"> ' + opt + '</label>';
+    });
+    html += '</div>';
+  });
+  html += '<button type="button" class="btn" id="submitQuizBtn">Submit Quiz</button></form>';
+  html += '<div id="feedback"></div>';
+  html += '<div id="navArea"></div>';
+  document.getElementById('player').innerHTML = html;
+  document.getElementById('submitQuizBtn').onclick = function() { submitQuiz(idx); };
+}
+function submitQuiz(idx) {
+  const t = topics[idx];
+  const form = document.getElementById('quiz-form');
+  let score = 0, total = t.mcqData.length;
+  let feedbackHtml = "";
+  t.mcqData.forEach((q, qidx) => {
+    const selected = form.querySelector('input[name="q' + qidx + '"]:checked');
+    const correct = selected && selected.value === q.answer;
+    if (correct) score++;
+    const isWrong = !correct;
+    feedbackHtml += '<div class="feedback' + (isWrong ? ' wrong-answer' : '') + '"><b>' + q.question + '</b><br>' +
+      'Your answer: ' + (selected ? selected.value : "None") + '<br>' +
+      'Correct answer: ' + q.answer + '<br>' +
+      'Explanation: ' + q.explanation +
+      (q.link ? '<br><a href="' + q.link + '" target="_blank">Related Lesson</a>' : '') +
+      '</div>';
+  });
+  let percent = (score/total)*100;
+  let navHtml = "";
+  if (percent >= 70) {
+    navHtml += '<div class="motivational">Great job! You scored ' + score + '/' + total + ' (' + Math.round(percent) + '%).<br>Keep going!</div>';
+    navHtml += navButtons(idx, true);
+  } else {
+    navHtml += '<div class="retake">You scored ' + score + '/' + total + ' (' + Math.round(percent) + '%).<br>Try again to improve your score!</div>';
+    navHtml += '<button class="btn" onclick="renderTopic(' + idx + ')">Retake Quiz</button>';
+  }
+  document.getElementById('feedback').innerHTML = feedbackHtml;
+  document.getElementById('navArea').innerHTML = navHtml;
+}
+function navButtons(idx, quizPassed) {
+  let html = "";
+  if (quizPassed && idx < topics.length-1) {
+    html += '<button class="btn btn-green" onclick="renderTopic(' + (idx+1) + ')">Next Topic</button>';
+  }
+  if (quizPassed && idx === topics.length-1) {
+    html += '<div class="motivational">Congratulations! You have completed the course!</div>';
+  }
+  return html;
+}
+renderTopic(0);
+<\/script>
+</body>
+</html>
+      `;
+      const blob = new Blob([html], {type: "text/html"});
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = (fileName ? fileName.replace(/\s+/g,'_') : (courseName ? courseName.replace(/\s+/g,'_') : "course")) + ".html";
+      a.click();
+      document.getElementById('exportStatus') && (document.getElementById('exportStatus').textContent = "HTML file exported!");
+      document.getElementById('editExportStatus') && (document.getElementById('editExportStatus').textContent = "HTML file exported!");
+    }
+
+    // --- YouTube/Embed Insert Modal Logic (for Create section only) ---
+    const insertYoutubeBtn = document.getElementById('insertYoutubeBtn');
+    const youtubeModal = document.getElementById('youtubeModal');
+    const youtubeInput = document.getElementById('youtubeInput');
+    const youtubeInsertBtn = document.getElementById('youtubeInsertBtn');
+    const youtubeCancelBtn = document.getElementById('youtubeCancelBtn');
+    let savedRange = null;
+
+    insertYoutubeBtn.onclick = function() {
+      contentBox.focus();
+      savedRange = saveSelection(contentBox);
+      youtubeInput.value = "";
+      youtubeModal.classList.add('active');
+      setTimeout(()=>youtubeInput.focus(), 100);
+    };
+    youtubeCancelBtn.onclick = function() {
+      youtubeModal.classList.remove('active');
+      restoreSelection(contentBox, savedRange);
+      contentBox.focus();
+    };
+    youtubeInsertBtn.onclick = function() {
+      let val = youtubeInput.value.trim();
+      let html = "";
+      if (val.match(/<(iframe|object|embed)[\s\S]*?>/i)) {
+        html = val;
+      } else {
+        let match = val.match(/(?:youtube\.com.*[?&]v=|youtu\.be\/)([a-zA-Z0-9_-]+)/);
+        if (match) {
+          let vid = match[1];
+          html = `<iframe width="560" height="315" src="https://www.youtube.com/embed/${vid}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`;
+        } else {
+          alert("Please enter a valid YouTube link or embed code.");
+          youtubeInput.focus();
+          return;
+        }
+      }
+      youtubeModal.classList.remove('active');
+      restoreSelection(contentBox, savedRange);
+      insertHtmlAtCaret(html, contentBox);
+      contentBox.focus();
+    };
+    function saveSelection(containerEl) {
+      let sel = window.getSelection();
+      if (sel.rangeCount === 0) return null;
+      let range = sel.getRangeAt(0);
+      let node = range.commonAncestorContainer;
+      while (node) {
+        if (node === containerEl) break;
+        node = node.parentNode;
+      }
+      if (!node) return null;
+      return range.cloneRange();
+    }
+    function restoreSelection(containerEl, savedRange) {
+      if (!savedRange) return;
+      let sel = window.getSelection();
+      sel.removeAllRanges();
+      sel.addRange(savedRange);
+    }
+    function insertHtmlAtCaret(html, containerEl) {
+      let sel = window.getSelection();
+      if (!sel.rangeCount) {
+        containerEl.innerHTML += html;
+        return;
+      }
+      let range = sel.getRangeAt(0);
+      range.deleteContents();
+      let el = document.createElement("div");
+      el.innerHTML = html;
+      let frag = document.createDocumentFragment(), node, lastNode;
+      while ((node = el.firstChild)) {
+        lastNode = frag.appendChild(node);
+      }
+      range.insertNode(frag);
+      if (lastNode) {
+        range = range.cloneRange();
+        range.setStartAfter(lastNode);
+        range.collapse(true);
+        sel.removeAllRanges();
+        sel.addRange(range);
+      }
+    }
+
+    // --- Section 2: Edit/Update Existing HTML File ---
+    const chooseFileInput = document.getElementById('chooseFileInput');
+    const editCourseArea = document.getElementById('editCourseArea');
+    const editCourseName = document.getElementById('editCourseName');
+    const editTopicsArea = document.getElementById('editTopicsArea');
+    const addEditTopicBtn = document.getElementById('addEditTopicBtn');
+    const saveEditBtn = document.getElementById('saveEditBtn');
+    const editExportFileName = document.getElementById('editExportFileName');
+    let editTopics = [];
+    let originalFileName = "";
+
+    chooseFileInput.onchange = function(e) {
+      const file = e.target.files[0];
+      if (!file) return;
+      originalFileName = file.name.replace(/\.html?$/i, "");
+      const reader = new FileReader();
+      reader.onload = function(ev) {
+        let html = ev.target.result;
+        // Try to extract topics and course name from the HTML
+        try {
+          let courseNameMatch = html.match(/<h1[^>]*>(.*?)<\/h1>/i);
+          let courseName = courseNameMatch ? courseNameMatch[1] : "";
+          let topicsMatch = html.match(/const topics\s*=\s*(\[[\s\S]*?\]);/);
+          let topicsArr = topicsMatch ? JSON.parse(topicsMatch[1]) : [];
+          editCourseName.value = courseName;
+          editExportFileName.value = originalFileName;
+          editTopics = topicsArr.map(t => ({
+            topicName: t.topicName,
+            contents: t.contents,
+            mcqData: t.mcqData || []
+          }));
+          renderEditTopics();
+          editCourseArea.style.display = "block";
+          saveEditBtn.disabled = false;
+          saveEditBtn.classList.add('active');
+          document.getElementById('editExportStatus').textContent = "";
+        } catch (err) {
+          alert("Could not parse the selected file. Please make sure it's a valid exported course HTML file.");
+          editCourseArea.style.display = "none";
+        }
+      };
+      reader.readAsText(file);
+    };
+
+    function renderEditTopics() {
+      editTopicsArea.innerHTML = "";
+      editTopics.forEach((topic, idx) => {
+        const block = document.createElement('div');
+        block.className = "topic-block";
+        block.innerHTML = `
+          <div class="topic-header">
+            Topic ${idx+1}: 
+            <button class="remove-topic-btn" title="Remove this topic" data-idx="${idx}">Remove</button>
+          </div>
+          <div class="input-row">
+            <label><b>Topic Name:</b></label>
+            <input type="text" class="edit-topic-name" value="${topic.topicName.replace(/"/g,"&quot;")}" data-idx="${idx}" />
+          </div>
+          <div class="editor-label">Topic Content:</div>
+          <div class="topic-content-edit" contenteditable="true" spellcheck="true" data-idx="${idx}">${topic.contents}</div>
+          <div class="editor-label">Unified MCQ Data:</div>
+          <textarea class="mcq-edit" data-idx="${idx}" placeholder="Paste MCQ data here">${(topic.mcqData && topic.mcqData.length)
+            ? topic.mcqData.map(q => [q.question, ...q.options, q.answer, q.explanation, q.link||""].join('\t')).join('\n')
+            : ""}</textarea>
+          <div class="error-table" id="edit-mcq-error-${idx}"></div>
+        `;
+        editTopicsArea.appendChild(block);
+        // MCQ error table
+        renderMCQErrorTable(block.querySelector('.mcq-edit').value, `edit-mcq-error-${idx}`);
+        // MCQ input event
+        block.querySelector('.mcq-edit').addEventListener('input', function() {
+          let val = this.value;
+          renderMCQErrorTable(val, `edit-mcq-error-${idx}`);
+        });
+        // Remove topic
+        block.querySelector('.remove-topic-btn').onclick = function() {
+          if (editTopics.length === 1) {
+            alert("At least one topic is required.");
+            return;
+          }
+          editTopics.splice(idx,1);
+          renderEditTopics();
+        };
+      });
+      // Add embed/YouTube insert support for each topic content (on focus)
+      Array.from(editTopicsArea.querySelectorAll('.topic-content-edit')).forEach((el, idx) => {
+        el.addEventListener('focus', function() {
+          // Save reference for embed insertion
+          currentEditTopicContentBox = this;
+          currentEditTopicIdx = idx;
+        });
+      });
+    }
+
+    // Add new topic in edit mode
+    addEditTopicBtn.onclick = function() {
+      editTopics.push({
+        topicName: "",
+        contents: "",
+        mcqData: []
+      });
+      renderEditTopics();
+    };
+
+    // Save all changes in edit mode
+    saveEditBtn.onclick = function() {
+      // Gather all edited data
+      let newCourseName = editCourseName.value.trim();
+      let newTopics = [];
+      let hasError = false;
+      Array.from(editTopicsArea.children).forEach((block, idx) => {
+        let topicName = block.querySelector('.edit-topic-name').value.trim();
+        let contents = block.querySelector('.topic-content-edit').innerHTML;
+        let mcqText = block.querySelector('.mcq-edit').value;
+        let {data, rowErrors} = parseUnifiedMCQ(mcqText);
+        if (!topicName || !contents || !data.length || rowErrors.some(e=>e)) {
+          hasError = true;
+        }
+        newTopics.push({
+          topicName,
+          contents,
+          mcqData: data
+        });
+      });
+      if (!newCourseName) {
+        alert("Course name is required.");
+        return;
+      }
+      if (hasError) {
+        alert("Please fill all fields and fix any MCQ errors before saving.");
+        return;
+      }
+      // Show modal for add/export
+      editTopics = newTopics;
+      editCourseName.value = newCourseName;
+      modal.classList.add('active');
+      modal.focus();
+      // Modal YES: add new topic
+      modalYesBtn.onclick = function() {
+        modal.classList.remove('active');
+        addEditTopicBtn.click();
+      };
+      // Modal NO: export HTML
+      modalNoBtn.onclick = function() {
+        modal.classList.remove('active');
+        let exportName = editExportFileName.value.trim() || "course";
+        exportHTMLFile(newCourseName, editTopics, exportName);
+      };
+    };
+
+    // --- Accessibility: ESC closes modals ---
+    document.addEventListener('keydown', function(e) {
+      if (e.key === "Escape") {
+        if (youtubeModal.classList.contains('active')) {
+          youtubeModal.classList.remove('active');
+          restoreSelection(contentBox, savedRange);
+          contentBox.focus();
+        }
+        if (modal.classList.contains('active')) {
+          modal.classList.remove('active');
+          contentBox.focus();
+        }
+      }
+    });
+
+    // --- Initial focus ---
+    window.onload = () => {
+      contentBox.focus();
+    };
+  </script>
+</body>
+</html>
