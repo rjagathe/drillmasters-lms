@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Quiz Editor - Export as HTML Player</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 30px; }
+    input, select, textarea { width: 100%; margin-bottom: 10px; }
+    textarea { height: 120px; }
+    .btn { padding: 8px 16px; margin: 5px 0; }
+    .export-area { width: 100%; height: 120px; }
+    .label { font-weight: bold; margin-top: 10px; display: block; }
+    #previewArea { background: #f9f9f9; padding: 10px; margin-bottom: 10px; }
+  </style>
+</head>
+<body>
+  <h1>Quiz Editor</h1>
+  <label class="label">Course Name:</label>
+  <input type="text" id="courseName" placeholder="e.g. Mathematics">
+  <label class="label">Topic Name:</label>
+  <input type="text" id="topicName" placeholder="e.g. Algebra">
+  <label class="label">Difficulty Level:</label>
+  <select id="difficultyLevel">
+    <option>Easy</option>
+    <option>Medium</option>
+    <option>Hard</option>
+  </select>
+  <label class="label">Quiz Number:</label>
+  <input type="number" id="quizNumber" min="1" value="1">
+
+  <label class="label">Paste your quiz data from Google Sheets/Excel (one row per question, tab-separated columns):</label>
+  <div>
+    <small>
+      <b>Column order:</b><br>
+      Question Text | Option 1 | Option 2 | Option 3 | Option 4 | Explanation 1 | Explanation 2 | Explanation 3 | Explanation 4 | Correct Answer (1-4) | Correct Explanation (1-4)
+    </small>
+  </div>
+  <textarea id="bulkPaste" placeholder="Paste rows here..."></textarea>
+  <button class="btn" type="button" onclick="parseBulkPaste()">Parse & Preview</button>
+
+  <div id="previewArea"></div>
+  <button class="btn" type="button" onclick="exportAsHtmlPlayer()">Export as HTML Player</button>
+  <label class="label">Exported HTML Player (save as .html):</label>
+  <textarea class="export-area" id="exportArea" readonly></textarea>
+
+  <script>
+    let quizData = null;
+
+    function parseBulkPaste() {
+      const text = document.getElementById('bulkPaste').value.trim();
+      if (!text) { alert('Paste your quiz data first!'); return; }
+      const rows = text.split('\n').map(row => row.split('\t'));
+      quizData = [];
+      for (let i = 0; i < rows.length; i++) {
+        const cols = rows[i];
+        if (cols.length < 11) {
+          alert(`Row ${i+1} does not have 11 columns.`);
+          quizData = null;
+          document.getElementById('previewArea').innerHTML = "";
+          return;
+        }
+        quizData.push({
+          text: cols[0],
+          options: [cols[1], cols[2], cols[3], cols[4]],
+          explanations: [cols[5], cols[6], cols[7], cols[8]],
+          correct_answer_idx: parseInt(cols[9],10)-1,
+          correct_explanation_idx: parseInt(cols[10],10)-1
+        });
+      }
+      showPreview();
+    }
+
+    function showPreview() {
+      if (!quizData) return;
+      let html = "<h3>Quiz Preview</h3>";
+      quizData.forEach((q, i) => {
+        html += `<b>Q${i+1}:</b> ${q.text}<br>`;
+        q.options.forEach((opt, j) => html += `${j+1}. ${opt}<br>`);
+        html += `<i>Correct Answer:</i> ${q.options[q.correct_answer_idx]}<br>`;
+        html += `<i>Explanations:</i><ul>`;
+        q.explanations.forEach((exp, k) => {
+          html += `<li>${k+1}. ${exp}${k === q.correct_explanation_idx ? " <b>(Correct)</b>" : ""}</li>`;
+        });
+        html += `</ul><hr>`;
+      });
+      document.getElementById('previewArea').innerHTML = html;
+    }
+
+    function exportAsHtmlPlayer() {
+      if (!quizData) { alert('Parse your quiz data first!'); return; }
+      const metadata = {
+        course_name: document.getElementById('courseName').value.trim(),
+        topic_name: document.getElementById('topicName').value.trim(),
+        difficulty_level: document.getElementById('difficultyLevel').value,
+        quiz_number: parseInt(document.getElementById('quizNumber').value, 10)
+      };
+      const quizJson = JSON.stringify({ ...metadata, questions: quizData });
+
+      const htmlPlayer =
+'<!DOCTYPE html>\n\
+<html lang="en">\n\
+<head>\n\
+  <meta charset="UTF-8">\n\
+  <title>Quiz Player - ' + metadata.topic_name + '</title>\n\
+  <style>\n\
+    body { font-family: Arial, sans-serif; margin: 30px; }\n\
+    .question { margin-bottom: 25px; }\n\
+    .options, .explanations { margin-left: 20px; }\n\
+    .feedback { background: #f0f0f0; padding: 10px; margin-top: 10px; }\n\
+    .correct { color: green; }\n\
+    .wrong { color: red; }\n\
+    .score { font-size: 1.2em; font-weight: bold; }\n\
+    .btn { padding: 8px 16px; margin: 10px 0; }\n\
+  </style>\n\
+</head>\n\
+<body>\n\
+  <h1>' + metadata.course_name + ' - ' + metadata.topic_name + '</h1>\n\
+  <div><b>Difficulty:</b> ' + metadata.difficulty_level + ' | <b>Quiz #:</b> ' + metadata.quiz_number + '</div>\n\
+  <form id="quizForm"></form>\n\
+  <div id="result"></div>\n\
+  <script>\n\
+    const quiz = ' + quizJson.replace(/</g, '\\u003c') + ';\n\
+    const localStorageKey = "quiz_score_" + quiz.course_name.replace(/\\s+/g, "_") + "_" + quiz.topic_name.replace(/\\s+/g, "_") + "_q" + quiz.quiz_number;\n\
+    let userAnswers = [];\n\
+\n\
+    function renderQuiz() {\n\
+      let html = "";\n\
+      quiz.questions.forEach((q, idx) => {\n\
+        html += `<div class="question"><b>Q${idx+1}:</b> ${q.text}<br>`;\n\
+        html += `<div class="options">`;\n\
+        q.options.forEach((opt, i) => {\n\
+          html += `<label><input type="radio" name="q${idx}_ans" value="${i}"> ${opt}</label><br>`;\n\
+        });\n\
+        html += `</div>`;\n\
+        html += `<div class="explanations"><i>Choose Explanation:</i><br>`;\n\
+        q.explanations.forEach((exp, i) => {\n\
+          html += `<label><input type="radio" name="q${idx}_exp" value="${i}"> ${exp}</label><br>`;\n\
+        });\n\
+        html += `</div></div>`;\n\
+      });\n\
+      html += \'<button type="button" class="btn" onclick="submitQuiz()">Submit Quiz</button>\';\n\
+      document.getElementById("quizForm").innerHTML = html;\n\
+    }\n\
+\n\
+    function submitQuiz() {\n\
+      let score = 0;\n\
+      let feedbackHtml = "<h2>Quiz Feedback</h2>";\n\
+      userAnswers = [];\n\
+      for (let idx = 0; idx < quiz.questions.length; idx++) {\n\
+        const q = quiz.questions[idx];\n\
+        const ans = document.querySelector(\'input[name="q\'+idx+\'_ans"]:checked\');\n\
+        const exp = document.querySelector(\'input[name="q\'+idx+\'_exp"]:checked\');\n\
+        if (!ans || !exp) {\n\
+          alert("Please answer all questions and select explanations!");\n\
+          return;\n\
+        }\n\
+        const answer_idx = parseInt(ans.value, 10);\n\
+        const explanation_idx = parseInt(exp.value, 10);\n\
+        userAnswers.push({answer_idx, explanation_idx});\n\
+        let correct = (answer_idx === q.correct_answer_idx) && (explanation_idx === q.correct_explanation_idx);\n\
+        feedbackHtml += `<div class="feedback">\n\
+            <b>Q${idx+1}:</b> ${q.text}<br>\n\
+            Your answer: ${q.options[answer_idx]}<br>\n\
+            Correct answer: ${q.options[q.correct_answer_idx]}<br>\n\
+            Your explanation: ${q.explanations[explanation_idx]}<br>\n\
+            Correct explanation: ${q.explanations[q.correct_explanation_idx]}<br>\n\
+            Result: <span class="${correct ? "correct" : "wrong"}">${correct ? "✅ Full Marks" : "❌ Full Negative Mark"}</span>\n\
+          </div>`;\n\
+        score += correct ? 1 : -1;\n\
+      }\n\
+      feedbackHtml += `<div class="score">Final Score: ${score} out of ${quiz.questions.length} (min: -${quiz.questions.length})</div>`;\n\
+      document.getElementById("result").innerHTML = feedbackHtml;\n\
+      localStorage.setItem(localStorageKey, score);\n\
+    }\n\
+    renderQuiz();\n\
+    window.onload = function() {\n\
+      if (localStorage.getItem(localStorageKey) !== null) {\n\
+        document.getElementById("result").innerHTML += \'<div><b>Last Attempted Score:</b> \' + localStorage.getItem(localStorageKey) + \'</div>\';\n\
+      }\n\
+    }\n\
+  <\/script>\n\
+</body>\n\
+</html>';
+
+      document.getElementById('exportArea').value = htmlPlayer;
+    }
+  </script>
+</body>
+</html>
