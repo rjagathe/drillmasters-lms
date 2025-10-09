@@ -1,0 +1,24 @@
+{
+  "name": "drillmasters-lms",
+  "version": "1.0.0",
+  "description": "Simple No login LMS",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "tailwindcss": "^4.1.14"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rjagathe/drillmasters-lms.git"
+  },
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/rjagathe/drillmasters-lms/issues"
+  },
+  "homepage": "https://github.com/rjagathe/drillmasters-lms#readme"
+}
