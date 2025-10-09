@@ -1,0 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.tab { cursor: pointer; }
+.medium-tab { cursor: pointer; }
+.lesson-link { color: #007bff; text-decoration: underline; }
+.lesson-link:hover { color: #0056b3; }
